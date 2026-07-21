@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supplier-to-Customer Workflow Tracking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-logo">▩</div>
+        <div class="brand-name">TrackFlow</div>
+      </div>
+      <nav class="sidenav" id="sidenav">
+        <a data-view="dashboard" class="active"><span class="ic">🏠</span><span class="lbl">Dashboard</span></a>
+        <a data-view="journey"><span class="ic">📦</span><span class="lbl">Component Journey</span></a>
+        <a data-view="combos"><span class="ic">🧩</span><span class="lbl">Combo Creation</span></a>
+        <a data-view="marketplace"><span class="ic">🌍</span><span class="lbl">Marketplace Status</span></a>
+        <a data-view="sales"><span class="ic">📈</span><span class="lbl">Sales Performance</span></a>
+        <a data-view="returns"><span class="ic">↩️</span><span class="lbl">Returns</span></a>
+        <a data-view="suppliers"><span class="ic">🚢</span><span class="lbl">Supplier &amp; Container</span></a>
+        <a data-view="explorer"><span class="ic">🔍</span><span class="lbl">SKU Explorer</span></a>
+      </nav>
+      <button type="button" class="collapse-btn" id="collapseBtn"><span class="ic">‹</span><span class="lbl">Collapse</span></button>
+    </aside>
+
+    <!-- Main column -->
+    <div class="main">
+      <!-- Header -->
+      <header class="appbar">
+        <h1>Supplier-to-Customer Workflow Tracking System</h1>
+        <span class="appsub" id="recordsInfo">—</span>
+        <span class="spacer"></span>
+        <div class="hmeta">
+          <div class="hpill"><span class="hpill-ic">📅</span><div><small>Reporting Period</small><b id="periodInfo">—</b></div></div>
+          <div class="hpill"><span class="hpill-ic">🕑</span><div><small>Last Refresh</small><b id="refreshInfo">—</b></div></div>
+        </div>
+        <button type="button" class="btn ghost" id="exportBtn">⬇ Export</button>
+        <button type="button" class="btn ghost" id="themeBtn">🌙 Theme</button>
+      </header>
+
+      <!-- Filter bar -->
+      <div class="filterbar">
+        <div class="fld"><label for="fDate">Reporting Period</label>
+          <div class="inp"><span class="inp-ic">📅</span><input id="fDate" title="Reporting period" value="2026-03-01 → Today" readonly></div></div>
+        <div class="fld"><label for="fMarket">Marketplace</label>
+          <select id="fMarket" title="Marketplace"><option value="">All</option><option>amazon</option><option>ebay</option><option>shopify</option><option>B&Q</option></select></div>
+        <div class="fld"><label for="fSupplier">Supplier</label><select id="fSupplier" title="Supplier"><option value="">All suppliers</option></select></div>
+        <div class="fld"><label for="fContainer">Container</label><select id="fContainer" title="Container"><option value="">All containers</option></select></div>
+        <div class="fld"><label for="fStatus">Status</label>
+          <select id="fStatus" title="Status"><option value="">Any</option><option>Listed</option><option>Not Listed</option><option>Has Combo</option><option>No Combo</option></select></div>
+        <div class="fld grow"><label for="fSearch">Search SKU / Component / ASIN</label>
+          <div class="inp"><span class="inp-ic">🔍</span><input id="fSearch" title="Search" placeholder="Type a SKU and press Enter…"></div></div>
+      </div>
+
+      <!-- Content (rendered by script.js) -->
+      <main class="content" id="content"></main>
+    </div>
+  </div>
+
+  <div id="modalRoot"></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
