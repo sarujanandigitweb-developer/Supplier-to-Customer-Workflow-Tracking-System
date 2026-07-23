@@ -1,0 +1,17 @@
+-- =============================================================================
+-- dashboard-v1 SQL — Supplier's Basket → Customer's Home master tracking table
+-- =============================================================================
+-- Source of truth: PostgreSQL via the broad (supplier-capable) role / Claude MCP.
+-- NOT derived from dashboard/data.js (that snapshot was modified and had gaps).
+-- Reporting window start: 2026-01-01.  Row grain of the final table: one Combo
+-- SKU × one platform (built by the assembler from queries 04–07 below).
+--
+-- Shared lineage used by every query (kept inline in each file so each is
+-- runnable on its own):
+--   nc        = NEW component SKUs: first received (MIN order_items.created_at)
+--               on/after the window start — the real "new components".
+--   universe  = every '+'-joined combo SKU seen in listing_data or order_transaction.
+--   qc        = qualifying combos: a combo containing >=1 new component.
+-- Platform normalisation (channel / source_name → platform key):
+--   amazon | ebay | shopify(=Website) | b&q | wayfair | other
+-- =============================================================================
