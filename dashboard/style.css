@@ -280,6 +280,55 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 .searchbig input{flex:1; padding:14px 17px; font-size:15px; border:1px solid var(--line); border-radius:11px; background:var(--card); color:var(--text); font-family:inherit; outline:none; transition:border-color .12s, box-shadow .12s}
 .searchbig input:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(47,111,237,.13)}
 
+/* ---------- Per-table toolbar (search + filters above each table) ---------- */
+.tabletools{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:0 0 14px}
+.tt-search{display:flex; align-items:center; gap:8px; background:var(--bg); border:1px solid var(--line); border-radius:var(--radius-sm); padding:0 12px; flex:1 1 240px; min-width:200px}
+.tt-search .tt-ic{color:var(--muted); font-size:13px; flex:0 0 auto}
+.tt-search input{border:0; background:transparent; color:var(--text); padding:10px 0; font-size:13px; width:100%; outline:none; font-family:inherit}
+.tt-search:focus-within{border-color:var(--accent); box-shadow:0 0 0 3px rgba(47,111,237,.13)}
+.tt-select{
+  -webkit-appearance:none; appearance:none; background-color:var(--bg);
+  border:1px solid var(--line); color:var(--text); border-radius:var(--radius-sm);
+  padding:10px 30px 10px 12px; font-size:13px; min-width:150px; cursor:pointer; font-family:inherit;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7688' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 11px center; transition:border-color .12s, box-shadow .12s;
+}
+.tt-select:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(47,111,237,.13)}
+.tt-count{font-size:12px; color:var(--muted); font-weight:600; white-space:nowrap}
+.tt-spacer{flex:1 1 auto}
+.tt-clear{background:transparent; border:1px solid var(--line); color:var(--muted); border-radius:var(--radius-sm); padding:9px 14px; font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit; transition:border-color .12s, color .12s}
+.tt-clear:hover{border-color:var(--accent); color:var(--accent)}
+
+/* ---------- Marketplace selector cards ---------- */
+.mktcard{cursor:pointer; transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .14s ease}
+.mktcard:hover{transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:rgba(47,111,237,.45)}
+.mktcard:focus-visible{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(47,111,237,.28)}
+.mktcard.active{
+  border-color:var(--accent);
+  background:rgba(47,111,237,.06);
+  box-shadow:0 0 0 2px var(--accent) inset, var(--shadow-md);
+}
+.mktcard.active .kpi-ic{background:var(--accent); color:#fff}
+.mktcard.active::after{height:4px}                 /* thicker bottom accent when selected */
+
+/* ---------- Tab list (segmented control) ---------- */
+.tablist{display:inline-flex; gap:3px; background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:3px}
+.tab{background:transparent; border:0; border-radius:8px; padding:7px 16px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; font-family:inherit; transition:background .14s, color .14s, box-shadow .14s; white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--card); color:var(--accent); box-shadow:var(--shadow)}
+.tab:focus-visible{outline:none; box-shadow:0 0 0 2px var(--accent)}
+
+/* ---------- Header date range ---------- */
+.daterange{display:flex; align-items:center; gap:8px}
+.daterange label{display:flex; flex-direction:column; gap:2px; font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; color:rgba(255,255,255,.6); font-weight:700}
+.daterange input[type=date]{
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.16); color:#fff;
+  border-radius:8px; padding:6px 9px; font-size:12.5px; font-family:inherit; color-scheme:dark;
+}
+.daterange input[type=date]:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(47,111,237,.3)}
+.daterange .dr-sep{color:rgba(255,255,255,.5); margin-top:12px}
+@media(max-width:1150px){.daterange label{font-size:0}}
+
 /* ---------- Responsive ---------- */
 @media(max-width:1150px){.hmeta{display:none}}
 @media(max-width:720px){

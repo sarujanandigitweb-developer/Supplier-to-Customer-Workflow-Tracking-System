@@ -1,0 +1,111 @@
+2026-07-23 14:47:47 | INFO    | ====================================================================
+2026-07-23 14:47:47 | INFO    | SCWTS dashboard refresh started  2026-07-23 14:47:47
+2026-07-23 14:47:47 | INFO    | [1/8] Connecting to PostgreSQL 149.28.134.54:5435/order_management_copy …
+2026-07-23 14:47:47 | INFO    | [2/8] Building lineage temp tables …
+2026-07-23 14:47:47 | ERROR   | EXPORT/VALIDATION ERROR: permission denied for schema supplier
+LINE 3:        FROM supplier.order_items
+                    ^
+
+2026-07-23 14:47:47 | ERROR   | data.js NOT modified due to error.
+2026-07-23 14:56:56 | INFO    | ====================================================================
+2026-07-23 14:56:56 | INFO    | SCWTS dashboard refresh started  2026-07-23 14:56:56
+2026-07-23 14:56:56 | INFO    | [1/8] Connecting to PostgreSQL 149.28.134.54:5435/order_management_copy …
+2026-07-23 14:56:57 | WARNING | [2/8] supplier schema NOT reachable for this role — DEGRADED refresh.
+2026-07-23 14:56:57 | WARNING |        components + purchaseOrders will be CARRIED FORWARD from current data.js;
+2026-07-23 14:56:57 | WARNING |        combos/mapping/listings/orders/traffic/returns refresh live from public.
+2026-07-23 14:56:57 | INFO    |        seeded 456 new-component SKUs from data.js.
+2026-07-23 14:56:59 | INFO    | [2/8] Running dataset exports (mode=degraded) …
+2026-07-23 14:56:59 | INFO    |         - components             456 rows  (carried forward)
+2026-07-23 14:57:00 | INFO    |         - combos               4,389 rows  (live)
+2026-07-23 14:57:00 | INFO    |         - componentComboMap    4,564 rows  (live)
+2026-07-23 14:57:01 | INFO    |         - listings             1,970 rows  (live)
+2026-07-23 14:57:01 | INFO    |         - orders               5,225 rows  (live)
+2026-07-23 14:57:04 | INFO    |         - traffic              1,082 rows  (live)
+2026-07-23 14:57:04 | INFO    |         - returns                272 rows  (live)
+2026-07-23 14:57:04 | INFO    |         - purchaseOrders          93 rows  (carried forward)
+2026-07-23 14:57:04 | INFO    | [3/8] Computing KPIs from live data …
+2026-07-23 14:57:04 | INFO    |         orders=4,807  units=8,652  revenue=£161,617.86  returns=272  impressions=9,555,257
+2026-07-23 14:57:04 | INFO    | [4/8] Validating (live export vs current data.js) …
+2026-07-23 14:57:04 | INFO    |         PASS  components: non-empty — 456 rows
+2026-07-23 14:57:04 | INFO    |         PASS  combos: non-empty — 4389 rows
+2026-07-23 14:57:04 | INFO    |         PASS  componentComboMap: non-empty — 4564 rows
+2026-07-23 14:57:04 | INFO    |         PASS  listings: non-empty — 1970 rows
+2026-07-23 14:57:04 | INFO    |         PASS  orders: non-empty — 5225 rows
+2026-07-23 14:57:04 | INFO    |         PASS  returns: non-empty — 272 rows
+2026-07-23 14:57:04 | INFO    |         PASS  purchaseOrders: non-empty — 93 rows
+2026-07-23 14:57:04 | INFO    |         PASS  combos: unique key — 0 dup combo_sku
+2026-07-23 14:57:04 | INFO    |         PASS  mapping: unique pairs — 0 dup pairs
+2026-07-23 14:57:04 | INFO    |         PASS  traffic: no fan-out — 0 dup (source,ref_id,market_place)
+2026-07-23 14:57:04 | INFO    |         PASS  purchaseOrders: unique PO — 0 dup PO
+2026-07-23 14:57:04 | INFO    |         PASS  KPI: revenue > 0 — £161,617.86
+2026-07-23 14:57:04 | INFO    |         PASS  KPI: orders > 0 — 4807 orders
+2026-07-23 14:57:04 | INFO    |         PASS  KPI: returns channels sum — 272 = 186+47+39
+2026-07-23 14:57:04 | INFO    |         PASS  components: change guard — 456 rows (carried forward, unchanged)
+2026-07-23 14:57:04 | INFO    |         PASS  combos: change guard — 4381 -> 4389 (1.00x)
+2026-07-23 14:57:04 | INFO    |         PASS  componentComboMap: change guard — 4553 -> 4564 (1.00x)
+2026-07-23 14:57:04 | INFO    |         PASS  listings: change guard — 1932 -> 1970 (1.02x)
+2026-07-23 14:57:04 | INFO    |         PASS  orders: change guard — 5179 -> 5225 (1.01x)
+2026-07-23 14:57:04 | INFO    |         PASS  returns: change guard — 272 -> 272 (1.00x)
+2026-07-23 14:57:04 | INFO    |         PASS  purchaseOrders: change guard — 93 rows (carried forward, unchanged)
+2026-07-23 14:57:04 | WARNING |         FAIL  traffic: change guard — 7567 -> 1082 (0.14x)
+2026-07-23 14:57:04 | INFO    | [5/8] Writing validation report …
+2026-07-23 14:57:04 | INFO    |         report -> /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/validation/validation_report_20260723_145656.md
+2026-07-23 14:57:04 | ERROR   | [6/8] Validation FAILED — keeping previous data.js (NOT replaced).
+2026-07-23 14:57:04 | INFO    | [7/8] Refresh summary
+2026-07-23 14:57:04 | INFO    |         start=14:56:56  end=14:57:04  duration=7.8s
+2026-07-23 14:57:04 | INFO    |         datasets=['components', 'combos', 'componentComboMap', 'listings', 'orders', 'traffic', 'returns', 'purchaseOrders']
+2026-07-23 14:57:04 | INFO    |         counts={'components': 456, 'combos': 4389, 'componentComboMap': 4564, 'listings': 1970, 'orders': 5225, 'traffic': 1082, 'returns': 272, 'purchaseOrders': 93}
+2026-07-23 14:57:04 | INFO    | [8/8] RESULT: FAIL — data.js kept
+2026-07-23 14:57:04 | INFO    | ====================================================================
+2026-07-23 14:59:59 | INFO    | ====================================================================
+2026-07-23 14:59:59 | INFO    | SCWTS dashboard refresh started  2026-07-23 14:59:59
+2026-07-23 14:59:59 | INFO    | [1/8] Connecting to PostgreSQL 149.28.134.54:5435/order_management_copy …
+2026-07-23 15:00:00 | WARNING | [2/8] supplier schema NOT reachable for this role — DEGRADED refresh.
+2026-07-23 15:00:00 | WARNING |        components + purchaseOrders will be CARRIED FORWARD from current data.js;
+2026-07-23 15:00:00 | WARNING |        combos/mapping/listings/orders/traffic/returns refresh live from public.
+2026-07-23 15:00:00 | INFO    |        seeded 456 new-component SKUs from data.js.
+2026-07-23 15:00:02 | INFO    | [2/8] Running dataset exports (mode=degraded) …
+2026-07-23 15:00:02 | INFO    |         - components             456 rows  (carried forward)
+2026-07-23 15:00:03 | INFO    |         - combos               4,389 rows  (live)
+2026-07-23 15:00:05 | INFO    |         - componentComboMap    4,564 rows  (live)
+2026-07-23 15:00:05 | INFO    |         - listings             1,970 rows  (live)
+2026-07-23 15:00:09 | INFO    |         - orders               5,225 rows  (live)
+2026-07-23 15:00:13 | INFO    |         - traffic              7,572 rows  (live)
+2026-07-23 15:00:13 | INFO    |         - returns                272 rows  (live)
+2026-07-23 15:00:13 | INFO    |         - purchaseOrders          93 rows  (carried forward)
+2026-07-23 15:00:13 | INFO    | [3/8] Computing KPIs from live data …
+2026-07-23 15:00:13 | INFO    |         orders=4,807  units=8,652  revenue=£161,617.86  returns=272  impressions=173,973,414
+2026-07-23 15:00:13 | INFO    | [4/8] Validating (live export vs current data.js) …
+2026-07-23 15:00:13 | INFO    |         PASS  components: non-empty — 456 rows
+2026-07-23 15:00:13 | INFO    |         PASS  combos: non-empty — 4389 rows
+2026-07-23 15:00:13 | INFO    |         PASS  componentComboMap: non-empty — 4564 rows
+2026-07-23 15:00:13 | INFO    |         PASS  listings: non-empty — 1970 rows
+2026-07-23 15:00:13 | INFO    |         PASS  orders: non-empty — 5225 rows
+2026-07-23 15:00:13 | INFO    |         PASS  returns: non-empty — 272 rows
+2026-07-23 15:00:13 | INFO    |         PASS  purchaseOrders: non-empty — 93 rows
+2026-07-23 15:00:13 | INFO    |         PASS  combos: unique key — 0 dup combo_sku
+2026-07-23 15:00:13 | INFO    |         PASS  mapping: unique pairs — 0 dup pairs
+2026-07-23 15:00:13 | INFO    |         PASS  traffic: no fan-out — 0 dup (source,ref_id,market_place)
+2026-07-23 15:00:13 | INFO    |         PASS  purchaseOrders: unique PO — 0 dup PO
+2026-07-23 15:00:13 | INFO    |         PASS  KPI: revenue > 0 — £161,617.86
+2026-07-23 15:00:13 | INFO    |         PASS  KPI: orders > 0 — 4807 orders
+2026-07-23 15:00:13 | INFO    |         PASS  KPI: returns channels sum — 272 = 186+47+39
+2026-07-23 15:00:13 | INFO    |         PASS  components: change guard — 456 rows (carried forward, unchanged)
+2026-07-23 15:00:13 | INFO    |         PASS  combos: change guard — 4381 -> 4389 (1.00x)
+2026-07-23 15:00:13 | INFO    |         PASS  componentComboMap: change guard — 4553 -> 4564 (1.00x)
+2026-07-23 15:00:13 | INFO    |         PASS  listings: change guard — 1932 -> 1970 (1.02x)
+2026-07-23 15:00:13 | INFO    |         PASS  orders: change guard — 5179 -> 5225 (1.01x)
+2026-07-23 15:00:13 | INFO    |         PASS  returns: change guard — 272 -> 272 (1.00x)
+2026-07-23 15:00:13 | INFO    |         PASS  purchaseOrders: change guard — 93 rows (carried forward, unchanged)
+2026-07-23 15:00:13 | INFO    |         PASS  traffic: change guard — 7567 -> 7572 (1.00x)
+2026-07-23 15:00:13 | INFO    | [5/8] Writing validation report …
+2026-07-23 15:00:13 | INFO    |         report -> /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/validation/validation_report_20260723_145959.md
+2026-07-23 15:00:13 | INFO    | [6/8] Validation PASSED — backing up + replacing data.js …
+2026-07-23 15:00:13 | INFO    |         backup -> /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/data_backup/data_20260723_150013.js
+2026-07-23 15:00:13 | INFO    |         wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard/data.js  (1,590,807 bytes, sha256:34485a1c52fb91cf)
+2026-07-23 15:00:13 | INFO    | [7/8] Refresh summary
+2026-07-23 15:00:13 | INFO    |         start=14:59:59  end=15:00:13  duration=13.6s
+2026-07-23 15:00:13 | INFO    |         datasets=['components', 'combos', 'componentComboMap', 'listings', 'orders', 'traffic', 'returns', 'purchaseOrders']
+2026-07-23 15:00:13 | INFO    |         counts={'components': 456, 'combos': 4389, 'componentComboMap': 4564, 'listings': 1970, 'orders': 5225, 'traffic': 7572, 'returns': 272, 'purchaseOrders': 93}
+2026-07-23 15:00:13 | INFO    | [8/8] RESULT: PASS — data.js updated
+2026-07-23 15:00:13 | INFO    | ====================================================================
