@@ -115,7 +115,7 @@ a{color:inherit}
   align-items:end; padding:14px 22px;
 }
 .filterbar .fld{display:flex; flex-direction:column; gap:5px}
-.filterbar label{font-size:10.5px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.05em}
+.filterbar label,.filterbar .fld-spacer{font-size:10.5px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.05em}
 .filterbar .inp{
   display:flex; align-items:center; gap:8px; background:var(--bg);
   border:1px solid var(--line); border-radius:var(--radius-sm); padding:0 11px;
@@ -427,21 +427,21 @@ td.clip{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer
     <!-- Toolbar -->
     <div class="filterbar">
       <div class="fld grow">
-        <label>Search</label>
+        <label for="f-search">Search</label>
         <div class="inp"><span class="inp-ic">🔎</span><input id="f-search" type="text" placeholder="Search SKU, supplier, container, combo, notes…"></div>
       </div>
-      <div class="fld"><label>From</label><div class="inp"><input id="f-from" type="date"></div></div>
-      <div class="fld"><label>To</label><div class="inp"><input id="f-to" type="date"></div></div>
-      <div class="fld"><label>Supplier</label><select id="f-supplier"></select></div>
-      <div class="fld"><label>Marketplace</label><select id="f-market"></select></div>
-      <div class="fld"><label>Listing Status</label><select id="f-status">
+      <div class="fld"><label for="f-from">From</label><div class="inp"><input id="f-from" type="date"></div></div>
+      <div class="fld"><label for="f-to">To</label><div class="inp"><input id="f-to" type="date"></div></div>
+      <div class="fld"><label for="f-supplier">Supplier</label><select id="f-supplier"></select></div>
+      <div class="fld"><label for="f-market">Marketplace</label><select id="f-market"></select></div>
+      <div class="fld"><label for="f-status">Listing Status</label><select id="f-status">
         <option value="">All</option><option value="Listed">Listed</option><option value="Not Listed">Not Listed</option>
       </select></div>
-      <div class="fld"><label>Visibility Gap</label><select id="f-gap">
+      <div class="fld"><label for="f-gap">Visibility Gap</label><select id="f-gap">
         <option value="">All</option><option value="gap">Only Gaps</option><option value="ok">Only Listed</option>
       </select></div>
-      <div class="fld"><label>&nbsp;</label><button type="button" class="tt-clear" id="f-clear">↺ Clear Filters</button></div>
-      <div class="fld"><label>&nbsp;</label><button type="button" class="btn csvbtn" id="f-csv">⬇ Export CSV</button></div>
+      <div class="fld"><span class="fld-spacer" aria-hidden="true">&nbsp;</span><button type="button" class="tt-clear" id="f-clear">↺ Clear Filters</button></div>
+      <div class="fld"><span class="fld-spacer" aria-hidden="true">&nbsp;</span><button type="button" class="btn csvbtn" id="f-csv">⬇ Export CSV</button></div>
     </div>
 
     <main class="content" id="content">
@@ -459,9 +459,9 @@ td.clip{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer
         <div class="pageinfo">
           <div class="pginfo-left">
             <span id="pageinfo">—</span>
-            <span class="perpage-wrap">Rows per page
+            <label class="perpage-wrap" for="perpage">Rows per page
               <select class="perpage" id="perpage"><option>25</option><option>50</option><option selected>100</option><option>250</option><option value="all">All</option></select>
-            </span>
+            </label>
           </div>
           <div class="pagebtns">
             <button type="button" class="btn pg" id="prev">‹ Prev</button>
