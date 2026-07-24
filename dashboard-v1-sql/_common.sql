@@ -3,8 +3,16 @@
 -- =============================================================================
 -- Source of truth: PostgreSQL via the broad (supplier-capable) role / Claude MCP.
 -- NOT derived from dashboard/data.js (that snapshot was modified and had gaps).
--- Reporting window start: 2026-01-01.  Row grain of the final table: one Combo
--- SKU × one platform (built by the assembler from queries 04–07 below).
+-- Reporting window start: 2026-01-01.
+--
+-- *** ROW MODEL (2026-07-24) — LISTING-DATE DRIVEN ***************************
+-- The master table is DRIVEN by 04_listings.sql: it contains ONLY products whose
+-- Listing Date (public.listing_data.created_at) is >= 2026-01-01. One row per
+-- (combo_sku, platform) that has such an in-window listing. Orders (06), traffic
+-- (05) and returns (07) are ATTACHED to those rows by (combo, platform); rows
+-- with no in-window listing are EXCLUDED. There are NO 'Not Listed' rows.
+-- Assembler: build_listing_driven.py (embeds these exact queries).
+-- ***************************************************************************
 --
 -- Shared lineage used by every query (kept inline in each file so each is
 -- runnable on its own):
