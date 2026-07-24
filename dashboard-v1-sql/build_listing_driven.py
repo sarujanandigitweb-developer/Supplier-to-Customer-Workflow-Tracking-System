@@ -121,6 +121,19 @@ cur.execute("""
   ) z WHERE rn = 1;""")
 combo_name = dict(cur.fetchall())
 
+# ---- per-COMPONENT image: each individual part SKU has its own listing image
+# (public.listing_data.main_image_url). Used by the detail drawer to show one
+# image per component in a combo (e.g. a 3-part combo -> 3 component thumbnails).
+cur.execute("""
+  WITH allparts AS (
+    SELECT DISTINCT trim(x) AS sku
+    FROM t_qc c CROSS JOIN LATERAL unnest(string_to_array(c.sku,'+')) x)
+  SELECT ap.sku, MAX(NULLIF(l.main_image_url,'')) AS img
+  FROM allparts ap JOIN public.listing_data l ON l.sku = ap.sku
+  GROUP BY ap.sku HAVING MAX(NULLIF(l.main_image_url,'')) IS NOT NULL;""")
+comp_img = {sku: img for sku, img in cur.fetchall()}
+print(f"component images: {len(comp_img)} parts have an image")
+
 # ---- orders per (combo, platform) --------------------------------------------
 cur.execute(f"""SELECT sku, {PLATSQL.format(c='source_name')},
   count(DISTINCT order_id), SUM(quantity)::int, ROUND(SUM(order_total)::numeric,2)::float8
@@ -222,9 +235,17 @@ for (combo, plat) in sorted(listed):
     r[B["notes"]]   = ("Expected completion " + exp) if (exp and not cm.get("arrived")) else ""
     rows.append(r)
 
+# component-image map limited to parts that actually appear in the final rows
+used_parts = set()
+for r in rows:
+    for p in r[B["combo"]].split("+"):
+        used_parts.add(p.strip())
+comp_img_used = {k: v for k, v in comp_img.items() if k in used_parts}
+
 P = {"capturedAt": today,
      "window": {"start": START, "end": today},
      "note": "Only products with a Listing Date (listing_data.created_at) >= 2026-01-01.",
+     "compImg": comp_img_used,
      "rows": rows}
 
 html = PAGE.read_text(encoding="utf-8")
