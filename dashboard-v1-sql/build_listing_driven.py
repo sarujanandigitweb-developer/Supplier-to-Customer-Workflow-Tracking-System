@@ -52,6 +52,27 @@ cur = conn.cursor()
 # ---- lineage (public tables only; nc seeded from the cached list) -------------
 cur.execute("CREATE TEMP TABLE t_nc(sku text PRIMARY KEY);")
 cur.executemany("INSERT INTO t_nc VALUES (%s) ON CONFLICT DO NOTHING;", [(s,) for s in nc])
+
+# ---- GENUINELY-NEW filter (2026-07-24) --------------------------------------
+# component_meta.psv holds SKUs whose FIRST SUPPLIER RECEIPT is >= 2026-01-01.
+# That alone is NOT "new": a SKU can have been listed/sold years earlier and
+# merely RE-ORDERED in 2026 (measured: 257 of 497 = 52% were such re-orders,
+# some going back to 2015). A SKU is only genuinely new in 2026 if it appears
+# NOWHERE before 2026-01-01 — in listing_data or order_transaction either.
+cur.execute("""CREATE TEMP TABLE t_pre AS
+  SELECT sku FROM public.listing_data      WHERE created_at < %(start)s AND sku <> '' GROUP BY sku
+  UNION
+  SELECT sku FROM public.order_transaction WHERE order_date < %(start)s AND sku <> '' GROUP BY sku;""",
+  {"start": START})
+cur.execute("CREATE INDEX ON t_pre(sku);")
+cur.execute("SELECT count(*) FROM t_nc WHERE sku IN (SELECT sku FROM t_pre);")
+dropped = cur.fetchone()[0]
+cur.execute("DELETE FROM t_nc WHERE sku IN (SELECT sku FROM t_pre);")
+cur.execute("SELECT count(*) FROM t_nc;")
+genuine = cur.fetchone()[0]
+print(f"genuinely-new 2026 components: {genuine}  (dropped {dropped} pre-2026 re-orders)")
+cur.execute("SELECT sku FROM t_nc;")
+nc = [s for (s,) in cur.fetchall()]          # downstream lineage uses the TRUE set
 cur.execute("""CREATE TEMP TABLE t_qc AS
   WITH universe AS (
     SELECT DISTINCT sku FROM public.listing_data      WHERE wrong_sku=0 AND sku LIKE '%%+%%'
@@ -193,46 +214,115 @@ PLATLBL = {"amazon": "Amazon", "ebay": "eBay", "shopify": "Website",
            "b&q": "B&Q", "wayfair": "Wayfair", "other": "Other"}
 today = date.today().isoformat()
 
+# FULL COVERAGE (2026-07-24 fix): the previous build showed ONLY combos with an
+# in-window listing, which silently dropped 321 of 497 new components and 4,261 of
+# 5,595 qualifying combos. Every new component and every qualifying combo must be
+# present. The Listing Date rule is unchanged and still strict:
+#   Listed     -> ldate = earliest in-window listing_data.created_at (>= 2026-01-01)
+#   Not Listed -> ldate is BLANK (never substituted with any other date)
+cur.execute("SELECT sku FROM t_qc;")
+all_qc = {s for (s,) in cur.fetchall()}
+listed_combos = {c for (c, _p) in listed}
+unlisted_combos = sorted(all_qc - listed_combos)
+
+# components that belong to no qualifying combo at all -> orphan rows
+in_any_combo = set()
+for cb in all_qc:
+    in_any_combo.update(parts_of(cb))
+orphan_comps = sorted(ncset - in_any_combo)
+print(f"coverage: listed rows={len(listed)}  unlisted combos={len(unlisted_combos)}"
+      f"  orphan components={len(orphan_comps)}")
+
+def combo_totals(combo):
+    """Aggregate orders/traffic/returns across ALL platforms for one combo."""
+    o = u = 0; rev = 0.0; im = cl = rt = 0
+    for (c, p), v in orders.items():
+        if c == combo: o += v[0]; u += v[1]; rev += v[2] or 0
+    for (c, p), v in traffic.items():
+        if c == combo: im += v[0]; cl += v[1]
+    for (c, p), v in returns.items():
+        if c == combo: rt += v
+    return o, u, round(rev, 2), im, cl, rt
+
+def num(x):
+    try: return int(x)
+    except Exception: return ""
+
+def base_row(rep):
+    """Component-side columns from the representative NEW component."""
+    cm = comp.get(rep, {})
+    r = [None] * 26
+    r[B["cont"]]  = cm.get("container", "")
+    r[B["arr"]]   = "Arrived" if cm.get("arrived") else "In Transit"
+    r[B["sup"]]   = cm.get("supplier", "")
+    r[B["csku"]]  = rep
+    r[B["cdesc"]] = cm.get("desc", "")
+    r[B["qty"]]   = num(cm.get("qty"))
+    r[B["crecv"]] = cm.get("recv", "")
+    exp = cm.get("expected", "")
+    r[B["notes"]] = ("Expected completion " + exp) if (exp and not cm.get("arrived")) else ""
+    r[B["updated"]] = today
+    return r
+
 rows, n = [], 0
+
+# (1) LISTED: one row per (combo, platform) that has an in-window listing --------
 for (combo, plat) in sorted(listed):
     L = listed[(combo, plat)]
     parts = parts_of(combo)
-    rep = parts[0] if parts else ""
-    cm = comp.get(rep, {})
     o = orders.get((combo, plat), (0, 0, 0.0))
     t = traffic.get((combo, plat), (0, 0))
-    def num(x):
-        try: return int(x)
-        except Exception: return ""
-    r = [None] * 26
+    r = base_row(parts[0] if parts else "")
     n += 1
     r[B["rid"]]     = f"REC-{n:05d}"
-    r[B["cont"]]    = cm.get("container", "")
-    r[B["arr"]]     = "Arrived" if cm.get("arrived") else "In Transit"
-    r[B["sup"]]     = cm.get("supplier", "")
-    r[B["csku"]]    = rep
-    r[B["cdesc"]]   = cm.get("desc", "")
-    r[B["qty"]]     = num(cm.get("qty"))
-    r[B["crecv"]]   = cm.get("recv", "")
     r[B["combo"]]   = combo
     r[B["cname"]]   = L["title"] or combo_name.get(combo, "")   # fallback to combo-level best title
     r[B["used"]]    = ", ".join(parts)
     r[B["ccreate"]] = combo_created.get(combo, "") or ""
     r[B["cqty"]]    = L["img"]                       # Product Image URL
-    r[B["status"]]  = "Listed"                       # every row is listed by construction
+    r[B["status"]]  = "Listed"
     r[B["plat"]]    = plat
     r[B["url"]]     = L["url"]                        # clickable marketplace URL
-    r[B["ldate"]]   = L["ld"]                         # in-window listing date (2026-01-01+)
-    r[B["impr"]]    = t[0]
-    r[B["clk"]]     = t[1]
-    r[B["ord"]]     = o[0]
-    r[B["rev"]]     = o[2]
-    r[B["units"]]   = o[1]
+    r[B["ldate"]]   = L["ld"]                         # in-window listing date (>= 2026-01-01)
+    r[B["impr"]], r[B["clk"]] = t[0], t[1]
+    r[B["ord"]], r[B["units"]], r[B["rev"]] = o[0], o[1], o[2]
     r[B["ret"]]     = returns.get((combo, plat), 0)
     r[B["dsrc"]]    = "Postgres + " + PLATLBL.get(plat, plat) + " API"
-    r[B["updated"]] = today
-    exp = cm.get("expected", "")
-    r[B["notes"]]   = ("Expected completion " + exp) if (exp and not cm.get("arrived")) else ""
+    rows.append(r)
+
+# (2) NOT LISTED: qualifying combos with NO in-window listing (visibility gaps) --
+for combo in unlisted_combos:
+    parts = parts_of(combo)
+    o, u, rev, im, cl, rt = combo_totals(combo)
+    r = base_row(parts[0] if parts else "")
+    n += 1
+    r[B["rid"]]     = f"REC-{n:05d}"
+    r[B["combo"]]   = combo
+    r[B["cname"]]   = combo_name.get(combo, "")
+    r[B["used"]]    = ", ".join(parts)
+    r[B["ccreate"]] = combo_created.get(combo, "") or ""
+    r[B["cqty"]]    = ""                              # no in-window listing -> no image
+    r[B["status"]]  = "Not Listed"
+    r[B["plat"]]    = ""
+    r[B["url"]]     = ""
+    r[B["ldate"]]   = ""                              # BLANK — never substituted
+    r[B["impr"]], r[B["clk"]] = im, cl
+    r[B["ord"]], r[B["units"]], r[B["rev"]] = o, u, rev
+    r[B["ret"]]     = rt
+    r[B["dsrc"]]    = "Postgres"
+    rows.append(r)
+
+# (3) New components not yet used in ANY combo ---------------------------------
+for csku in orphan_comps:
+    r = base_row(csku)
+    n += 1
+    r[B["rid"]]    = f"REC-{n:05d}"
+    r[B["combo"]]  = ""; r[B["cname"]] = ""; r[B["used"]] = ""; r[B["ccreate"]] = ""
+    r[B["cqty"]]   = ""; r[B["status"]] = "Not Listed"; r[B["plat"]] = ""
+    r[B["url"]]    = ""; r[B["ldate"]] = ""
+    r[B["impr"]] = r[B["clk"]] = r[B["ord"]] = r[B["units"]] = r[B["ret"]] = 0
+    r[B["rev"]]    = 0.0
+    r[B["dsrc"]]   = "Postgres"
     rows.append(r)
 
 # component-image map limited to parts that actually appear in the final rows
@@ -254,9 +344,11 @@ html = html[:m.start(2)] + json.dumps(P, separators=(",", ":")) + html[m.end(2):
 PAGE.write_text(html, encoding="utf-8")
 
 # ---- report ------------------------------------------------------------------
-print(f"\nROWS = {len(rows)}   (every row has a Listing Date >= {START})")
-print("distinct combos :", len({r[B['combo']] for r in rows}))
-print("distinct comps  :", len({r[B['csku']] for r in rows if r[B['csku']]}))
+print(f"\nROWS = {len(rows)}")
+print("distinct combos :", len({r[B['combo']] for r in rows if r[B['combo']]}), f"(qualifying live: {len(all_qc)})")
+print("distinct comps  :", len({r[B['csku']] for r in rows if r[B['csku']]}), f"(new components live: {len(ncset)})")
+print("listed rows     :", sum(1 for r in rows if r[B['status']]=='Listed'))
+print("not-listed rows :", sum(1 for r in rows if r[B['status']]=='Not Listed'))
 print("revenue         :", round(sum(float(r[B['rev']] or 0) for r in rows), 2))
 print("orders          :", sum(int(r[B['ord']] or 0) for r in rows))
 print("units           :", sum(int(r[B['units']] or 0) for r in rows))
@@ -264,9 +356,15 @@ print("returns         :", sum(int(r[B['ret']] or 0) for r in rows))
 print("impressions     :", sum(int(r[B['impr']] or 0) for r in rows))
 print("urls (http)     :", sum(1 for r in rows if str(r[B['url']]).startswith('http')))
 print("images (http)   :", sum(1 for r in rows if str(r[B['cqty']]).startswith('http')))
-ld = [r[B['ldate']] for r in rows]
+ld = [r[B['ldate']] for r in rows if r[B['ldate']]]
 print("listing date min/max:", min(ld), "/", max(ld))
-print("rows with ldate < window:", sum(1 for x in ld if x < START))
-print("rows with blank ldate  :", sum(1 for x in ld if not x))
-print("rows NOT 'Listed'      :", sum(1 for r in rows if r[B['status']] != 'Listed'))
+print("rows with ldate < window       :", sum(1 for x in ld if x < START), "(must be 0)")
+print("LISTED rows with blank ldate   :",
+      sum(1 for r in rows if r[B['status']]=='Listed' and not r[B['ldate']]), "(must be 0)")
+print("NOT-LISTED rows with any ldate :",
+      sum(1 for r in rows if r[B['status']]=='Not Listed' and r[B['ldate']]), "(must be 0)")
+missing_c = ncset - {r[B['csku']] for r in rows if r[B['csku']]}
+missing_k = all_qc - {r[B['combo']] for r in rows if r[B['combo']]}
+print("MISSING new components :", len(missing_c), "(must be 0)")
+print("MISSING qualifying combos:", len(missing_k), "(must be 0)")
 conn.close()

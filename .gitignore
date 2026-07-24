@@ -1,0 +1,36 @@
+# --- Dependencies ---
+node_modules/
+.npm/
+npm-debug.log*
+yarn-error.log*
+
+# --- Secrets / local config ---
+# push_to_hub.js reads HUB_DB_URL from the environment
+.env
+.env.*
+!.env.example
+*.pem
+*credentials*.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- Generated build output ---
+dashboard-v1-sql/out/
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# --- Scratch ---
+scratchpad/
+tmp/
+*.tmp
