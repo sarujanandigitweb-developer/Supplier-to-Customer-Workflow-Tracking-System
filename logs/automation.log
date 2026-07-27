@@ -192,3 +192,55 @@ Pushed successfully: {
 2026-07-27 14:51:10 | validation report: /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/validation/validation_20260727_145034.md  (Result: PASS)
 2026-07-27 14:51:10 | execution time: 36s
 2026-07-27 14:51:10 | ================ finished (exit 0) ================
+2026-07-27 15:52:02 | ================ SCWTS refresh + publish started ================
+2026-07-27 15:52:02 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy)
+connected as temp_user@149.28.134.54:5435/order_management_copy
+supplier chain fetched LIVE: 1541 SKUs
+  [PASS] supplier schema readable by temp_user — supplier.suppliers=47; supplier.orders=267; supplier.containers=25; supplier.order_items=4029
+  [PASS] supplier cache integrity — 1541/1541 have Supplier Name, 1488/1541 have Container
+scope new SKUs: 3383  (1866 comp / 1517 combo)
+listed SKUs (live listing): 1676
+
+ROWS 4982  (Listed 3085 / Not-Listed 1897)
+  cont     filled:  3934/4982  (78%)
+  sup      filled:  4039/4982  (81%)
+  csku     filled:  4981/4982  (99%)
+  cdesc    filled:  4982/4982  (100%)
+  crecv    filled:  4982/4982  (100%)
+  combo    filled:  2383/4982  (47%)
+  cname    filled:  1559/4982  (31%)
+  used     filled:  4335/4982  (87%)
+  ccreate  filled:  2383/4982  (47%)
+  cqty     filled:  3773/4982  (75%)
+  plat     filled:  3428/4982  (68%)
+  url      filled:  3085/4982  (61%)
+  ldate    filled:  3085/4982  (61%)
+  [PASS] Inventory: new SKUs present — 3383 SKUs in scope
+  [PASS] Listing Data: listed rows present — 3085 listed rows
+  [PASS] Component Data present — 1866 components
+  [PASS] Combo Mapping present — 2838 combos/packs mapped
+  [PASS] Component Mapping (descriptions) — 4982/4982 rows have a description
+  [PASS] Every row has an anchor date — crecv||ldate||ccreate
+  [PASS] Listed rows all carry a Listing Date — no blank listing dates
+  [PASS] Listing Dates within window — >= 2026-01-01
+  [PASS] Listing URLs present on listed rows — 3085/3085
+  [PASS] Product Images available — 3773/4982 rows (75%) — rest have no image in listing_data
+  [PASS] Orders / Sales fetched — 3789 orders, revenue 107462.92
+  [PASS] Revenue reconciles to independent PostgreSQL total — dashboard=107462.92  independent=107462.92
+  [PASS] Traffic fetched — 50,131,743 impressions
+  [PASS] Returns fetched — 280 units returned
+
+RESULT: PASS  (34.0s)
+wrote validation/validation_20260727_155202.md + fetch_summary_20260727_155202.json
+2026-07-27 15:52:36 | stage 1 build: OK — datasets validated, PAYLOAD regenerated
+2026-07-27 15:52:36 | sanity: OK — 2385986 bytes, PAYLOAD + table + closing tag present
+Pushed successfully: {
+  id: 14,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking',
+  updated_at: 2026-07-27T10:22:36.163Z
+}
+2026-07-27 15:52:38 | stage 2 publish: OK — sarujanan/supplier-to-customer-workflow-tracking (2385986 bytes)
+2026-07-27 15:52:38 | validation report: /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/validation/validation_20260727_155202.md  (Result: PASS)
+2026-07-27 15:52:38 | execution time: 36s
+2026-07-27 15:52:38 | ================ finished (exit 0) ================
