@@ -1,0 +1,194 @@
+2026-07-27 14:31:14 | ================ SCWTS refresh + publish started ================
+2026-07-27 14:31:14 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy)
+connected as temp_user@149.28.134.54:5435/order_management_copy
+supplier chain fetched LIVE: 1541 SKUs
+  [PASS] supplier schema readable by temp_user — supplier.suppliers=47; supplier.orders=267; supplier.containers=25; supplier.order_items=4029
+  [PASS] supplier cache integrity — 1541/1541 have Supplier Name, 1488/1541 have Container
+scope new SKUs: 3383  (1866 comp / 1517 combo)
+listed SKUs (live listing): 1676
+
+ROWS 4792  (Listed 3085 / Not-Listed 1707)
+  cont     filled:  3769/4792  (78%)
+  sup      filled:  3867/4792  (80%)
+  csku     filled:  4791/4792  (99%)
+  cdesc    filled:  4792/4792  (100%)
+  crecv    filled:  4792/4792  (100%)
+  combo    filled:  2244/4792  (46%)
+  cname    filled:  1434/4792  (29%)
+  used     filled:  4164/4792  (86%)
+  ccreate  filled:  2244/4792  (46%)
+  cqty     filled:  3588/4792  (74%)
+  plat     filled:  3085/4792  (64%)
+  url      filled:  3085/4792  (64%)
+  ldate    filled:  3085/4792  (64%)
+  [PASS] Inventory: new SKUs present — 3383 SKUs in scope
+  [PASS] Listing Data: listed rows present — 3085 listed rows
+  [PASS] Component Data present — 1866 components
+  [PASS] Combo Mapping present — 2838 combos/packs mapped
+  [PASS] Component Mapping (descriptions) — 4792/4792 rows have a description
+  [PASS] Every row has an anchor date — crecv||ldate||ccreate
+  [PASS] Listed rows all carry a Listing Date — no blank listing dates
+  [PASS] Listing Dates within window — >= 2026-01-01
+  [PASS] Listing URLs present on listed rows — 3085/3085
+  [PASS] Product Images available — 3588/4792 rows (74%) — rest have no image in listing_data
+  [PASS] Orders / Sales fetched — 2741 orders, revenue 75728.69
+  [PASS] Traffic fetched — 50,131,743 impressions
+  [PASS] Returns fetched — 225 units returned
+
+RESULT: PASS  (183.4s)
+wrote validation/validation_20260727_143114.md + fetch_summary_20260727_143114.json
+2026-07-27 14:34:17 | stage 1 build: OK — datasets validated, PAYLOAD regenerated
+2026-07-27 14:34:17 | sanity: OK — 2297611 bytes, PAYLOAD + table + closing tag present
+Pushed successfully: {
+  id: 14,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking',
+  updated_at: 2026-07-27T09:04:17.381Z
+}
+2026-07-27 14:34:19 | stage 2 publish: OK — sarujanan/supplier-to-customer-workflow-tracking (2297611 bytes)
+2026-07-27 14:34:19 | validation report: /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/validation/validation_20260727_143114.md  (Result: PASS)
+2026-07-27 14:34:19 | execution time: 185s
+2026-07-27 14:34:19 | ================ finished (exit 0) ================
+2026-07-27 14:39:06 | ================ SCWTS refresh + publish started ================
+2026-07-27 14:39:06 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy)
+connected as temp_user@149.28.134.54:5435/order_management_copy
+supplier chain fetched LIVE: 1541 SKUs
+  [PASS] supplier schema readable by temp_user — supplier.suppliers=47; supplier.orders=267; supplier.containers=25; supplier.order_items=4029
+  [PASS] supplier cache integrity — 1541/1541 have Supplier Name, 1488/1541 have Container
+scope new SKUs: 3383  (1866 comp / 1517 combo)
+listed SKUs (live listing): 1676
+
+ROWS 4792  (Listed 3085 / Not-Listed 1707)
+  cont     filled:  3769/4792  (78%)
+  sup      filled:  3867/4792  (80%)
+  csku     filled:  4791/4792  (99%)
+  cdesc    filled:  4792/4792  (100%)
+  crecv    filled:  4792/4792  (100%)
+  combo    filled:  2244/4792  (46%)
+  cname    filled:  1434/4792  (29%)
+  used     filled:  4164/4792  (86%)
+  ccreate  filled:  2244/4792  (46%)
+  cqty     filled:  3588/4792  (74%)
+  plat     filled:  3085/4792  (64%)
+  url      filled:  3085/4792  (64%)
+  ldate    filled:  3085/4792  (64%)
+  [PASS] Inventory: new SKUs present — 3383 SKUs in scope
+  [PASS] Listing Data: listed rows present — 3085 listed rows
+  [PASS] Component Data present — 1866 components
+  [PASS] Combo Mapping present — 2838 combos/packs mapped
+  [PASS] Component Mapping (descriptions) — 4792/4792 rows have a description
+  [PASS] Every row has an anchor date — crecv||ldate||ccreate
+  [PASS] Listed rows all carry a Listing Date — no blank listing dates
+  [PASS] Listing Dates within window — >= 2026-01-01
+  [PASS] Listing URLs present on listed rows — 3085/3085
+  [PASS] Product Images available — 3588/4792 rows (74%) — rest have no image in listing_data
+  [PASS] Orders / Sales fetched — 2741 orders, revenue 75728.69
+  [PASS] Traffic fetched — 50,131,743 impressions
+  [PASS] Returns fetched — 225 units returned
+
+RESULT: PASS  (33.5s)
+wrote validation/validation_20260727_143906.md + fetch_summary_20260727_143906.json
+2026-07-27 14:39:40 | stage 1 build: OK — datasets validated, PAYLOAD regenerated
+2026-07-27 14:39:40 | sanity: OK — 2297616 bytes, PAYLOAD + table + closing tag present
+Pushed successfully: {
+  id: 14,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking',
+  updated_at: 2026-07-27T09:09:39.806Z
+}
+2026-07-27 14:39:42 | stage 2 publish: OK — sarujanan/supplier-to-customer-workflow-tracking (2297616 bytes)
+2026-07-27 14:39:42 | validation report: /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/validation/validation_20260727_143906.md  (Result: PASS)
+2026-07-27 14:39:42 | execution time: 36s
+2026-07-27 14:39:42 | ================ finished (exit 0) ================
+2026-07-27 14:49:12 | ================ SCWTS refresh + publish started ================
+2026-07-27 14:49:12 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy)
+connected as temp_user@149.28.134.54:5435/order_management_copy
+supplier chain fetched LIVE: 1541 SKUs
+  [PASS] supplier schema readable by temp_user — supplier.suppliers=47; supplier.orders=267; supplier.containers=25; supplier.order_items=4029
+  [PASS] supplier cache integrity — 1541/1541 have Supplier Name, 1488/1541 have Container
+scope new SKUs: 3383  (1866 comp / 1517 combo)
+listed SKUs (live listing): 1676
+
+ROWS 4982  (Listed 3085 / Not-Listed 1897)
+  cont     filled:  3934/4982  (78%)
+  sup      filled:  4039/4982  (81%)
+  csku     filled:  4981/4982  (99%)
+  cdesc    filled:  4982/4982  (100%)
+  crecv    filled:  4982/4982  (100%)
+  combo    filled:  2383/4982  (47%)
+  cname    filled:  1559/4982  (31%)
+  used     filled:  4335/4982  (87%)
+  ccreate  filled:  2383/4982  (47%)
+  cqty     filled:  3773/4982  (75%)
+  plat     filled:  3428/4982  (68%)
+  url      filled:  3085/4982  (61%)
+  ldate    filled:  3085/4982  (61%)
+  [PASS] Inventory: new SKUs present — 3383 SKUs in scope
+  [PASS] Listing Data: listed rows present — 3085 listed rows
+  [PASS] Component Data present — 1866 components
+  [PASS] Combo Mapping present — 2838 combos/packs mapped
+  [PASS] Component Mapping (descriptions) — 4982/4982 rows have a description
+  [PASS] Every row has an anchor date — crecv||ldate||ccreate
+  [PASS] Listed rows all carry a Listing Date — no blank listing dates
+  [PASS] Listing Dates within window — >= 2026-01-01
+  [PASS] Listing URLs present on listed rows — 3085/3085
+  [PASS] Product Images available — 3773/4982 rows (75%) — rest have no image in listing_data
+  [PASS] Orders / Sales fetched — 3789 orders, revenue 107462.92
+Traceback (most recent call last):
+  File "/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v1-sql/build_new_scope.py", line 436, in <module>
+    cur.execute("""SELECT ROUND(SUM(ot.order_total)::numeric,2)
+psycopg2.InterfaceError: cursor already closed
+2026-07-27 14:49:46 | stage 1 build: FAILED — validation did not pass; dashboard left unchanged, skipping publish
+2026-07-27 14:49:46 | ================ finished (exit 1) ================
+2026-07-27 14:50:34 | ================ SCWTS refresh + publish started ================
+2026-07-27 14:50:34 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy)
+connected as temp_user@149.28.134.54:5435/order_management_copy
+supplier chain fetched LIVE: 1541 SKUs
+  [PASS] supplier schema readable by temp_user — supplier.suppliers=47; supplier.orders=267; supplier.containers=25; supplier.order_items=4029
+  [PASS] supplier cache integrity — 1541/1541 have Supplier Name, 1488/1541 have Container
+scope new SKUs: 3383  (1866 comp / 1517 combo)
+listed SKUs (live listing): 1676
+
+ROWS 4982  (Listed 3085 / Not-Listed 1897)
+  cont     filled:  3934/4982  (78%)
+  sup      filled:  4039/4982  (81%)
+  csku     filled:  4981/4982  (99%)
+  cdesc    filled:  4982/4982  (100%)
+  crecv    filled:  4982/4982  (100%)
+  combo    filled:  2383/4982  (47%)
+  cname    filled:  1559/4982  (31%)
+  used     filled:  4335/4982  (87%)
+  ccreate  filled:  2383/4982  (47%)
+  cqty     filled:  3773/4982  (75%)
+  plat     filled:  3428/4982  (68%)
+  url      filled:  3085/4982  (61%)
+  ldate    filled:  3085/4982  (61%)
+  [PASS] Inventory: new SKUs present — 3383 SKUs in scope
+  [PASS] Listing Data: listed rows present — 3085 listed rows
+  [PASS] Component Data present — 1866 components
+  [PASS] Combo Mapping present — 2838 combos/packs mapped
+  [PASS] Component Mapping (descriptions) — 4982/4982 rows have a description
+  [PASS] Every row has an anchor date — crecv||ldate||ccreate
+  [PASS] Listed rows all carry a Listing Date — no blank listing dates
+  [PASS] Listing Dates within window — >= 2026-01-01
+  [PASS] Listing URLs present on listed rows — 3085/3085
+  [PASS] Product Images available — 3773/4982 rows (75%) — rest have no image in listing_data
+  [PASS] Orders / Sales fetched — 3789 orders, revenue 107462.92
+  [PASS] Revenue reconciles to independent PostgreSQL total — dashboard=107462.92  independent=107462.92
+  [PASS] Traffic fetched — 50,131,743 impressions
+  [PASS] Returns fetched — 280 units returned
+
+RESULT: PASS  (33.5s)
+wrote validation/validation_20260727_145034.md + fetch_summary_20260727_145034.json
+2026-07-27 14:51:08 | stage 1 build: OK — datasets validated, PAYLOAD regenerated
+2026-07-27 14:51:08 | sanity: OK — 2385446 bytes, PAYLOAD + table + closing tag present
+Pushed successfully: {
+  id: 14,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking',
+  updated_at: 2026-07-27T09:21:08.069Z
+}
+2026-07-27 14:51:10 | stage 2 publish: OK — sarujanan/supplier-to-customer-workflow-tracking (2385446 bytes)
+2026-07-27 14:51:10 | validation report: /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/validation/validation_20260727_145034.md  (Result: PASS)
+2026-07-27 14:51:10 | execution time: 36s
+2026-07-27 14:51:10 | ================ finished (exit 0) ================
