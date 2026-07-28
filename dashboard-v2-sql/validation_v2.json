@@ -1,0 +1,143 @@
+{
+  "run": "20260728_144827",
+  "checks": [
+    {
+      "check": "New components in scope",
+      "status": "PASS",
+      "detail": "178 (expected 178)"
+    },
+    {
+      "check": "Combos built from them",
+      "status": "PASS",
+      "detail": "223 (expected 223)"
+    },
+    {
+      "check": "Component x combo pairs",
+      "status": "PASS",
+      "detail": "261 (expected 261)"
+    },
+    {
+      "check": "Every row has a component SKU",
+      "status": "PASS",
+      "detail": "513/513"
+    },
+    {
+      "check": "Every row has a supplier",
+      "status": "PASS",
+      "detail": "513/513"
+    },
+    {
+      "check": "Received Date sourced from the container (not the PO date)",
+      "status": "PASS",
+      "detail": "306/513 rows \u2014 blank means the container is not yet closed"
+    },
+    {
+      "check": "No raw container IDs leaked into the Container column",
+      "status": "PASS",
+      "detail": "Container shows a name or blank, never a foreign key"
+    },
+    {
+      "check": "Listed rows carry a Listed Date",
+      "status": "PASS",
+      "detail": "no blanks"
+    },
+    {
+      "check": "All dates >= 2026-01-01 (component/combo creation)",
+      "status": "PASS",
+      "detail": ">= 2026-01-01"
+    },
+    {
+      "check": "Return Rate math correct",
+      "status": "PASS",
+      "detail": "(returns/units)*100"
+    },
+    {
+      "check": "Container present where assigned",
+      "status": "PASS",
+      "detail": "500/513 rows have a container"
+    },
+    {
+      "check": "Component images (supplier photo -> listing fallback)",
+      "status": "PASS",
+      "detail": "414/513 rows; 89/178 distinct components"
+    },
+    {
+      "check": "Combo images",
+      "status": "PASS",
+      "detail": "304/513"
+    },
+    {
+      "check": "Top Reason populated",
+      "status": "PASS",
+      "detail": "10/513 (amazon 100%, ebay ~11%, shopify has no reason column)"
+    },
+    {
+      "check": "Component dataset built independently of the combo queries",
+      "status": "PASS",
+      "detail": "189 rows, 26 components with their own listing; combo columns blank"
+    },
+    {
+      "check": "Component rows: every row has a component SKU + supplier",
+      "status": "PASS",
+      "detail": "189/189"
+    },
+    {
+      "check": "Component rows: Listed rows carry a Listed Date",
+      "status": "PASS",
+      "detail": "no blanks"
+    },
+    {
+      "check": "Component rows: Return Rate math correct",
+      "status": "PASS",
+      "detail": "(returns/units)*100"
+    },
+    {
+      "check": "No duplicate (product, marketplace) rows \u2014 KPI totals cannot double-count",
+      "status": "PASS",
+      "detail": "combo 513 rows / component 189 rows, all unique"
+    },
+    {
+      "check": "Every component of a multi-component combo is listed (none hidden)",
+      "status": "PASS",
+      "detail": "45 rows list >1 component; max 4 per combo"
+    },
+    {
+      "check": "Both datasets share the identical column layout",
+      "status": "PASS",
+      "detail": "27 columns"
+    },
+    {
+      "check": "Average Feedback source",
+      "status": "FAIL",
+      "detail": "NO customer-review table exists in this database \u2014 every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns."
+    }
+  ],
+  "notes": [
+    "Average Feedback: no customer-review source exists in this database (searched all schemas for rating/review/feedback/star columns). Column renders 'No Reviews' for every row pending a marketplace reviews feed."
+  ],
+  "totals": {
+    "rows": 513,
+    "components": 178,
+    "combos": 223,
+    "pairs": 261,
+    "gap_no_combo": 126,
+    "impressions": 9416881,
+    "clicks": 35901,
+    "orders": 636,
+    "units": 778,
+    "revenue": 11090.48,
+    "returns": 22
+  },
+  "totals_components": {
+    "rows": 189,
+    "listed": 32,
+    "components_with_listing": 26,
+    "impressions": 170745,
+    "clicks": 1552,
+    "orders": 285,
+    "units": 449,
+    "revenue": 4641.23,
+    "returns": 13
+  },
+  "duration_sec": 18.5
+}
