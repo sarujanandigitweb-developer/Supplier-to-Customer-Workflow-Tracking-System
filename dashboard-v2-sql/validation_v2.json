@@ -1,5 +1,5 @@
 {
-  "run": "20260728_144827",
+  "run": "20260728_162638",
   "checks": [
     {
       "check": "New components in scope",
@@ -97,14 +97,14 @@
       "detail": "combo 513 rows / component 189 rows, all unique"
     },
     {
-      "check": "Every component of a multi-component combo is listed (none hidden)",
+      "check": "Record ID present and unique in both datasets",
       "status": "PASS",
-      "detail": "45 rows list >1 component; max 4 per combo"
+      "detail": "combo REC-00001..REC-00513, component REC-00001..REC-00189"
     },
     {
       "check": "Both datasets share the identical column layout",
       "status": "PASS",
-      "detail": "27 columns"
+      "detail": "28 columns"
     },
     {
       "check": "Average Feedback source",
@@ -139,5 +139,5 @@
     "revenue": 4641.23,
     "returns": 13
   },
-  "duration_sec": 18.5
+  "duration_sec": 19.1
 }

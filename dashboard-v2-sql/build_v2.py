@@ -395,7 +395,15 @@ for combo_sku in sorted(combo_map):
     g = combo_map[combo_sku]
     g["comps"].sort()
     comp_sku, comp_created, comp_desc = g["comps"][0]      # representative component
-    comp_list  = [c[0] for c in g["comps"]]
+    # Every component behind this combo, carrying its OWN supplier / container /
+    # received date / image / creation date. The UI stacks these vertically inside
+    # the single product cell, so nothing is hidden and no extra row is created.
+    #        [0]=sku [1]=image [2]=created [3]=supplier [4]=container [5]=received
+    comp_list = [[cs, comp_image(cs), ccre,
+                  supmap.get(cs, {}).get("supplier", ""),
+                  supmap.get(cs, {}).get("container", ""),
+                  supmap.get(cs, {}).get("recv", "")]
+                 for cs, ccre, _cdesc in g["comps"]]
     combo_created = g["created"]
     plats = listed.get(combo_sku, {})
     act = {p for (s,p) in orders  if s==combo_sku} | {p for (s,p) in traffic if s==combo_sku} \
@@ -431,7 +439,10 @@ gap = 0
 for comp_sku, comp_created, comp_desc in all_comps:
     if comp_sku in comps_with_combo: continue
     r = base(comp_sku, comp_created, comp_desc)
-    r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[comp_sku]
+    r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[[comp_sku, comp_image(comp_sku), comp_created,
+                            supmap.get(comp_sku,{}).get("supplier",""),
+                            supmap.get(comp_sku,{}).get("container",""),
+                            supmap.get(comp_sku,{}).get("recv","")]]
     r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
     r[B["notes"]] = (r[B["notes"]]+" · " if r[B["notes"]] else "")+"no combo built yet"
     rows.append(r); gap += 1
@@ -451,13 +462,19 @@ for comp_sku, comp_created, comp_desc in all_comps:
     allp = set(plats) | act
     if not allp:                                   # component sold/listed nowhere
         r = base(comp_sku, comp_created, comp_desc)
-        r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[comp_sku]
+        r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[[comp_sku, comp_image(comp_sku), comp_created,
+                            supmap.get(comp_sku,{}).get("supplier",""),
+                            supmap.get(comp_sku,{}).get("container",""),
+                            supmap.get(comp_sku,{}).get("recv","")]]
         r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
         r[B["notes"]] = (r[B["notes"]]+" · " if r[B["notes"]] else "")+"no single-SKU listing"
         rows_c.append(r); continue
     for plat in sorted(allp):
         r = base(comp_sku, comp_created, comp_desc)
-        r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[comp_sku]
+        r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[[comp_sku, comp_image(comp_sku), comp_created,
+                            supmap.get(comp_sku,{}).get("supplier",""),
+                            supmap.get(comp_sku,{}).get("container",""),
+                            supmap.get(comp_sku,{}).get("recv","")]]
         L = plats.get(plat)
         if L:
             r[B["stat"]]="Listed"; r[B["ldate"]]=L["ld"]; r[B["url"]]=L["url"]

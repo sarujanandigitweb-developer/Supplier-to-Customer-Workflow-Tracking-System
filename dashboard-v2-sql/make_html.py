@@ -50,14 +50,175 @@ tbody tr.gfirst > td{{border-top:2px solid var(--line)}}
 tbody tr.gfirst:first-child > td{{border-top:0}}
 /* keep marketplace rows of the same product visually tied together */
 tbody tr.grp td.mcol{{border-bottom:1px solid var(--line2)}}
-tbody tr.grp:hover td.mcol{{background:rgba(47,111,237,.05)}}
-tbody tr.grp.galt td.mcol{{background:rgba(0,0,0,.012)}}
-[data-theme="dark"] tbody tr.grp.galt td.mcol{{background:rgba(255,255,255,.02)}}
-tbody tr.grp.galt:hover td.mcol{{background:rgba(47,111,237,.07)}}
 /* product-level gap highlight (component with no combo) */
 tbody tr.nocombo td.pcol{{background:rgba(224,49,49,.06)}}
 tbody tr.galt.nocombo td.pcol{{background:rgba(224,49,49,.04)}}
 td.mcol:first-of-type{{padding-left:16px}}   /* nested/indented feel */
+
+/* the table shows only the essential columns; everything else lives in the
+   click-through drawer, so the grid stays scannable instead of 21 columns wide */
+tbody tr.grp{{cursor:pointer}}
+
+/* ---- Record ID: pinned left, always visible while scrolling ----
+   Sticky cells MUST be fully opaque or the columns sliding underneath show
+   through and smear into the text. So the solid theme colour is the
+   background-COLOR and any hover tint is layered on as a background-IMAGE.
+   z-index ladder: body cells < pinned body cell(3) < header(4) < pinned header(6). */
+th.ridcol,td.ridcol{{
+  position:sticky; left:0;
+  white-space:nowrap; font-variant-numeric:tabular-nums;
+  font-weight:700; font-size:12px; letter-spacing:.01em;
+  border-right:2px solid var(--line);
+}}
+/* The Record ID sits in the PRODUCT zone, so it must use the SAME banding as
+   td.pcol -- var(--bg2)/var(--bg) -- not the card palette, or the pinned column
+   reads as a mismatched white stripe against the product cells. The gap tints
+   are the opaque equivalents of pcol's rgba() reds (a sticky cell cannot be
+   translucent without the scrolling columns bleeding through). */
+thead th.ridcol{{z-index:6; background-color:var(--bg2)}}
+tbody td.ridcol{{z-index:3; background-color:var(--bg2); color:var(--muted)}}
+tbody tr.galt td.ridcol{{background-color:var(--bg)}}
+tbody tr.nocombo td.ridcol{{background-color:#ede5eb}}
+tbody tr.galt.nocombo td.ridcol{{background-color:#f3eef2}}
+[data-theme="dark"] tbody td.ridcol{{background-color:var(--bg2)}}
+[data-theme="dark"] tbody tr.galt td.ridcol{{background-color:var(--bg)}}
+[data-theme="dark"] tbody tr.nocombo td.ridcol{{background-color:#1f1b25}}
+[data-theme="dark"] tbody tr.galt.nocombo td.ridcol{{background-color:#17151d}}
+/* hover: product cells are not tinted on hover, so the pinned cell isn't
+   either -- only the text sharpens, keeping the two zones consistent */
+tbody tr.grp:hover td.ridcol{{color:var(--text)}}
+
+/* ---- the table scrolls on BOTH axes, header stays put ----
+   .main/.content/.panel form a full-height flex column (from the V1 shell), so
+   .tablewrap absorbs the leftover height and scrolls internally. Explicit here
+   so the behaviour survives regardless of rule order. */
+.panel .tablewrap{{
+  /* set each axis explicitly -- the `overflow` shorthand was leaving
+     overflow-y as `visible`, so only horizontal scrolling worked */
+  overflow-x:auto; overflow-y:auto;
+  flex:1 1 auto; min-height:220px; max-height:calc(100vh - 300px);
+  -webkit-overflow-scrolling:touch;
+}}
+.panel table{{min-width:max-content}}   /* never squeeze columns -- scroll instead */
+.panel thead th{{position:sticky; top:-1px; z-index:4}}
+.panel thead th.ridcol{{z-index:6}}  /* header survives vertical scroll */
+.tablehint{{font-size:12px;color:var(--muted);margin-top:10px}}
+.dimgrow{{display:flex;gap:14px;flex-wrap:wrap}}
+.dimg{{text-align:center}}
+.dimg img,.dimg .v2noimg{{width:96px;height:96px;border-radius:12px;object-fit:cover;
+  border:1px solid var(--line);background:var(--card);display:block}}
+.dimg .v2noimg{{display:flex;align-items:center;justify-content:center;font-size:26px}}
+.dimg small{{display:block;margin-top:6px;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}}
+.dfield{{display:flex;flex-direction:column;gap:3px;min-width:0}}
+.dfield .dlabel{{font-size:9.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--muted)}}
+.dfield .dval{{font-size:13.5px;font-weight:600;color:var(--text);word-break:break-word;line-height:1.35}}
+.dfield .dval.money{{color:var(--accent);font-size:15px;font-weight:800}}
+.dfield.wide{{grid-column:1 / -1}}
+.dstack{{display:flex;flex-direction:column;gap:4px}}
+/* safety: only the opened drawer may capture pointer events, so a stuck
+   overlay can never block the dashboard underneath it */
+.drawer-bg{{pointer-events:none}}
+.drawer-bg.open{{pointer-events:auto}}
+
+/* ---- ONE-PAGE drawer: every field visible at once, no scrolling ----
+   Wider panel + a 3-column card grid that fills the available height. */
+.drawer{{width:min(640px,100%)}}
+.dbody.onepage{{
+  overflow:hidden;                 /* never scroll -- everything must fit */
+  padding:14px 16px; gap:12px;
+  display:grid !important; align-content:start;
+  grid-template-columns:repeat(2,1fr);
+  grid-auto-rows:minmax(0,auto);
+  height:100%;
+}}
+.dbody.onepage .dcard{{padding:11px 13px; min-height:0; overflow:hidden}}
+.dbody.onepage .dctitle{{margin-bottom:8px; font-size:10.5px}}
+.dbody.onepage .dgrid{{grid-template-columns:1fr 1fr; gap:9px 12px}}
+.dcard.span2{{grid-column:1 / -1}}
+.dcard.span3{{grid-column:1 / -1}}
+.dfield .dval{{font-size:13px}}
+.dfield .dval.money{{font-size:14.5px}}
+.dimgrow{{gap:10px}}
+.dimg img,.dimg .v2noimg{{width:74px;height:74px}}
+/* shrink gracefully on shorter screens so it still fits without scrolling */
+@media(max-height:820px){{
+  .dbody.onepage{{gap:9px;padding:11px 13px}}
+  .dbody.onepage .dcard{{padding:9px 11px}}
+  .dbody.onepage .dctitle{{margin-bottom:6px}}
+  .dfield .dval{{font-size:12.5px}}
+  .dimg img,.dimg .v2noimg{{width:62px;height:62px}}
+}}
+@media(max-height:680px){{
+  .dfield .dlabel{{font-size:9px}}
+  .dfield .dval{{font-size:11.5px}}
+  .dimg img,.dimg .v2noimg{{width:52px;height:52px}}
+  .dbody.onepage .dgrid{{gap:7px 10px}}
+}}
+@media(max-width:620px){{
+  .dbody.onepage{{grid-template-columns:1fr}}
+  .dcard.span2,.dcard.span3{{grid-column:1 / -1}}
+}}
+@media(max-width:640px){{
+  .dbody.onepage{{grid-template-columns:1fr; overflow:auto}}   /* phones: allow scroll */
+  .dcard.span2,.dcard.span3{{grid-column:auto}}
+}}
+
+/* stacked component values inside ONE product cell — every component on its own
+   line, aligned across Supplier / Container / Received / SKU / Image / Created */
+.pstack{{display:flex;flex-direction:column}}
+.pstack .pitem{{
+  min-height:52px; display:flex; align-items:center;
+  padding:3px 0; border-bottom:1px dashed var(--line);
+}}
+.pstack .pitem:last-child{{border-bottom:0}}
+td.pcol{{white-space:normal}}
+
+/* ---- per-marketplace row tint: each channel gets its own light background so
+   Amazon / eBay / Shopify rows separate at a glance. Declared AFTER the zebra
+   rules so it wins the cascade; hover is declared after this to still win. ---- */
+tbody tr.mk-amazon  td.mcol{{background:#ffeed9}}
+tbody tr.mk-ebay    td.mcol{{background:#e7effe}}
+tbody tr.mk-shopify td.mcol{{background:#e3f6ec}}
+tbody tr.mk-bq      td.mcol{{background:#f0eafc}}
+tbody tr.mk-wayfair td.mcol{{background:#e3f3f6}}
+tbody tr.mk-other   td.mcol{{background:#ebeef2}}
+tbody tr.mk-none    td.mcol{{background:var(--card)}}
+/* colour key on the leading marketplace cell */
+tbody tr.mk-amazon  td.mstart{{box-shadow:inset 3px 0 0 rgba(240,140,0,.55)}}
+tbody tr.mk-ebay    td.mstart{{box-shadow:inset 3px 0 0 rgba(47,111,237,.55)}}
+tbody tr.mk-shopify td.mstart{{box-shadow:inset 3px 0 0 rgba(18,184,134,.55)}}
+tbody tr.mk-bq      td.mstart{{box-shadow:inset 3px 0 0 rgba(112,72,232,.55)}}
+tbody tr.mk-wayfair td.mstart{{box-shadow:inset 3px 0 0 rgba(12,133,153,.55)}}
+tbody tr.mk-other   td.mstart{{box-shadow:inset 3px 0 0 var(--gray)}}
+
+[data-theme="dark"] tbody tr.mk-amazon  td.mcol{{background:#2b2113}}
+[data-theme="dark"] tbody tr.mk-ebay    td.mcol{{background:#131f33}}
+[data-theme="dark"] tbody tr.mk-shopify td.mcol{{background:#122720}}
+[data-theme="dark"] tbody tr.mk-bq      td.mcol{{background:#1e1830}}
+[data-theme="dark"] tbody tr.mk-wayfair td.mcol{{background:#102529}}
+[data-theme="dark"] tbody tr.mk-other   td.mcol{{background:#191f28}}
+[data-theme="dark"] tbody tr.mk-none    td.mcol{{background:var(--card)}}
+
+/* HOVER — must not flatten the marketplace colours. A background-color override
+   would repaint every row the same blue and destroy the per-channel hue, so the
+   tint stays as the background-COLOR and the hover darkening is layered on top
+   as a background-IMAGE. Each channel keeps its own hue while hovering. */
+/* Scoped to td.mcol ONLY. The product cells carry rowspan, so they live in the
+   group's FIRST <tr> -- including td.pcol here made hovering that first row light
+   up the whole product block, while hovering any later row lit only the
+   marketplace cells. Marketplace-only keeps every row behaving identically. */
+tbody tr.grp:hover td.mcol{{
+  background-image:linear-gradient(rgba(20,30,50,.13),rgba(20,30,50,.13));
+}}
+[data-theme="dark"] tbody tr.grp:hover td.mcol{{
+  background-image:linear-gradient(rgba(255,255,255,.09),rgba(255,255,255,.09));
+}}
+/* crisp rule on the hovered marketplace row only */
+tbody tr.grp:hover td.mcol{{
+  border-top:1px solid var(--accent); border-bottom:1px solid var(--accent);
+}}
 
 /* view tabs live in the table panel header — reclaims the full-width block they
    used to occupy. phead wraps on narrow screens so nothing gets squeezed. */
@@ -85,23 +246,23 @@ td.mcol:first-of-type{{padding-left:16px}}   /* nested/indented feel */
         <div class="hpill"><span class="hpill-ic">🎁</span><div><small>Combos</small><b>{P['meta']['combos']}</b></div></div>
         <div class="hpill"><span class="hpill-ic">🕒</span><div><small>Captured</small><b>{P['capturedAt']}</b></div></div>
       </div>
-      <button class="btn ghost" id="themeBtn">🌙 Theme</button>
-      <button class="btn" id="csvBtn">⬇ CSV</button>
+      <button type="button" class="btn ghost" id="themeBtn">🌙 Theme</button>
+      <button type="button" class="btn" id="csvBtn">⬇ CSV</button>
     </header>
 
     <div class="filterbar">
-      <div class="fld"><label>Supplier</label><select id="f-sup"></select></div>
-      <div class="fld"><label>Container</label><select id="f-cont"></select></div>
-      <div class="fld"><label>Marketplace</label><select id="f-plat"></select></div>
-      <div class="fld"><label>Listing Status</label><select id="f-stat">
+      <div class="fld"><label for="f-sup">Supplier</label><select id="f-sup" name="f-sup"></select></div>
+      <div class="fld"><label for="f-cont">Container</label><select id="f-cont" name="f-cont"></select></div>
+      <div class="fld"><label for="f-plat">Marketplace</label><select id="f-plat" name="f-plat"></select></div>
+      <div class="fld"><label for="f-stat">Listing Status</label><select id="f-stat" name="f-stat">
         <option value="">All</option><option>Listed</option><option>Not Listed</option></select></div>
-      <div class="fld"><label>Received from</label><div class="inp"><input type="date" id="f-rfrom"></div></div>
-      <div class="fld"><label>Received to</label><div class="inp"><input type="date" id="f-rto"></div></div>
-      <div class="fld"><label>Listed from</label><div class="inp"><input type="date" id="f-lfrom"></div></div>
-      <div class="fld"><label>Listed to</label><div class="inp"><input type="date" id="f-lto"></div></div>
-      <div class="fld grow"><label>Search</label><div class="inp"><span class="inp-ic">🔎</span>
-        <input type="text" id="f-q" placeholder="SKU, supplier, container, PO, reason…"></div></div>
-      <div class="fld"><span class="fld-spacer">&nbsp;</span><button class="tt-clear" id="clearBtn">Clear</button></div>
+      <div class="fld"><label for="f-rfrom">Received from</label><div class="inp"><input type="date" id="f-rfrom" name="f-rfrom"></div></div>
+      <div class="fld"><label for="f-rto">Received to</label><div class="inp"><input type="date" id="f-rto" name="f-rto"></div></div>
+      <div class="fld"><label for="f-lfrom">Listed from</label><div class="inp"><input type="date" id="f-lfrom" name="f-lfrom"></div></div>
+      <div class="fld"><label for="f-lto">Listed to</label><div class="inp"><input type="date" id="f-lto" name="f-lto"></div></div>
+      <div class="fld grow"><label for="f-q">Search</label><div class="inp"><span class="inp-ic" aria-hidden="true">🔎</span>
+        <input type="text" id="f-q" name="f-q" placeholder="SKU, supplier, container, PO, reason…"></div></div>
+      <div class="fld"><span class="fld-spacer">&nbsp;</span><button type="button" class="tt-clear" id="clearBtn">Clear</button></div>
     </div>
 
     <div class="content">
@@ -113,25 +274,39 @@ td.mcol:first-of-type{{padding-left:16px}}   /* nested/indented feel */
             <div class="sub">Component → Container → Combo → Listing → Traffic → Orders → Sales → Returns, in one view.
               <span class="muted" id="rowcount"></span></div></div>
           <div class="tablist" id="viewtabs">
-            <button class="tab" data-view="comp">🧩 Components <b id="tabCompN"></b></button>
-            <button class="tab active" data-view="combo">🎁 Combos <b id="tabComboN"></b></button>
+            <button type="button" class="tab" data-view="comp">🧩 Components <b id="tabCompN"></b></button>
+            <button type="button" class="tab active" data-view="combo">🎁 Combos <b id="tabComboN"></b></button>
           </div>
-          <div class="perpage-wrap">Products
-            <select class="perpage" id="perpage"><option value="50">50</option><option value="100" selected>100</option><option value="250">250</option><option value="1000">1000</option><option value="0">All</option></select>
+          <div class="perpage-wrap"><label for="perpage">Products</label>
+            <select class="perpage" id="perpage" name="perpage" aria-label="Products per page"><option value="50">50</option><option value="100" selected>100</option><option value="250">250</option><option value="1000">1000</option><option value="0">All</option></select>
           </div>
         </div>
         <div class="tablewrap">
           <table id="tbl"><thead><tr id="thead"></tr></thead><tbody id="tbody"></tbody></table>
         </div>
+        <div class="tablehint">💡 Click any marketplace row to open the full record — every column, one page.</div>
         <div class="pageinfo">
           <div class="pginfo-left"><span id="pginfo"></span></div>
           <div class="pagebtns">
-            <button class="btn pg" id="prev">‹ Prev</button><span id="pgnum"></span><button class="btn pg" id="next">Next ›</button>
+            <button type="button" class="btn pg" id="prev">‹ Prev</button><span id="pgnum"></span><button type="button" class="btn pg" id="next">Next ›</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="drawer-bg hidden" id="drawerBg">
+  <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="dhead">
+      <div>
+        <div class="dtitle" id="dTitle"></div>
+        <div class="dsub" id="dSub"></div>
+      </div>
+      <button type="button" class="dclose" id="dClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="dbody onepage" id="dBody"></div>
+  </aside>
 </div>
 
 <script>
@@ -143,6 +318,9 @@ let VIEW = 'combo';
 let ROWS = DATA[VIEW];
 const COLS = {json.dumps(COLS)};
 const PLABEL = {{amazon:'Amazon', ebay:'eBay', shopify:'Shopify', 'b&q':'B&Q', wayfair:'Wayfair', other:'Other'}};
+// css-safe slug for the per-marketplace row tint ('b&q' is not a valid class name)
+const PSLUG = {{amazon:'amazon', ebay:'ebay', shopify:'shopify', 'b&q':'bq', wayfair:'wayfair', other:'other'}};
+const plSlug = p => PSLUG[p] || (p ? 'other' : 'none');
 
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}})[c]);
 const num = v => Number(v||0).toLocaleString();
@@ -236,13 +414,55 @@ function cell(r, key, type){{
   return esc(v);
 }}
 
+// Product-block cell.
+// A combo built from several components shows EVERY component value stacked
+// vertically inside the one cell -- no "+N", no extra rows, nothing hidden.
+// comps entry: [0]=sku [1]=image [2]=created [3]=supplier [4]=container [5]=received
+const COMP_IDX = {{csku:0, cimg:1, ccre:2, sup:3, cont:4, recv:5}};
+
+function stackItem(val, type){{
+  if(type==='img')
+    return val ? `<img class="v2img" src="${{esc(val)}}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.outerHTML='&lt;div class=\\'v2noimg\\'&gt;🖼&lt;/div&gt;'">`
+               : `<div class="v2noimg">—</div>`;
+  if(type==='d') return val ? esc(fmtDate(val)) : '<span class="cell-mut">—</span>';
+  if(!val)       return '<span class="cell-mut">—</span>';
+  return `<span class="trunc" title="${{esc(val)}}">${{esc(val)}}</span>`;
+}}
+
+function prodCell(g, key, type){{
+  const i = COMP_IDX[key];
+  // Combo columns (bsku/bimg/bcre) are product-level -> single value, never stacked.
+  if(i === undefined) return cell(g.head, key, type);
+  const list = g.comps && g.comps.length ? g.comps : null;
+  if(!list) return cell(g.head, key, type);
+  if(list.length === 1) return stackItem(list[0][i], type);
+  const vals = list.map(c=>c[i]);
+  // If every component shares the same value (one supplier, one container, one
+  // received date...) show it ONCE -- repeating it down the cell is duplication.
+  // Only genuinely differing values are stacked.
+  if(new Set(vals.map(v=>String(v==null?'':v))).size === 1)
+    return stackItem(vals[0], type);
+  return '<div class="pstack">' +
+    vals.map(v=>`<div class="pitem">${{stackItem(v, type)}}</div>`).join('') +
+    '</div>';
+}}
+
 // ---------- grouping: one PRODUCT, many MARKETPLACE rows ----------
 // COLS[0..8]  = product columns  (rendered once, via rowspan)
 // COLS[9..20] = marketplace columns (one row each)
-const PCOLS = COLS.slice(0,9), MCOLS = COLS.slice(9);
+const ALL_P = COLS.slice(0,9), ALL_M = COLS.slice(9);
+// The TABLE shows only the essential columns (21 -> 11) so it stays scannable.
+// Every hidden field is shown in the click-through drawer, nothing is lost.
+// FULL original column set -- all 9 product + 12 marketplace columns are shown.
+// The table scrolls horizontally AND vertically so every column stays reachable
+// without changing the grouped layout. The drawer remains as a quick one-page
+// read of a single record.
+const PCOLS = ALL_P;
+const MCOLS = ALL_M;
 // Combos tab groups by Combo SKU, Components tab by Component SKU. In the combo
 // view the metrics are keyed on the combo, so several component rows of the same
 // combo carry identical numbers -- grouping removes that real duplication.
+const RENDERED = [];   // render-order index -> {{row, group}} for the drawer
 const groupKey = r => (VIEW==='combo' ? (r[B.bsku] || r[B.csku]) : r[B.csku]) || '—';
 
 function groupRows(rs){{
@@ -253,18 +473,27 @@ function groupRows(rs){{
     m.get(k).push(r);
   }}
   return [...m.values()].map(rows=>{{
-    // B.comps carries every component behind this product (set by the builder,
-    // which now emits ONE row per product x marketplace -- no duplicates).
-    const cskus = [...new Set(rows.flatMap(r=>r[B.comps]||[r[B.csku]]).filter(Boolean))];
-    return {{rows, head: rows[0], cskus}};
+    // B.comps carries every component behind this product as
+    // [sku, image, created, supplier, container, received]. Older payloads stored
+    // a bare SKU string or a [sku,image] pair -- pad those to the same shape so
+    // the stacked cells always index safely.
+    const norm = c => Array.isArray(c) ? c : [c];
+    const seen = new Map();                       // de-dup by SKU, keep order
+    for(const r of rows)
+      for(const c of (r[B.comps] && r[B.comps].length ? r[B.comps] : [[r[B.csku]]])){{
+        const a = norm(c); if(a[0] && !seen.has(a[0])) seen.set(a[0], a);
+      }}
+    const comps = [...seen.values()];
+    return {{rows, head: rows[0], comps, cskus: comps.map(c=>c[0])}};
   }});
 }}
 
 function sortGroups(gs){{
   if(!S.sort) return gs;
-  const k = S.sort, t = COLS.find(c=>c[1]===k)[2];
-  const isProd = PCOLS.some(c=>c[1]===k);
+  const k = S.sort, t = (COLS.find(c=>c[1]===k)||['','','t'])[2];
+  const isProd = k==='rid' || PCOLS.some(c=>c[1]===k);
   const val = g => {{
+    if(k==='rid') return g.rows[0][B.rid] || '';
     if(isProd) return g.head[B[k]];
     if(['n','money','pct'].includes(t))      // rank products by their TOTAL
       return g.rows.reduce((a,r)=>a+(Number(r[B[k]])||0),0);
@@ -287,11 +516,14 @@ function render(){{
   kpis(rs);
   const groups = sortGroups(groupRows(rs));
 
-  document.getElementById('thead').innerHTML =
-    COLS.map(([lbl,key,t],i)=>{{
+  // header follows the VISIBLE column sets, not all 21
+  const ridTh = `<th class="ridcol sortable${{S.sort==='rid'?' sorted':''}}" data-k="rid">Record ID`
+      + `<span class="sarrow${{S.sort==='rid'?'':' dim'}}">${{S.sort==='rid'?(S.dir>0?'▲':'▼'):'⇅'}}</span></th>`;
+  document.getElementById('thead').innerHTML = ridTh +
+    PCOLS.concat(MCOLS).map(([lbl,key,t],i)=>{{
       const cls=['n','money','pct'].includes(t)?'num sortable':'sortable';
-      const seg = i<9 ? ' pcol' : '';
-      const edge = i===9 ? ' mstart' : '';
+      const seg = i < PCOLS.length ? ' pcol' : ' mcol';
+      const edge = i === PCOLS.length ? ' mstart' : '';
       const on = S.sort===key;
       return `<th class="${{cls}}${{seg}}${{edge}}${{on?' sorted':''}}" data-k="${{key}}">${{esc(lbl)}}<span class="sarrow${{on?'':' dim'}}">${{on?(S.dir>0?'▲':'▼'):'⇅'}}</span></th>`;
     }}).join('');
@@ -303,22 +535,20 @@ function render(){{
   const slice = groups.slice((S.page-1)*per, S.page*per);
 
   let html = '', gi = 0;
+  RENDERED.length = 0;
   for(const g of slice){{
     const n = g.rows.length, alt = (gi++ % 2) ? ' galt' : '';
     const gap = !g.head[B.bsku];
     g.rows.forEach((r, idx)=>{{
       const first = idx===0;
-      html += `<tr class="grp${{alt}}${{first?' gfirst':''}}${{gap?' nocombo':''}}"`
+      const rix = RENDERED.length; RENDERED.push({{r, g}});
+      html += `<tr data-ix="${{rix}}" class="grp${{alt}}${{first?' gfirst':''}}${{gap?' nocombo':''}} mk-${{plSlug(r[B.plat])}}"`
             + (first?` title="${{esc(g.head[B.notes]||'')}}"`:'') + '>';
+      html += `<td class="ridcol">${{esc(r[B.rid]||'')}}</td>`;
       if(first){{                                  // product block — rendered ONCE
         html += PCOLS.map(([lbl,key,t])=>{{
           const cls = (t==='img'?'imgcell ':'') + 'pcol';
-          let inner;
-          if(key==='csku' && g.cskus.length>1)     // multi-component combo
-            inner = `<span class="trunc" title="${{esc(g.cskus.join(', '))}}">${{esc(g.cskus[0])}}</span>`
-                  + ` <span class="cell-mut">+${{g.cskus.length-1}}</span>`;
-          else inner = cell(g.head,key,t);
-          return `<td class="${{cls}}" rowspan="${{n}}">${{inner}}</td>`;
+          return `<td class="${{cls}}" rowspan="${{n}}">${{prodCell(g,key,t)}}</td>`;
         }}).join('');
       }}
       html += MCOLS.map(([lbl,key,t],j)=>{{
@@ -329,7 +559,7 @@ function render(){{
     }});
   }}
   document.getElementById('tbody').innerHTML = html ||
-    '<tr><td colspan="21" style="text-align:center;padding:40px;color:var(--muted)">No rows match these filters.</td></tr>';
+    '<tr><td colspan="'+(1+PCOLS.length+MCOLS.length)+'" style="text-align:center;padding:40px;color:var(--muted)">No rows match these filters.</td></tr>';
 
   const totalGroups = groupRows(ROWS).length;
   document.getElementById('rowcount').textContent =
@@ -360,15 +590,136 @@ document.getElementById('clearBtn').addEventListener('click',()=>{{
 document.getElementById('themeBtn').addEventListener('click',()=>{{
   const d=document.documentElement; d.dataset.theme = d.dataset.theme==='dark'?'light':'dark';
 }});
+// ---------- detail drawer: EVERY column for one record, on one page ----------
+const fld = (label, val, cls='') =>
+  `<div class="dfield ${{cls}}"><span class="dlabel">${{esc(label)}}</span><span class="dval ${{cls.includes('money')?'money':''}}">${{val}}</span></div>`;
+const txt = v => (v===0 || v) && String(v).trim() !== '' ? esc(v) : '<span class="cell-mut">—</span>';
+const dt  = v => v ? esc(fmtDate(v)) : '<span class="cell-mut">—</span>';
+const pic = (url,label) => `<div class="dimg">${{url
+  ? `<img src="${{esc(url)}}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.outerHTML='&lt;div class=\'v2noimg\'&gt;🖼&lt;/div&gt;'">`
+  : '<div class="v2noimg">—</div>'}}<small>${{esc(label)}}</small></div>`;
+
+function openDetail(ix){{
+  const rec = RENDERED[ix]; if(!rec) return;
+  const {{r, g}} = rec;
+  const comps = (g.comps && g.comps.length) ? g.comps : [[r[B.csku]]];
+  const isCombo = !!r[B.bsku];
+
+  document.getElementById('dTitle').textContent = r[B.bsku] || r[B.csku] || '—';
+  document.getElementById('dSub').innerHTML =
+    `<span>${{isCombo?'🎁 Combo':'🧩 Component'}}</span><span class="dsep">·</span>` +
+    `<span>${{esc(PLABEL[r[B.plat]] || r[B.plat] || 'No marketplace')}}</span><span class="dsep">·</span>` +
+    (r[B.stat]==='Listed' ? '<span class="chip green">Listed</span>' : '<span class="chip gray">Not Listed</span>');
+
+  // stack per-component values; collapse when every component shares one value
+  const stack = (i, fmt=txt) => {{
+    const v = comps.map(c=>c[i]);
+    if(new Set(v.map(x=>String(x==null?'':x))).size === 1) return fmt(v[0]);
+    return '<span class="dstack">' + v.map(x=>`<span>${{fmt(x)}}</span>`).join('') + '</span>';
+  }};
+
+  const rate = Number(r[B.rrate]||0);
+  document.getElementById('dBody').innerHTML = `
+    <div class="dcard span3">
+      <div class="dctitle">🖼 Images &amp; identity</div>
+      <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+        <div class="dimgrow">
+          ${{comps.map(c=>pic(c[1], 'Component')).join('')}}
+          ${{isCombo ? pic(r[B.bimg], 'Combo') : ''}}
+        </div>
+        <div class="dgrid" style="flex:1 1 320px;grid-template-columns:1fr 1fr">
+          ${{fld('Component SKU',     stack(0))}}
+          ${{fld('Component Created', stack(2, dt))}}
+          ${{isCombo ? fld('Combo SKU', txt(r[B.bsku])) : ''}}
+          ${{isCombo ? fld('Combo Created', dt(r[B.bcre])) : ''}}
+        </div>
+      </div>
+    </div>
+
+    <div class="dcard span2">
+      <div class="dctitle">🚚 Supply chain</div>
+      <div class="dgrid" style="grid-template-columns:1fr 1fr">
+        ${{fld('Supplier',      stack(3))}}
+        ${{fld('Container',     stack(4))}}
+        ${{fld('Destination',   txt(r[B.dest]))}}
+        ${{fld('Received Date', stack(5, dt))}}
+        ${{fld('Purchase Order',txt(r[B.po]))}}
+        ${{fld('Qty Received',  txt(num(r[B.qty]||0)))}}
+      </div>
+    </div>
+
+    <div class="dcard">
+      <div class="dctitle">🛒 Listing</div>
+      <div class="dgrid" style="grid-template-columns:1fr">
+        ${{fld('Marketplace',    txt(PLABEL[r[B.plat]] || r[B.plat]))}}
+        ${{fld('Listing Status', r[B.stat]==='Listed'?'<span class="chip green">Listed</span>':'<span class="chip gray">Not Listed</span>')}}
+        ${{fld('Listed Date',    dt(r[B.ldate]))}}
+        ${{fld('Listing URL', String(r[B.url]||'').startsWith('http')
+            ? `<a class="plink" href="${{esc(r[B.url])}}" target="_blank" rel="noopener noreferrer">Open listing ↗</a>`
+            : '<span class="cell-mut">—</span>')}}
+      </div>
+    </div>
+
+    <div class="dcard span2">
+      <div class="dctitle">📈 Performance <span class="cell-mut" style="font-weight:500;text-transform:none;letter-spacing:0">— Listed Date → today</span></div>
+      <div class="dgrid" style="grid-template-columns:repeat(3,1fr)">
+        ${{fld('Impressions',       txt(num(r[B.impr]||0)))}}
+        ${{fld('Clicks',            txt(num(r[B.clk]||0)))}}
+        ${{fld('Orders',            txt(num(r[B.ord]||0)))}}
+        ${{fld('Units Sold',        txt(num(r[B.units]||0)))}}
+        ${{fld('Revenue',           money(r[B.rev]||0), 'money')}}
+      </div>
+    </div>
+
+    <div class="dcard">
+      <div class="dctitle">↩️ Returns &amp; feedback</div>
+      <div class="dgrid" style="grid-template-columns:1fr 1fr">
+        ${{fld('Total Returns',   txt(num(r[B.ret]||0)))}}
+        ${{fld('Return Rate %',   `<span class="chip ${{rate>10?'red':rate>0?'orange':'gray'}}">${{rate.toFixed(2)}}%</span>`)}}
+        ${{fld('Top Reason',      txt(r[B.reason]), 'wide')}}
+        ${{fld('Average Feedback',cell(r,'fb','fb'), 'wide')}}
+      </div>
+    </div>
+
+    ${{r[B.notes] ? `<div class="dcard span3"><div class="dctitle">📝 Notes</div>
+        <div class="dval" style="font-weight:500;font-size:12.5px">${{esc(r[B.notes])}}</div></div>` : ''}}`;
+
+  const bg = document.getElementById('drawerBg');
+  bg.classList.remove('hidden');
+  // Force a reflow, then add .open in the SAME tick. Doing this inside
+  // requestAnimationFrame left the drawer at opacity:0 -- present and covering
+  // the page (position:fixed; inset:0; z-index:80) but invisible, which also
+  // swallowed every click on the dashboard behind it.
+  void bg.offsetWidth;
+  bg.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}}
+function closeDetail(){{
+  const bg = document.getElementById('drawerBg');
+  bg.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(()=>bg.classList.add('hidden'), 200);
+}}
+document.getElementById('tbody').addEventListener('click', e=>{{
+  if(e.target.closest('a')) return;                 // let listing links work
+  const tr = e.target.closest('tr[data-ix]');
+  if(tr) openDetail(+tr.dataset.ix);
+}});
+document.getElementById('dClose').addEventListener('click', closeDetail);
+document.getElementById('drawerBg').addEventListener('click', e=>{{
+  if(e.target.id === 'drawerBg') closeDetail();
+}});
+document.addEventListener('keydown', e=>{{ if(e.key === 'Escape') closeDetail(); }});
+
 document.getElementById('csvBtn').addEventListener('click',()=>{{
   const rs=filtered();
-  const head=COLS.map(c=>c[0]).join(',');
-  const body=rs.map(r=>COLS.map(([l,k,t])=>{{
+  const head=['Record ID'].concat(COLS.map(c=>c[0])).join(',');
+  const body=rs.map(r=>[r[B.rid]||''].concat(COLS.map(([l,k,t])=>{{
     let v=r[B[k]];
     if(t==='fb') v = (v&&v.length) ? (Number(v[0]).toFixed(1)+'* ('+v[1]+' Reviews)') : 'No Reviews';
     const s=String(v==null?'':v);
     return /[",\\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
-  }}).join(',')).join('\\n');
+  }})).join(',')).join('\\n');
   const blob=new Blob([head+'\\n'+body],{{type:'text/csv'}});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
   a.download='scwts_v2_'+PAYLOAD.capturedAt+'.csv'; a.click();
