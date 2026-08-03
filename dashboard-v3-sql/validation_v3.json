@@ -1,0 +1,140 @@
+{
+  "run": "20260731_171507",
+  "checks": [
+    {
+      "check": "Container -> Component mapping from the Google Sheet",
+      "status": "PASS",
+      "detail": "6 containers, 210 sheet rows, 209 distinct SKUs"
+    },
+    {
+      "check": "Every row carries a Container and a Component SKU",
+      "status": "PASS",
+      "detail": "776/776"
+    },
+    {
+      "check": "Every sheet SKU is represented in the dashboard",
+      "status": "PASS",
+      "detail": "209/209"
+    },
+    {
+      "check": "No duplicate (container, product, marketplace) rows \u2014 no fan-out",
+      "status": "PASS",
+      "detail": "776 rows, all unique"
+    },
+    {
+      "check": "Component -> Combo mapping",
+      "status": "PASS",
+      "detail": "295 combos derived for 111/209 components (inv_product_combo is EMPTY \u2014 derived from SKU naming, an inference)"
+    },
+    {
+      "check": "Combo -> Marketplace mapping",
+      "status": "PASS",
+      "detail": "658 listed rows, every one carries a Listed Date"
+    },
+    {
+      "check": "Listing Status consistent with Listed Date",
+      "status": "PASS",
+      "detail": "no mismatches"
+    },
+    {
+      "check": "Images",
+      "status": "PASS",
+      "detail": "component 774/776, combo 656/776"
+    },
+    {
+      "check": "Traffic fetched",
+      "status": "PASS",
+      "detail": "23,469,724 impressions, 72,120 clicks"
+    },
+    {
+      "check": "Orders / Revenue fetched",
+      "status": "PASS",
+      "detail": "1296 orders, \u00a326,666.85"
+    },
+    {
+      "check": "Return Rate math",
+      "status": "PASS",
+      "detail": "(returns/units)*100"
+    },
+    {
+      "check": "Sheet SKUs resolvable in listing_data",
+      "status": "PASS",
+      "detail": "95/209 have a listing; the rest show as Not Listed"
+    },
+    {
+      "check": "inv_products sourced from LEDs One inventory.products (NOT public.inv_products)",
+      "status": "PASS",
+      "detail": "420 products cached from LEDs One; public.inv_products has 0 rows and is not used"
+    },
+    {
+      "check": "Component Created Dates populated from LEDs One",
+      "status": "FAIL",
+      "detail": "775/776 rows"
+    },
+    {
+      "check": "Combo Created Dates populated from LEDs One",
+      "status": "FAIL",
+      "detail": "556/659 combo rows"
+    },
+    {
+      "check": "Every sheet component found in LEDs One inventory.products",
+      "status": "FAIL",
+      "detail": "208/209 found; MISSING: PCRMFF"
+    },
+    {
+      "check": "Returns / Return Rate / Top Reason available",
+      "status": "PASS",
+      "detail": "returns tables are empty/dropped on this DB \u2014 render blank, never faked"
+    },
+    {
+      "check": "Average Feedback available",
+      "status": "FAIL",
+      "detail": "no customer-review table on this DB \u2014 renders 'No Reviews'"
+    }
+  ],
+  "notes": [
+    "public.inv_products is a stale/dead copy (0 rows) -- NOT used. inv_products data is sourced from LEDs One MCP inventory.products."
+  ],
+  "gaps": [
+    "inv_product_combo empty -> combos derived from SKU naming convention",
+    "returns tables empty/dropped -> Returns, Return Rate, Top Reason unavailable",
+    "no customer-review source on this DB -> Average Feedback unavailable"
+  ],
+  "source_availability": {
+    "public.inv_products": 0,
+    "public.inv_product_combo": 0,
+    "public.listing_data": 335981,
+    "public.order_transaction": 1244420,
+    "public.traffic_data": 9525363,
+    "public.ppc_performance": 26074826,
+    "public.amazon_returns": 4938,
+    "public.ebay_returns": null,
+    "public.shopify_returns": null
+  },
+  "missing_from_ledsone": [
+    "PCRMFF"
+  ],
+  "totals": {
+    "containers": 6,
+    "sheet_rows": 210,
+    "components": 209,
+    "combos": 295,
+    "rows": 776,
+    "listed": 658,
+    "impressions": 23469724,
+    "clicks": 72120,
+    "orders": 1296,
+    "units": 1890,
+    "revenue": 26666.85,
+    "returns": 94
+  },
+  "per_container": {
+    "Container 11": 83,
+    "Container 12": 325,
+    "Container 13": 165,
+    "Container 14": 91,
+    "Container 15": 2,
+    "Container 16": 110
+  },
+  "duration_sec": 123.5
+}

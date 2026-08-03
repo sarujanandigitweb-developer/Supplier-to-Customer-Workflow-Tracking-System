@@ -24,7 +24,7 @@ CONTAINER = COALESCE(final_containers.name, containers.name). It must NEVER fall
   back to orders.container_id -- that is a raw foreign key and leaked bare ints
   such as "31" into the UI (bug found 2026-07-28).
 """
-import json, time
+import json, os, sys, time
 from datetime import date, datetime
 from pathlib import Path
 import psycopg2
@@ -36,8 +36,15 @@ START = "2026-01-01"
 TODAY = date.today().isoformat()
 T0    = time.time()
 
-DB = dict(host="149.28.134.54", port="5435", dbname="order_management_copy",
-          user="temp_user", password="12we34rt")
+# Credentials from the environment (cron/.env), with the project defaults as a
+# fallback. Hardcoding these made the orchestrator's exported PGHOST/PGUSER a
+# no-op: a run pointed at an unreachable host still "succeeded" because the
+# builder quietly used the baked-in address (found 2026-07-29).
+DB = dict(host=os.getenv("PGHOST", "149.28.134.54"),
+          port=os.getenv("PGPORT", "5435"),
+          dbname=os.getenv("PGDATABASE", "order_management_copy"),
+          user=os.getenv("PGUSER", "temp_user"),
+          password=os.getenv("PGPASSWORD", "12we34rt"))
 
 PLAT = """CASE WHEN lower({c}) LIKE '%%amazon%%'  THEN 'amazon'
                WHEN lower({c}) LIKE '%%ebay%%'    THEN 'ebay'
@@ -55,6 +62,39 @@ def check(name, ok, detail=""):
 conn = psycopg2.connect(connect_timeout=40, **DB); conn.autocommit = True
 cur = conn.cursor()
 print(f"connected {DB['user']}@{DB['host']}:{DB['port']}/{DB['dbname']}")
+
+# ---------- 0. SUPPLIER ACCESS PROBE (run BEFORE anything depends on it) --------
+# V2's whole scope chain starts at supplier.order_items, so unlike V1 -- where the
+# supplier chain was optional decoration -- losing supplier access here yields an
+# EMPTY dashboard, not a degraded one. Probe with the project credential first and
+# fail loudly rather than publishing a hollow page.
+SUP_TABLES = ["supplier.suppliers", "supplier.orders", "supplier.containers",
+              "supplier.order_items", "supplier.final_containers", "supplier.invoices"]
+cur.execute("SELECT has_schema_privilege(current_user,'supplier','USAGE')")
+schema_ok = cur.fetchone()[0]
+sup_access, sup_missing = {}, []
+for t in SUP_TABLES:
+    try:
+        cur.execute(f"SELECT count(*) FROM {t}")
+        sup_access[t] = {"readable": True, "rows": cur.fetchone()[0]}
+    except Exception as e:
+        conn.rollback()
+        sup_access[t] = {"readable": False, "error": str(e).strip().splitlines()[0]}
+        sup_missing.append(t)
+VAL["supplier"] = {"user": DB["user"], "schema_usage": bool(schema_ok),
+                   "tables": sup_access, "missing": sup_missing}
+print(f"supplier schema USAGE for {DB['user']}: {schema_ok}")
+for t, v in sup_access.items():
+    print(f"  {t:32} {'OK  rows='+str(v['rows']) if v['readable'] else 'DENIED  '+v['error'][:60]}")
+if sup_missing:
+    VAL["supplier"]["fix"] = (f"GRANT USAGE ON SCHEMA supplier TO {DB['user']}; "
+                              f"GRANT SELECT ON {', '.join(sup_missing)} TO {DB['user']};")
+    check("supplier schema readable by " + DB["user"], False,
+          "MISSING: " + ", ".join(sup_missing) + " -- V2 scope starts at supplier.order_items, "
+          "so the dashboard would be empty. Fix: " + VAL["supplier"]["fix"])
+else:
+    check("supplier schema readable by " + DB["user"], True,
+          "; ".join(f"{t.split('.')[1]}={v['rows']}" for t, v in sup_access.items()))
 
 # ---------- 1. NEW COMPONENTS (2026, purchased from a supplier) ----------------
 cur.execute("""
@@ -144,6 +184,11 @@ FROM public.listing_data ld
 LEFT JOIN public.inv_products a ON a.sku = COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku))
 LEFT JOIN public.inv_products b ON b.sku = regexp_replace(COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku)),'[_-][A-Za-z]{{2,4}}$','')
 WHERE COALESCE(ld.is_parent,0)=0 AND ld.wrong_sku=0 AND COALESCE(TRIM(ld.sku),'')<>''
+  -- APPROVED RULE: only listings created in the reporting window count.
+  -- Without this, MIN(listed_on) below picked recycled pre-2026 marketplace
+  -- records (ASIN/eBay item ids get reused), producing 2024 Listing Dates,
+  -- a false 'Listed' status, and pre-2026 traffic pulled in by t.date>=listed_on.
+  AND ld.created_at >= '2026-01-01'
   AND COALESCE(a.sku,b.sku) IN (SELECT combo_sku FROM pair);
 CREATE INDEX ON lst(sku); CREATE INDEX ON lst(ref_id);
 """)
@@ -205,6 +250,7 @@ FROM (
          ot.order_id, ot.quantity, ot.order_total
   FROM public.order_transaction ot
   WHERE ot.order_status='Completed'
+    AND ot.order_date >= '2026-01-01'          -- reporting window
     AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT combo_sku FROM pair)) o
 GROUP BY 1,2""")
 orders = {(s, p): (o, u, r) for s, p, o, u, r in cur.fetchall()}
@@ -221,17 +267,19 @@ WITH co AS (
 SELECT regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') AS sku,
        'amazon'::text AS platform, ar.qty::int AS qty, NULLIF(TRIM(ar.reason),'') AS reason
 FROM public.amazon_returns ar
-WHERE regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT combo_sku FROM pair)
+WHERE ar.request_date >= '2026-01-01'
+  AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT combo_sku FROM pair)
 UNION ALL
 SELECT co.base_sku, 'ebay', e.qty, e.reason FROM (
   SELECT return_id, MIN(order_id) order_id, MAX(return_qty)::int qty,
          NULLIF(TRIM(MAX(reason)),'') reason
-  FROM public.ebay_returns GROUP BY return_id) e
+  FROM public.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
 JOIN co ON co.order_id = e.order_id
 WHERE co.base_sku IN (SELECT combo_sku FROM pair)
 UNION ALL
 SELECT co.base_sku, 'shopify', co.oqty, NULL FROM (
-  SELECT DISTINCT ON (id) id, order_id FROM public.shopify_returns ORDER BY id) sh
+  SELECT DISTINCT ON (id) id, order_id FROM public.shopify_returns
+  WHERE date >= '2026-01-01' ORDER BY id) sh
 JOIN co ON co.order_id = sh.order_id
 WHERE co.base_sku IN (SELECT combo_sku FROM pair);
 """)
@@ -257,6 +305,11 @@ FROM public.listing_data ld
 LEFT JOIN public.inv_products a ON a.sku = COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku))
 LEFT JOIN public.inv_products b ON b.sku = regexp_replace(COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku)),'[_-][A-Za-z]{{2,4}}$','')
 WHERE COALESCE(ld.is_parent,0)=0 AND ld.wrong_sku=0 AND COALESCE(TRIM(ld.sku),'')<>''
+  -- APPROVED RULE: only listings created in the reporting window count.
+  -- Without this, MIN(listed_on) below picked recycled pre-2026 marketplace
+  -- records (ASIN/eBay item ids get reused), producing 2024 Listing Dates,
+  -- a false 'Listed' status, and pre-2026 traffic pulled in by t.date>=listed_on.
+  AND ld.created_at >= '2026-01-01'
   AND COALESCE(a.sku,b.sku) IN (SELECT comp_sku FROM comp);
 CREATE INDEX ON lst_c(sku); CREATE INDEX ON lst_c(ref_id);
 """)
@@ -287,6 +340,7 @@ FROM (
          ot.order_id, ot.quantity, ot.order_total
   FROM public.order_transaction ot
   WHERE ot.order_status='Completed'
+    AND ot.order_date >= '2026-01-01'          -- reporting window
     AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT comp_sku FROM comp)) o
 GROUP BY 1,2""")
 orders_c = {(s, p): (o, u, r) for s, p, o, u, r in cur.fetchall()}
@@ -300,17 +354,19 @@ WITH co AS (
 SELECT regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') AS sku,
        'amazon'::text AS platform, ar.qty::int AS qty, NULLIF(TRIM(ar.reason),'') AS reason
 FROM public.amazon_returns ar
-WHERE regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT comp_sku FROM comp)
+WHERE ar.request_date >= '2026-01-01'
+  AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT comp_sku FROM comp)
 UNION ALL
 SELECT co.base_sku, 'ebay', e.qty, e.reason FROM (
   SELECT return_id, MIN(order_id) order_id, MAX(return_qty)::int qty,
          NULLIF(TRIM(MAX(reason)),'') reason
-  FROM public.ebay_returns GROUP BY return_id) e
+  FROM public.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
 JOIN co ON co.order_id = e.order_id
 WHERE co.base_sku IN (SELECT comp_sku FROM comp)
 UNION ALL
 SELECT co.base_sku, 'shopify', co.oqty, NULL FROM (
-  SELECT DISTINCT ON (id) id, order_id FROM public.shopify_returns ORDER BY id) sh
+  SELECT DISTINCT ON (id) id, order_id FROM public.shopify_returns
+  WHERE date >= '2026-01-01' ORDER BY id) sh
 JOIN co ON co.order_id = sh.order_id
 WHERE co.base_sku IN (SELECT comp_sku FROM comp);
 """)
@@ -342,7 +398,7 @@ VAL["notes"].append("Average Feedback: no customer-review source exists in this 
 B = {"sup":0,"cont":1,"recv":2,"csku":3,"cimg":4,"ccre":5,"bsku":6,"bimg":7,"bcre":8,
      "stat":9,"plat":10,"ldate":11,"impr":12,"clk":13,"ord":14,"units":15,"rev":16,
      "ret":17,"rrate":18,"reason":19,"url":20,"dest":21,"po":22,"qty":23,"notes":24,
-     "fb":25,"comps":26}
+     "fb":25,"comps":26,"rid":27}
 
 cur.execute("SELECT comp_sku, comp_created, comp_desc, combo_sku, combo_created, combo_desc, pack_count FROM pair ORDER BY comp_sku, combo_sku")
 pairs = cur.fetchall()
@@ -352,7 +408,7 @@ comps_with_combo = {p[0] for p in pairs}
 
 rows = []
 def blank():
-    r = [None]*27
+    r = [None]*28
     for k in ("impr","clk","ord","units","ret"): r[B[k]] = 0
     r[B["rev"]] = 0.0; r[B["rrate"]] = 0.0
     r[B["fb"]] = None                       # None -> UI renders "No Reviews"
@@ -490,6 +546,22 @@ for comp_sku, comp_created, comp_desc in all_comps:
         r[B["fb"]] = fb_for(comp_sku, plat)
         rows_c.append(r)
 
+# ---------- 9c. RECORD ID -----------------------------------------------------
+# One Record ID per PRODUCT block (all marketplace rows of a product share it),
+# assigned in a post-pass so the row-building logic above is untouched.
+def stamp_rids(rlist, prefix, keyfn):
+    seen = {}
+    for r in rlist:
+        k = keyfn(r)
+        if k not in seen:
+            seen[k] = f"{prefix}-{len(seen)+1:05d}"
+        r[B["rid"]] = seen[k]
+    return len(seen)
+
+n_rec  = stamp_rids(rows,   "REC", lambda r: r[B["bsku"]] or r[B["csku"]])
+n_crec = stamp_rids(rows_c, "CMP", lambda r: r[B["csku"]])
+print(f"record ids: {n_rec} combo products (REC-*), {n_crec} component products (CMP-*)")
+
 NC = len(rows_c)
 print(f"COMPONENT ROWS {NC}  (listed {sum(1 for r in rows_c if r[B['stat']]=='Listed')} / "
       f"not-listed {sum(1 for r in rows_c if r[B['stat']]=='Not Listed')})")
@@ -535,6 +607,22 @@ check("No duplicate (product, marketplace) rows — KPI totals cannot double-cou
       len({(r[B['bsku']] or r[B['csku']], r[B['plat']]) for r in rows})==len(rows)
       and len({(r[B['csku']], r[B['plat']]) for r in rows_c})==len(rows_c),
       f"combo {len(rows)} rows / component {len(rows_c)} rows, all unique")
+check("No pre-2026 Listing Date leaked into either dataset",
+      all((r[B['ldate']] or START) >= START for r in rows+rows_c),
+      f"earliest listed date = {min([r[B['ldate']] for r in rows+rows_c if r[B['ldate']]] or ['n/a'])}")
+check("Listed status implies a valid in-window Listing Date",
+      all(r[B['ldate']] and r[B['ldate']] >= START
+          for r in rows+rows_c if r[B['stat']]=='Listed'),
+      "every 'Listed' row carries a >= 2026-01-01 date")
+check("Not-Listed rows carry no Listing Date / URL",
+      all(not r[B['ldate']] and not r[B['url']]
+          for r in rows+rows_c if r[B['stat']]!='Listed'),
+      "blank date + blank url when not listed")
+check("Every row carries a Record ID, one per product block",
+      all(r[B['rid']] for r in rows+rows_c)
+      and len({r[B['rid']] for r in rows})  == len({(r[B['bsku']] or r[B['csku']]) for r in rows})
+      and len({r[B['rid']] for r in rows_c}) == len({r[B['csku']] for r in rows_c}),
+      f"{len({r[B['rid']] for r in rows})} REC-* + {len({r[B['rid']] for r in rows_c})} CMP-* ids")
 check("Both datasets share the identical column layout",
       all(len(r)==len(B) for r in rows+rows_c), f"{len(B)} columns")
 check("Average Feedback source", bool(feedback),
@@ -567,4 +655,40 @@ P = {"capturedAt": TODAY, "scopeStart": START, "B": B, "rows": rows, "rowsComp":
 VAL["duration_sec"] = round(time.time()-T0,1)
 (BASE/"validation_v2.json").write_text(json.dumps(VAL, indent=2), encoding="utf-8")
 print(f"\nwrote payload_v2.json  ({(BASE/'payload_v2.json').stat().st_size:,} bytes)  in {VAL['duration_sec']}s")
+# ---------- 11. HARD GATES — the publish step keys off this exit code ----------
+# Without a non-zero exit a broken build looks identical to a good one and the
+# orchestrator would happily publish it.
+HARD = [
+    "supplier schema readable by " + DB["user"],
+    "New components in scope",
+    "Combos built from them",
+    "Component x combo pairs",
+    "Every row has a component SKU",
+    "Every row has a supplier",
+    "No duplicate (product, marketplace) rows — KPI totals cannot double-count",
+    "Listed rows carry a Listed Date",
+    "All dates >= 2026-01-01 (component/combo creation)",
+    "Return Rate math correct",
+    "Component dataset built independently of the combo queries",
+    "Component rows: every row has a component SKU + supplier",
+    "Component rows: Listed rows carry a Listed Date",
+    "Component rows: Return Rate math correct",
+    "Both datasets share the identical column layout",
+]
+failed_hard = [c["check"] for c in VAL["checks"]
+               if c["status"] == "FAIL" and c["check"] in HARD]
+soft_failed = [c["check"] for c in VAL["checks"]
+               if c["status"] == "FAIL" and c["check"] not in HARD]
+VAL["result"]      = "FAIL" if failed_hard else "PASS"
+VAL["failed_hard"] = failed_hard
+VAL["failed_soft"] = soft_failed
+(BASE/"validation_v2.json").write_text(json.dumps(VAL, indent=2), encoding="utf-8")
+
+print(f"\nRESULT: {VAL['result']}  ({VAL['duration_sec']}s)")
+if soft_failed:
+    print("  soft (recorded, does not block publish): " + "; ".join(soft_failed))
 conn.close()
+if failed_hard:
+    print("HARD FAILURES: " + "; ".join(failed_hard))
+    sys.exit(1)
+

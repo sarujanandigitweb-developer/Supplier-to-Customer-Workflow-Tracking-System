@@ -1,6 +1,11 @@
 {
-  "run": "20260728_162638",
+  "run": "20260730_110001",
   "checks": [
+    {
+      "check": "supplier schema readable by temp_user",
+      "status": "PASS",
+      "detail": "suppliers=47; orders=267; containers=25; order_items=4029; final_containers=16; invoices=25"
+    },
     {
       "check": "New components in scope",
       "status": "PASS",
@@ -8,28 +13,28 @@
     },
     {
       "check": "Combos built from them",
-      "status": "PASS",
-      "detail": "223 (expected 223)"
+      "status": "FAIL",
+      "detail": "228 (expected 223)"
     },
     {
       "check": "Component x combo pairs",
-      "status": "PASS",
-      "detail": "261 (expected 261)"
+      "status": "FAIL",
+      "detail": "266 (expected 261)"
     },
     {
       "check": "Every row has a component SKU",
       "status": "PASS",
-      "detail": "513/513"
+      "detail": "526/526"
     },
     {
       "check": "Every row has a supplier",
       "status": "PASS",
-      "detail": "513/513"
+      "detail": "526/526"
     },
     {
       "check": "Received Date sourced from the container (not the PO date)",
       "status": "PASS",
-      "detail": "306/513 rows \u2014 blank means the container is not yet closed"
+      "detail": "317/526 rows \u2014 blank means the container is not yet closed"
     },
     {
       "check": "No raw container IDs leaked into the Container column",
@@ -54,32 +59,32 @@
     {
       "check": "Container present where assigned",
       "status": "PASS",
-      "detail": "500/513 rows have a container"
+      "detail": "513/526 rows have a container"
     },
     {
       "check": "Component images (supplier photo -> listing fallback)",
       "status": "PASS",
-      "detail": "414/513 rows; 89/178 distinct components"
+      "detail": "427/526 rows; 89/178 distinct components"
     },
     {
       "check": "Combo images",
       "status": "PASS",
-      "detail": "304/513"
+      "detail": "313/526"
     },
     {
       "check": "Top Reason populated",
       "status": "PASS",
-      "detail": "10/513 (amazon 100%, ebay ~11%, shopify has no reason column)"
+      "detail": "10/526 (amazon 100%, ebay ~11%, shopify has no reason column)"
     },
     {
       "check": "Component dataset built independently of the combo queries",
       "status": "PASS",
-      "detail": "189 rows, 26 components with their own listing; combo columns blank"
+      "detail": "192 rows, 25 components with their own listing; combo columns blank"
     },
     {
       "check": "Component rows: every row has a component SKU + supplier",
       "status": "PASS",
-      "detail": "189/189"
+      "detail": "192/192"
     },
     {
       "check": "Component rows: Listed rows carry a Listed Date",
@@ -94,12 +99,27 @@
     {
       "check": "No duplicate (product, marketplace) rows \u2014 KPI totals cannot double-count",
       "status": "PASS",
-      "detail": "combo 513 rows / component 189 rows, all unique"
+      "detail": "combo 526 rows / component 192 rows, all unique"
     },
     {
-      "check": "Record ID present and unique in both datasets",
+      "check": "No pre-2026 Listing Date leaked into either dataset",
       "status": "PASS",
-      "detail": "combo REC-00001..REC-00513, component REC-00001..REC-00189"
+      "detail": "earliest listed date = 2026-02-04"
+    },
+    {
+      "check": "Listed status implies a valid in-window Listing Date",
+      "status": "PASS",
+      "detail": "every 'Listed' row carries a >= 2026-01-01 date"
+    },
+    {
+      "check": "Not-Listed rows carry no Listing Date / URL",
+      "status": "PASS",
+      "detail": "blank date + blank url when not listed"
+    },
+    {
+      "check": "Every row carries a Record ID, one per product block",
+      "status": "PASS",
+      "detail": "354 REC-* + 178 CMP-* ids"
     },
     {
       "check": "Both datasets share the identical column layout",
@@ -115,29 +135,68 @@
   "notes": [
     "Average Feedback: no customer-review source exists in this database (searched all schemas for rating/review/feedback/star columns). Column renders 'No Reviews' for every row pending a marketplace reviews feed."
   ],
+  "supplier": {
+    "user": "temp_user",
+    "schema_usage": true,
+    "tables": {
+      "supplier.suppliers": {
+        "readable": true,
+        "rows": 47
+      },
+      "supplier.orders": {
+        "readable": true,
+        "rows": 267
+      },
+      "supplier.containers": {
+        "readable": true,
+        "rows": 25
+      },
+      "supplier.order_items": {
+        "readable": true,
+        "rows": 4029
+      },
+      "supplier.final_containers": {
+        "readable": true,
+        "rows": 16
+      },
+      "supplier.invoices": {
+        "readable": true,
+        "rows": 25
+      }
+    },
+    "missing": []
+  },
   "totals": {
-    "rows": 513,
+    "rows": 526,
     "components": 178,
-    "combos": 223,
-    "pairs": 261,
+    "combos": 228,
+    "pairs": 266,
     "gap_no_combo": 126,
-    "impressions": 9416881,
-    "clicks": 35901,
-    "orders": 636,
-    "units": 778,
-    "revenue": 11090.48,
+    "impressions": 7986931,
+    "clicks": 29540,
+    "orders": 639,
+    "units": 782,
+    "revenue": 11247.89,
     "returns": 22
   },
   "totals_components": {
-    "rows": 189,
-    "listed": 32,
-    "components_with_listing": 26,
-    "impressions": 170745,
-    "clicks": 1552,
-    "orders": 285,
-    "units": 449,
-    "revenue": 4641.23,
+    "rows": 192,
+    "listed": 34,
+    "components_with_listing": 25,
+    "impressions": 146822,
+    "clicks": 1311,
+    "orders": 295,
+    "units": 463,
+    "revenue": 4730.32,
     "returns": 13
   },
-  "duration_sec": 19.1
+  "duration_sec": 24.6,
+  "result": "FAIL",
+  "failed_hard": [
+    "Combos built from them",
+    "Component x combo pairs"
+  ],
+  "failed_soft": [
+    "Average Feedback source"
+  ]
 }

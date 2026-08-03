@@ -1,0 +1,2439 @@
+{
+ "Container 11": [
+  {
+   "sku": "LHXBTF40E27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23822.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXBTF40E27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23823.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXBTH50E27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23824.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXBTH50E27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23825.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXDE27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23742.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXDE27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23741.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHXSH1PBRWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23746.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHXSH1PBRBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23740.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXSHE27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23739.png",
+   "asins": [
+    "B0GNZDWKJ6",
+    "B0GNZHGW4X",
+    "B0GNZB4BPN",
+    "B0GMHCHY7W",
+    "B0GMHCM3ND"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXSHE27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23738.png",
+   "asins": [
+    "B0GNZLCX15",
+    "B0GNYZMC5G",
+    "B0GNYRK2GT",
+    "B0GMHQTBSQ",
+    "B0GMHFZ7C1"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXCCE27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23743.png",
+   "asins": [
+    "B0GQ9WT3WS",
+    "B0GQBBSMWN",
+    "B0GQ9FS6YG",
+    "B0GQ9FTQYJ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXCCE27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23744.png",
+   "asins": [
+    "B0GQBCXGST",
+    "B0GQB28QMR",
+    "B0GQ98ZNZ9",
+    "B0GQ94Y1LJ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXCCE27RR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23745.png",
+   "asins": [
+    "B0GQ9XX4PM",
+    "B0GQ9Z91YX",
+    "B0GQ9GRVZZ",
+    "B0GQ92JN6Y"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXIM30B22WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23737.jpg",
+   "asins": [
+    "B0GMGZJ8D5",
+    "B0GMG9FFYY"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHXWPE27PPWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23736.jpg",
+   "asins": [
+    "B0GLXRPL51",
+    "B0GP16QFYT",
+    "B0GNZRHMXW",
+    "B0GNZNKDD1",
+    "B0GP139NG9",
+    "B0GNZDJZGV",
+    "B0GNZ3DYVY",
+    "B0GNZPZ4YM",
+    "B0GNYVN663",
+    "B0GLZGC29N"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WJ018RB3PBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23726.jpg",
+   "asins": [
+    "B0GR9GG6RY"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WJ018PC3PBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23727.jpeg",
+   "asins": [
+    "B0GLZ3VBC4"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WJB603BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23728.jpg",
+   "asins": [
+    "B0GNSJ14M4"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WJM6332BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23729.jpg",
+   "asins": [
+    "B0DN687J6W"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  }
+ ],
+ "Container 12": [
+  {
+   "sku": "LSGLBG145AR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23682.jpg",
+   "asins": [
+    "B0GNYYQ542",
+    "B0GNZ9K56X"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLBT200PU",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23678.jpg",
+   "asins": [
+    "B0GQ44NJ32",
+    "B0GQZBBJFX"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLSC115AR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23664.jpg",
+   "asins": [
+    "B0GQ48BNBZ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLBC160AR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23685.jpeg",
+   "asins": [
+    "B07WP51SL6",
+    "B0GQZLFJRQ",
+    "B0GQZ9RGBD"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLULSG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23606.jpg",
+   "asins": [
+    "B0GNZ7CYNF",
+    "B0GNZ9Q62W"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLDC160AS",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23684.jpg",
+   "asins": [
+    "B0GLZ4FC6Z",
+    "B0GMD7MTCJ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLBH300WS",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23683.jpg",
+   "asins": [
+    "B0GNQZDVXL"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLWB125TN",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23677.jpg",
+   "asins": [
+    "B0GQZLYNDZ",
+    "B0GQZLYNDZ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLBG130WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23686.jpg",
+   "asins": [
+    "B0GNR6NQXD"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLWM200YC",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23671.jpg",
+   "asins": [
+    "B0GLNWFGQ7",
+    "B0GMCRC482",
+    "B0GQZLBH4Y"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLWS180YC",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23672.jpg",
+   "asins": [
+    "B0GMCRC482",
+    "B0GLNWFGQ7",
+    "B0GRGCH2JG"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLCP120SY",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23670.jpg",
+   "asins": [
+    "B0GMD4R26Y",
+    "B0GLZ4SY9Q"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLLF170AR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23663.jpg",
+   "asins": [
+    "B0GQ477V54"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLBH150WS",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23673.jpg",
+   "asins": [
+    "B0GNRHD755"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLFP245BR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23676.jpg",
+   "asins": [
+    "B0GLGQ78BC",
+    "B0GLFZ9BSJ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLFP245GR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23666.jpg",
+   "asins": [
+    "B0GLGXQ7CD",
+    "B0GLGGJD2R"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLFP245BL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23674.jpg",
+   "asins": [
+    "B0GLGZDTH6",
+    "B0GLGLH64Z"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLFP245PU",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23665.jpg",
+   "asins": [
+    "B0GLGSZJWJ",
+    "B0GLGB3M6Q"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PLTRBC",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23658.png",
+   "asins": [
+    "B0GLYS5QCP",
+    "B0GLZ2SYN4",
+    "B0GMGV1PMJ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PLTRBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23657.jpeg",
+   "asins": [
+    "B0GLZ42JJD",
+    "B0GLYWV3LG",
+    "B0GMH9D8H8"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PLTRULBC",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23669.jpeg",
+   "asins": [
+    "B0GLYZ41VT",
+    "B0GLYT7GQY"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PLTRULBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23668.jpeg",
+   "asins": [
+    "B0GLZ888M6",
+    "B0GLYWJ4WL",
+    "B0GMGKQPQP"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PL4HRR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23621.jpg",
+   "asins": [
+    "B0GLPHBN8D",
+    "B0GLNBSJMP"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PL4HBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23620.jpg",
+   "asins": [
+    "B0GLPJH67X",
+    "B0GLNHSJZ8"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PL4HBC",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23619.jpg",
+   "asins": [
+    "B0GLPLNXXC",
+    "B0GLNHVVKS"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WLFS220RR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23618.jpeg",
+   "asins": [
+    "B0GMZVHF2T",
+    "B0GN19RY8V"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WLFS220BS",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23787.jpg",
+   "asins": [
+    "B0GMZVR3R9",
+    "B0GMZY55ZG"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WLFS220BC",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23786.jpg",
+   "asins": [
+    "B0GMZPVPNR",
+    "B0GN1855BJ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSRH260AZ",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23659.jpg",
+   "asins": [
+    "B0GR625MB7"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSRT120AZ",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23660.jpeg",
+   "asins": [
+    "B0GR5Z5PX3"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSRD260AZ",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23661.jpeg",
+   "asins": [
+    "B0GR6FKHN1"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPVHRE27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23713.jpeg",
+   "asins": [
+    "B0GP749K4P",
+    "B0GP77P5Z5",
+    "B0GP87YX8W",
+    "B0GP7RHSVG",
+    "B0GP8C3TRW",
+    "B0GP84PWQN",
+    "B0GP73VLM8",
+    "B0GP6YD78R",
+    "B0GP719CDX",
+    "B0GP7TLRLZ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPVC1E27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23715.jpeg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPVWBE27WB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23714.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPVC2E27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23716.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPVGBWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23711.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPVSCE27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23712.jpeg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "SWHBSP1OSWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23708.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "SWHBPB1OSWB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23710.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "SWPC1GWHBR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23709.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHSSB22GD",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23794.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "RPR3PC10WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23795.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "RPR3PC29WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23795.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFWL2HWN",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23797.jpg",
+   "asins": [
+    "B0GSZ4BKLZ",
+    "B0GSQMT5QC"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFWL1HWN",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23798.jpg",
+   "asins": [
+    "B0GSZDK133",
+    "B0GSQLNVBZ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFWR1CHWO",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23799.jpg",
+   "asins": [
+    "B0GSZBL4H3",
+    "B0GSQLNYBN"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFWR1CHWN",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23800.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFWR1THWO",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23801.jpg",
+   "asins": [
+    "B0GSZDQCSG",
+    "B0GSQDLDGK"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFWR1LPWO",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23802.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHSWPBB22GD",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23803.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHSWPBB22CH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23804.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHSWPBB22SN",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23805.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLPLE14WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23810.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLPLE14BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23811.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLFTE14WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23812.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLFTE14BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23813.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLHTE14WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23814.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLHTE14BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23815.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLPLE27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23826.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLPLE27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23827.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHPLFTE27WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23828.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "SPPGUK3PBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23806.jpg",
+   "asins": [
+    "B0GS96Z9CF",
+    "B0GS9F62QZ",
+    "B0GR8XKW5B",
+    "B0GR96HJ79",
+    "B0GR8NCVL8"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "SPPGUK3PWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23807.jpg",
+   "asins": [
+    "B0GS93D9TC",
+    "B0GS9DQFVZ",
+    "B0GR8NP493",
+    "B0GR8T949R",
+    "B0GR8S7HKG"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "SPPGUK3PGD",
+   "sheet_image": "",
+   "asins": [
+    "B0GS9H5YGG",
+    "B0GS9MNQ44",
+    "B0GR8KX976",
+    "B0GR94SDW9",
+    "B0GR9445PS"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "SPPGUK3PTR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23809.jpg",
+   "asins": [
+    "B0GS9D8SZ6",
+    "B0GS9J7ZYR",
+    "B0GR8KYJPZ",
+    "B0GR8NMC3B",
+    "B0GR8S6J1K"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PLHNBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23646.jpg",
+   "asins": [
+    "B0GLXHL585",
+    "B0GLYGJX1J"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PLHNBS",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23648.jpg",
+   "asins": [
+    "B0GLXS2NJF",
+    "B0GLYBGWZF"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PLHNBC",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23647.jpg",
+   "asins": [
+    "B0GLWWJT8F",
+    "B0GLYG8JC1"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSIWCRPI",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23622.jpg",
+   "asins": [
+    "B0GLXN2XYY",
+    "B0GLQ4X7Y5"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSIWCRBL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23623.jpg",
+   "asins": [
+    "B0GLPQDS17",
+    "B0GLWR63B2"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSIWCRGR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23624.jpg",
+   "asins": [
+    "B0GLPYRGJ7",
+    "B0GLX33BGN"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSIWCRRE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23625.jpg",
+   "asins": [
+    "B0GLX8RGW5",
+    "B0GLPSDYZ7"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSWTPI",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/8582.jpg",
+   "asins": [
+    "B0BTPTDHWG",
+    "B0DG8YJWY3",
+    "B0BTPTDHWG",
+    "B0DG8YJWY3",
+    "B0GLYGLFSW"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSWTBL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23629.jpg",
+   "asins": [
+    "B0GLYF1ZM9",
+    "B0GLXHGNX4"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSWTGR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23630.jpg",
+   "asins": [
+    "B0GLY3KFCX",
+    "B0GLY13B5F"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSWTRE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23631.jpg",
+   "asins": [
+    "B0GLYMQ96G",
+    "B0GLXHF2G2"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHTC1PBRBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23835.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHTC1PGRGD",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23834.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHTC1PCRCH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23833.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHTT20E27YB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23833.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "COPA9TWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23837.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "COPA10TWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23838.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  }
+ ],
+ "Container 13": [
+  {
+   "sku": "WCFRO3DCPBBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23793.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCFRO3LNPYBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23789.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCFRE3LNPYBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23790.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCFRO3WDPBBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23791.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCFRO3WDPYBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23792.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23644.jpg",
+   "asins": [
+    "B0GLR34G2Q",
+    "B0GLQ6PB3J"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DGD",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23642.jpg",
+   "asins": [
+    "B0GLR16H5P",
+    "B0GLQ8J3WP"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DNB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23641.jpg",
+   "asins": [
+    "B0GLRT4KXS",
+    "B0GLPZPXC1"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DOR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23640.jpg",
+   "asins": [
+    "B0GLR5F57B",
+    "B0GLQBYTGK"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DBU",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23639.jpg",
+   "asins": [
+    "B0GLR9TLTX",
+    "B0GLQ72BZ8"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DRE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23638.jpg",
+   "asins": [
+    "B0GLQXPNCP",
+    "B0GLQBNF6L"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DGY",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23637.jpg",
+   "asins": [
+    "B0GLQTHFPB",
+    "B0GLQ2N3MN"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DYE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23636.jpg",
+   "asins": [
+    "B0GLQYRR7B",
+    "B0GLQC394Y"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DCB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23635.jpg",
+   "asins": [
+    "B0GLRKC9L5",
+    "B0GLQ245L8"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DBI",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23634.jpg",
+   "asins": [
+    "B0GLQZ7L1Z",
+    "B0GLPXD3LQ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSCY290DBT",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23633.jpg",
+   "asins": [
+    "B0GLR6RM6P",
+    "B0GLQ28C6T"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFSDC1BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23616.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL9015GY",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23604.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL606CL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23605.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL10014CL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23607.jpg",
+   "asins": [
+    "B0GTMZWFCD",
+    "B0GTMJFSTP",
+    "B0GTMQW1WF",
+    "MERCHANT",
+    "B0GTMT5N9B",
+    "B0GTJ5P1KW",
+    "B0GTHT26DV",
+    "B0GTHJQKPG",
+    "B0GTJ1BS3K"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL6016CL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23610.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL9015CL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23613.jpg",
+   "asins": [
+    "B0GT4SFWFY",
+    "B0GT4GWLHW"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL7512CL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23615.jpg",
+   "asins": [
+    "B0CS6MSRCZ"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL10012AR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23614.jpg",
+   "asins": [
+    "B0GR8RKQ23",
+    "B0GQZLFJRQ",
+    "B0GR893H5P"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL15014CL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23612.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGL9015WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23611.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLULCL",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23609.jpg",
+   "asins": [
+    "B0GSRQM519",
+    "B0GSR3M9RD",
+    "B0GSG2GQ99",
+    "B0GSFB5MT6"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLTNAR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23608.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSGLULSG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23606.jpg",
+   "asins": [
+    "B0GNZ7CYNF",
+    "B0GNZ9Q62W",
+    "B0GNZ7CYNF"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSHM240BG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23617.jpeg",
+   "asins": [
+    "B0GMW9YWCV",
+    "B0GMW7JNRP",
+    "B0GMVXCZ14",
+    "B0GMVW1FKR",
+    "B0GLZZ7RTQ",
+    "B0GLZDQ311",
+    "B0GLZB6539",
+    "B0GLZ4GN7P",
+    "B0GLXBQ1FT",
+    "B0GLX6PHSN"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT220BW",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23816.jpg",
+   "asins": [
+    "B0GMRCLVCX",
+    "B0GMR5VGVG",
+    "B0GMRH36DQ",
+    "B0GMPDVMCB",
+    "B0GMP89W89",
+    "B0GMPBX8D6"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSWTCBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23821.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  }
+ ],
+ "Container 14": [
+  {
+   "sku": "WCBTC100FG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23703.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCBTC120FG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23704.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCBTC140FG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23705.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCBSF120FG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23707.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WCBSF90FG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23706.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255GR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23698.png",
+   "asins": [
+    "B0GQZ5K8FZ",
+    "B0GQTGMKGC"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255GY",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23697.png",
+   "asins": [
+    "B0GQTDRCM6"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255BT",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23696.png",
+   "asins": [
+    "B0GQZ28WNN",
+    "B0GQTKCX4S"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255CB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23695.png",
+   "asins": [
+    "B0GQZ9N8MG",
+    "B0GQTG8JTS"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255BD",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23694.png",
+   "asins": [
+    "B0GQZH3M9D",
+    "B0GQTHNP61"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255RE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23692.png",
+   "asins": [
+    "B0GQYZ8GN4",
+    "B0GQTMZXJ2"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255BI",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23691.png",
+   "asins": [
+    "B0GQZKM8GB",
+    "B0GQTD87KL"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSFT255WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23690.png",
+   "asins": [
+    "B0GQZFPN3X",
+    "B0GQT8XQTL"
+   ],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHTMPSE27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23700.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHTMCE27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23699.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHSH2BMTBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23702.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHSH2BMTYB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23701.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PSL45P05OS2HYBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23651.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PSL4P25OS3HNBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23652.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PSL45P05OS3HYBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23653.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PSL4P25OS2HNBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23654.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PSL45P05OS2HYWH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23656.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PSL2P15OS2HNBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23655.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "IMACWW",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23722.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "IMACRG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23721.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "IMACGR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23720.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "IMACYE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23719.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "IMACCW",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23718.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "IMYE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23717.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WLFS220YBG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23846.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  }
+ ],
+ "Container 15": [
+  {
+   "sku": "WLIP65UPBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23649.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WLIP65DNBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23650.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  }
+ ],
+ "Container 16": [
+  {
+   "sku": "LSSC310BI",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23730.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSSC310GR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23731.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSSC310GY",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23732.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSSC310RE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23734.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSSC310OR",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23733.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSAFT200BG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23772.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSAHQS150BG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23773.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSACY195BG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23779.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSACY195BG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23689.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSAFT200BG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23687.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WLWOHTBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23769.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WLWOFTWO",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23770.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSCYMUBG",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23768.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSCYMUBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23767.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WS2HTBMYB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23780.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHIFT1PCRCH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23774.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHIFT1PBRYB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23771.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHIFT1PBRBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23775.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHIFTE27BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23777.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHIFTE27CH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23778.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LHIFTE27YB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23776.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80303BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23747.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80304BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23753.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80303CO",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23749.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80305BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23757.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80305YB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23758.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80303CH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23748.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80303YB",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23750.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80305CH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23756.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80305CO",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23755.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80303SN",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23751.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP60603BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23752.png",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP60605BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23759.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP60605WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23760.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP60603WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23761.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP60601BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23762.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80305WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23754.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80305SN",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23763.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSP80303WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23764.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFM110080BM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23766.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "CRSFM110080WH",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23765.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "WSAT105YB",
+   "sheet_image": "http://dashboard.digitweblk.com/Productimages/WSAT105YB.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "LSF1HT400HE",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23294.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PHBAF1BMRBM",
+   "sheet_image": "https://dashboard.digitweblk.com/Productimages/23247.jpg",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  },
+  {
+   "sku": "PCRMFF",
+   "sheet_image": "",
+   "asins": [],
+   "ebay_ids": [],
+   "sheet_amazon": false,
+   "sheet_ebay": false,
+   "sheet_shopify": false,
+   "confirmed": false
+  }
+ ]
+}

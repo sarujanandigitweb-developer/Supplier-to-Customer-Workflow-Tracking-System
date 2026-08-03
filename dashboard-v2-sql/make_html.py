@@ -97,7 +97,7 @@ tbody tr.grp:hover td.ridcol{{color:var(--text)}}
      overflow-y as `visible`, so only horizontal scrolling worked */
   overflow-x:auto; overflow-y:auto;
   flex:1 1 auto; min-height:220px; max-height:calc(100vh - 300px);
-  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;   /* don't chain the scroll to the page at the edges */
 }}
 .panel table{{min-width:max-content}}   /* never squeeze columns -- scroll instead */
 .panel thead th{{position:sticky; top:-1px; z-index:4}}
@@ -229,6 +229,54 @@ tbody tr.grp:hover td.mcol{{
   .phead #viewtabs{{margin-left:0;width:100%}}
   .phead #viewtabs .tab{{flex:1 1 0;text-align:center}}
 }}
+/* ---- HEADER vs BODY separation -------------------------------------------
+   thead th inherited background:var(--bg2) from V1 — the exact same token the
+   product cells (td.pcol) and the Record ID column use, so the header read as
+   just another data row. Give the header its own deeper tone plus a solid
+   2px rule, and make its label type stronger. Declared last so it wins over
+   the .pcol / .ridcol background rules above. */
+thead th,
+thead th.pcol,
+thead th.ridcol,
+.panel thead th{{
+  background-color:#dbe2ed !important;
+  color:#4a586d;
+  font-weight:800;
+  letter-spacing:.045em;
+  border-bottom:2px solid #c3cddc;
+  box-shadow:inset 0 -1px 0 #c3cddc;
+}}
+thead th.mstart{{border-left:2px solid #c3cddc}}
+thead th.sorted{{color:var(--accent)}}
+[data-theme="dark"] thead th,
+[data-theme="dark"] thead th.pcol,
+[data-theme="dark"] thead th.ridcol,
+[data-theme="dark"] .panel thead th{{
+  background-color:#202b3b !important;
+  color:#a8b8cd;
+  border-bottom:2px solid #38455a;
+  box-shadow:inset 0 -1px 0 #38455a;
+}}
+[data-theme="dark"] thead th.mstart{{border-left:2px solid #38455a}}
+[data-theme="dark"] thead th.sorted{{color:var(--accent)}}
+/* ---- compact table footer ----------------------------------------------
+   The footer was three stacked bands: a full-width hint line, the pager row,
+   and the panel's 18px bottom padding. The hint now shares the pager row and
+   the remaining paddings are tightened, cutting ~40px of dead height without
+   losing any control or information. */
+.tablehint{{margin-top:0; font-size:11.5px; opacity:.85}}
+.panel .pageinfo{{
+  margin-top:0; padding-top:6px; gap:10px;
+  border-top:1px solid var(--line2);   /* separates footer from the table body */
+  font-size:12px; min-height:0;
+}}
+.panel .pginfo-left{{gap:12px; row-gap:2px}}
+.panel .pagebtns{{gap:6px}}
+.panel .btn.pg{{padding:4px 10px; font-size:12px; line-height:1.4}}
+.panel{{padding-bottom:10px}}          /* was 18px */
+@media(max-width:760px){{
+  .tablehint{{display:none}}           /* keep the pager on one line on phones */
+}}
 </style>
 </head>
 <body>
@@ -284,9 +332,9 @@ tbody tr.grp:hover td.mcol{{
         <div class="tablewrap">
           <table id="tbl"><thead><tr id="thead"></tr></thead><tbody id="tbody"></tbody></table>
         </div>
-        <div class="tablehint">💡 Click any marketplace row to open the full record — every column, one page.</div>
         <div class="pageinfo">
-          <div class="pginfo-left"><span id="pginfo"></span></div>
+          <div class="pginfo-left"><span id="pginfo"></span>
+            <span class="tablehint">💡 Click any marketplace row to open the full record.</span></div>
           <div class="pagebtns">
             <button type="button" class="btn pg" id="prev">‹ Prev</button><span id="pgnum"></span><button type="button" class="btn pg" id="next">Next ›</button>
           </div>

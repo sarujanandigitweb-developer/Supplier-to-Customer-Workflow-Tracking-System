@@ -319,17 +319,6 @@ multi-component products share a supplier; 9 genuinely differ.
    one pipeline but not its successor provides no protection.
 4. **Never render a foreign key as a business value.** `COALESCE(name, raw_id)`
    is a silent failure: it looks like a value and reads as data. Prefer blank.
-5. **Match the data source to the entity's role.** Component photos live in the
-   supplier system because components are purchased parts; combo photos live in
-   marketplace listings because combos are sold. Using one source for both cost
-   66 of 178 component images.
-6. **Reusing another page's stylesheet inherits its specificity.** When
-   extending an existing design system, match or exceed the original selector
-   specificity and verify computed styles — do not assume a later rule wins.
-7. **Grouping a table can expose data defects that a flat table hides.**
-   Repeated columns camouflage duplicate rows; collapsing them made a 5-month-old
-   class of duplication immediately visible.
-
 ---
 
 ## 9. LLM STANDARD CHECK
@@ -365,7 +354,4 @@ multi-component products share a supplier; 9 genuinely differ.
 | Average Feedback source | **FAIL (declared)** — no review table exists |
 | Published to Varman AIOS | id 65, MD5 verified against local file |
 
-**Totals (Combos):** 9,416,881 impressions · 35,901 clicks · 636 orders ·
-778 units · £11,090.48 revenue · 22 returns · 2.83% return rate.
-**Totals (Components):** 170,745 impressions · 285 orders · £4,641.23 revenue.
 
