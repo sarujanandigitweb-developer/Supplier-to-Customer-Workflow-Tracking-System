@@ -1,0 +1,188 @@
+{
+  "run": "20260804_110002",
+  "checks": [
+    {
+      "check": "supplier schema readable by temp_user",
+      "status": "PASS",
+      "detail": "supplier.suppliers=47; supplier.orders=267; supplier.containers=25; supplier.order_items=4029"
+    },
+    {
+      "check": "supplier cache integrity",
+      "status": "PASS",
+      "detail": "1541/1541 have Supplier Name, 1488/1541 have Container"
+    },
+    {
+      "check": "Inventory: new SKUs present",
+      "status": "PASS",
+      "detail": "3465 SKUs in scope"
+    },
+    {
+      "check": "Listing Data: listed rows present",
+      "status": "PASS",
+      "detail": "3236 listed rows"
+    },
+    {
+      "check": "Component Data present",
+      "status": "PASS",
+      "detail": "1909 components"
+    },
+    {
+      "check": "Combo Mapping present",
+      "status": "PASS",
+      "detail": "2910 combos/packs mapped"
+    },
+    {
+      "check": "Component Mapping (descriptions)",
+      "status": "PASS",
+      "detail": "5160/5160 rows have a description"
+    },
+    {
+      "check": "Every row has an anchor date",
+      "status": "PASS",
+      "detail": "crecv||ldate||ccreate"
+    },
+    {
+      "check": "Listed rows all carry a Listing Date",
+      "status": "PASS",
+      "detail": "no blank listing dates"
+    },
+    {
+      "check": "Listing Dates within window",
+      "status": "PASS",
+      "detail": ">= 2026-01-01"
+    },
+    {
+      "check": "Listing URLs present on listed rows",
+      "status": "PASS",
+      "detail": "3236/3236"
+    },
+    {
+      "check": "Product Images available",
+      "status": "PASS",
+      "detail": "3957/5160 rows (76%) \u2014 rest have no image in listing_data"
+    },
+    {
+      "check": "Orders / Sales fetched",
+      "status": "PASS",
+      "detail": "4074 orders, revenue 117083.75"
+    },
+    {
+      "check": "Revenue reconciles to independent PostgreSQL total",
+      "status": "PASS",
+      "detail": "dashboard=117083.75  independent=117083.75"
+    },
+    {
+      "check": "Traffic fetched",
+      "status": "PASS",
+      "detail": "55,061,691 impressions"
+    },
+    {
+      "check": "Returns fetched",
+      "status": "PASS",
+      "detail": "288 units returned"
+    }
+  ],
+  "datasets": {
+    "Listing Data": {
+      "rows": 3236,
+      "source": "public.listing_data"
+    },
+    "Returns": {
+      "units": 288,
+      "source": "amazon/ebay/shopify_returns"
+    },
+    "Traffic": {
+      "impressions": 55061691,
+      "clicks": 167032,
+      "source": "traffic_data + ppc_performance"
+    },
+    "Supplier": {
+      "rows_with_supplier": 4183,
+      "rows_with_container": 4053,
+      "source": "supplier.* (cache)"
+    },
+    "Orders": {
+      "orders": 4074,
+      "source": "public.order_transaction"
+    },
+    "Sales": {
+      "revenue": 117083.75,
+      "units": 5830,
+      "source": "public.order_transaction"
+    },
+    "Inventory": {
+      "new_skus": 3465,
+      "source": "public.inv_products"
+    },
+    "Component Data": {
+      "components": 1909,
+      "source": "public.inv_products"
+    },
+    "Combo Data": {
+      "combos": 1556,
+      "source": "public.inv_product_combo"
+    },
+    "Product Images": {
+      "rows": 3957,
+      "source": "listing_data.main_image_url"
+    },
+    "Listing URLs": {
+      "rows": 3236,
+      "source": "listing_data.listing_url"
+    }
+  },
+  "supplier": {
+    "schema_usage": true,
+    "tables": {
+      "supplier.suppliers": {
+        "readable": true,
+        "rows": 47
+      },
+      "supplier.orders": {
+        "readable": true,
+        "rows": 267
+      },
+      "supplier.containers": {
+        "readable": true,
+        "rows": 25
+      },
+      "supplier.order_items": {
+        "readable": true,
+        "rows": 4029
+      }
+    },
+    "missing": [],
+    "mode": "live",
+    "skus_with_supplier_chain": 1541,
+    "fallback_file": "dashboard-v1-sql/supplier_fresh.psv",
+    "fields_validated": [
+      "Supplier Name",
+      "Supplier ID",
+      "Container",
+      "Purchase Order",
+      "Order Items"
+    ]
+  },
+  "errors": [],
+  "result": "PASS",
+  "failed_hard": [],
+  "duration_sec": 84.1,
+  "rows": 5160,
+  "listed": 3236,
+  "not_listed": 1924,
+  "fill": {
+    "cont": 4053,
+    "sup": 4183,
+    "csku": 5159,
+    "cdesc": 5160,
+    "crecv": 5160,
+    "combo": 2478,
+    "cname": 1645,
+    "used": 4497,
+    "ccreate": 2478,
+    "cqty": 3957,
+    "plat": 3610,
+    "url": 3236,
+    "ldate": 3236
+  }
+}

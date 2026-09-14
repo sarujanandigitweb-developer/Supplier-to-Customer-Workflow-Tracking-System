@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
-# SCWTS Dashboard V2 — daily refresh, then publish to Varman AIOS.
+# SCWTS Dashboard V3 (Container-to-Customer) — daily refresh, then publish to
+# Varman AIOS.  Same three-stage structure as refresh_and_publish_v2.sh.
 #
-# Called by cron at 11:00 (see `crontab -l`). Three gated stages:
-#   1. dashboard-v2-sql/build_v2.py   -> probes supplier-schema access with the
-#      project credential, fetches Listing / Traffic / Orders / Returns /
-#      Supplier data fresh from PostgreSQL, runs 26 validation checks and
-#      regenerates dashboard-v2-sql/payload_v2.json.
+# Called by cron at 16:00 (see `crontab -l`). Three gated stages:
+#   1. dashboard-v3-sql/build_v3.py       -> reads the Google-Sheet container
+#      mapping (sheet_containers.json), probes source availability, fetches
+#      Listing / Traffic / Orders / Returns fresh from PostgreSQL, runs the
+#      validation checks and regenerates dashboard-v3-sql/payload_v3.json.
 #      Exits NON-ZERO if any HARD check fails.
-#   2. dashboard-v2-sql/make_html.py  -> embeds that payload into
-#      dashboard-v2/index.html (self-contained, no external assets).
-#   3. dashboard-v2-update/push_to_hub.js -> upserts the finished HTML into
+#   2. dashboard-v3-sql/make_html_v3.py   -> embeds that payload into
+#      dashboard-v3/index.html (self-contained, no external assets).
+#   3. dashboard-v3-update/push_to_hub.js -> upserts the finished HTML into
 #      varman_aios.hub_pages. This is the EXISTING Varman AIOS uploader,
-#      reused as-is (byte-identical to dashboard-v1-update/push_to_hub.js).
+#      reused as-is (byte-identical to dashboard-v2-update/push_to_hub.js).
 #
 # Stage 3 runs ONLY if stages 1-2 exited 0 AND the HTML passes sanity checks,
 # so a failed or partial build can never overwrite yesterday's good dashboard.
 #
-# V1 (dashboard-v1) publishes to a DIFFERENT slug from its own script; this
-# script never touches it.
+# V1 and V2 publish to DIFFERENT slugs from their own scripts; this script
+# never touches them.
 #
 # Credentials: taken from the environment (optionally an adjacent .env), with
 # the project defaults as a fallback. The connection string is never printed —
@@ -28,15 +29,15 @@ set -uo pipefail
 
 PROJECT="/home/led-247/Supplier-to-Customer-Workflow-Tracking-System"
 MEMBER_NAME="sarujanan"
-PAGE_SLUG="supplier-to-customer-workflow-tracking-v2"
-PAGE_TITLE="Supplier to Customer Tracking System V2"
-HTML="$PROJECT/dashboard-v2/index.html"
-BUILDER="$PROJECT/dashboard-v2-sql/build_v2.py"
-COMPOSER="$PROJECT/dashboard-v2-sql/make_html.py"
-PUSHER_DIR="$PROJECT/dashboard-v2-update"
-LOG="$PROJECT/logs/automation_v2.log"
-LOCK="$PROJECT/logs/.v2.lock"
-MIN_BYTES=300000          # a healthy V2 dashboard is ~475 KB; never publish a stub
+PAGE_SLUG="container-to-customer-workflow-tracking"
+PAGE_TITLE="Container Tracking V3 — Supplier's Basket to Customer's Home"
+HTML="$PROJECT/dashboard-v3/index.html"
+BUILDER="$PROJECT/dashboard-v3-sql/build_v3.py"
+COMPOSER="$PROJECT/dashboard-v3-sql/make_html_v3.py"
+PUSHER_DIR="$PROJECT/dashboard-v3-update"
+LOG="$PROJECT/logs/automation_v3.log"
+LOCK="$PROJECT/logs/.v3.lock"
+MIN_BYTES=300000          # a healthy V3 dashboard is ~455 KB; never publish a stub
 
 # cron gets a bare environment — set an explicit PATH.
 PATH=/usr/local/bin:/usr/bin:/bin
@@ -51,12 +52,12 @@ redact() { sed -E 's#(postgres(ql)?://[^:/@]+:)[^@]*@#\1***REDACTED***@#g' >> "$
 # builds would hammer the same PostgreSQL traffic tables concurrently).
 exec 9>"$LOCK"
 if ! flock -n 9; then
-  log "SKIPPED — another V2 run is still in progress (lock held)"
+  log "SKIPPED — another V3 run is still in progress (lock held)"
   exit 0
 fi
 
 START_TS=$(date +%s)
-log "================ SCWTS V2 refresh + publish started ================"
+log "================ SCWTS V3 refresh + publish started ================"
 
 # --- database credentials (env > .env > project defaults) --------------------
 [ -r "$PROJECT/.env" ] && . "$PROJECT/.env"
@@ -66,12 +67,18 @@ export PGDATABASE="${PGDATABASE:-order_management_copy}"
 export PGUSER="${PGUSER:-temp_user}"
 export PGPASSWORD="${PGPASSWORD:-12we34rt}"
 
-# --- stage 1: fetch fresh data, probe supplier access, validate --------------
-# Data comes from LEDSone (LEDSONE_PG* in .env); the PG* database above is used
-# only for the deleted-product reference and the Varman AIOS hub publish.
-log "stage 1 build: starting (fresh fetch from LEDSone ${LEDSONE_PGHOST:-<unset>}:${LEDSONE_PGPORT:-5432}/${LEDSONE_PGDATABASE:-<unset>} as ${LEDSONE_PGUSER:-<unset>}; deleted-flag reference ${PGHOST}:${PGPORT}/${PGDATABASE})"
+# --- the Google Sheet mapping is V3's scope authority; without it, stop -------
+SHEETMAP="$PROJECT/dashboard-v3-sql/sheet_containers.json"
+if [ ! -s "$SHEETMAP" ]; then
+  log "stage 1 build: SKIPPED — container mapping $SHEETMAP is missing or empty."
+  log "  Re-generate it with: python3 dashboard-v3-sql/read_sheet.py"
+  log "================ finished (exit 1) ================"; exit 1
+fi
+
+# --- stage 1: fetch fresh data, validate, regenerate the payload -------------
+log "stage 1 build: starting (fresh fetch from ${PGHOST}:${PGPORT}/${PGDATABASE} as ${PGUSER})"
 if /usr/bin/python3 "$BUILDER" 2>&1 | redact; then
-  log "stage 1 build: OK — supplier access verified, datasets validated, payload regenerated"
+  log "stage 1 build: OK — container mapping applied, datasets validated, payload regenerated"
 else
   log "stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish"
   log "================ finished (exit 1) ================"
@@ -80,7 +87,7 @@ fi
 
 # --- stage 2: embed the payload into the HTML --------------------------------
 if /usr/bin/python3 "$COMPOSER" 2>&1 | redact; then
-  log "stage 2 compose: OK — payload embedded into dashboard-v2/index.html"
+  log "stage 2 compose: OK — payload embedded into dashboard-v3/index.html"
 else
   log "stage 2 compose: FAILED — HTML not regenerated, skipping publish"
   log "================ finished (exit 1) ================"
@@ -97,13 +104,18 @@ if [ "$BYTES" -lt "$MIN_BYTES" ]; then
   log "stage 3 publish: SKIPPED — HTML only ${BYTES}B (< ${MIN_BYTES}B floor)"
   log "================ finished (exit 1) ================"; exit 1
 fi
-for marker in 'const PAYLOAD =' 'id="tbl"' 'id="tbody"' 'id="viewtabs"' '</html>'; do
+for marker in 'const PAYLOAD =' 'id="tbl"' 'id="tbody"' 'id="conttabs"' '</html>'; do
   if ! grep -qF "$marker" "$HTML"; then
     log "stage 3 publish: SKIPPED — '$marker' missing from HTML"
     log "================ finished (exit 1) ================"; exit 1
   fi
 done
-log "sanity: OK — ${BYTES} bytes, PAYLOAD + table + tabs + closing tag present"
+# self-contained check: the hub renders the page as-is, external assets break it
+if grep -qE '<script[^>]*src="|<link[^>]*href="https?://' "$HTML"; then
+  log "stage 3 publish: SKIPPED — HTML references an external asset; must be self-contained"
+  log "================ finished (exit 1) ================"; exit 1
+fi
+log "sanity: OK — ${BYTES} bytes, PAYLOAD + table + container tabs + closing tag present, self-contained"
 
 # --- stage 3: publish via the EXISTING Varman AIOS upload implementation ------
 HUB_DB_URL="$(/usr/bin/python3 - <<'PY'
@@ -133,12 +145,14 @@ unset HUB_DB_URL
 # --- execution summary -------------------------------------------------------
 ELAPSED=$(( $(date +%s) - START_TS ))
 RESULT=$(/usr/bin/python3 -c "
-import json,sys
+import json
 try:
-    v=json.load(open('$PROJECT/dashboard-v2-sql/validation_v2.json'))
-    t=v.get('totals',{}); tc=v.get('totals_components',{})
-    print(f\"Result: {v.get('result','?')} | combo rows {t.get('rows','?')} / component rows {tc.get('rows','?')}\"
-          f\" | revenue {t.get('revenue','?')} | impressions {t.get('impressions','?')}\")
+    v=json.load(open('$PROJECT/dashboard-v3-sql/validation_v3.json'))
+    t=v.get('totals',{})
+    fails=[c['check'] for c in v.get('checks',[]) if c['status']=='FAIL']
+    print(f\"containers {t.get('containers','?')} | components {t.get('components','?')}\"
+          f\" | rows {t.get('rows','?')} | listed {t.get('listed','?')}\"
+          f\" | revenue {t.get('revenue','?')} | soft-fails {len(fails)}\")
 except Exception as e:
     print('validation summary unavailable:', e)
 " 2>/dev/null)

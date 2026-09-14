@@ -1,5 +1,5 @@
 {
-  "run": "20260731_171507",
+  "run": "20260914_160001",
   "checks": [
     {
       "check": "Container -> Component mapping from the Google Sheet",
@@ -9,7 +9,7 @@
     {
       "check": "Every row carries a Container and a Component SKU",
       "status": "PASS",
-      "detail": "776/776"
+      "detail": "816/816"
     },
     {
       "check": "Every sheet SKU is represented in the dashboard",
@@ -19,17 +19,17 @@
     {
       "check": "No duplicate (container, product, marketplace) rows \u2014 no fan-out",
       "status": "PASS",
-      "detail": "776 rows, all unique"
+      "detail": "816 rows, all unique"
     },
     {
       "check": "Component -> Combo mapping",
       "status": "PASS",
-      "detail": "295 combos derived for 111/209 components (inv_product_combo is EMPTY \u2014 derived from SKU naming, an inference)"
+      "detail": "298 combos derived for 113/209 components (inv_product_combo is EMPTY \u2014 derived from SKU naming, an inference)"
     },
     {
       "check": "Combo -> Marketplace mapping",
       "status": "PASS",
-      "detail": "658 listed rows, every one carries a Listed Date"
+      "detail": "683 listed rows, every one carries a Listed Date"
     },
     {
       "check": "Listing Status consistent with Listed Date",
@@ -37,19 +37,29 @@
       "detail": "no mismatches"
     },
     {
+      "check": "Component Image comes from the Google Sheet (not listing_data)",
+      "status": "PASS",
+      "detail": "207/207 sheet-image SKUs render the sheet URL; 93 corrected away from a marketplace image"
+    },
+    {
+      "check": "Every component SKU has an image",
+      "status": "FAIL",
+      "detail": "207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD"
+    },
+    {
       "check": "Images",
       "status": "PASS",
-      "detail": "component 774/776, combo 656/776"
+      "detail": "component 814/816, combo 700/816"
     },
     {
       "check": "Traffic fetched",
       "status": "PASS",
-      "detail": "23,469,724 impressions, 72,120 clicks"
+      "detail": "26,185,158 impressions, 85,518 clicks"
     },
     {
       "check": "Orders / Revenue fetched",
       "status": "PASS",
-      "detail": "1296 orders, \u00a326,666.85"
+      "detail": "1613 orders, \u00a336,081.58"
     },
     {
       "check": "Return Rate math",
@@ -59,22 +69,22 @@
     {
       "check": "Sheet SKUs resolvable in listing_data",
       "status": "PASS",
-      "detail": "95/209 have a listing; the rest show as Not Listed"
+      "detail": "93/209 have a listing; the rest show as Not Listed"
     },
     {
       "check": "inv_products sourced from LEDs One inventory.products (NOT public.inv_products)",
       "status": "PASS",
-      "detail": "420 products cached from LEDs One; public.inv_products has 0 rows and is not used"
+      "detail": "420 products cached from LEDs One; public.inv_products has 44496 rows and is not used"
     },
     {
       "check": "Component Created Dates populated from LEDs One",
       "status": "FAIL",
-      "detail": "775/776 rows"
+      "detail": "815/816 rows"
     },
     {
       "check": "Combo Created Dates populated from LEDs One",
       "status": "FAIL",
-      "detail": "556/659 combo rows"
+      "detail": "569/703 combo rows"
     },
     {
       "check": "Every sheet component found in LEDs One inventory.products",
@@ -92,24 +102,29 @@
       "detail": "no customer-review table on this DB \u2014 renders 'No Reviews'"
     }
   ],
-  "notes": [
-    "public.inv_products is a stale/dead copy (0 rows) -- NOT used. inv_products data is sourced from LEDs One MCP inventory.products."
-  ],
+  "notes": [],
   "gaps": [
-    "inv_product_combo empty -> combos derived from SKU naming convention",
-    "returns tables empty/dropped -> Returns, Return Rate, Top Reason unavailable",
     "no customer-review source on this DB -> Average Feedback unavailable"
   ],
   "source_availability": {
-    "public.inv_products": 0,
-    "public.inv_product_combo": 0,
-    "public.listing_data": 335981,
-    "public.order_transaction": 1244420,
-    "public.traffic_data": 9525363,
-    "public.ppc_performance": 26074826,
-    "public.amazon_returns": 4938,
-    "public.ebay_returns": null,
-    "public.shopify_returns": null
+    "public.inv_products": 44496,
+    "public.inv_product_combo": 122104,
+    "public.listing_data": 336456,
+    "public.order_transaction": 1278955,
+    "public.traffic_data": 10464195,
+    "public.ppc_performance": 28243179,
+    "public.amazon_returns": 15417,
+    "public.ebay_returns": 41745,
+    "public.shopify_returns": 1987
+  },
+  "sheet_images": {
+    "components": 209,
+    "from_sheet": 207,
+    "overrode_listing_image": 93,
+    "no_sheet_image": [
+      "PCRMFF",
+      "SPPGUK3PGD"
+    ]
   },
   "missing_from_ledsone": [
     "PCRMFF"
@@ -118,23 +133,23 @@
     "containers": 6,
     "sheet_rows": 210,
     "components": 209,
-    "combos": 295,
-    "rows": 776,
-    "listed": 658,
-    "impressions": 23469724,
-    "clicks": 72120,
-    "orders": 1296,
-    "units": 1890,
-    "revenue": 26666.85,
-    "returns": 94
+    "combos": 298,
+    "rows": 816,
+    "listed": 683,
+    "impressions": 26185158,
+    "clicks": 85518,
+    "orders": 1613,
+    "units": 2451,
+    "revenue": 36081.58,
+    "returns": 124
   },
   "per_container": {
-    "Container 11": 83,
-    "Container 12": 325,
-    "Container 13": 165,
-    "Container 14": 91,
+    "Container 11": 102,
+    "Container 12": 326,
+    "Container 13": 170,
+    "Container 14": 94,
     "Container 15": 2,
-    "Container 16": 110
+    "Container 16": 122
   },
-  "duration_sec": 123.5
+  "duration_sec": 168.5
 }

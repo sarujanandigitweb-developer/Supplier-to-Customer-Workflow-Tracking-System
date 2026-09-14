@@ -173,14 +173,32 @@ FROM res r JOIN prod p ON p.sku = r.resolved
 WHERE COALESCE(r.main_image_url,'')<>''
 ORDER BY r.resolved, r.listed_on DESC, r.ref_id""")
 img_any = dict(cur.fetchall())
-# the sheet also carries an image per component -- used as the first choice
 def clean_url(u):
     u = (u or "").strip()
     return u if u.lower().startswith(("http://", "https://")) else ""
+
+# COMPONENT IMAGE = the Google Sheet's "Image Link", which is the authority.
+# BUG FIXED 2026-08-03: this used img_any.setdefault(s, si), and because
+# img_any was already populated from listing_data above, setdefault was a no-op
+# for every SKU that had a listing -- so the marketplace image silently won and
+# the sheet image was discarded (e.g. LHPVHRE27WH showed a Shopify photo instead
+# of Productimages/23713.jpeg). Assign directly so the sheet always wins; the
+# listing image survives only as the fallback for SKUs the sheet has no image for.
+sheet_img_used, sheet_img_override, sheet_img_missing = 0, 0, []
 for s in SKUS:
     si = clean_url((sheet_meta.get(s) or {}).get("sheet_image"))
-    if si: img_any.setdefault(s, si)
+    if si:
+        if img_any.get(s) and img_any[s] != si: sheet_img_override += 1
+        img_any[s] = si                     # <-- sheet is the source of truth
+        sheet_img_used += 1
+    else:
+        sheet_img_missing.append(s)
 img_any = {k: clean_url(v) for k, v in img_any.items() if clean_url(v)}
+VAL["sheet_images"] = {"components": len(SKUS), "from_sheet": sheet_img_used,
+                       "overrode_listing_image": sheet_img_override,
+                       "no_sheet_image": sheet_img_missing}
+print(f"component images from sheet: {sheet_img_used}/{len(SKUS)} "
+      f"({sheet_img_override} corrected from listing_data, {len(sheet_img_missing)} have none)")
 
 # ---------- 6. TRAFFIC, from each listing's own Listed Date to today ---------
 cur.execute("""
@@ -325,6 +343,16 @@ check("Combo -> Marketplace mapping",
       f"{listed_n} listed rows, every one carries a Listed Date")
 check("Listing Status consistent with Listed Date",
       all((r[B['stat']] == 'Listed') == bool(r[B['ldate']]) for r in rows), "no mismatches")
+sh = VAL["sheet_images"]
+comp_img_from_sheet = {c for r in rows for c, im, _ in (r[B['comps']] or [])
+                       if im and im == clean_url((sheet_meta.get(c) or {}).get("sheet_image"))}
+check("Component Image comes from the Google Sheet (not listing_data)",
+      len(comp_img_from_sheet) == sh["from_sheet"],
+      f"{len(comp_img_from_sheet)}/{sh['from_sheet']} sheet-image SKUs render the sheet URL; "
+      f"{sh['overrode_listing_image']} corrected away from a marketplace image")
+check("Every component SKU has an image", not sh["no_sheet_image"],
+      f"{sh['from_sheet']}/{sh['components']} from sheet"
+      + (f"; NO sheet image: {', '.join(sh['no_sheet_image'][:8])}" if sh["no_sheet_image"] else ""))
 check("Images", True, f"component {f('cimg')}/{N}, combo {f('bimg')}/{N}")
 check("Traffic fetched", sum(r[B['impr']] for r in rows) >= 0,
       f"{sum(r[B['impr']] for r in rows):,} impressions, {sum(r[B['clk']] for r in rows):,} clicks")

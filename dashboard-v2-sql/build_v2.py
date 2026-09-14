@@ -40,7 +40,23 @@ T0    = time.time()
 # fallback. Hardcoding these made the orchestrator's exported PGHOST/PGUSER a
 # no-op: a run pointed at an unreachable host still "succeeded" because the
 # builder quietly used the baked-in address (found 2026-07-29).
-DB = dict(host=os.getenv("PGHOST", "149.28.134.54"),
+#
+# DATA SOURCE (migrated 2026-09-14): the LEDSone database. Its credentials come
+# ONLY from the environment (project .env: LEDSONE_PG*) -- never hard-coded.
+# The old order_management_copy (PG*) is read for ONE value only: the product
+# isdeleted flag, which LEDSone's inventory.products does not carry. See
+# v2_sources.py for every old-table -> LEDSone mapping.
+_missing = [k for k in ("LEDSONE_PGHOST", "LEDSONE_PGDATABASE", "LEDSONE_PGUSER", "LEDSONE_PGPASSWORD")
+            if not os.getenv(k)]
+if _missing:
+    sys.exit("LEDSone credentials missing from the environment: " + ", ".join(_missing))
+DB = dict(host=os.environ["LEDSONE_PGHOST"],
+          port=os.getenv("LEDSONE_PGPORT", "5432"),
+          dbname=os.environ["LEDSONE_PGDATABASE"],
+          user=os.environ["LEDSONE_PGUSER"],
+          password=os.environ["LEDSONE_PGPASSWORD"],
+          sslmode=os.getenv("LEDSONE_PGSSLMODE", "require"))
+DB_DELETED_REF = dict(host=os.getenv("PGHOST", "149.28.134.54"),
           port=os.getenv("PGPORT", "5435"),
           dbname=os.getenv("PGDATABASE", "order_management_copy"),
           user=os.getenv("PGUSER", "temp_user"),
@@ -63,14 +79,38 @@ conn = psycopg2.connect(connect_timeout=40, **DB); conn.autocommit = True
 cur = conn.cursor()
 print(f"connected {DB['user']}@{DB['host']}:{DB['port']}/{DB['dbname']}")
 
+# ---------- 0a. SOURCE LAYER: old table shapes over LEDSone (session-only) -----
+# Without the deletion reference, deleted products would silently enter V2 --
+# so an unreachable reference stops the build instead of publishing them.
+from v2_sources import (create_source_views, load_deleted_reference, load_fallback_orders,
+                        SOURCE_MAP)
+try:
+    _ref = psycopg2.connect(connect_timeout=40, **DB_DELETED_REF)
+    deleted_ids = load_deleted_reference(_ref)
+    fallback_orders = load_fallback_orders(_ref); _ref.close()
+except Exception as e:
+    sys.exit("old-DB reference (inv_products.isdeleted / fallback order sources) unavailable: "
+             + str(e).strip().splitlines()[0])
+try:
+    fb = create_source_views(cur, deleted_ids, fallback_orders)
+except RuntimeError as e:
+    sys.exit(str(e))
+VAL["source"] = {"database": f"{DB['host']}:{DB['port']}/{DB['dbname']}",
+                 "deleted_reference_ids": len(deleted_ids),
+                 "order_fallback": fb,
+                 "mapping": dict(SOURCE_MAP)}
+print(f"source layer ready: LEDSone views + {len(deleted_ids)} deleted-product ids + "
+      f"{fb['lines_used']} fallback order lines ({fb['lines_used_2026']} in 2026, "
+      f"{fb['lines_dropped_already_in_ledsone']} dropped as already in LEDSone) from the old DB")
+
 # ---------- 0. SUPPLIER ACCESS PROBE (run BEFORE anything depends on it) --------
 # V2's whole scope chain starts at supplier.order_items, so unlike V1 -- where the
 # supplier chain was optional decoration -- losing supplier access here yields an
 # EMPTY dashboard, not a degraded one. Probe with the project credential first and
 # fail loudly rather than publishing a hollow page.
-SUP_TABLES = ["supplier.suppliers", "supplier.orders", "supplier.containers",
-              "supplier.order_items", "supplier.final_containers", "supplier.invoices"]
-cur.execute("SELECT has_schema_privilege(current_user,'supplier','USAGE')")
+SUP_TABLES = ["pg_temp.supplier_suppliers", "pg_temp.supplier_orders", "pg_temp.supplier_containers",
+              "pg_temp.supplier_order_items", "pg_temp.supplier_final_containers", "pg_temp.supplier_invoices"]
+cur.execute("SELECT has_schema_privilege(current_user,'suppliers','USAGE')")
 schema_ok = cur.fetchone()[0]
 sup_access, sup_missing = {}, []
 for t in SUP_TABLES:
@@ -102,8 +142,8 @@ CREATE TEMP TABLE comp AS
 SELECT DISTINCT p.id AS comp_id, p.sku AS comp_sku,
        p.created_at::date::text AS comp_created,
        COALESCE(NULLIF(p.eng_desc,''),NULLIF(p.description,''),NULLIF(p.title,''),'') AS comp_desc
-FROM public.inv_products p
-JOIN supplier.order_items oi ON oi.sku = p.sku
+FROM pg_temp.inv_products p
+JOIN pg_temp.supplier_order_items oi ON oi.sku = p.sku
 WHERE p.created_at >= %(s)s AND COALESCE(p.isdeleted,0)=0
   AND COALESCE(TRIM(p.sku),'')<>'' AND p.sku NOT LIKE '%%+%%';
 CREATE INDEX ON comp(comp_id); CREATE INDEX ON comp(comp_sku);
@@ -134,14 +174,14 @@ SELECT DISTINCT ON (oi.sku)
        COALESCE(o.order_id,'')                  AS po,
        COALESCE(oi.pcs,0)                       AS qty,
        COALESCE(o.status_arrived,0)             AS arrived
-FROM supplier.order_items oi
+FROM pg_temp.supplier_order_items oi
 JOIN comp c                    ON c.comp_sku = oi.sku
-JOIN supplier.orders     o     ON o.id  = oi.order_id
-LEFT JOIN supplier.suppliers        s  ON s.id  = o.supplier_id
-LEFT JOIN supplier.final_containers fc ON fc.id = oi.final_container_id::bigint
-LEFT JOIN supplier.containers       ct ON ct.id = oi.assigned_container_id::bigint
+JOIN pg_temp.supplier_orders     o     ON o.id  = oi.order_id
+LEFT JOIN pg_temp.supplier_suppliers        s  ON s.id  = o.supplier_id
+LEFT JOIN pg_temp.supplier_final_containers fc ON fc.id = oi.final_container_id::bigint
+LEFT JOIN pg_temp.supplier_containers       ct ON ct.id = oi.assigned_container_id::bigint
 LEFT JOIN (SELECT final_container_id, MIN(ship_by_date) AS ship_by_date
-           FROM supplier.invoices GROUP BY 1) inv
+           FROM pg_temp.supplier_invoices GROUP BY 1) inv
        ON inv.final_container_id = oi.final_container_id::bigint
 ORDER BY oi.sku, o.order_date DESC NULLS LAST, o.id DESC;
 CREATE INDEX ON sup(comp_sku);
@@ -150,7 +190,7 @@ cur.execute("SELECT comp_sku, supplier, container, destination, received, po_dat
 supmap = {r[0]: dict(supplier=r[1], container=r[2], dest=r[3], recv=r[4], po_date=r[5],
                      po=r[6], qty=r[7], arrived=bool(r[8])) for r in cur.fetchall()}
 # PO count per component (multiple restocks are the norm)
-cur.execute("""SELECT oi.sku, count(*) FROM supplier.order_items oi
+cur.execute("""SELECT oi.sku, count(*) FROM pg_temp.supplier_order_items oi
                JOIN comp c ON c.comp_sku=oi.sku GROUP BY 1""")
 po_count = dict(cur.fetchall())
 
@@ -164,8 +204,8 @@ SELECT c.comp_sku, c.comp_created, c.comp_desc,
        COALESCE(NULLIF(cp.eng_desc,''),NULLIF(cp.description,''),NULLIF(cp.title,''),'') AS combo_desc,
        pc.pack_count
 FROM comp c
-JOIN public.inv_product_combo pc ON pc.inventory = c.comp_id AND pc.inventory <> pc.product
-JOIN public.inv_products cp      ON cp.id = pc.product
+JOIN pg_temp.inv_product_combo pc ON pc.inventory = c.comp_id AND pc.inventory <> pc.product
+JOIN pg_temp.inv_products cp      ON cp.id = pc.product
 WHERE cp.created_at >= %(s)s AND COALESCE(cp.isdeleted,0)=0 AND COALESCE(TRIM(cp.sku),'')<>'';
 CREATE INDEX ON pair(combo_sku); CREATE INDEX ON pair(comp_sku);
 """, {"s": START})
@@ -180,9 +220,9 @@ SELECT COALESCE(a.sku,b.sku) AS sku, ld.ref_id,
        {PLAT.format(c='ld.which_channel_name')} AS platform,
        ld.created_at::date AS listed_on,
        ld.listing_url, ld.main_image_url, ld.market_place
-FROM public.listing_data ld
-LEFT JOIN public.inv_products a ON a.sku = COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku))
-LEFT JOIN public.inv_products b ON b.sku = regexp_replace(COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku)),'[_-][A-Za-z]{{2,4}}$','')
+FROM pg_temp.listing_data ld
+LEFT JOIN pg_temp.inv_products a ON a.sku = COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku))
+LEFT JOIN pg_temp.inv_products b ON b.sku = regexp_replace(COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku)),'[_-][A-Za-z]{{2,4}}$','')
 WHERE COALESCE(ld.is_parent,0)=0 AND ld.wrong_sku=0 AND COALESCE(TRIM(ld.sku),'')<>''
   -- APPROVED RULE: only listings created in the reporting window count.
   -- Without this, MIN(listed_on) below picked recycled pre-2026 marketplace
@@ -208,7 +248,7 @@ for sku, plat, ld, url, mkt in cur.fetchall():
 # then fall back to a listing image.                    26/178 -> 92/178 coverage.
 cur.execute("""
 SELECT DISTINCT ON (oi.sku) oi.sku, oi.image_url
-FROM supplier.order_items oi
+FROM pg_temp.supplier_order_items oi
 JOIN comp c ON c.comp_sku = oi.sku
 WHERE COALESCE(oi.image_url,'') <> ''
 ORDER BY oi.sku, oi.created_at DESC, oi.id DESC""")
@@ -219,7 +259,7 @@ cur.execute("""
 SELECT DISTINCT ON (resolved) resolved, main_image_url FROM (
   SELECT COALESCE(NULLIF(TRIM(mapped_sku),''),TRIM(sku)) AS resolved,
          main_image_url, created_at, ref_id
-  FROM public.listing_data
+  FROM pg_temp.listing_data
   WHERE COALESCE(main_image_url,'')<>''
     AND COALESCE(NULLIF(TRIM(mapped_sku),''),TRIM(sku)) IN (
         SELECT comp_sku FROM comp UNION SELECT combo_sku FROM pair)) z
@@ -233,9 +273,9 @@ def comp_image(sku):
 # ---------- 6. TRAFFIC — from each listing's OWN Listed Date to today ----------
 cur.execute("""
 SELECT l.sku, l.platform, SUM(t.i)::bigint, SUM(t.c)::bigint FROM lst l
-JOIN (SELECT ref_id, date, COALESCE(impression,0) i, COALESCE(click,0) c FROM public.traffic_data
+JOIN (SELECT ref_id, date, COALESCE(impression,0) i, COALESCE(click,0) c FROM pg_temp.traffic_data
       UNION ALL
-      SELECT ref_id, date, COALESCE(impressions,0), COALESCE(clicks,0) FROM public.ppc_performance) t
+      SELECT ref_id, date, COALESCE(impressions,0), COALESCE(clicks,0) FROM pg_temp.ppc_performance) t
   ON t.ref_id = l.ref_id AND t.date >= l.listed_on          -- Listed Date -> today
 GROUP BY 1,2""")
 traffic = {(s, p): (i, c) for s, p, i, c in cur.fetchall()}
@@ -248,7 +288,7 @@ FROM (
   SELECT regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') AS base_sku,
          {PLAT.format(c='ot.source_name')} AS platform,
          ot.order_id, ot.quantity, ot.order_total
-  FROM public.order_transaction ot
+  FROM pg_temp.order_transaction ot
   WHERE ot.order_status='Completed'
     AND ot.order_date >= '2026-01-01'          -- reporting window
     AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT combo_sku FROM pair)) o
@@ -263,22 +303,22 @@ CREATE TEMP TABLE ret AS
 WITH co AS (
   SELECT ot.order_id, regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{2,4}$','') AS base_sku,
          SUM(ot.quantity)::int AS oqty
-  FROM public.order_transaction ot GROUP BY 1,2)
+  FROM pg_temp.order_transaction ot GROUP BY 1,2)
 SELECT regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') AS sku,
        'amazon'::text AS platform, ar.qty::int AS qty, NULLIF(TRIM(ar.reason),'') AS reason
-FROM public.amazon_returns ar
+FROM pg_temp.amazon_returns ar
 WHERE ar.request_date >= '2026-01-01'
   AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT combo_sku FROM pair)
 UNION ALL
 SELECT co.base_sku, 'ebay', e.qty, e.reason FROM (
   SELECT return_id, MIN(order_id) order_id, MAX(return_qty)::int qty,
          NULLIF(TRIM(MAX(reason)),'') reason
-  FROM public.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
+  FROM pg_temp.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
 JOIN co ON co.order_id = e.order_id
 WHERE co.base_sku IN (SELECT combo_sku FROM pair)
 UNION ALL
 SELECT co.base_sku, 'shopify', co.oqty, NULL FROM (
-  SELECT DISTINCT ON (id) id, order_id FROM public.shopify_returns
+  SELECT DISTINCT ON (id) id, order_id FROM pg_temp.shopify_returns
   WHERE date >= '2026-01-01' ORDER BY id) sh
 JOIN co ON co.order_id = sh.order_id
 WHERE co.base_sku IN (SELECT combo_sku FROM pair);
@@ -301,9 +341,9 @@ SELECT COALESCE(a.sku,b.sku) AS sku, ld.ref_id,
        {PLAT.format(c='ld.which_channel_name')} AS platform,
        ld.created_at::date AS listed_on,
        ld.listing_url, ld.main_image_url, ld.market_place
-FROM public.listing_data ld
-LEFT JOIN public.inv_products a ON a.sku = COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku))
-LEFT JOIN public.inv_products b ON b.sku = regexp_replace(COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku)),'[_-][A-Za-z]{{2,4}}$','')
+FROM pg_temp.listing_data ld
+LEFT JOIN pg_temp.inv_products a ON a.sku = COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku))
+LEFT JOIN pg_temp.inv_products b ON b.sku = regexp_replace(COALESCE(NULLIF(TRIM(ld.mapped_sku),''),TRIM(ld.sku)),'[_-][A-Za-z]{{2,4}}$','')
 WHERE COALESCE(ld.is_parent,0)=0 AND ld.wrong_sku=0 AND COALESCE(TRIM(ld.sku),'')<>''
   -- APPROVED RULE: only listings created in the reporting window count.
   -- Without this, MIN(listed_on) below picked recycled pre-2026 marketplace
@@ -324,9 +364,9 @@ for sku, plat, ld, url, mkt in cur.fetchall():
 
 cur.execute("""
 SELECT l.sku, l.platform, SUM(t.i)::bigint, SUM(t.c)::bigint FROM lst_c l
-JOIN (SELECT ref_id, date, COALESCE(impression,0) i, COALESCE(click,0) c FROM public.traffic_data
+JOIN (SELECT ref_id, date, COALESCE(impression,0) i, COALESCE(click,0) c FROM pg_temp.traffic_data
       UNION ALL
-      SELECT ref_id, date, COALESCE(impressions,0), COALESCE(clicks,0) FROM public.ppc_performance) t
+      SELECT ref_id, date, COALESCE(impressions,0), COALESCE(clicks,0) FROM pg_temp.ppc_performance) t
   ON t.ref_id = l.ref_id AND t.date >= l.listed_on
 GROUP BY 1,2""")
 traffic_c = {(s, p): (i, c) for s, p, i, c in cur.fetchall()}
@@ -338,7 +378,7 @@ FROM (
   SELECT regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') AS base_sku,
          {PLAT.format(c='ot.source_name')} AS platform,
          ot.order_id, ot.quantity, ot.order_total
-  FROM public.order_transaction ot
+  FROM pg_temp.order_transaction ot
   WHERE ot.order_status='Completed'
     AND ot.order_date >= '2026-01-01'          -- reporting window
     AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT comp_sku FROM comp)) o
@@ -350,22 +390,22 @@ CREATE TEMP TABLE ret_c AS
 WITH co AS (
   SELECT ot.order_id, regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{2,4}$','') AS base_sku,
          SUM(ot.quantity)::int AS oqty
-  FROM public.order_transaction ot GROUP BY 1,2)
+  FROM pg_temp.order_transaction ot GROUP BY 1,2)
 SELECT regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') AS sku,
        'amazon'::text AS platform, ar.qty::int AS qty, NULLIF(TRIM(ar.reason),'') AS reason
-FROM public.amazon_returns ar
+FROM pg_temp.amazon_returns ar
 WHERE ar.request_date >= '2026-01-01'
   AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT comp_sku FROM comp)
 UNION ALL
 SELECT co.base_sku, 'ebay', e.qty, e.reason FROM (
   SELECT return_id, MIN(order_id) order_id, MAX(return_qty)::int qty,
          NULLIF(TRIM(MAX(reason)),'') reason
-  FROM public.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
+  FROM pg_temp.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
 JOIN co ON co.order_id = e.order_id
 WHERE co.base_sku IN (SELECT comp_sku FROM comp)
 UNION ALL
 SELECT co.base_sku, 'shopify', co.oqty, NULL FROM (
-  SELECT DISTINCT ON (id) id, order_id FROM public.shopify_returns
+  SELECT DISTINCT ON (id) id, order_id FROM pg_temp.shopify_returns
   WHERE date >= '2026-01-01' ORDER BY id) sh
 JOIN co ON co.order_id = sh.order_id
 WHERE co.base_sku IN (SELECT comp_sku FROM comp);
@@ -568,9 +608,26 @@ print(f"COMPONENT ROWS {NC}  (listed {sum(1 for r in rows_c if r[B['stat']]=='Li
 
 # ---------- 10. VALIDATION -----------------------------------------------------
 f = lambda k: sum(1 for r in rows if r[B[k]] not in (None,"",0))
-check("New components in scope", n_comp==178, f"{n_comp} (expected 178)")
-check("Combos built from them",  n_combo==223, f"{n_combo} (expected 223)")
-check("Component x combo pairs", n_pair==261,  f"{n_pair} (expected 261)")
+# ---- SCOPE FLOORS (not exact equality) --------------------------------------
+# These three guards exist to catch the scope COLLAPSING -- an empty/half-loaded
+# source silently producing a hollow dashboard. They were originally written as
+# `== <count>`, which also fires on healthy GROWTH: every time the business buys
+# a new component or builds a new combo the number legitimately rises and the
+# publish was blocked.
+#   2026-08-04: blocked 5 nights (combos 223->228).  Re-baselined to 228/266.
+#   2026-08-19: blocked 6 more nights (components 178->232, combos ->232).
+# Re-baselining is a treadmill, so they are now FLOORS. Growth passes; a drop
+# below the floor -- the real regression signal -- still fails hard and blocks
+# the publish. Floors are set to the last known-good verified counts.
+SCOPE_FLOOR_COMPONENTS = 178
+SCOPE_FLOOR_COMBOS     = 228
+SCOPE_FLOOR_PAIRS      = 266
+check("New components in scope", n_comp >= SCOPE_FLOOR_COMPONENTS,
+      f"{n_comp} (floor {SCOPE_FLOOR_COMPONENTS})")
+check("Combos built from them",  n_combo >= SCOPE_FLOOR_COMBOS,
+      f"{n_combo} (floor {SCOPE_FLOOR_COMBOS})")
+check("Component x combo pairs", n_pair >= SCOPE_FLOOR_PAIRS,
+      f"{n_pair} (floor {SCOPE_FLOOR_PAIRS})")
 check("Every row has a component SKU", all(r[B['csku']] for r in rows), f"{f('csku')}/{N}")
 check("Every row has a supplier",      f('sup')==N, f"{f('sup')}/{N}")
 check("Received Date sourced from the container (not the PO date)", True,

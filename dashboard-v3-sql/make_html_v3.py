@@ -64,12 +64,12 @@ HTML = f"""<!doctype html>
     </header>
 
     <div class="filterbar">
-      <div class="fld"><label>Marketplace</label><select id="f-plat"></select></div>
-      <div class="fld"><label>Listing Status</label><select id="f-stat">
+      <div class="fld"><label for="f-plat">Marketplace</label><select id="f-plat"></select></div>
+      <div class="fld"><label for="f-stat">Listing Status</label><select id="f-stat">
         <option value="">All</option><option>Listed</option><option>Not Listed</option></select></div>
-      <div class="fld"><label>Listed from</label><div class="inp"><input type="date" id="f-lfrom"></div></div>
-      <div class="fld"><label>Listed to</label><div class="inp"><input type="date" id="f-lto"></div></div>
-      <div class="fld grow"><label>Search</label><div class="inp"><span class="inp-ic">🔎</span>
+      <div class="fld"><label for="f-lfrom">Listed from</label><div class="inp"><input type="date" id="f-lfrom"></div></div>
+      <div class="fld"><label for="f-lto">Listed to</label><div class="inp"><input type="date" id="f-lto"></div></div>
+      <div class="fld grow"><label for="f-q">Search</label><div class="inp"><span class="inp-ic">🔎</span>
         <input type="text" id="f-q" placeholder="Component SKU, Combo SKU, container…"></div></div>
       <div class="fld"><span class="fld-spacer">&nbsp;</span><button class="tt-clear" id="clearBtn">Clear</button></div>
     </div>
@@ -82,7 +82,7 @@ HTML = f"""<!doctype html>
           <div><h3>🚢 Container Tracking Table <span class="muted">one product × one marketplace per row</span></h3>
             <div class="sub">Component SKUs come from the Google Sheet per container; everything else is fetched from PostgreSQL.
               <span class="muted" id="rowcount"></span></div></div>
-          <div class="perpage-wrap">Products
+          <div class="perpage-wrap"><label for="perpage">Products</label>
             <select class="perpage" id="perpage"><option value="50">50</option><option value="100" selected>100</option><option value="250">250</option><option value="1000">1000</option><option value="0">All</option></select>
           </div>
         </div>

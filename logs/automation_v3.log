@@ -1,0 +1,1010 @@
+2026-08-18 16:30:12 | ================ SCWTS V3 refresh + publish started ================
+2026-08-18 16:30:12 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,209
+  public.inv_product_combo     121,593
+  public.listing_data          342,343
+  public.order_transaction     1,257,004
+  public.traffic_data          9,913,118
+  public.ppc_performance       25,385,682
+  public.amazon_returns        14,783
+  public.ebay_returns          40,368
+  public.shopify_returns       1,853
+listing_data SKU universe: 55,179
+combos derived: 307 distinct, covering 112/209 components
+products needing metrics: 516
+component images from sheet: 207/209 (95 corrected from listing_data, 2 have none)
+
+ROWS 806  (listed 685 / not-listed 121)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 806/806
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 806 rows, all unique
+  [PASS] Component -> Combo mapping — 307 combos derived for 112/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 685 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 95 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 804/806, combo 688/806
+  [PASS] Traffic fetched — 22,564,736 impressions, 73,392 clicks
+  [PASS] Orders / Revenue fetched — 1441 orders, £30,271.93
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 95/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44209 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 805/806 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 573/691 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 307, "rows": 806, "listed": 685, "impressions": 22564736, "clicks": 73392, "orders": 1441, "units": 2104, "revenue": 30271.93, "returns": 104}
+PER CONTAINER: {"Container 11": 94, "Container 12": 333, "Container 13": 169, "Container 14": 93, "Container 15": 2, "Container 16": 115}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (403,330 bytes) in 146.9s
+2026-08-18 16:32:39 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (469,157 bytes)
+2026-08-18 16:32:39 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-18 16:32:39 | sanity: OK — 469157 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-18T11:02:39.370Z
+}
+2026-08-18 16:32:41 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (469157 bytes)
+2026-08-18 16:32:41 | validation: containers 6 | components 209 | rows 806 | listed 685 | revenue 30271.93 | soft-fails 5
+2026-08-18 16:32:41 | execution time: 149s
+2026-08-18 16:32:41 | ================ finished (exit 0) ================
+2026-08-19 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-19 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,218
+  public.inv_product_combo     121,610
+  public.listing_data          342,343
+  public.order_transaction     1,257,773
+  public.traffic_data          9,930,336
+  public.ppc_performance       25,432,830
+  public.amazon_returns        14,791
+  public.ebay_returns          40,427
+  public.shopify_returns       1,853
+listing_data SKU universe: 55,187
+combos derived: 309 distinct, covering 113/209 components
+products needing metrics: 518
+component images from sheet: 207/209 (95 corrected from listing_data, 2 have none)
+
+ROWS 806  (listed 685 / not-listed 121)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 806/806
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 806 rows, all unique
+  [PASS] Component -> Combo mapping — 309 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 685 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 95 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 804/806, combo 692/806
+  [PASS] Traffic fetched — 22,688,492 impressions, 73,789 clicks
+  [PASS] Orders / Revenue fetched — 1431 orders, £30,361.10
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 95/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44218 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 805/806 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 573/695 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 309, "rows": 806, "listed": 685, "impressions": 22688492, "clicks": 73789, "orders": 1431, "units": 2096, "revenue": 30361.1, "returns": 104}
+PER CONTAINER: {"Container 11": 94, "Container 12": 332, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 115}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (403,590 bytes) in 129.8s
+2026-08-19 16:02:11 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (469,417 bytes)
+2026-08-19 16:02:11 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-19 16:02:11 | sanity: OK — 469417 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-19T10:32:11.570Z
+}
+2026-08-19 16:02:13 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (469417 bytes)
+2026-08-19 16:02:13 | validation: containers 6 | components 209 | rows 806 | listed 685 | revenue 30361.1 | soft-fails 5
+2026-08-19 16:02:13 | execution time: 132s
+2026-08-19 16:02:13 | ================ finished (exit 0) ================
+2026-08-20 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-20 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,225
+  public.inv_product_combo     121,637
+  public.listing_data          342,701
+  public.order_transaction     1,258,599
+  public.traffic_data          9,948,367
+  public.ppc_performance       25,480,430
+  public.amazon_returns        14,810
+  public.ebay_returns          40,501
+  public.shopify_returns       1,858
+listing_data SKU universe: 55,277
+combos derived: 309 distinct, covering 113/209 components
+products needing metrics: 518
+component images from sheet: 207/209 (95 corrected from listing_data, 2 have none)
+
+ROWS 807  (listed 686 / not-listed 121)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 807/807
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 807 rows, all unique
+  [PASS] Component -> Combo mapping — 309 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 686 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 95 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 805/807, combo 693/807
+  [PASS] Traffic fetched — 22,783,392 impressions, 74,054 clicks
+  [PASS] Orders / Revenue fetched — 1440 orders, £30,508.87
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 95/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44225 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 806/807 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 573/696 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 309, "rows": 807, "listed": 686, "impressions": 22783392, "clicks": 74054, "orders": 1440, "units": 2107, "revenue": 30508.87, "returns": 104}
+PER CONTAINER: {"Container 11": 94, "Container 12": 332, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 116}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (404,269 bytes) in 177.8s
+2026-08-20 16:02:59 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (470,096 bytes)
+2026-08-20 16:02:59 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-20 16:02:59 | sanity: OK — 470096 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-20T10:32:59.551Z
+}
+2026-08-20 16:03:01 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (470096 bytes)
+2026-08-20 16:03:01 | validation: containers 6 | components 209 | rows 807 | listed 686 | revenue 30508.87 | soft-fails 5
+2026-08-20 16:03:01 | execution time: 180s
+2026-08-20 16:03:01 | ================ finished (exit 0) ================
+2026-08-24 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-24 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,260
+  public.inv_product_combo     121,682
+  public.listing_data          342,570
+  public.order_transaction     1,261,473
+  public.traffic_data          9,999,449
+  public.ppc_performance       25,539,343
+  public.amazon_returns        14,895
+  public.ebay_returns          40,618
+  public.shopify_returns       1,871
+listing_data SKU universe: 55,303
+combos derived: 308 distinct, covering 113/209 components
+products needing metrics: 517
+component images from sheet: 207/209 (94 corrected from listing_data, 2 have none)
+
+ROWS 806  (listed 684 / not-listed 122)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 806/806
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 806 rows, all unique
+  [PASS] Component -> Combo mapping — 308 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 684 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 94 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 804/806, combo 692/806
+  [PASS] Traffic fetched — 23,379,428 impressions, 75,693 clicks
+  [PASS] Orders / Revenue fetched — 1452 orders, £31,184.81
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 94/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44260 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 805/806 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 572/695 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 308, "rows": 806, "listed": 684, "impressions": 23379428, "clicks": 75693, "orders": 1452, "units": 2142, "revenue": 31184.81, "returns": 104}
+PER CONTAINER: {"Container 11": 95, "Container 12": 330, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 116}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (403,511 bytes) in 128.1s
+2026-08-24 16:02:09 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (469,338 bytes)
+2026-08-24 16:02:09 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-24 16:02:09 | sanity: OK — 469338 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-24T10:32:09.600Z
+}
+2026-08-24 16:02:11 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (469338 bytes)
+2026-08-24 16:02:11 | validation: containers 6 | components 209 | rows 806 | listed 684 | revenue 31184.81 | soft-fails 5
+2026-08-24 16:02:11 | execution time: 130s
+2026-08-24 16:02:11 | ================ finished (exit 0) ================
+2026-08-25 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-25 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,265
+  public.inv_product_combo     121,696
+  public.listing_data          342,665
+  public.order_transaction     1,262,329
+  public.traffic_data          10,034,212
+  public.ppc_performance       25,711,350
+  public.amazon_returns        14,915
+  public.ebay_returns          40,680
+  public.shopify_returns       1,871
+listing_data SKU universe: 55,300
+combos derived: 308 distinct, covering 113/209 components
+products needing metrics: 517
+component images from sheet: 207/209 (94 corrected from listing_data, 2 have none)
+
+ROWS 808  (listed 684 / not-listed 124)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 808/808
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 808 rows, all unique
+  [PASS] Component -> Combo mapping — 308 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 684 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 94 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 806/808, combo 692/808
+  [PASS] Traffic fetched — 23,614,241 impressions, 76,384 clicks
+  [PASS] Orders / Revenue fetched — 1491 orders, £32,296.92
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 94/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44265 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 807/808 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 573/696 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 308, "rows": 808, "listed": 684, "impressions": 23614241, "clicks": 76384, "orders": 1491, "units": 2202, "revenue": 32296.92, "returns": 105}
+PER CONTAINER: {"Container 11": 95, "Container 12": 332, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 116}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (404,331 bytes) in 138.3s
+2026-08-25 16:02:20 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (470,158 bytes)
+2026-08-25 16:02:20 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-25 16:02:20 | sanity: OK — 470158 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-25T10:32:19.870Z
+}
+2026-08-25 16:02:21 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (470158 bytes)
+2026-08-25 16:02:21 | validation: containers 6 | components 209 | rows 808 | listed 684 | revenue 32296.92 | soft-fails 5
+2026-08-25 16:02:21 | execution time: 140s
+2026-08-25 16:02:21 | ================ finished (exit 0) ================
+2026-08-26 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-26 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,300
+  public.inv_product_combo     121,805
+  public.listing_data          342,510
+  public.order_transaction     1,263,128
+  public.traffic_data          10,081,121
+  public.ppc_performance       25,757,237
+  public.amazon_returns        14,939
+  public.ebay_returns          40,726
+  public.shopify_returns       1,871
+listing_data SKU universe: 55,309
+combos derived: 310 distinct, covering 113/209 components
+products needing metrics: 519
+component images from sheet: 207/209 (94 corrected from listing_data, 2 have none)
+
+ROWS 813  (listed 687 / not-listed 126)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 813/813
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 813 rows, all unique
+  [PASS] Component -> Combo mapping — 310 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 687 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 94 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 811/813, combo 698/813
+  [PASS] Traffic fetched — 23,882,731 impressions, 77,604 clicks
+  [PASS] Orders / Revenue fetched — 1500 orders, £32,589.99
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 94/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44300 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 812/813 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 575/701 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 310, "rows": 813, "listed": 687, "impressions": 23882731, "clicks": 77604, "orders": 1500, "units": 2220, "revenue": 32589.99, "returns": 106}
+PER CONTAINER: {"Container 11": 95, "Container 12": 336, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 117}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (406,667 bytes) in 139.2s
+2026-08-26 16:02:20 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (472,494 bytes)
+2026-08-26 16:02:20 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-26 16:02:20 | sanity: OK — 472494 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-26T10:32:20.268Z
+}
+2026-08-26 16:02:22 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (472494 bytes)
+2026-08-26 16:02:22 | validation: containers 6 | components 209 | rows 813 | listed 687 | revenue 32589.99 | soft-fails 5
+2026-08-26 16:02:22 | execution time: 141s
+2026-08-26 16:02:22 | ================ finished (exit 0) ================
+2026-08-27 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-27 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,319
+  public.inv_product_combo     121,852
+  public.listing_data          342,865
+  public.order_transaction     1,263,927
+  public.traffic_data          10,099,356
+  public.ppc_performance       25,802,229
+  public.amazon_returns        14,967
+  public.ebay_returns          40,813
+  public.shopify_returns       1,891
+listing_data SKU universe: 55,335
+combos derived: 310 distinct, covering 113/209 components
+products needing metrics: 519
+component images from sheet: 207/209 (94 corrected from listing_data, 2 have none)
+
+ROWS 813  (listed 687 / not-listed 126)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 813/813
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 813 rows, all unique
+  [PASS] Component -> Combo mapping — 310 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 687 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 94 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 811/813, combo 697/813
+  [PASS] Traffic fetched — 24,033,897 impressions, 78,210 clicks
+  [PASS] Orders / Revenue fetched — 1503 orders, £32,479.95
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 94/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44319 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 812/813 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 566/701 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 310, "rows": 813, "listed": 687, "impressions": 24033897, "clicks": 78210, "orders": 1503, "units": 2219, "revenue": 32479.95, "returns": 107}
+PER CONTAINER: {"Container 11": 95, "Container 12": 336, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 117}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (406,532 bytes) in 134.8s
+2026-08-27 16:02:16 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (472,359 bytes)
+2026-08-27 16:02:16 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-27 16:02:16 | sanity: OK — 472359 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-27T10:32:15.980Z
+}
+2026-08-27 16:02:17 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (472359 bytes)
+2026-08-27 16:02:17 | validation: containers 6 | components 209 | rows 813 | listed 687 | revenue 32479.95 | soft-fails 5
+2026-08-27 16:02:17 | execution time: 136s
+2026-08-27 16:02:17 | ================ finished (exit 0) ================
+2026-08-28 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-28 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,328
+  public.inv_product_combo     121,883
+  public.listing_data          342,911
+  public.order_transaction     1,264,736
+  public.traffic_data          10,116,290
+  public.ppc_performance       27,457,422
+  public.amazon_returns        15,008
+  public.ebay_returns          40,892
+  public.shopify_returns       1,892
+listing_data SKU universe: 55,329
+combos derived: 306 distinct, covering 113/209 components
+products needing metrics: 515
+component images from sheet: 207/209 (94 corrected from listing_data, 2 have none)
+
+ROWS 812  (listed 686 / not-listed 126)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 812/812
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 812 rows, all unique
+  [PASS] Component -> Combo mapping — 306 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 686 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 94 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 810/812, combo 697/812
+  [PASS] Traffic fetched — 24,586,583 impressions, 80,724 clicks
+  [PASS] Orders / Revenue fetched — 1500 orders, £32,177.93
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 94/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44328 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 811/812 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 562/700 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 306, "rows": 812, "listed": 686, "impressions": 24586583, "clicks": 80724, "orders": 1500, "units": 2218, "revenue": 32177.93, "returns": 111}
+PER CONTAINER: {"Container 11": 98, "Container 12": 332, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 117}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (406,009 bytes) in 146.2s
+2026-08-28 16:02:27 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (471,836 bytes)
+2026-08-28 16:02:27 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-28 16:02:27 | sanity: OK — 471836 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-28T10:32:27.242Z
+}
+2026-08-28 16:02:29 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (471836 bytes)
+2026-08-28 16:02:29 | validation: containers 6 | components 209 | rows 812 | listed 686 | revenue 32177.93 | soft-fails 5
+2026-08-28 16:02:29 | execution time: 148s
+2026-08-28 16:02:29 | ================ finished (exit 0) ================
+2026-08-31 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-08-31 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,333
+  public.inv_product_combo     121,903
+  public.listing_data          342,613
+  public.order_transaction     1,267,198
+  public.traffic_data          10,167,246
+  public.ppc_performance       27,594,216
+  public.amazon_returns        15,076
+  public.ebay_returns          40,964
+  public.shopify_returns       1,914
+listing_data SKU universe: 55,261
+combos derived: 306 distinct, covering 113/209 components
+products needing metrics: 515
+component images from sheet: 207/209 (94 corrected from listing_data, 2 have none)
+
+ROWS 816  (listed 687 / not-listed 129)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 816/816
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 816 rows, all unique
+  [PASS] Component -> Combo mapping — 306 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 687 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 94 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 814/816, combo 701/816
+  [PASS] Traffic fetched — 25,002,555 impressions, 81,876 clicks
+  [PASS] Orders / Revenue fetched — 1519 orders, £32,947.67
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 94/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44333 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 815/816 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 562/704 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 306, "rows": 816, "listed": 687, "impressions": 25002555, "clicks": 81876, "orders": 1519, "units": 2258, "revenue": 32947.67, "returns": 113}
+PER CONTAINER: {"Container 11": 98, "Container 12": 332, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 121}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (408,093 bytes) in 134.1s
+2026-08-31 16:02:16 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (473,920 bytes)
+2026-08-31 16:02:16 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-08-31 16:02:16 | sanity: OK — 473920 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-08-31T10:32:15.870Z
+}
+2026-08-31 16:02:17 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (473920 bytes)
+2026-08-31 16:02:17 | validation: containers 6 | components 209 | rows 816 | listed 687 | revenue 32947.67 | soft-fails 5
+2026-08-31 16:02:17 | execution time: 136s
+2026-08-31 16:02:17 | ================ finished (exit 0) ================
+2026-09-01 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-09-01 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,371
+  public.inv_product_combo     122,018
+  public.listing_data          342,786
+  public.order_transaction     1,268,129
+  public.traffic_data          10,184,310
+  public.ppc_performance       27,621,891
+  public.amazon_returns        15,094
+  public.ebay_returns          41,014
+  public.shopify_returns       1,914
+listing_data SKU universe: 55,297
+combos derived: 306 distinct, covering 113/209 components
+products needing metrics: 515
+component images from sheet: 207/209 (94 corrected from listing_data, 2 have none)
+
+ROWS 816  (listed 687 / not-listed 129)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 816/816
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 816 rows, all unique
+  [PASS] Component -> Combo mapping — 306 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 687 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 94 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 814/816, combo 701/816
+  [PASS] Traffic fetched — 25,137,179 impressions, 82,272 clicks
+  [PASS] Orders / Revenue fetched — 1527 orders, £33,267.57
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 94/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44371 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 815/816 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 562/704 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 306, "rows": 816, "listed": 687, "impressions": 25137179, "clicks": 82272, "orders": 1527, "units": 2275, "revenue": 33267.57, "returns": 113}
+PER CONTAINER: {"Container 11": 98, "Container 12": 332, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 121}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (408,097 bytes) in 130.8s
+2026-09-01 16:02:12 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (473,924 bytes)
+2026-09-01 16:02:12 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-09-01 16:02:12 | sanity: OK — 473924 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-09-01T10:32:12.010Z
+}
+2026-09-01 16:02:13 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (473924 bytes)
+2026-09-01 16:02:14 | validation: containers 6 | components 209 | rows 816 | listed 687 | revenue 33267.57 | soft-fails 5
+2026-09-01 16:02:14 | execution time: 132s
+2026-09-01 16:02:14 | ================ finished (exit 0) ================
+2026-09-03 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-09-03 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,404
+  public.inv_product_combo     122,119
+  public.listing_data          342,516
+  public.order_transaction     1,269,958
+  public.traffic_data          10,219,573
+  public.ppc_performance       27,733,204
+  public.amazon_returns        15,140
+  public.ebay_returns          41,142
+  public.shopify_returns       1,919
+listing_data SKU universe: 55,287
+combos derived: 305 distinct, covering 113/209 components
+products needing metrics: 514
+component images from sheet: 207/209 (93 corrected from listing_data, 2 have none)
+
+ROWS 815  (listed 686 / not-listed 129)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 815/815
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 815 rows, all unique
+  [PASS] Component -> Combo mapping — 305 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 686 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 93 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 813/815, combo 700/815
+  [PASS] Traffic fetched — 25,383,108 impressions, 83,037 clicks
+  [PASS] Orders / Revenue fetched — 1549 orders, £34,503.78
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 93/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44404 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 814/815 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 562/703 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 305, "rows": 815, "listed": 686, "impressions": 25383108, "clicks": 83037, "orders": 1549, "units": 2366, "revenue": 34503.78, "returns": 115}
+PER CONTAINER: {"Container 11": 98, "Container 12": 331, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 121}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (407,811 bytes) in 154.2s
+2026-09-03 16:02:35 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (473,638 bytes)
+2026-09-03 16:02:35 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-09-03 16:02:35 | sanity: OK — 473638 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-09-03T10:32:35.222Z
+}
+2026-09-03 16:02:37 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (473638 bytes)
+2026-09-03 16:02:37 | validation: containers 6 | components 209 | rows 815 | listed 686 | revenue 34503.78 | soft-fails 5
+2026-09-03 16:02:37 | execution time: 156s
+2026-09-03 16:02:37 | ================ finished (exit 0) ================
+2026-09-04 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-09-04 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,416
+  public.inv_product_combo     122,151
+  public.listing_data          342,561
+  public.order_transaction     1,270,765
+  public.traffic_data          10,266,242
+  public.ppc_performance       27,776,859
+  public.amazon_returns        15,166
+  public.ebay_returns          41,208
+  public.shopify_returns       1,935
+listing_data SKU universe: 55,346
+combos derived: 305 distinct, covering 113/209 components
+products needing metrics: 514
+component images from sheet: 207/209 (93 corrected from listing_data, 2 have none)
+
+ROWS 813  (listed 682 / not-listed 131)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 813/813
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 813 rows, all unique
+  [PASS] Component -> Combo mapping — 305 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 682 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 93 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 811/813, combo 698/813
+  [PASS] Traffic fetched — 25,559,174 impressions, 84,020 clicks
+  [PASS] Orders / Revenue fetched — 1558 orders, £34,803.82
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 93/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44416 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 812/813 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 560/701 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 305, "rows": 813, "listed": 682, "impressions": 25559174, "clicks": 84020, "orders": 1558, "units": 2380, "revenue": 34803.82, "returns": 115}
+PER CONTAINER: {"Container 11": 97, "Container 12": 330, "Container 13": 169, "Container 14": 94, "Container 15": 2, "Container 16": 121}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (406,828 bytes) in 134.8s
+2026-09-04 16:02:16 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (472,655 bytes)
+2026-09-04 16:02:16 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-09-04 16:02:16 | sanity: OK — 472655 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-09-04T10:32:16.488Z
+}
+2026-09-04 16:02:18 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (472655 bytes)
+2026-09-04 16:02:18 | validation: containers 6 | components 209 | rows 813 | listed 682 | revenue 34803.82 | soft-fails 5
+2026-09-04 16:02:18 | execution time: 137s
+2026-09-04 16:02:18 | ================ finished (exit 0) ================
+2026-09-07 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-09-07 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,429
+  public.inv_product_combo     122,193
+  public.listing_data          342,302
+  public.order_transaction     1,273,007
+  public.traffic_data          10,316,735
+  public.ppc_performance       27,892,375
+  public.amazon_returns        15,260
+  public.ebay_returns          41,307
+  public.shopify_returns       1,947
+listing_data SKU universe: 55,290
+combos derived: 305 distinct, covering 113/209 components
+products needing metrics: 514
+component images from sheet: 207/209 (92 corrected from listing_data, 2 have none)
+
+ROWS 817  (listed 684 / not-listed 133)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 817/817
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 817 rows, all unique
+  [PASS] Component -> Combo mapping — 305 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 684 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 92 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 815/817, combo 701/817
+  [PASS] Traffic fetched — 25,905,802 impressions, 84,960 clicks
+  [PASS] Orders / Revenue fetched — 1574 orders, £35,201.90
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 92/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44429 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 816/817 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 563/704 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 305, "rows": 817, "listed": 684, "impressions": 25905802, "clicks": 84960, "orders": 1574, "units": 2404, "revenue": 35201.9, "returns": 124}
+PER CONTAINER: {"Container 11": 97, "Container 12": 330, "Container 13": 173, "Container 14": 94, "Container 15": 2, "Container 16": 121}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (408,736 bytes) in 182.7s
+2026-09-07 16:03:04 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (474,563 bytes)
+2026-09-07 16:03:04 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-09-07 16:03:04 | sanity: OK — 474563 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-09-07T10:33:04.198Z
+}
+2026-09-07 16:03:06 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (474563 bytes)
+2026-09-07 16:03:06 | validation: containers 6 | components 209 | rows 817 | listed 684 | revenue 35201.9 | soft-fails 5
+2026-09-07 16:03:06 | execution time: 185s
+2026-09-07 16:03:06 | ================ finished (exit 0) ================
+2026-09-10 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-09-10 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,436
+  public.inv_product_combo     122,208
+  public.listing_data          342,470
+  public.order_transaction     1,274,770
+  public.traffic_data          10,350,662
+  public.ppc_performance       28,006,867
+  public.amazon_returns        15,295
+  public.ebay_returns          41,462
+  public.shopify_returns       1,947
+listing_data SKU universe: 55,323
+combos derived: 305 distinct, covering 113/209 components
+products needing metrics: 514
+component images from sheet: 207/209 (92 corrected from listing_data, 2 have none)
+
+ROWS 822  (listed 690 / not-listed 132)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 822/822
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 822 rows, all unique
+  [PASS] Component -> Combo mapping — 305 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 690 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 92 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 820/822, combo 706/822
+  [PASS] Traffic fetched — 25,778,904 impressions, 84,605 clicks
+  [PASS] Orders / Revenue fetched — 1590 orders, £35,531.69
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 92/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44436 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 821/822 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 568/709 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 305, "rows": 822, "listed": 690, "impressions": 25778904, "clicks": 84605, "orders": 1590, "units": 2424, "revenue": 35531.69, "returns": 124}
+PER CONTAINER: {"Container 11": 102, "Container 12": 330, "Container 13": 173, "Container 14": 94, "Container 15": 2, "Container 16": 121}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (411,482 bytes) in 176.0s
+2026-09-10 16:02:57 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (477,309 bytes)
+2026-09-10 16:02:57 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-09-10 16:02:57 | sanity: OK — 477309 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-09-10T10:32:57.454Z
+}
+2026-09-10 16:03:00 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (477309 bytes)
+2026-09-10 16:03:00 | validation: containers 6 | components 209 | rows 822 | listed 690 | revenue 35531.69 | soft-fails 5
+2026-09-10 16:03:00 | execution time: 179s
+2026-09-10 16:03:00 | ================ finished (exit 0) ================
+2026-09-11 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-09-11 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,487
+  public.inv_product_combo     122,374
+  public.listing_data          335,295
+  public.order_transaction     1,276,479
+  public.traffic_data          10,413,199
+  public.ppc_performance       28,099,569
+  public.amazon_returns        15,353
+  public.ebay_returns          41,607
+  public.shopify_returns       1,970
+listing_data SKU universe: 54,346
+combos derived: 298 distinct, covering 113/209 components
+products needing metrics: 507
+component images from sheet: 207/209 (93 corrected from listing_data, 2 have none)
+
+ROWS 816  (listed 684 / not-listed 132)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 816/816
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 816 rows, all unique
+  [PASS] Component -> Combo mapping — 298 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 684 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 93 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 814/816, combo 700/816
+  [PASS] Traffic fetched — 25,792,894 impressions, 84,428 clicks
+  [PASS] Orders / Revenue fetched — 1604 orders, £35,870.04
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 93/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44487 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 815/816 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 569/703 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 298, "rows": 816, "listed": 684, "impressions": 25792894, "clicks": 84428, "orders": 1604, "units": 2440, "revenue": 35870.04, "returns": 124}
+PER CONTAINER: {"Container 11": 102, "Container 12": 326, "Container 13": 170, "Container 14": 94, "Container 15": 2, "Container 16": 122}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (408,809 bytes) in 167.6s
+2026-09-11 16:02:49 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (474,636 bytes)
+2026-09-11 16:02:49 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-09-11 16:02:49 | sanity: OK — 474636 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+Pushed successfully: {
+  id: 125,
+  member_name: 'sarujanan',
+  page_slug: 'container-to-customer-workflow-tracking',
+  updated_at: 2026-09-11T10:32:49.730Z
+}
+2026-09-11 16:02:52 | stage 3 publish: OK — sarujanan/container-to-customer-workflow-tracking (474636 bytes)
+2026-09-11 16:02:52 | validation: containers 6 | components 209 | rows 816 | listed 684 | revenue 35870.04 | soft-fails 5
+2026-09-11 16:02:52 | execution time: 171s
+2026-09-11 16:02:52 | ================ finished (exit 0) ================
+2026-09-14 16:00:01 | ================ SCWTS V3 refresh + publish started ================
+2026-09-14 16:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+LEDsOne inventory.products cache: 420 products
+sheet: 6 containers, 210 rows, 209 distinct SKUs
+connected temp_user@149.28.134.54:5435/order_management_copy
+  public.inv_products          44,496
+  public.inv_product_combo     122,104
+  public.listing_data          336,456
+  public.order_transaction     1,278,955
+  public.traffic_data          10,464,195
+  public.ppc_performance       28,243,179
+  public.amazon_returns        15,417
+  public.ebay_returns          41,745
+  public.shopify_returns       1,987
+listing_data SKU universe: 54,385
+combos derived: 298 distinct, covering 113/209 components
+products needing metrics: 507
+component images from sheet: 207/209 (93 corrected from listing_data, 2 have none)
+
+ROWS 816  (listed 683 / not-listed 133)
+  [PASS] Container -> Component mapping from the Google Sheet — 6 containers, 210 sheet rows, 209 distinct SKUs
+  [PASS] Every row carries a Container and a Component SKU — 816/816
+  [PASS] Every sheet SKU is represented in the dashboard — 209/209
+  [PASS] No duplicate (container, product, marketplace) rows — no fan-out — 816 rows, all unique
+  [PASS] Component -> Combo mapping — 298 combos derived for 113/209 components (inv_product_combo is EMPTY — derived from SKU naming, an inference)
+  [PASS] Combo -> Marketplace mapping — 683 listed rows, every one carries a Listed Date
+  [PASS] Listing Status consistent with Listed Date — no mismatches
+  [PASS] Component Image comes from the Google Sheet (not listing_data) — 207/207 sheet-image SKUs render the sheet URL; 93 corrected away from a marketplace image
+  [FAIL] Every component SKU has an image — 207/209 from sheet; NO sheet image: PCRMFF, SPPGUK3PGD
+  [PASS] Images — component 814/816, combo 700/816
+  [PASS] Traffic fetched — 26,185,158 impressions, 85,518 clicks
+  [PASS] Orders / Revenue fetched — 1613 orders, £36,081.58
+  [PASS] Return Rate math — (returns/units)*100
+  [PASS] Sheet SKUs resolvable in listing_data — 93/209 have a listing; the rest show as Not Listed
+  [PASS] inv_products sourced from LEDs One inventory.products (NOT public.inv_products) — 420 products cached from LEDs One; public.inv_products has 44496 rows and is not used
+  [FAIL] Component Created Dates populated from LEDs One — 815/816 rows
+  [FAIL] Combo Created Dates populated from LEDs One — 569/703 combo rows
+  [FAIL] Every sheet component found in LEDs One inventory.products — 208/209 found; MISSING: PCRMFF
+  [PASS] Returns / Return Rate / Top Reason available — returns tables are empty/dropped on this DB — render blank, never faked
+  [FAIL] Average Feedback available — no customer-review table on this DB — renders 'No Reviews'
+
+TOTALS: {"containers": 6, "sheet_rows": 210, "components": 209, "combos": 298, "rows": 816, "listed": 683, "impressions": 26185158, "clicks": 85518, "orders": 1613, "units": 2451, "revenue": 36081.58, "returns": 124}
+PER CONTAINER: {"Container 11": 102, "Container 12": 326, "Container 13": 170, "Container 14": 94, "Container 15": 2, "Container 16": 122}
+
+SOURCE GAPS (fields left blank, not faked):
+  - no customer-review source on this DB -> Average Feedback unavailable
+
+wrote payload_v3.json (409,001 bytes) in 168.5s
+2026-09-14 16:02:50 | stage 1 build: OK — container mapping applied, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3/index.html  (474,828 bytes)
+2026-09-14 16:02:50 | stage 2 compose: OK — payload embedded into dashboard-v3/index.html
+2026-09-14 16:02:50 | sanity: OK — 474828 bytes, PAYLOAD + table + container tabs + closing tag present, self-contained
+node:internal/modules/cjs/loader:1386
+  throw err;
+  ^
+
+Error: Cannot find module 'pg'
+Require stack:
+- /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3-update/push_to_hub.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+    at Object.<anonymous> (/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3-update/push_to_hub.js:13:20)
+    at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v3-update/push_to_hub.js'
+  ]
+}
+
+Node.js v22.22.2
+2026-09-14 16:02:50 | stage 3 publish: FAILED — dashboard rebuilt locally but hub not updated
+2026-09-14 16:02:50 | validation: containers 6 | components 209 | rows 816 | listed 683 | revenue 36081.58 | soft-fails 5
+2026-09-14 16:02:50 | execution time: 169s
+2026-09-14 16:02:50 | ================ finished (exit 1) ================

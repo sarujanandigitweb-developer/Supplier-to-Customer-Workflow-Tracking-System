@@ -436,3 +436,1564 @@ LINE 16:   FROM public.ebay_returns WHERE request_date >= '2026-01-01...
 
 2026-07-31 11:00:06 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
 2026-07-31 11:00:06 | ================ finished (exit 1) ================
+2026-08-03 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-03 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=47
+  supplier.orders                  OK  rows=267
+  supplier.containers              OK  rows=25
+  supplier.order_items             OK  rows=4029
+  supplier.final_containers        OK  rows=16
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=47; orders=267; containers=25; order_items=4029; final_containers=16; invoices=25
+new components (2026, on a supplier PO): 178
+combos: 228  |  component x combo pairs: 266  |  components with a combo: 52
+component-listing dataset: 25 components have their own listing
+
+ROWS 541  (listed 317 / not-listed 224)  |  gap rows 126
+record ids: 354 combo products (REC-*), 178 component products (CMP-*)
+COMPONENT ROWS 192  (listed 34 / not-listed 158)
+  [PASS] New components in scope — 178 (expected 178)
+  [FAIL] Combos built from them — 228 (expected 223)
+  [FAIL] Component x combo pairs — 266 (expected 261)
+  [PASS] Every row has a component SKU — 541/541
+  [PASS] Every row has a supplier — 541/541
+  [PASS] Received Date sourced from the container (not the PO date) — 329/541 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 528/541 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 442/541 rows; 89/178 distinct components
+  [PASS] Combo images — 332/541
+  [PASS] Top Reason populated — 10/541 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 192 rows, 25 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 192/192
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 541 rows / component 192 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 354 REC-* + 178 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 541, "components": 178, "combos": 228, "pairs": 266, "gap_no_combo": 126, "impressions": 8891402, "clicks": 31708, "orders": 656, "units": 807, "revenue": 12005.19, "returns": 22}
+TOTALS  (components): {"rows": 192, "listed": 34, "components_with_listing": 25, "impressions": 151538, "clicks": 1361, "orders": 301, "units": 470, "revenue": 4797.8, "returns": 13}
+
+wrote payload_v2.json  (427,140 bytes)  in 25.9s
+
+RESULT: FAIL  (25.9s)
+  soft (recorded, does not block publish): Average Feedback source
+HARD FAILURES: Combos built from them; Component x combo pairs
+2026-08-03 11:00:27 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-03 11:00:27 | ================ finished (exit 1) ================
+2026-08-04 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-04 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=47
+  supplier.orders                  OK  rows=267
+  supplier.containers              OK  rows=25
+  supplier.order_items             OK  rows=4029
+  supplier.final_containers        OK  rows=16
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=47; orders=267; containers=25; order_items=4029; final_containers=16; invoices=25
+new components (2026, on a supplier PO): 178
+combos: 228  |  component x combo pairs: 266  |  components with a combo: 52
+component-listing dataset: 25 components have their own listing
+
+ROWS 544  (listed 321 / not-listed 223)  |  gap rows 126
+record ids: 354 combo products (REC-*), 178 component products (CMP-*)
+COMPONENT ROWS 192  (listed 34 / not-listed 158)
+  [PASS] New components in scope — 178 (expected 178)
+  [FAIL] Combos built from them — 228 (expected 223)
+  [FAIL] Component x combo pairs — 266 (expected 261)
+  [PASS] Every row has a component SKU — 544/544
+  [PASS] Every row has a supplier — 544/544
+  [PASS] Received Date sourced from the container (not the PO date) — 332/544 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 531/544 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 445/544 rows; 89/178 distinct components
+  [PASS] Combo images — 336/544
+  [PASS] Top Reason populated — 10/544 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 192 rows, 25 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 192/192
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 544 rows / component 192 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 354 REC-* + 178 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 544, "components": 178, "combos": 228, "pairs": 266, "gap_no_combo": 126, "impressions": 8963275, "clicks": 31870, "orders": 665, "units": 829, "revenue": 12419.86, "returns": 22}
+TOTALS  (components): {"rows": 192, "listed": 34, "components_with_listing": 25, "impressions": 152513, "clicks": 1382, "orders": 303, "units": 472, "revenue": 4816.77, "returns": 13}
+
+wrote payload_v2.json  (429,433 bytes)  in 37.8s
+
+RESULT: FAIL  (37.8s)
+  soft (recorded, does not block publish): Average Feedback source
+HARD FAILURES: Combos built from them; Component x combo pairs
+2026-08-04 11:00:39 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-04 11:00:39 | ================ finished (exit 1) ================
+2026-08-04 15:45:19 | ================ SCWTS V2 refresh + publish started ================
+2026-08-04 15:45:19 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=47
+  supplier.orders                  OK  rows=267
+  supplier.containers              OK  rows=25
+  supplier.order_items             OK  rows=4029
+  supplier.final_containers        OK  rows=16
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=47; orders=267; containers=25; order_items=4029; final_containers=16; invoices=25
+new components (2026, on a supplier PO): 178
+combos: 228  |  component x combo pairs: 266  |  components with a combo: 52
+component-listing dataset: 25 components have their own listing
+
+ROWS 544  (listed 321 / not-listed 223)  |  gap rows 126
+record ids: 354 combo products (REC-*), 178 component products (CMP-*)
+COMPONENT ROWS 192  (listed 34 / not-listed 158)
+  [PASS] New components in scope — 178 (expected 178)
+  [PASS] Combos built from them — 228 (expected 228)
+  [PASS] Component x combo pairs — 266 (expected 266)
+  [PASS] Every row has a component SKU — 544/544
+  [PASS] Every row has a supplier — 544/544
+  [PASS] Received Date sourced from the container (not the PO date) — 332/544 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 531/544 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 445/544 rows; 89/178 distinct components
+  [PASS] Combo images — 336/544
+  [PASS] Top Reason populated — 10/544 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 192 rows, 25 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 192/192
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 544 rows / component 192 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 354 REC-* + 178 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 544, "components": 178, "combos": 228, "pairs": 266, "gap_no_combo": 126, "impressions": 8963275, "clicks": 31870, "orders": 665, "units": 829, "revenue": 12419.86, "returns": 22}
+TOTALS  (components): {"rows": 192, "listed": 34, "components_with_listing": 25, "impressions": 152513, "clicks": 1382, "orders": 303, "units": 472, "revenue": 4816.77, "returns": 13}
+
+wrote payload_v2.json  (429,433 bytes)  in 18.1s
+
+RESULT: PASS  (18.1s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-04 15:45:37 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (500,310 bytes)
+2026-08-04 15:45:37 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-04 15:45:37 | sanity: OK — 500310 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-04T10:15:37.380Z
+}
+2026-08-04 15:45:39 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (500310 bytes)
+2026-08-04 15:45:39 | validation: Result: PASS | combo rows 544 / component rows 192 | revenue 12419.86 | impressions 8963275
+2026-08-04 15:45:39 | execution time: 20s
+2026-08-04 15:45:39 | ================ finished (exit 0) ================
+2026-08-05 11:00:02 | ================ SCWTS V2 refresh + publish started ================
+2026-08-05 11:00:02 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+Traceback (most recent call last):
+  File "/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2-sql/build_v2.py", line 62, in <module>
+    conn = psycopg2.connect(connect_timeout=40, **DB); conn.autocommit = True
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/led-247/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "149.28.134.54", port 5435 failed: timeout expired
+
+2026-08-05 11:00:42 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-05 11:00:42 | ================ finished (exit 1) ================
+2026-08-12 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-12 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=48
+  supplier.orders                  OK  rows=273
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4119
+  supplier.final_containers        OK  rows=16
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=48; orders=273; containers=26; order_items=4119; final_containers=16; invoices=25
+new components (2026, on a supplier PO): 200
+combos: 230  |  component x combo pairs: 268  |  components with a combo: 52
+component-listing dataset: 25 components have their own listing
+
+ROWS 574  (listed 329 / not-listed 245)  |  gap rows 148
+record ids: 378 combo products (REC-*), 200 component products (CMP-*)
+COMPONENT ROWS 214  (listed 34 / not-listed 180)
+  [FAIL] New components in scope — 200 (expected 178)
+  [FAIL] Combos built from them — 230 (expected 228)
+  [FAIL] Component x combo pairs — 268 (expected 266)
+  [PASS] Every row has a component SKU — 574/574
+  [PASS] Every row has a supplier — 574/574
+  [PASS] Received Date sourced from the container (not the PO date) — 298/574 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 548/574 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 475/574 rows; 111/200 distinct components
+  [PASS] Combo images — 345/574
+  [PASS] Top Reason populated — 10/574 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 214 rows, 25 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 214/214
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 574 rows / component 214 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 378 REC-* + 200 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 574, "components": 200, "combos": 230, "pairs": 268, "gap_no_combo": 148, "impressions": 9595903, "clicks": 34176, "orders": 703, "units": 880, "revenue": 13489.01, "returns": 23}
+TOTALS  (components): {"rows": 214, "listed": 34, "components_with_listing": 25, "impressions": 174411, "clicks": 1611, "orders": 316, "units": 488, "revenue": 4920.8, "returns": 14}
+
+wrote payload_v2.json  (466,279 bytes)  in 18.6s
+
+RESULT: FAIL  (18.6s)
+  soft (recorded, does not block publish): Average Feedback source
+HARD FAILURES: New components in scope; Combos built from them; Component x combo pairs
+2026-08-12 11:00:20 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-12 11:00:20 | ================ finished (exit 1) ================
+2026-08-13 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-13 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=49
+  supplier.orders                  OK  rows=273
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4133
+  supplier.final_containers        OK  rows=16
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=49; orders=273; containers=26; order_items=4133; final_containers=16; invoices=25
+new components (2026, on a supplier PO): 215
+combos: 230  |  component x combo pairs: 268  |  components with a combo: 52
+component-listing dataset: 25 components have their own listing
+
+ROWS 599  (listed 339 / not-listed 260)  |  gap rows 163
+record ids: 393 combo products (REC-*), 215 component products (CMP-*)
+COMPONENT ROWS 229  (listed 34 / not-listed 195)
+  [FAIL] New components in scope — 215 (expected 178)
+  [FAIL] Combos built from them — 230 (expected 228)
+  [FAIL] Component x combo pairs — 268 (expected 266)
+  [PASS] Every row has a component SKU — 599/599
+  [PASS] Every row has a supplier — 599/599
+  [PASS] Received Date sourced from the container (not the PO date) — 306/599 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 553/599 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 500/599 rows; 126/215 distinct components
+  [PASS] Combo images — 355/599
+  [PASS] Top Reason populated — 10/599 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 229 rows, 25 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 229/229
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 599 rows / component 229 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 393 REC-* + 215 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 599, "components": 215, "combos": 230, "pairs": 268, "gap_no_combo": 163, "impressions": 9665484, "clicks": 34423, "orders": 710, "units": 889, "revenue": 13623.16, "returns": 23}
+TOTALS  (components): {"rows": 229, "listed": 34, "components_with_listing": 25, "impressions": 176863, "clicks": 1627, "orders": 318, "units": 490, "revenue": 4939.67, "returns": 14}
+
+wrote payload_v2.json  (488,330 bytes)  in 18.7s
+
+RESULT: FAIL  (18.7s)
+  soft (recorded, does not block publish): Average Feedback source
+HARD FAILURES: New components in scope; Combos built from them; Component x combo pairs
+2026-08-13 11:00:20 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-13 11:00:20 | ================ finished (exit 1) ================
+2026-08-14 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-14 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=50
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4149
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=50; orders=274; containers=26; order_items=4149; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 232
+combos: 231  |  component x combo pairs: 269  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 617  (listed 340 / not-listed 277)  |  gap rows 179
+record ids: 410 combo products (REC-*), 232 component products (CMP-*)
+COMPONENT ROWS 247  (listed 35 / not-listed 212)
+  [FAIL] New components in scope — 232 (expected 178)
+  [FAIL] Combos built from them — 231 (expected 228)
+  [FAIL] Component x combo pairs — 269 (expected 266)
+  [PASS] Every row has a component SKU — 617/617
+  [PASS] Every row has a supplier — 617/617
+  [PASS] Received Date sourced from the container (not the PO date) — 305/617 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 599/617 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 519/617 rows; 144/232 distinct components
+  [PASS] Combo images — 357/617
+  [PASS] Top Reason populated — 10/617 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 247 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 247/247
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 617 rows / component 247 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 410 REC-* + 232 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 617, "components": 232, "combos": 231, "pairs": 269, "gap_no_combo": 179, "impressions": 9752837, "clicks": 34723, "orders": 718, "units": 898, "revenue": 13763.47, "returns": 23}
+TOTALS  (components): {"rows": 247, "listed": 35, "components_with_listing": 26, "impressions": 183947, "clicks": 1699, "orders": 319, "units": 491, "revenue": 4947.5, "returns": 14}
+
+wrote payload_v2.json  (511,585 bytes)  in 17.5s
+
+RESULT: FAIL  (17.5s)
+  soft (recorded, does not block publish): Average Feedback source
+HARD FAILURES: New components in scope; Combos built from them; Component x combo pairs
+2026-08-14 11:00:18 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-14 11:00:18 | ================ finished (exit 1) ================
+2026-08-17 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-17 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=50
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4148
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=50; orders=274; containers=26; order_items=4148; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 232
+combos: 231  |  component x combo pairs: 269  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 619  (listed 341 / not-listed 278)  |  gap rows 179
+record ids: 410 combo products (REC-*), 232 component products (CMP-*)
+COMPONENT ROWS 247  (listed 35 / not-listed 212)
+  [FAIL] New components in scope — 232 (expected 178)
+  [FAIL] Combos built from them — 231 (expected 228)
+  [FAIL] Component x combo pairs — 269 (expected 266)
+  [PASS] Every row has a component SKU — 619/619
+  [PASS] Every row has a supplier — 619/619
+  [PASS] Received Date sourced from the container (not the PO date) — 306/619 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 601/619 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 521/619 rows; 144/232 distinct components
+  [PASS] Combo images — 359/619
+  [PASS] Top Reason populated — 10/619 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 247 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 247/247
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 619 rows / component 247 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 410 REC-* + 232 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 619, "components": 232, "combos": 231, "pairs": 269, "gap_no_combo": 179, "impressions": 10056502, "clicks": 35728, "orders": 732, "units": 915, "revenue": 14206.16, "returns": 23}
+TOTALS  (components): {"rows": 247, "listed": 35, "components_with_listing": 26, "impressions": 189345, "clicks": 1767, "orders": 320, "units": 492, "revenue": 4957.09, "returns": 14}
+
+wrote payload_v2.json  (513,594 bytes)  in 18.3s
+
+RESULT: FAIL  (18.3s)
+  soft (recorded, does not block publish): Average Feedback source
+HARD FAILURES: New components in scope; Combos built from them; Component x combo pairs
+2026-08-17 11:00:20 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-17 11:00:20 | ================ finished (exit 1) ================
+2026-08-18 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-18 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=50
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4148
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=50; orders=274; containers=26; order_items=4148; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 232
+combos: 232  |  component x combo pairs: 270  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 620  (listed 341 / not-listed 279)  |  gap rows 179
+record ids: 411 combo products (REC-*), 232 component products (CMP-*)
+COMPONENT ROWS 247  (listed 35 / not-listed 212)
+  [FAIL] New components in scope — 232 (expected 178)
+  [FAIL] Combos built from them — 232 (expected 228)
+  [FAIL] Component x combo pairs — 270 (expected 266)
+  [PASS] Every row has a component SKU — 620/620
+  [PASS] Every row has a supplier — 620/620
+  [PASS] Received Date sourced from the container (not the PO date) — 307/620 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 602/620 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 522/620 rows; 144/232 distinct components
+  [PASS] Combo images — 359/620
+  [PASS] Top Reason populated — 10/620 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 247 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 247/247
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 620 rows / component 247 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 411 REC-* + 232 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 620, "components": 232, "combos": 232, "pairs": 270, "gap_no_combo": 179, "impressions": 10198138, "clicks": 36314, "orders": 744, "units": 933, "revenue": 14519.97, "returns": 23}
+TOTALS  (components): {"rows": 247, "listed": 35, "components_with_listing": 26, "impressions": 201633, "clicks": 1878, "orders": 323, "units": 496, "revenue": 4975.54, "returns": 14}
+
+wrote payload_v2.json  (514,379 bytes)  in 17.3s
+
+RESULT: FAIL  (17.3s)
+  soft (recorded, does not block publish): Average Feedback source
+HARD FAILURES: New components in scope; Combos built from them; Component x combo pairs
+2026-08-18 11:00:18 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-08-18 11:00:18 | ================ finished (exit 1) ================
+2026-08-19 09:44:54 | ================ SCWTS V2 refresh + publish started ================
+2026-08-19 09:44:54 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4147
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=274; containers=26; order_items=4147; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 232
+combos: 235  |  component x combo pairs: 273  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 626  (listed 344 / not-listed 282)  |  gap rows 179
+record ids: 414 combo products (REC-*), 232 component products (CMP-*)
+COMPONENT ROWS 247  (listed 35 / not-listed 212)
+  [PASS] New components in scope — 232 (floor 178)
+  [PASS] Combos built from them — 235 (floor 228)
+  [PASS] Component x combo pairs — 273 (floor 266)
+  [PASS] Every row has a component SKU — 626/626
+  [PASS] Every row has a supplier — 626/626
+  [PASS] Received Date sourced from the container (not the PO date) — 309/626 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 608/626 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 528/626 rows; 144/232 distinct components
+  [PASS] Combo images — 363/626
+  [PASS] Top Reason populated — 10/626 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 247 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 247/247
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 626 rows / component 247 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 414 REC-* + 232 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 626, "components": 232, "combos": 235, "pairs": 273, "gap_no_combo": 179, "impressions": 10312915, "clicks": 36715, "orders": 752, "units": 941, "revenue": 14739.38, "returns": 23}
+TOTALS  (components): {"rows": 247, "listed": 35, "components_with_listing": 26, "impressions": 202170, "clicks": 1881, "orders": 326, "units": 500, "revenue": 5008.59, "returns": 14}
+
+wrote payload_v2.json  (518,673 bytes)  in 18.3s
+
+RESULT: PASS  (18.3s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-19 09:45:13 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (589,550 bytes)
+2026-08-19 09:45:13 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-19 09:45:13 | sanity: OK — 589550 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-19T04:15:13.559Z
+}
+2026-08-19 09:45:14 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (589550 bytes)
+2026-08-19 09:45:14 | validation: Result: PASS | combo rows 626 / component rows 247 | revenue 14739.38 | impressions 10312915
+2026-08-19 09:45:14 | execution time: 20s
+2026-08-19 09:45:14 | ================ finished (exit 0) ================
+2026-08-19 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-19 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4147
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=274; containers=26; order_items=4147; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 232
+combos: 235  |  component x combo pairs: 273  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 626  (listed 344 / not-listed 282)  |  gap rows 179
+record ids: 414 combo products (REC-*), 232 component products (CMP-*)
+COMPONENT ROWS 247  (listed 35 / not-listed 212)
+  [PASS] New components in scope — 232 (floor 178)
+  [PASS] Combos built from them — 235 (floor 228)
+  [PASS] Component x combo pairs — 273 (floor 266)
+  [PASS] Every row has a component SKU — 626/626
+  [PASS] Every row has a supplier — 626/626
+  [PASS] Received Date sourced from the container (not the PO date) — 309/626 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 608/626 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 528/626 rows; 144/232 distinct components
+  [PASS] Combo images — 363/626
+  [PASS] Top Reason populated — 10/626 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 247 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 247/247
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 626 rows / component 247 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 414 REC-* + 232 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 626, "components": 232, "combos": 235, "pairs": 273, "gap_no_combo": 179, "impressions": 10312915, "clicks": 36715, "orders": 752, "units": 941, "revenue": 14739.38, "returns": 23}
+TOTALS  (components): {"rows": 247, "listed": 35, "components_with_listing": 26, "impressions": 202170, "clicks": 1881, "orders": 326, "units": 500, "revenue": 5008.59, "returns": 14}
+
+wrote payload_v2.json  (518,673 bytes)  in 19.5s
+
+RESULT: PASS  (19.5s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-19 11:00:21 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (589,550 bytes)
+2026-08-19 11:00:21 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-19 11:00:21 | sanity: OK — 589550 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-19T05:30:21.745Z
+}
+2026-08-19 11:00:23 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (589550 bytes)
+2026-08-19 11:00:23 | validation: Result: PASS | combo rows 626 / component rows 247 | revenue 14739.38 | impressions 10312915
+2026-08-19 11:00:23 | execution time: 22s
+2026-08-19 11:00:23 | ================ finished (exit 0) ================
+2026-08-20 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-20 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4147
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=274; containers=26; order_items=4147; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 232
+combos: 235  |  component x combo pairs: 273  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 626  (listed 344 / not-listed 282)  |  gap rows 179
+record ids: 414 combo products (REC-*), 232 component products (CMP-*)
+COMPONENT ROWS 247  (listed 35 / not-listed 212)
+  [PASS] New components in scope — 232 (floor 178)
+  [PASS] Combos built from them — 235 (floor 228)
+  [PASS] Component x combo pairs — 273 (floor 266)
+  [PASS] Every row has a component SKU — 626/626
+  [PASS] Every row has a supplier — 626/626
+  [PASS] Received Date sourced from the container (not the PO date) — 359/626 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 608/626 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 528/626 rows; 144/232 distinct components
+  [PASS] Combo images — 363/626
+  [PASS] Top Reason populated — 10/626 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 247 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 247/247
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 626 rows / component 247 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 414 REC-* + 232 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 626, "components": 232, "combos": 235, "pairs": 273, "gap_no_combo": 179, "impressions": 10404878, "clicks": 36893, "orders": 760, "units": 950, "revenue": 14954.6, "returns": 23}
+TOTALS  (components): {"rows": 247, "listed": 35, "components_with_listing": 26, "impressions": 202709, "clicks": 1883, "orders": 327, "units": 501, "revenue": 5018.28, "returns": 14}
+
+wrote payload_v2.json  (515,296 bytes)  in 19.2s
+
+RESULT: PASS  (19.2s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-20 11:00:21 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (586,173 bytes)
+2026-08-20 11:00:21 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-20 11:00:21 | sanity: OK — 586173 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-20T05:30:21.428Z
+}
+2026-08-20 11:00:22 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (586173 bytes)
+2026-08-20 11:00:22 | validation: Result: PASS | combo rows 626 / component rows 247 | revenue 14954.6 | impressions 10404878
+2026-08-20 11:00:22 | execution time: 21s
+2026-08-20 11:00:22 | ================ finished (exit 0) ================
+2026-08-24 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-24 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4167
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=274; containers=26; order_items=4167; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 258
+combos: 235  |  component x combo pairs: 273  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 655  (listed 346 / not-listed 309)  |  gap rows 205
+record ids: 440 combo products (REC-*), 258 component products (CMP-*)
+COMPONENT ROWS 273  (listed 35 / not-listed 238)
+  [PASS] New components in scope — 258 (floor 178)
+  [PASS] Combos built from them — 235 (floor 228)
+  [PASS] Component x combo pairs — 273 (floor 266)
+  [PASS] Every row has a component SKU — 655/655
+  [PASS] Every row has a supplier — 655/655
+  [PASS] Received Date sourced from the container (not the PO date) — 361/655 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 611/655 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 557/655 rows; 170/258 distinct components
+  [PASS] Combo images — 366/655
+  [PASS] Top Reason populated — 11/655 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 273 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 273/273
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 655 rows / component 273 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 440 REC-* + 258 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 655, "components": 258, "combos": 235, "pairs": 273, "gap_no_combo": 205, "impressions": 10822549, "clicks": 37949, "orders": 772, "units": 965, "revenue": 15246.29, "returns": 24}
+TOTALS  (components): {"rows": 273, "listed": 35, "components_with_listing": 26, "impressions": 203436, "clicks": 1883, "orders": 332, "units": 508, "revenue": 5069.69, "returns": 14}
+
+wrote payload_v2.json  (542,137 bytes)  in 20.3s
+
+RESULT: PASS  (20.3s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-24 11:00:21 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (613,014 bytes)
+2026-08-24 11:00:21 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-24 11:00:21 | sanity: OK — 613014 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-24T05:30:21.642Z
+}
+2026-08-24 11:00:23 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (613014 bytes)
+2026-08-24 11:00:23 | validation: Result: PASS | combo rows 655 / component rows 273 | revenue 15246.29 | impressions 10822549
+2026-08-24 11:00:23 | execution time: 22s
+2026-08-24 11:00:23 | ================ finished (exit 0) ================
+2026-08-25 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-25 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=274
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4167
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=25
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=274; containers=26; order_items=4167; final_containers=17; invoices=25
+new components (2026, on a supplier PO): 251
+combos: 235  |  component x combo pairs: 273  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 648  (listed 346 / not-listed 302)  |  gap rows 198
+record ids: 433 combo products (REC-*), 251 component products (CMP-*)
+COMPONENT ROWS 266  (listed 35 / not-listed 231)
+  [PASS] New components in scope — 251 (floor 178)
+  [PASS] Combos built from them — 235 (floor 228)
+  [PASS] Component x combo pairs — 273 (floor 266)
+  [PASS] Every row has a component SKU — 648/648
+  [PASS] Every row has a supplier — 648/648
+  [PASS] Received Date sourced from the container (not the PO date) — 361/648 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 611/648 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 550/648 rows; 163/251 distinct components
+  [PASS] Combo images — 366/648
+  [PASS] Top Reason populated — 11/648 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 266 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 266/266
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 648 rows / component 266 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 433 REC-* + 251 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 648, "components": 251, "combos": 235, "pairs": 273, "gap_no_combo": 198, "impressions": 11038159, "clicks": 38547, "orders": 795, "units": 998, "revenue": 16031.97, "returns": 24}
+TOTALS  (components): {"rows": 266, "listed": 35, "components_with_listing": 26, "impressions": 208010, "clicks": 1914, "orders": 334, "units": 511, "revenue": 5097.84, "returns": 14}
+
+wrote payload_v2.json  (535,532 bytes)  in 19.6s
+
+RESULT: PASS  (19.6s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-25 11:00:21 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (606,409 bytes)
+2026-08-25 11:00:21 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-25 11:00:21 | sanity: OK — 606409 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-25T05:30:21.439Z
+}
+2026-08-25 11:00:22 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (606409 bytes)
+2026-08-25 11:00:23 | validation: Result: PASS | combo rows 648 / component rows 266 | revenue 16031.97 | impressions 11038159
+2026-08-25 11:00:23 | execution time: 21s
+2026-08-25 11:00:23 | ================ finished (exit 0) ================
+2026-08-26 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-26 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=276
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4165
+  supplier.final_containers        OK  rows=17
+  supplier.invoices                OK  rows=30
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=276; containers=26; order_items=4165; final_containers=17; invoices=30
+new components (2026, on a supplier PO): 252
+combos: 235  |  component x combo pairs: 273  |  components with a combo: 53
+component-listing dataset: 26 components have their own listing
+
+ROWS 650  (listed 347 / not-listed 303)  |  gap rows 199
+record ids: 434 combo products (REC-*), 252 component products (CMP-*)
+COMPONENT ROWS 267  (listed 35 / not-listed 232)
+  [PASS] New components in scope — 252 (floor 178)
+  [PASS] Combos built from them — 235 (floor 228)
+  [PASS] Component x combo pairs — 273 (floor 266)
+  [PASS] Every row has a component SKU — 650/650
+  [PASS] Every row has a supplier — 650/650
+  [PASS] Received Date sourced from the container (not the PO date) — 362/650 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 631/650 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 552/650 rows; 164/252 distinct components
+  [PASS] Combo images — 367/650
+  [PASS] Top Reason populated — 11/650 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 267 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 267/267
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 650 rows / component 267 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 434 REC-* + 252 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 650, "components": 252, "combos": 235, "pairs": 273, "gap_no_combo": 199, "impressions": 11194705, "clicks": 39275, "orders": 798, "units": 1004, "revenue": 16255.02, "returns": 24}
+TOTALS  (components): {"rows": 267, "listed": 35, "components_with_listing": 26, "impressions": 220480, "clicks": 2024, "orders": 335, "units": 513, "revenue": 5101.62, "returns": 14}
+
+wrote payload_v2.json  (539,522 bytes)  in 20.9s
+
+RESULT: PASS  (20.9s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-26 11:00:22 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (610,399 bytes)
+2026-08-26 11:00:22 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-26 11:00:22 | sanity: OK — 610399 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-26T05:30:22.451Z
+}
+2026-08-26 11:00:24 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (610399 bytes)
+2026-08-26 11:00:24 | validation: Result: PASS | combo rows 650 / component rows 267 | revenue 16255.02 | impressions 11194705
+2026-08-26 11:00:24 | execution time: 23s
+2026-08-26 11:00:24 | ================ finished (exit 0) ================
+2026-08-27 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-27 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=276
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4162
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=30
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=276; containers=26; order_items=4162; final_containers=18; invoices=30
+new components (2026, on a supplier PO): 252
+combos: 239  |  component x combo pairs: 278  |  components with a combo: 56
+component-listing dataset: 26 components have their own listing
+
+ROWS 651  (listed 347 / not-listed 304)  |  gap rows 196
+record ids: 435 combo products (REC-*), 252 component products (CMP-*)
+COMPONENT ROWS 267  (listed 35 / not-listed 232)
+  [PASS] New components in scope — 252 (floor 178)
+  [PASS] Combos built from them — 239 (floor 228)
+  [PASS] Component x combo pairs — 278 (floor 266)
+  [PASS] Every row has a component SKU — 651/651
+  [PASS] Every row has a supplier — 651/651
+  [PASS] Received Date sourced from the container (not the PO date) — 362/651 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 633/651 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 554/651 rows; 164/252 distinct components
+  [PASS] Combo images — 367/651
+  [PASS] Top Reason populated — 12/651 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 267 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 267/267
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 651 rows / component 267 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 435 REC-* + 252 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 651, "components": 252, "combos": 239, "pairs": 278, "gap_no_combo": 196, "impressions": 11286614, "clicks": 39437, "orders": 800, "units": 1006, "revenue": 16305.38, "returns": 27}
+TOTALS  (components): {"rows": 267, "listed": 35, "components_with_listing": 26, "impressions": 221613, "clicks": 2031, "orders": 336, "units": 514, "revenue": 5111.31, "returns": 14}
+
+wrote payload_v2.json  (540,919 bytes)  in 18.3s
+
+RESULT: PASS  (18.3s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-27 11:00:20 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (611,796 bytes)
+2026-08-27 11:00:20 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-27 11:00:20 | sanity: OK — 611796 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-27T05:30:20.394Z
+}
+2026-08-27 11:00:21 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (611796 bytes)
+2026-08-27 11:00:21 | validation: Result: PASS | combo rows 651 / component rows 267 | revenue 16305.38 | impressions 11286614
+2026-08-27 11:00:21 | execution time: 20s
+2026-08-27 11:00:21 | ================ finished (exit 0) ================
+2026-08-28 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-28 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=276
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4162
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=30
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=276; containers=26; order_items=4162; final_containers=18; invoices=30
+new components (2026, on a supplier PO): 253
+combos: 243  |  component x combo pairs: 286  |  components with a combo: 60
+component-listing dataset: 26 components have their own listing
+
+ROWS 652  (listed 347 / not-listed 305)  |  gap rows 193
+record ids: 436 combo products (REC-*), 253 component products (CMP-*)
+COMPONENT ROWS 268  (listed 35 / not-listed 233)
+  [PASS] New components in scope — 253 (floor 178)
+  [PASS] Combos built from them — 243 (floor 228)
+  [PASS] Component x combo pairs — 286 (floor 266)
+  [PASS] Every row has a component SKU — 652/652
+  [PASS] Every row has a supplier — 652/652
+  [PASS] Received Date sourced from the container (not the PO date) — 362/652 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 634/652 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 555/652 rows; 163/253 distinct components
+  [PASS] Combo images — 367/652
+  [PASS] Top Reason populated — 12/652 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 268 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 268/268
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 652 rows / component 268 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 436 REC-* + 253 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 652, "components": 253, "combos": 243, "pairs": 286, "gap_no_combo": 193, "impressions": 11840615, "clicks": 40697, "orders": 802, "units": 1010, "revenue": 16387.15, "returns": 27}
+TOTALS  (components): {"rows": 268, "listed": 35, "components_with_listing": 26, "impressions": 237359, "clicks": 2209, "orders": 338, "units": 517, "revenue": 5127.87, "returns": 15}
+
+wrote payload_v2.json  (542,729 bytes)  in 26.8s
+
+RESULT: PASS  (26.8s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-28 11:00:28 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (613,606 bytes)
+2026-08-28 11:00:28 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-28 11:00:28 | sanity: OK — 613606 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-28T05:30:28.225Z
+}
+2026-08-28 11:00:30 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (613606 bytes)
+2026-08-28 11:00:30 | validation: Result: PASS | combo rows 652 / component rows 268 | revenue 16387.15 | impressions 11840615
+2026-08-28 11:00:30 | execution time: 29s
+2026-08-28 11:00:30 | ================ finished (exit 0) ================
+2026-08-31 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-08-31 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=276
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4162
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=30
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=276; containers=26; order_items=4162; final_containers=18; invoices=30
+new components (2026, on a supplier PO): 253
+combos: 247  |  component x combo pairs: 290  |  components with a combo: 60
+component-listing dataset: 26 components have their own listing
+
+ROWS 662  (listed 359 / not-listed 303)  |  gap rows 193
+record ids: 440 combo products (REC-*), 253 component products (CMP-*)
+COMPONENT ROWS 268  (listed 35 / not-listed 233)
+  [PASS] New components in scope — 253 (floor 178)
+  [PASS] Combos built from them — 247 (floor 228)
+  [PASS] Component x combo pairs — 290 (floor 266)
+  [PASS] Every row has a component SKU — 662/662
+  [PASS] Every row has a supplier — 662/662
+  [PASS] Received Date sourced from the container (not the PO date) — 370/662 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 644/662 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 565/662 rows; 163/253 distinct components
+  [PASS] Combo images — 382/662
+  [PASS] Top Reason populated — 13/662 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 268 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 268/268
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 662 rows / component 268 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 440 REC-* + 253 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 662, "components": 253, "combos": 247, "pairs": 290, "gap_no_combo": 193, "impressions": 12142905, "clicks": 41457, "orders": 818, "units": 1030, "revenue": 16866.78, "returns": 30}
+TOTALS  (components): {"rows": 268, "listed": 35, "components_with_listing": 26, "impressions": 241717, "clicks": 2304, "orders": 340, "units": 519, "revenue": 5147.35, "returns": 16}
+
+wrote payload_v2.json  (550,690 bytes)  in 19.1s
+
+RESULT: PASS  (19.1s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-08-31 11:00:20 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (621,567 bytes)
+2026-08-31 11:00:20 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-08-31 11:00:20 | sanity: OK — 621567 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-08-31T05:30:21.113Z
+}
+2026-08-31 11:00:22 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (621567 bytes)
+2026-08-31 11:00:22 | validation: Result: PASS | combo rows 662 / component rows 268 | revenue 16866.78 | impressions 12142905
+2026-08-31 11:00:22 | execution time: 21s
+2026-08-31 11:00:22 | ================ finished (exit 0) ================
+2026-09-01 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-01 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=276
+  supplier.containers              OK  rows=26
+  supplier.order_items             OK  rows=4162
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=30
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=276; containers=26; order_items=4162; final_containers=18; invoices=30
+new components (2026, on a supplier PO): 253
+combos: 248  |  component x combo pairs: 292  |  components with a combo: 61
+component-listing dataset: 26 components have their own listing
+
+ROWS 662  (listed 360 / not-listed 302)  |  gap rows 192
+record ids: 440 combo products (REC-*), 253 component products (CMP-*)
+COMPONENT ROWS 268  (listed 35 / not-listed 233)
+  [PASS] New components in scope — 253 (floor 178)
+  [PASS] Combos built from them — 248 (floor 228)
+  [PASS] Component x combo pairs — 292 (floor 266)
+  [PASS] Every row has a component SKU — 662/662
+  [PASS] Every row has a supplier — 662/662
+  [PASS] Received Date sourced from the container (not the PO date) — 370/662 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 644/662 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 566/662 rows; 163/253 distinct components
+  [PASS] Combo images — 382/662
+  [PASS] Top Reason populated — 13/662 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 268 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 268/268
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 662 rows / component 268 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 440 REC-* + 253 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 662, "components": 253, "combos": 248, "pairs": 292, "gap_no_combo": 192, "impressions": 12262556, "clicks": 41793, "orders": 821, "units": 1033, "revenue": 16912.16, "returns": 30}
+TOTALS  (components): {"rows": 268, "listed": 35, "components_with_listing": 26, "impressions": 241802, "clicks": 2304, "orders": 340, "units": 519, "revenue": 5147.35, "returns": 16}
+
+wrote payload_v2.json  (550,940 bytes)  in 18.8s
+
+RESULT: PASS  (18.8s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-01 11:00:20 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (621,817 bytes)
+2026-09-01 11:00:20 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-01 11:00:20 | sanity: OK — 621817 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-01T05:30:20.810Z
+}
+2026-09-01 11:00:22 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (621817 bytes)
+2026-09-01 11:00:22 | validation: Result: PASS | combo rows 662 / component rows 268 | revenue 16912.16 | impressions 12262556
+2026-09-01 11:00:22 | execution time: 21s
+2026-09-01 11:00:22 | ================ finished (exit 0) ================
+2026-09-03 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-03 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=281
+  supplier.containers              OK  rows=27
+  supplier.order_items             OK  rows=4309
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=30
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=281; containers=27; order_items=4309; final_containers=18; invoices=30
+new components (2026, on a supplier PO): 253
+combos: 258  |  component x combo pairs: 306  |  components with a combo: 65
+component-listing dataset: 26 components have their own listing
+
+ROWS 669  (listed 362 / not-listed 307)  |  gap rows 188
+record ids: 446 combo products (REC-*), 253 component products (CMP-*)
+COMPONENT ROWS 268  (listed 35 / not-listed 233)
+  [PASS] New components in scope — 253 (floor 178)
+  [PASS] Combos built from them — 258 (floor 228)
+  [PASS] Component x combo pairs — 306 (floor 266)
+  [PASS] Every row has a component SKU — 669/669
+  [PASS] Every row has a supplier — 669/669
+  [PASS] Received Date sourced from the container (not the PO date) — 376/669 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 651/669 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 569/669 rows; 163/253 distinct components
+  [PASS] Combo images — 384/669
+  [PASS] Top Reason populated — 13/669 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 268 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 268/268
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 669 rows / component 268 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 446 REC-* + 253 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 669, "components": 253, "combos": 258, "pairs": 306, "gap_no_combo": 188, "impressions": 12469818, "clicks": 42379, "orders": 843, "units": 1117, "revenue": 18215.9, "returns": 30}
+TOTALS  (components): {"rows": 268, "listed": 35, "components_with_listing": 26, "impressions": 243959, "clicks": 2322, "orders": 345, "units": 527, "revenue": 5190.37, "returns": 16}
+
+wrote payload_v2.json  (554,919 bytes)  in 20.8s
+
+RESULT: PASS  (20.8s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-03 11:00:22 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (625,796 bytes)
+2026-09-03 11:00:22 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-03 11:00:22 | sanity: OK — 625796 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-03T05:30:22.823Z
+}
+2026-09-03 11:00:24 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (625796 bytes)
+2026-09-03 11:00:24 | validation: Result: PASS | combo rows 669 / component rows 268 | revenue 18215.9 | impressions 12469818
+2026-09-03 11:00:24 | execution time: 23s
+2026-09-03 11:00:24 | ================ finished (exit 0) ================
+2026-09-04 11:00:02 | ================ SCWTS V2 refresh + publish started ================
+2026-09-04 11:00:02 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=281
+  supplier.containers              OK  rows=27
+  supplier.order_items             OK  rows=4309
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=30
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=281; containers=27; order_items=4309; final_containers=18; invoices=30
+new components (2026, on a supplier PO): 253
+combos: 262  |  component x combo pairs: 316  |  components with a combo: 68
+component-listing dataset: 26 components have their own listing
+
+ROWS 668  (listed 360 / not-listed 308)  |  gap rows 185
+record ids: 447 combo products (REC-*), 253 component products (CMP-*)
+COMPONENT ROWS 268  (listed 35 / not-listed 233)
+  [PASS] New components in scope — 253 (floor 178)
+  [PASS] Combos built from them — 262 (floor 228)
+  [PASS] Component x combo pairs — 316 (floor 266)
+  [PASS] Every row has a component SKU — 668/668
+  [PASS] Every row has a supplier — 668/668
+  [PASS] Received Date sourced from the container (not the PO date) — 374/668 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 650/668 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 569/668 rows; 163/253 distinct components
+  [PASS] Combo images — 382/668
+  [PASS] Top Reason populated — 13/668 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 268 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 268/268
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 668 rows / component 268 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 447 REC-* + 253 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 668, "components": 253, "combos": 262, "pairs": 316, "gap_no_combo": 185, "impressions": 12600681, "clicks": 43163, "orders": 853, "units": 1125, "revenue": 18448.95, "returns": 31}
+TOTALS  (components): {"rows": 268, "listed": 35, "components_with_listing": 26, "impressions": 255342, "clicks": 2427, "orders": 346, "units": 528, "revenue": 5199.55, "returns": 16}
+
+wrote payload_v2.json  (554,924 bytes)  in 20.8s
+
+RESULT: PASS  (20.8s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-04 11:00:22 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (625,801 bytes)
+2026-09-04 11:00:23 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-04 11:00:23 | sanity: OK — 625801 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-04T05:30:23.145Z
+}
+2026-09-04 11:00:24 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (625801 bytes)
+2026-09-04 11:00:24 | validation: Result: PASS | combo rows 668 / component rows 268 | revenue 18448.95 | impressions 12600681
+2026-09-04 11:00:24 | execution time: 22s
+2026-09-04 11:00:24 | ================ finished (exit 0) ================
+2026-09-07 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-07 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=281
+  supplier.containers              OK  rows=27
+  supplier.order_items             OK  rows=4309
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=32
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=281; containers=27; order_items=4309; final_containers=18; invoices=32
+new components (2026, on a supplier PO): 253
+combos: 272  |  component x combo pairs: 333  |  components with a combo: 71
+component-listing dataset: 26 components have their own listing
+
+ROWS 675  (listed 360 / not-listed 315)  |  gap rows 182
+record ids: 454 combo products (REC-*), 253 component products (CMP-*)
+COMPONENT ROWS 268  (listed 35 / not-listed 233)
+  [PASS] New components in scope — 253 (floor 178)
+  [PASS] Combos built from them — 272 (floor 228)
+  [PASS] Component x combo pairs — 333 (floor 266)
+  [PASS] Every row has a component SKU — 675/675
+  [PASS] Every row has a supplier — 675/675
+  [PASS] Received Date sourced from the container (not the PO date) — 379/675 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 657/675 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 574/675 rows; 163/253 distinct components
+  [PASS] Combo images — 383/675
+  [PASS] Top Reason populated — 14/675 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 268 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 268/268
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 675 rows / component 268 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 454 REC-* + 253 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 675, "components": 253, "combos": 272, "pairs": 333, "gap_no_combo": 182, "impressions": 12845228, "clicks": 44147, "orders": 868, "units": 1141, "revenue": 18963.09, "returns": 34}
+TOTALS  (components): {"rows": 268, "listed": 35, "components_with_listing": 26, "impressions": 256175, "clicks": 2449, "orders": 350, "units": 532, "revenue": 5246.54, "returns": 16}
+
+wrote payload_v2.json  (559,324 bytes)  in 23.5s
+
+RESULT: PASS  (23.5s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-07 11:00:24 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (630,201 bytes)
+2026-09-07 11:00:25 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-07 11:00:25 | sanity: OK — 630201 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-07T05:30:25.518Z
+}
+2026-09-07 11:00:27 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (630201 bytes)
+2026-09-07 11:00:27 | validation: Result: PASS | combo rows 675 / component rows 268 | revenue 18963.09 | impressions 12845228
+2026-09-07 11:00:27 | execution time: 26s
+2026-09-07 11:00:27 | ================ finished (exit 0) ================
+2026-09-08 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-08 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=281
+  supplier.containers              OK  rows=27
+  supplier.order_items             OK  rows=4309
+  supplier.final_containers        OK  rows=18
+  supplier.invoices                OK  rows=32
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=281; containers=27; order_items=4309; final_containers=18; invoices=32
+new components (2026, on a supplier PO): 253
+combos: 272  |  component x combo pairs: 333  |  components with a combo: 71
+component-listing dataset: 26 components have their own listing
+
+ROWS 675  (listed 360 / not-listed 315)  |  gap rows 182
+record ids: 454 combo products (REC-*), 253 component products (CMP-*)
+COMPONENT ROWS 268  (listed 35 / not-listed 233)
+  [PASS] New components in scope — 253 (floor 178)
+  [PASS] Combos built from them — 272 (floor 228)
+  [PASS] Component x combo pairs — 333 (floor 266)
+  [PASS] Every row has a component SKU — 675/675
+  [PASS] Every row has a supplier — 675/675
+  [PASS] Received Date sourced from the container (not the PO date) — 379/675 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 657/675 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 574/675 rows; 163/253 distinct components
+  [PASS] Combo images — 383/675
+  [PASS] Top Reason populated — 14/675 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 268 rows, 26 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 268/268
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 675 rows / component 268 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 454 REC-* + 253 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 675, "components": 253, "combos": 272, "pairs": 333, "gap_no_combo": 182, "impressions": 12940142, "clicks": 44378, "orders": 883, "units": 1161, "revenue": 19392.61, "returns": 34}
+TOTALS  (components): {"rows": 268, "listed": 35, "components_with_listing": 26, "impressions": 258332, "clicks": 2473, "orders": 353, "units": 535, "revenue": 5284.9, "returns": 16}
+
+wrote payload_v2.json  (559,347 bytes)  in 31.3s
+
+RESULT: PASS  (31.3s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-08 11:00:32 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (630,224 bytes)
+2026-09-08 11:00:32 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-08 11:00:32 | sanity: OK — 630224 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-08T05:30:33.156Z
+}
+2026-09-08 11:00:35 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (630224 bytes)
+2026-09-08 11:00:35 | validation: Result: PASS | combo rows 675 / component rows 268 | revenue 19392.61 | impressions 12940142
+2026-09-08 11:00:35 | execution time: 34s
+2026-09-08 11:00:35 | ================ finished (exit 0) ================
+2026-09-10 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-10 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=286
+  supplier.containers              OK  rows=28
+  supplier.order_items             OK  rows=4425
+  supplier.final_containers        OK  rows=19
+  supplier.invoices                OK  rows=32
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=286; containers=28; order_items=4425; final_containers=19; invoices=32
+new components (2026, on a supplier PO): 260
+combos: 289  |  component x combo pairs: 358  |  components with a combo: 75
+component-listing dataset: 30 components have their own listing
+
+ROWS 731  (listed 404 / not-listed 327)  |  gap rows 185
+record ids: 474 combo products (REC-*), 260 component products (CMP-*)
+COMPONENT ROWS 275  (listed 39 / not-listed 236)
+  [PASS] New components in scope — 260 (floor 178)
+  [PASS] Combos built from them — 289 (floor 228)
+  [PASS] Component x combo pairs — 358 (floor 266)
+  [PASS] Every row has a component SKU — 731/731
+  [PASS] Every row has a supplier — 731/731
+  [PASS] Received Date sourced from the container (not the PO date) — 366/731 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 713/731 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 634/731 rows; 173/260 distinct components
+  [PASS] Combo images — 434/731
+  [PASS] Top Reason populated — 16/731 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 275 rows, 30 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 275/275
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 731 rows / component 275 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 474 REC-* + 260 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 731, "components": 260, "combos": 289, "pairs": 358, "gap_no_combo": 185, "impressions": 13206961, "clicks": 45676, "orders": 945, "units": 1249, "revenue": 22213.84, "returns": 36}
+TOTALS  (components): {"rows": 275, "listed": 39, "components_with_listing": 30, "impressions": 259681, "clicks": 2486, "orders": 353, "units": 535, "revenue": 5284.9, "returns": 16}
+
+wrote payload_v2.json  (603,991 bytes)  in 23.9s
+
+RESULT: PASS  (23.9s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-10 11:00:25 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (674,868 bytes)
+2026-09-10 11:00:25 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-10 11:00:26 | sanity: OK — 674868 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-10T05:30:26.304Z
+}
+2026-09-10 11:00:28 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (674868 bytes)
+2026-09-10 11:00:28 | validation: Result: PASS | combo rows 731 / component rows 275 | revenue 22213.84 | impressions 13206961
+2026-09-10 11:00:28 | execution time: 27s
+2026-09-10 11:00:28 | ================ finished (exit 0) ================
+2026-09-11 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-11 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=287
+  supplier.containers              OK  rows=28
+  supplier.order_items             OK  rows=4426
+  supplier.final_containers        OK  rows=19
+  supplier.invoices                OK  rows=32
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=287; containers=28; order_items=4426; final_containers=19; invoices=32
+new components (2026, on a supplier PO): 260
+combos: 292  |  component x combo pairs: 364  |  components with a combo: 75
+component-listing dataset: 30 components have their own listing
+
+ROWS 735  (listed 405 / not-listed 330)  |  gap rows 185
+record ids: 477 combo products (REC-*), 260 component products (CMP-*)
+COMPONENT ROWS 275  (listed 39 / not-listed 236)
+  [PASS] New components in scope — 260 (floor 178)
+  [PASS] Combos built from them — 292 (floor 228)
+  [PASS] Component x combo pairs — 364 (floor 266)
+  [PASS] Every row has a component SKU — 735/735
+  [PASS] Every row has a supplier — 735/735
+  [PASS] Received Date sourced from the container (not the PO date) — 371/735 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 717/735 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 638/735 rows; 174/260 distinct components
+  [PASS] Combo images — 435/735
+  [PASS] Top Reason populated — 16/735 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 275 rows, 30 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 275/275
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 735 rows / component 275 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 477 REC-* + 260 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 735, "components": 260, "combos": 292, "pairs": 364, "gap_no_combo": 185, "impressions": 13389470, "clicks": 46526, "orders": 967, "units": 1278, "revenue": 23156.11, "returns": 36}
+TOTALS  (components): {"rows": 275, "listed": 39, "components_with_listing": 30, "impressions": 250994, "clicks": 2337, "orders": 361, "units": 544, "revenue": 5348.98, "returns": 16}
+
+wrote payload_v2.json  (607,645 bytes)  in 22.9s
+
+RESULT: PASS  (22.9s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-11 11:00:24 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (678,522 bytes)
+2026-09-11 11:00:24 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-11 11:00:25 | sanity: OK — 678522 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-11T05:30:25.532Z
+}
+2026-09-11 11:00:27 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (678522 bytes)
+2026-09-11 11:00:27 | validation: Result: PASS | combo rows 735 / component rows 275 | revenue 23156.11 | impressions 13389470
+2026-09-11 11:00:27 | execution time: 26s
+2026-09-11 11:00:27 | ================ finished (exit 0) ================
+2026-09-14 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-14 11:00:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy as temp_user)
+connected temp_user@149.28.134.54:5435/order_management_copy
+supplier schema USAGE for temp_user: True
+  supplier.suppliers               OK  rows=51
+  supplier.orders                  OK  rows=287
+  supplier.containers              OK  rows=28
+  supplier.order_items             OK  rows=4426
+  supplier.final_containers        OK  rows=19
+  supplier.invoices                OK  rows=32
+  [PASS] supplier schema readable by temp_user — suppliers=51; orders=287; containers=28; order_items=4426; final_containers=19; invoices=32
+new components (2026, on a supplier PO): 260
+combos: 294  |  component x combo pairs: 366  |  components with a combo: 75
+component-listing dataset: 30 components have their own listing
+
+ROWS 738  (listed 405 / not-listed 333)  |  gap rows 185
+record ids: 479 combo products (REC-*), 260 component products (CMP-*)
+COMPONENT ROWS 275  (listed 39 / not-listed 236)
+  [PASS] New components in scope — 260 (floor 178)
+  [PASS] Combos built from them — 294 (floor 228)
+  [PASS] Component x combo pairs — 366 (floor 266)
+  [PASS] Every row has a component SKU — 738/738
+  [PASS] Every row has a supplier — 738/738
+  [PASS] Received Date sourced from the container (not the PO date) — 372/738 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 720/738 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 640/738 rows; 174/260 distinct components
+  [PASS] Combo images — 436/738
+  [PASS] Top Reason populated — 16/738 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 275 rows, 30 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 275/275
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 738 rows / component 275 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 479 REC-* + 260 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 738, "components": 260, "combos": 294, "pairs": 366, "gap_no_combo": 185, "impressions": 13661657, "clicks": 47277, "orders": 983, "units": 1296, "revenue": 23869.3, "returns": 39}
+TOTALS  (components): {"rows": 275, "listed": 39, "components_with_listing": 30, "impressions": 260506, "clicks": 2423, "orders": 364, "units": 549, "revenue": 5388.58, "returns": 17}
+
+wrote payload_v2.json  (609,302 bytes)  in 22.2s
+
+RESULT: PASS  (22.2s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-14 11:00:23 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (680,179 bytes)
+2026-09-14 11:00:23 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-14 11:00:23 | sanity: OK — 680179 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-14T05:30:24.376Z
+}
+2026-09-14 11:00:26 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (680179 bytes)
+2026-09-14 11:00:26 | validation: Result: PASS | combo rows 738 / component rows 275 | revenue 23869.3 | impressions 13661657
+2026-09-14 11:00:26 | execution time: 25s
+2026-09-14 11:00:26 | ================ finished (exit 0) ================

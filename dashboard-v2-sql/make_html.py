@@ -505,7 +505,11 @@ const ALL_P = COLS.slice(0,9), ALL_M = COLS.slice(9);
 // The table scrolls horizontally AND vertically so every column stays reachable
 // without changing the grouped layout. The drawer remains as a quick one-page
 // read of a single record.
-const PCOLS = ALL_P;
+// Components tab: a component row never has a combo, so the three combo columns
+// are always blank there -- hide them in that view only (Combos tab keeps all).
+const COMBO_ONLY = ['bsku','bimg','bcre'];
+const viewPCols = () => VIEW==='comp' ? ALL_P.filter(c=>!COMBO_ONLY.includes(c[1])) : ALL_P;
+let PCOLS = viewPCols();
 const MCOLS = ALL_M;
 // Combos tab groups by Combo SKU, Components tab by Component SKU. In the combo
 // view the metrics are keyed on the combo, so several component rows of the same
@@ -536,8 +540,16 @@ function groupRows(rs){{
   }});
 }}
 
+// Default display priority (no column sort chosen): products with the most complete
+// Container / Received Date first. Display order only -- values are untouched.
+//   1 = Container and Received Date present, 2 = Container only, 3 = no Container.
+// Uses the product row's own Container / Received Date fields (the same ones the
+// filters read). Array.sort is stable, so each priority band keeps the original
+// V2 payload order.
+const dataPriority = g => g.head[B.cont] ? (g.head[B.recv] ? 1 : 2) : 3;
+
 function sortGroups(gs){{
-  if(!S.sort) return gs;
+  if(!S.sort) return gs.sort((a,b)=>dataPriority(a)-dataPriority(b));
   const k = S.sort, t = (COLS.find(c=>c[1]===k)||['','','t'])[2];
   const isProd = k==='rid' || PCOLS.some(c=>c[1]===k);
   const val = g => {{
@@ -560,6 +572,7 @@ function sortGroups(gs){{
 }}
 
 function render(){{
+  PCOLS = viewPCols();
   const rs = filtered();
   kpis(rs);
   const groups = sortGroups(groupRows(rs));
@@ -779,6 +792,7 @@ function setView(v){{
   VIEW = v; ROWS = DATA[v];
   document.querySelectorAll('#viewtabs .tab').forEach(t=>t.classList.toggle('active', t.dataset.view===v));
   S.page = 1;                                   // filters/search/sort/per-page all persist
+  if(v==='comp' && COMBO_ONLY.includes(S.sort)) S.sort = '';   // sorted column is hidden in this view
   buildFilterOpts();
   render();
 }}
