@@ -76,7 +76,7 @@ th.ridcol,td.ridcol{{
    are the opaque equivalents of pcol's rgba() reds (a sticky cell cannot be
    translucent without the scrolling columns bleeding through). */
 thead th.ridcol{{z-index:6; background-color:var(--bg2)}}
-tbody td.ridcol{{z-index:3; background-color:var(--bg2); color:var(--muted)}}
+tbody td.ridcol{{z-index:3; background-color:var(--bg2); color:var(--muted); vertical-align:top}}
 tbody tr.galt td.ridcol{{background-color:var(--bg)}}
 tbody tr.nocombo td.ridcol{{background-color:#ede5eb}}
 tbody tr.galt.nocombo td.ridcol{{background-color:#f3eef2}}
@@ -361,7 +361,12 @@ thead th.sorted{{color:var(--accent)}}
 const PAYLOAD = {json.dumps(P, separators=(',',':'))};
 const B = PAYLOAD.B;
 // Two independent datasets, identical column layout. Combos is the default view.
-const DATA = {{ combo: PAYLOAD.rows, comp: PAYLOAD.rowsComp }};
+// Combos tab shows ONLY rows that have a combo. Components with no combo are listed on
+// the Components tab; showing them here too duplicated them. They carry no marketplace
+// or metrics, so no total changes. They are kept (NO_COMBO) only for the
+// "No Combo Yet" KPI count.
+const DATA = {{ combo: PAYLOAD.rows.filter(r=>r[B.bsku]), comp: PAYLOAD.rowsComp }};
+const NO_COMBO = PAYLOAD.rows.filter(r=>!r[B.bsku]);
 let VIEW = 'combo';
 let ROWS = DATA[VIEW];
 const COLS = {json.dumps(COLS)};
@@ -394,8 +399,8 @@ function buildFilterOpts(){{
     }});
 }}
 
-function filtered(){{
-  return ROWS.filter(r=>{{
+function filtered(list){{
+  return (list || ROWS).filter(r=>{{
     if(S.sup  && r[B.sup]  !== S.sup)  return false;
     if(S.cont && r[B.cont] !== S.cont) return false;
     if(S.plat && r[B.plat] !== S.plat) return false;
@@ -417,7 +422,8 @@ function filtered(){{
 function kpis(rs){{
   const comps = new Set(rs.map(r=>r[B.csku]).filter(Boolean));
   const combos= new Set(rs.map(r=>r[B.bsku]).filter(Boolean));
-  const noCombo = new Set(rs.filter(r=>!r[B.bsku]).map(r=>r[B.csku]));
+  // components with no combo, under the same filters/search as the table
+  const noCombo = new Set(filtered(NO_COMBO).map(r=>r[B.csku]));
   const listed = rs.filter(r=>r[B.stat]==='Listed').length;
   const sum = k => rs.reduce((a,r)=>a+(r[B[k]]||0),0);
   const units = sum('units'), rets = sum('ret');
@@ -605,7 +611,9 @@ function render(){{
       const rix = RENDERED.length; RENDERED.push({{r, g}});
       html += `<tr data-ix="${{rix}}" class="grp${{alt}}${{first?' gfirst':''}}${{gap?' nocombo':''}} mk-${{plSlug(r[B.plat])}}"`
             + (first?` title="${{esc(g.head[B.notes]||'')}}"`:'') + '>';
-      html += `<td class="ridcol">${{esc(r[B.rid]||'')}}</td>`;
+      // Record ID is one per product -> written ONCE, spanning its marketplace rows
+      // (same as the product columns), not repeated on every row.
+      if(first) html += `<td class="ridcol" rowspan="${{n}}">${{esc(r[B.rid]||'')}}</td>`;
       if(first){{                                  // product block — rendered ONCE
         html += PCOLS.map(([lbl,key,t])=>{{
           const cls = (t==='img'?'imgcell ':'') + 'pcol';
@@ -800,7 +808,7 @@ document.getElementById('viewtabs').addEventListener('click', e=>{{
   const t = e.target.closest('.tab[data-view]'); if(t) setView(t.dataset.view);
 }});
 document.getElementById('tabCompN').textContent  = '('+PAYLOAD.rowsComp.length+')';
-document.getElementById('tabComboN').textContent = '('+PAYLOAD.rows.length+')';
+document.getElementById('tabComboN').textContent = '('+DATA.combo.length+')';
 
 buildFilterOpts();
 render();

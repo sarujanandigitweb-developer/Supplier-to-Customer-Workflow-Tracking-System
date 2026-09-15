@@ -9,6 +9,17 @@
 | Scope snapshot | 268 components on the Components tab |
 | Status | **PASS — closed, no code change** |
 
+> **Correction — 2026-09-15.** Section 4 states that LEDSone has no receipt data. That is
+> incomplete. `inventory.product_history.history` is a free-text log that contains warehouse
+> stock-in events, e.g. `Supply - SU1200 loaded by <user> On 2026-08-25 10:23:15 … unit5 changed from 0 to 65`.
+> This is the "Last Container / Received Warehouse / Received Date" shown by the LEDSone inventory app.
+> The original search matched table/column **names** only, not text inside columns.
+> Coverage for the gap components: 29 of the 66 "container, no received date" and 9 of the 24
+> "no container" components have at least one such event. These dates are **warehouse stock-load
+> dates**, not V2's shipping-container close-out (e.g. a container closed 2026-04-29 and was loaded
+> to stock 2026-06-02). Using them would be a new business rule (see R3 in section 8); it has **not**
+> been implemented. Sections 5–7 remain correct under the existing V2 rule.
+
 ---
 
 ## 1. Purpose
@@ -120,7 +131,9 @@ container status and dates → invoices → shipping-cost records → arrival fl
 | R1 | If the PO line has no container, use the PO-header shipping container (and its close-out date) | 6 containers + received dates (AL1052026 → UK Container 8th 2026 / 2026-08-19); also LSGLCA16015AR's received date | ≈9% of lines with both values ship in a different container from their PO header; no proof the 6 lines were loaded |
 | R2 | If the shipping container has no status, use the loading container's completion date | 3 received dates (IMACCW/GR/YE → 2026-03-30) | Uses a different container record's date as the shipment close-out |
 
-Either rule changes existing V2 business logic and needs explicit business-owner approval before any implementation.
+| R3 | Use the latest warehouse stock-in event (`inventory.product_history`, "Supply - SUxxxx loaded … On <date>") as Received Date | 38 of the 90 gap components have ≥1 event | Free-text log that has to be parsed; the date is the warehouse load, not the container close-out; the supply code (SUxxxx) is not linked to a container in `suppliers.*` |
+
+Any of these rules changes existing V2 business logic and needs explicit business-owner approval before any implementation.
 
 ## 9. Known limits
 

@@ -189,6 +189,43 @@ CREATE INDEX ON sup(comp_sku);
 cur.execute("SELECT comp_sku, supplier, container, destination, received, po_date, po, qty, arrived FROM sup")
 supmap = {r[0]: dict(supplier=r[1], container=r[2], dest=r[3], recv=r[4], po_date=r[5],
                      po=r[6], qty=r[7], arrived=bool(r[8])) for r in cur.fetchall()}
+
+# ---------- 2b. RECEIVED-DATE FALLBACK: warehouse stock-in history -------------
+# APPROVED 2026-09-15. Used ONLY when the container close-out and invoice ship-by
+# date above are both blank. inventory.product_history is a free-text log; a UK
+# stock-in line reads
+#   "Supply - SU1318 loaded by <user> On 2026-08-25 10:23:15 - unit5 changed from 0 to 4000"
+# A line counts only if some stock figure INCREASES and its date is on/after the
+# component's latest PO date (older receipts belong to older POs). The EARLIEST such
+# date is used (first arrival of that PO's stock). German Supply lines are ignored.
+# The history has no container, so Container is never filled from it.
+import re
+_SUPPLY = re.compile(r"^Supply - (SU\d+) loaded by .+? On (\d{4}-\d{2}-\d{2}) \d{2}:\d{2}:\d{2}(.*)$")
+_CHANGE = re.compile(r"\w+ changed from (-?\d*) to (-?\d*)", re.I)
+cur.execute("""SELECT h.sku, h.history FROM pg_temp.product_history h
+               JOIN comp c ON c.comp_sku = h.sku WHERE COALESCE(h.history,'') <> ''""")
+recv_from_history = 0
+for sku, hist in cur.fetchall():
+    s = supmap.get(sku)
+    if not s or s["recv"] or not s["po_date"]:
+        continue
+    best = None
+    for line in re.split(r"\r?\n", hist):
+        m = _SUPPLY.match(line.strip())
+        if not m or m.group(2) < s["po_date"]:
+            continue
+        if not any(a.lstrip("-").isdigit() and b.lstrip("-").isdigit() and int(b) > int(a)
+                   for a, b in _CHANGE.findall(m.group(3))):
+            continue
+        if best is None or m.group(2) < best[1]:
+            best = (m.group(1), m.group(2))
+    if best:
+        s["recv"], s["recv_src"] = best[1], best[0]
+        recv_from_history += 1
+print(f"received date filled from warehouse stock-in history: {recv_from_history}")
+VAL["notes"].append(f"Received Date: {recv_from_history} components use the warehouse stock-in date from "
+                    "inventory.product_history (only where container close-out and invoice date are blank).")
+
 # PO count per component (multiple restocks are the norm)
 cur.execute("""SELECT oi.sku, count(*) FROM pg_temp.supplier_order_items oi
                JOIN comp c ON c.comp_sku=oi.sku GROUP BY 1""")
@@ -266,9 +303,23 @@ SELECT DISTINCT ON (resolved) resolved, main_image_url FROM (
 ORDER BY resolved, created_at DESC, ref_id""")
 img = dict(cur.fetchall())          # listing images, keyed by SKU (combo or component)
 
+# Product catalogue photos in LEDSone (the same image the LEDSone inventory app shows).
+# Used only where the supplier photo / listing image above is blank, so every
+# existing image stays as it was. product_images first, then the product_media
+# 'main-image' (a few combos only have that one).
+cur.execute("""
+SELECT DISTINCT ON (sku) sku, image_url FROM pg_temp.product_catalog_images
+WHERE sku IN (SELECT comp_sku FROM comp UNION SELECT combo_sku FROM pair)
+ORDER BY sku, src_rank, image_ordering NULLS LAST, id""")
+img_catalog = dict(cur.fetchall())
+
 def comp_image(sku):
-    """Supplier photo first, marketplace listing image second."""
-    return img_comp.get(sku) or img.get(sku, "")
+    """Supplier photo first, marketplace listing image second, LEDSone catalogue photo third."""
+    return img_comp.get(sku) or img.get(sku) or img_catalog.get(sku, "")
+
+def combo_image(sku):
+    """Marketplace listing image first, LEDSone catalogue photo second."""
+    return img.get(sku) or img_catalog.get(sku, "")
 
 # ---------- 6. TRAFFIC — from each listing's OWN Listed Date to today ----------
 cur.execute("""
@@ -473,6 +524,7 @@ def base(comp_sku, comp_created, comp_desc):
     if s.get("po_date"): notes.append("PO " + s["po_date"])
     if n > 1: notes.append(f"{n} POs — latest shown")
     if not s.get("recv"): notes.append("container not yet closed — no received date")
+    elif s.get("recv_src"): notes.append(f"received date from warehouse stock-in ({s['recv_src']})")
     r[B["notes"]] = " · ".join(notes)
     return r
 
@@ -507,13 +559,13 @@ for combo_sku in sorted(combo_map):
     allp = set(plats) | act
     if not allp:                                   # combo exists but nowhere live
         r = base(comp_sku, comp_created, comp_desc)
-        r[B["bsku"]]=combo_sku; r[B["bimg"]]=img.get(combo_sku,""); r[B["bcre"]]=combo_created
+        r[B["bsku"]]=combo_sku; r[B["bimg"]]=combo_image(combo_sku); r[B["bcre"]]=combo_created
         r[B["comps"]]=comp_list
         r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
         rows.append(r); continue
     for plat in sorted(allp):
         r = base(comp_sku, comp_created, comp_desc)
-        r[B["bsku"]]=combo_sku; r[B["bimg"]]=img.get(combo_sku,""); r[B["bcre"]]=combo_created
+        r[B["bsku"]]=combo_sku; r[B["bimg"]]=combo_image(combo_sku); r[B["bcre"]]=combo_created
         r[B["comps"]]=comp_list
         L = plats.get(plat)
         if L:
@@ -589,13 +641,24 @@ for comp_sku, comp_created, comp_desc in all_comps:
 # ---------- 9c. RECORD ID -----------------------------------------------------
 # One Record ID per PRODUCT block (all marketplace rows of a product share it),
 # assigned in a post-pass so the row-building logic above is untouched.
+# Record IDs are a display index only (they do not exist in the database). They are
+# numbered in the dashboard's DEFAULT display order: product blocks with Container +
+# Received Date first, then Container only, then no Container, each band keeping the
+# original row order -- the same stable priority make_html.py's sortGroups() applies,
+# so the default table reads REC-00001, REC-00002, ... top to bottom. Row order and
+# every other value are unchanged.
 def stamp_rids(rlist, prefix, keyfn):
-    seen = {}
+    first = {}                                   # product key -> its first row
     for r in rlist:
-        k = keyfn(r)
-        if k not in seen:
-            seen[k] = f"{prefix}-{len(seen)+1:05d}"
-        r[B["rid"]] = seen[k]
+        first.setdefault(keyfn(r), r)
+    band = lambda h: 1 if (h[B["cont"]] and h[B["recv"]]) else (2 if h[B["cont"]] else 3)
+    # Combo rows without a combo (component-only gap rows) are not shown on the Combos
+    # tab, so they are numbered AFTER all real combos -- the visible IDs stay sequential.
+    hidden = lambda h: prefix == "REC" and not h[B["bsku"]]
+    order = sorted(first, key=lambda k: (hidden(first[k]), band(first[k])))   # stable per band
+    seen = {k: f"{prefix}-{i+1:05d}" for i, k in enumerate(order)}
+    for r in rlist:
+        r[B["rid"]] = seen[keyfn(r)]
     return len(seen)
 
 n_rec  = stamp_rids(rows,   "REC", lambda r: r[B["bsku"]] or r[B["csku"]])

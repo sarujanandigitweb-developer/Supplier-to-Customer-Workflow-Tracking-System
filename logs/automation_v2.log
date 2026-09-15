@@ -1997,3 +1997,102 @@ Pushed successfully: {
 2026-09-14 11:00:26 | validation: Result: PASS | combo rows 738 / component rows 275 | revenue 23869.3 | impressions 13661657
 2026-09-14 11:00:26 | execution time: 25s
 2026-09-14 11:00:26 | ================ finished (exit 0) ================
+2026-09-15 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-15 11:00:01 | stage 1 build: starting (fresh fetch from LEDSone 169.58.91.229:5432/ledsone as tech_user; deleted-flag reference 149.28.134.54:5435/order_management_copy)
+connected tech_user@169.58.91.229:5432/ledsone
+source layer ready: LEDSone views + 51 deleted-product ids + 34776 fallback order lines (5387 in 2026, 0 dropped as already in LEDSone) from the old DB
+supplier schema USAGE for tech_user: True
+  pg_temp.supplier_suppliers       OK  rows=51
+  pg_temp.supplier_orders          OK  rows=291
+  pg_temp.supplier_containers      OK  rows=28
+  pg_temp.supplier_order_items     OK  rows=4510
+  pg_temp.supplier_final_containers OK  rows=20
+  pg_temp.supplier_invoices        OK  rows=39
+  [PASS] supplier schema readable by tech_user — supplier_suppliers=51; supplier_orders=291; supplier_containers=28; supplier_order_items=4510; supplier_final_containers=20; supplier_invoices=39
+new components (2026, on a supplier PO): 268
+received date filled from warehouse stock-in history: 10
+combos: 298  |  component x combo pairs: 371  |  components with a combo: 76
+component-listing dataset: 30 components have their own listing
+
+ROWS 752  (listed 407 / not-listed 345)  |  gap rows 192
+record ids: 490 combo products (REC-*), 268 component products (CMP-*)
+COMPONENT ROWS 283  (listed 39 / not-listed 244)
+  [PASS] New components in scope — 268 (floor 178)
+  [PASS] Combos built from them — 298 (floor 228)
+  [PASS] Component x combo pairs — 371 (floor 266)
+  [PASS] Every row has a component SKU — 752/752
+  [PASS] Every row has a supplier — 752/752
+  [PASS] Received Date sourced from the container (not the PO date) — 383/752 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 724/752 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 752/752 rows; 259/268 distinct components
+  [PASS] Combo images — 553/752
+  [PASS] Top Reason populated — 16/752 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 283 rows, 30 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 283/283
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 752 rows / component 283 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 490 REC-* + 268 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 28 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 752, "components": 268, "combos": 298, "pairs": 371, "gap_no_combo": 192, "impressions": 13979063, "clicks": 48861, "orders": 998, "units": 1315, "revenue": 24549.69, "returns": 39}
+TOTALS  (components): {"rows": 283, "listed": 39, "components_with_listing": 30, "impressions": 300488, "clicks": 2873, "orders": 368, "units": 553, "revenue": 5432.5, "returns": 17}
+
+wrote payload_v2.json  (677,670 bytes)  in 93.4s
+
+RESULT: PASS  (93.4s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-15 11:01:34 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (750,157 bytes)
+2026-09-15 11:01:34 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-15 11:01:34 | sanity: OK — 750157 bytes, PAYLOAD + table + tabs + closing tag present
+node:internal/modules/cjs/loader:1386
+  throw err;
+  ^
+
+Error: Cannot find module 'pg'
+Require stack:
+- /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2-update/push_to_hub.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+    at Object.<anonymous> (/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2-update/push_to_hub.js:13:20)
+    at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2-update/push_to_hub.js'
+  ]
+}
+
+Node.js v22.22.2
+2026-09-15 11:01:35 | stage 3 publish: FAILED — dashboard rebuilt locally but hub not updated
+2026-09-15 11:01:35 | validation: Result: PASS | combo rows 752 / component rows 283 | revenue 24549.69 | impressions 13979063
+2026-09-15 11:01:35 | execution time: 94s
+2026-09-15 11:01:35 | ================ finished (exit 1) ================
+2026-09-15 11:15:13 | ================ SCWTS V2 refresh + publish started ================
+2026-09-15 11:15:13 | stage 1 build: starting (fresh fetch from LEDSone 169.58.91.229:5432/ledsone as tech_user; deleted-flag reference 149.28.134.54:5435/order_management_copy)
+Traceback (most recent call last):
+  File "/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2-sql/build_v2.py", line 78, in <module>
+    conn = psycopg2.connect(connect_timeout=40, **DB); conn.autocommit = True
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/led-247/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "169.58.91.229", port 5432 failed: FATAL:  too many connections for role "tech_user"
+
+2026-09-15 11:15:15 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-09-15 11:15:15 | ================ finished (exit 1) ================
+2026-09-15 11:15:46 | stage 3 publish (manual, approved): OK — pushed validated 11:00 build after uploader fix (750157 bytes)

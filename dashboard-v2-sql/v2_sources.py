@@ -159,6 +159,21 @@ def create_source_views(cur, deleted_ids, fallback_orders):
         SELECT id, name, main_container, status, updated_at + %s AS updated_at
         FROM suppliers.final_containers""" % TZ)
     cur.execute("CREATE TEMP VIEW supplier_containers AS SELECT id, name, main_container FROM suppliers.containers")
+
+    # ---- product change history (warehouse stock-in log, free text) ---------
+    cur.execute("""CREATE TEMP VIEW product_history AS
+        SELECT p.sku, h.history FROM inventory.product_history h
+        JOIN inventory.products p ON p.id = h.inventory_id""")
+
+    # ---- product catalogue photos (LEDSone inventory app image) -------------
+    cur.execute("""CREATE TEMP VIEW product_catalog_images AS
+        SELECT pi.id, p.sku, pi.image_url, pi.image_ordering, 1 AS src_rank
+        FROM inventory.product_images pi JOIN inventory.products p ON p.id = pi.product_id
+        WHERE COALESCE(pi.image_url,'') <> ''
+        UNION ALL
+        SELECT pm.id, p.sku, pm.image_url, NULL::int, 2
+        FROM inventory.product_media pm JOIN inventory.products p ON p.id = pm.product_id
+        WHERE pm.type = 'main-image' AND COALESCE(pm.image_url,'') <> ''""")
     cur.execute("CREATE TEMP VIEW supplier_invoices AS SELECT final_container_id, ship_by_date FROM suppliers.invoices")
 
     # ---- public.listing_data -------------------------------------------------

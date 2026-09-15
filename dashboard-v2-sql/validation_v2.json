@@ -1,10 +1,10 @@
 {
-  "run": "20260914_173116",
+  "run": "20260915_110001",
   "checks": [
     {
       "check": "supplier schema readable by tech_user",
       "status": "PASS",
-      "detail": "supplier_suppliers=51; supplier_orders=291; supplier_containers=28; supplier_order_items=4503; supplier_final_containers=19; supplier_invoices=39"
+      "detail": "supplier_suppliers=51; supplier_orders=291; supplier_containers=28; supplier_order_items=4510; supplier_final_containers=20; supplier_invoices=39"
     },
     {
       "check": "New components in scope",
@@ -14,27 +14,27 @@
     {
       "check": "Combos built from them",
       "status": "PASS",
-      "detail": "294 (floor 228)"
+      "detail": "298 (floor 228)"
     },
     {
       "check": "Component x combo pairs",
       "status": "PASS",
-      "detail": "366 (floor 266)"
+      "detail": "371 (floor 266)"
     },
     {
       "check": "Every row has a component SKU",
       "status": "PASS",
-      "detail": "748/748"
+      "detail": "752/752"
     },
     {
       "check": "Every row has a supplier",
       "status": "PASS",
-      "detail": "748/748"
+      "detail": "752/752"
     },
     {
       "check": "Received Date sourced from the container (not the PO date)",
       "status": "PASS",
-      "detail": "370/748 rows \u2014 blank means the container is not yet closed"
+      "detail": "383/752 rows \u2014 blank means the container is not yet closed"
     },
     {
       "check": "No raw container IDs leaked into the Container column",
@@ -59,22 +59,22 @@
     {
       "check": "Container present where assigned",
       "status": "PASS",
-      "detail": "720/748 rows have a container"
+      "detail": "724/752 rows have a container"
     },
     {
       "check": "Component images (supplier photo -> listing fallback)",
       "status": "PASS",
-      "detail": "650/748 rows; 182/268 distinct components"
+      "detail": "752/752 rows; 259/268 distinct components"
     },
     {
       "check": "Combo images",
       "status": "PASS",
-      "detail": "438/748"
+      "detail": "553/752"
     },
     {
       "check": "Top Reason populated",
       "status": "PASS",
-      "detail": "16/748 (amazon 100%, ebay ~11%, shopify has no reason column)"
+      "detail": "16/752 (amazon 100%, ebay ~11%, shopify has no reason column)"
     },
     {
       "check": "Component dataset built independently of the combo queries",
@@ -99,7 +99,7 @@
     {
       "check": "No duplicate (product, marketplace) rows \u2014 KPI totals cannot double-count",
       "status": "PASS",
-      "detail": "combo 748 rows / component 283 rows, all unique"
+      "detail": "combo 752 rows / component 283 rows, all unique"
     },
     {
       "check": "No pre-2026 Listing Date leaked into either dataset",
@@ -119,7 +119,7 @@
     {
       "check": "Every row carries a Record ID, one per product block",
       "status": "PASS",
-      "detail": "487 REC-* + 268 CMP-* ids"
+      "detail": "490 REC-* + 268 CMP-* ids"
     },
     {
       "check": "Both datasets share the identical column layout",
@@ -133,6 +133,7 @@
     }
   ],
   "notes": [
+    "Received Date: 10 components use the warehouse stock-in date from inventory.product_history (only where container close-out and invoice date are blank).",
     "Average Feedback: no customer-review source exists in this database (searched all schemas for rating/review/feedback/star columns). Column renders 'No Reviews' for every row pending a marketplace reviews feed."
   ],
   "source": {
@@ -151,11 +152,11 @@
         "RESEND",
         "ONBUY"
       ],
-      "lines_loaded": 34733,
+      "lines_loaded": 34776,
       "lines_dropped_already_in_ledsone": 0,
-      "lines_used": 34733,
-      "lines_used_2026": 5345,
-      "orders_used": 30536
+      "lines_used": 34776,
+      "lines_used_2026": 5387,
+      "orders_used": 30573
     },
     "mapping": {
       "public.inv_products": "inventory.products (+ isdeleted from the old DB, by product id)",
@@ -188,11 +189,11 @@
       },
       "pg_temp.supplier_order_items": {
         "readable": true,
-        "rows": 4503
+        "rows": 4510
       },
       "pg_temp.supplier_final_containers": {
         "readable": true,
-        "rows": 19
+        "rows": 20
       },
       "pg_temp.supplier_invoices": {
         "readable": true,
@@ -202,30 +203,30 @@
     "missing": []
   },
   "totals": {
-    "rows": 748,
+    "rows": 752,
     "components": 268,
-    "combos": 294,
-    "pairs": 366,
-    "gap_no_combo": 193,
-    "impressions": 13864009,
-    "clicks": 48212,
-    "orders": 996,
-    "units": 1309,
-    "revenue": 24393.96,
+    "combos": 298,
+    "pairs": 371,
+    "gap_no_combo": 192,
+    "impressions": 13979063,
+    "clicks": 48861,
+    "orders": 998,
+    "units": 1315,
+    "revenue": 24549.69,
     "returns": 39
   },
   "totals_components": {
     "rows": 283,
     "listed": 39,
     "components_with_listing": 30,
-    "impressions": 287436,
-    "clicks": 2706,
-    "orders": 369,
-    "units": 554,
-    "revenue": 5440.58,
+    "impressions": 300488,
+    "clicks": 2873,
+    "orders": 368,
+    "units": 553,
+    "revenue": 5432.5,
     "returns": 17
   },
-  "duration_sec": 74.9,
+  "duration_sec": 93.4,
   "result": "PASS",
   "failed_hard": [],
   "failed_soft": [
