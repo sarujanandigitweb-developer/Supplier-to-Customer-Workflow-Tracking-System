@@ -2096,3 +2096,16 @@ psycopg2.OperationalError: connection to server at "169.58.91.229", port 5432 fa
 2026-09-15 11:15:15 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
 2026-09-15 11:15:15 | ================ finished (exit 1) ================
 2026-09-15 11:15:46 | stage 3 publish (manual, approved): OK — pushed validated 11:00 build after uploader fix (750157 bytes)
+2026-09-16 11:00:02 | ================ SCWTS V2 refresh + publish started ================
+2026-09-16 11:00:02 | stage 1 build: starting (fresh fetch from LEDSone 169.58.91.229:5432/ledsone as tech_user; deleted-flag reference 149.28.134.54:5435/order_management_copy)
+Traceback (most recent call last):
+  File "/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2-sql/build_v2.py", line 78, in <module>
+    conn = psycopg2.connect(connect_timeout=40, **DB); conn.autocommit = True
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/led-247/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "169.58.91.229", port 5432 failed: FATAL:  too many connections for role "tech_user"
+
+2026-09-16 11:00:04 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
+2026-09-16 11:00:04 | ================ finished (exit 1) ================

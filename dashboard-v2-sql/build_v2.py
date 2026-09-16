@@ -151,6 +151,67 @@ CREATE INDEX ON comp(comp_id); CREATE INDEX ON comp(comp_sku);
 cur.execute("SELECT count(*) FROM comp"); n_comp = cur.fetchone()[0]
 print(f"new components (2026, on a supplier PO): {n_comp}")
 
+# ---------- 1b. SOT FLAG + CATEGORY (per component) ----------------------------
+# SOT: does the component SKU exist in the SOT list? Source of truth is
+# configurator.components_sot_skus (the synced SOT sheet) -- never guessed from
+# the SKU prefix. Compared case-insensitively on the trimmed SKU.
+cur.execute("SELECT DISTINCT upper(TRIM(sku)) FROM pg_temp.sot_skus WHERE COALESCE(TRIM(sku),'') <> ''")
+SOT_SKUS = {r[0] for r in cur.fetchall()}
+
+# CATEGORY: SKU-prefix classification supplied by the business.
+# Two prefixes appear under two categories. Both are resolved from the SOT
+# sheet's own source_tab, not by guesswork (measured 2026-09-16):
+#   PH -> 398 of 399 SOT rows are source_tab 'pendantholder'  => Pendant Lamp Holder
+#   WS -> 180 of 180 SOT rows are source_tab 'wallarm'        => Wall Arm
+# so PH and WS are NOT listed under Lighting. Matching is longest-prefix-first,
+# which keeps 12IP / 24IP / 5IP ahead of 12 / 24, and FCB ahead of FW / TC.
+CATEGORY_PREFIXES = {
+    "Lamp Spares":        ["RP","SC","CN","CL","SP","CB","NT","WR","RD","CO","BC","CG","HK","HR",
+                           "PC","WJ","SD","SW","SO","IM","CM","RW","SL","CE","TS","LC","NF","ST"],
+    "Transformers":       ["12IP","24IP","5IP","CC","CH","12","24"],
+    "Lamp Shade":         ["LS","WC","BL"],
+    "Lamp Holders":       ["LH"],
+    "Pendant Lamp Holder":["PH"],
+    "Bulbs":              ["LD","IC","LL","LP","LQ"],
+    "Lighting":           ["PS","PL","TP","WL"],
+    "Cosmetics":          ["CS"],
+    "Clothes":            ["CT","AP"],
+    "Ceiling Rose":       ["CR"],
+    "Home Appliances":    ["FCB","LB","SB","HB","MB","SS","BS","CK","WM","MA","WB","AF","FW","TC",
+                           "SU","WK","BTR","PM","HL"],
+    "Refurbished":        ["RB"],
+    "Wall Arm":           ["WS"],
+}
+CATEGORY_ORDER = list(CATEGORY_PREFIXES) + ["Other"]
+_CAT_PREFIX = sorted(((p, c) for c, ps in CATEGORY_PREFIXES.items() for p in ps),
+                     key=lambda x: (-len(x[0]), x[0]))          # longest prefix wins
+
+def sku_sot(sku):
+    """Yes/No -- SKU present in the SOT list."""
+    return "Yes" if (sku or "").strip().upper() in SOT_SKUS else "No"
+
+def sku_category(sku):
+    """Business category from the SKU prefix; unmatched SKUs stay visible as 'Other'."""
+    s = (sku or "").strip().upper()
+    for pref, cat in _CAT_PREFIX:
+        if s.startswith(pref):
+            return cat
+    return "Other"
+
+cur.execute("SELECT comp_sku FROM comp")
+_cs = [r[0] for r in cur.fetchall()]
+n_sot = sum(1 for s in _cs if sku_sot(s) == "Yes")
+_catn = {}
+for s in _cs: _catn[sku_category(s)] = _catn.get(sku_category(s), 0) + 1
+print(f"SOT: {n_sot}/{len(_cs)} components exist in configurator.components_sot_skus")
+print("categories: " + ", ".join(f"{k}={v}" for k, v in sorted(_catn.items(), key=lambda x: -x[1])))
+VAL["notes"].append(f"SOT column: {n_sot} of {len(_cs)} components are in the SOT list "
+                    "(configurator.components_sot_skus, matched on the SKU itself, not on its prefix).")
+VAL["notes"].append("Category filter: SKU-prefix classification, longest prefix first. PH -> Pendant "
+                    "Lamp Holder and WS -> Wall Arm, resolved from the SOT sheet's source_tab "
+                    "(PH: 398/399 'pendantholder'; WS: 180/180 'wallarm'). Unmatched SKUs -> 'Other'.")
+VAL["categories"] = _catn
+
 # ---------- 2. SUPPLIER / CONTAINER / RECEIVED-DATE PROXY (latest PO per comp) --
 cur.execute("""
 CREATE TEMP TABLE sup AS
@@ -190,6 +251,42 @@ cur.execute("SELECT comp_sku, supplier, container, destination, received, po_dat
 supmap = {r[0]: dict(supplier=r[1], container=r[2], dest=r[3], recv=r[4], po_date=r[5],
                      po=r[6], qty=r[7], arrived=bool(r[8])) for r in cur.fetchall()}
 
+# ---------- 2a. RULE A: latest PO not arrived -> show the last ARRIVED PO ---------
+# APPROVED 2026-09-15. A new re-order that has not shipped must not hide the stock
+# that already arrived on an older PO. Same container/received expressions as above,
+# restricted to POs with status_arrived = 1. The newer PO is kept in the notes.
+cur.execute("""
+SELECT DISTINCT ON (oi.sku)
+       oi.sku, COALESCE(s.name,''), COALESCE(fc.name, ct.name, ''),
+       COALESCE(fc.main_container, ct.main_container, ''),
+       COALESCE(CASE WHEN fc.status = 'completed' THEN fc.updated_at::date::text END,
+                inv.ship_by_date::text, ''),
+       o.order_date::text, COALESCE(o.order_id,''), COALESCE(oi.pcs,0)
+FROM pg_temp.supplier_order_items oi
+JOIN comp c                    ON c.comp_sku = oi.sku
+JOIN pg_temp.supplier_orders     o     ON o.id  = oi.order_id
+LEFT JOIN pg_temp.supplier_suppliers        s  ON s.id  = o.supplier_id
+LEFT JOIN pg_temp.supplier_final_containers fc ON fc.id = oi.final_container_id::bigint
+LEFT JOIN pg_temp.supplier_containers       ct ON ct.id = oi.assigned_container_id::bigint
+LEFT JOIN (SELECT final_container_id, MIN(ship_by_date) AS ship_by_date
+           FROM pg_temp.supplier_invoices GROUP BY 1) inv
+       ON inv.final_container_id = oi.final_container_id::bigint
+WHERE COALESCE(o.status_arrived,0) = 1
+ORDER BY oi.sku, o.order_date DESC NULLS LAST, o.id DESC
+""")
+last_arrived_used = 0
+for sku, sup_name, cont, dest, recv, po_date, po, qty in cur.fetchall():
+    s = supmap.get(sku)
+    if not s or s["arrived"]:
+        continue
+    s["latest_po"], s["latest_po_date"] = s["po"], s["po_date"]
+    s.update(supplier=sup_name, container=cont, dest=dest, recv=recv, po_date=po_date,
+             po=po, qty=qty, arrived=True)
+    last_arrived_used += 1
+print(f"latest PO not arrived -> last arrived PO shown: {last_arrived_used}")
+VAL["notes"].append(f"Container/Received: {last_arrived_used} components show their last ARRIVED PO because "
+                    "the latest PO has not arrived yet (newer PO named in the row notes).")
+
 # ---------- 2b. RECEIVED-DATE FALLBACK: warehouse stock-in history -------------
 # APPROVED 2026-09-15. Used ONLY when the container close-out and invoice ship-by
 # date above are both blank. inventory.product_history is a free-text log; a UK
@@ -204,7 +301,7 @@ _SUPPLY = re.compile(r"^Supply - (SU\d+) loaded by .+? On (\d{4}-\d{2}-\d{2}) \d
 _CHANGE = re.compile(r"\w+ changed from (-?\d*) to (-?\d*)", re.I)
 cur.execute("""SELECT h.sku, h.history FROM pg_temp.product_history h
                JOIN comp c ON c.comp_sku = h.sku WHERE COALESCE(h.history,'') <> ''""")
-recv_from_history = 0
+recv_from_history = recv_from_last_receipt = 0
 for sku, hist in cur.fetchall():
     s = supmap.get(sku)
     if not s or s["recv"] or not s["po_date"]:
@@ -222,9 +319,25 @@ for sku, hist in cur.fetchall():
     if best:
         s["recv"], s["recv_src"] = best[1], best[0]
         recv_from_history += 1
+    else:
+        # RULE B (APPROVED 2026-09-15): still blank -> the LATEST UK stock-in receipt of
+        # any date. Covers shipments with no PO in LEDSone (e.g. SU1317 for LSMS3202*).
+        for line in re.split(r"\r?\n", hist):
+            m = _SUPPLY.match(line.strip())
+            if not m or not any(a.lstrip("-").isdigit() and b.lstrip("-").isdigit() and int(b) > int(a)
+                                for a, b in _CHANGE.findall(m.group(3))):
+                continue
+            if best is None or m.group(2) > best[1]:
+                best = (m.group(1), m.group(2))
+        if best:
+            s["recv"], s["recv_src"], s["recv_old"] = best[1], best[0], True
+            recv_from_last_receipt += 1
 print(f"received date filled from warehouse stock-in history: {recv_from_history}")
+print(f"received date filled from last stock-in before latest PO: {recv_from_last_receipt}")
 VAL["notes"].append(f"Received Date: {recv_from_history} components use the warehouse stock-in date from "
                     "inventory.product_history (only where container close-out and invoice date are blank).")
+VAL["notes"].append(f"Received Date: {recv_from_last_receipt} further components use their latest warehouse "
+                    "stock-in (older than the latest PO; that shipment has no PO/container in LEDSone).")
 
 # PO count per component (multiple restocks are the norm)
 cur.execute("""SELECT oi.sku, count(*) FROM pg_temp.supplier_order_items oi
@@ -489,7 +602,7 @@ VAL["notes"].append("Average Feedback: no customer-review source exists in this 
 B = {"sup":0,"cont":1,"recv":2,"csku":3,"cimg":4,"ccre":5,"bsku":6,"bimg":7,"bcre":8,
      "stat":9,"plat":10,"ldate":11,"impr":12,"clk":13,"ord":14,"units":15,"rev":16,
      "ret":17,"rrate":18,"reason":19,"url":20,"dest":21,"po":22,"qty":23,"notes":24,
-     "fb":25,"comps":26,"rid":27}
+     "fb":25,"comps":26,"rid":27,"sot":28,"cat":29}
 
 cur.execute("SELECT comp_sku, comp_created, comp_desc, combo_sku, combo_created, combo_desc, pack_count FROM pair ORDER BY comp_sku, combo_sku")
 pairs = cur.fetchall()
@@ -499,7 +612,7 @@ comps_with_combo = {p[0] for p in pairs}
 
 rows = []
 def blank():
-    r = [None]*28
+    r = [None]*30
     for k in ("impr","clk","ord","units","ret"): r[B[k]] = 0
     r[B["rev"]] = 0.0; r[B["rrate"]] = 0.0
     r[B["fb"]] = None                       # None -> UI renders "No Reviews"
@@ -517,13 +630,18 @@ def base(comp_sku, comp_created, comp_desc):
     r[B["dest"]] = s.get("dest","");     r[B["recv"]] = s.get("recv","")
     r[B["po"]]   = s.get("po","");       r[B["qty"]]  = s.get("qty",0)
     r[B["csku"]] = comp_sku
+    r[B["sot"]]  = sku_sot(comp_sku)
+    r[B["cat"]]  = sku_category(comp_sku)
     r[B["cimg"]] = comp_image(comp_sku)
     r[B["ccre"]] = comp_created
     n = po_count.get(comp_sku,0)
     notes = [comp_desc[:70]] if comp_desc else []
     if s.get("po_date"): notes.append("PO " + s["po_date"])
-    if n > 1: notes.append(f"{n} POs — latest shown")
+    if s.get("latest_po"):
+        notes.append(f"last arrived PO shown — newer PO {s['latest_po']} ({s['latest_po_date']}) not arrived yet")
+    elif n > 1: notes.append(f"{n} POs — latest shown")
     if not s.get("recv"): notes.append("container not yet closed — no received date")
+    elif s.get("recv_old"): notes.append(f"received date from last warehouse stock-in ({s['recv_src']}, before latest PO)")
     elif s.get("recv_src"): notes.append(f"received date from warehouse stock-in ({s['recv_src']})")
     r[B["notes"]] = " · ".join(notes)
     return r
@@ -547,10 +665,12 @@ for combo_sku in sorted(combo_map):
     # received date / image / creation date. The UI stacks these vertically inside
     # the single product cell, so nothing is hidden and no extra row is created.
     #        [0]=sku [1]=image [2]=created [3]=supplier [4]=container [5]=received
+    #        [6]=SOT flag [7]=category
     comp_list = [[cs, comp_image(cs), ccre,
                   supmap.get(cs, {}).get("supplier", ""),
                   supmap.get(cs, {}).get("container", ""),
-                  supmap.get(cs, {}).get("recv", "")]
+                  supmap.get(cs, {}).get("recv", ""),
+                  sku_sot(cs), sku_category(cs)]
                  for cs, ccre, _cdesc in g["comps"]]
     combo_created = g["created"]
     plats = listed.get(combo_sku, {})
@@ -590,7 +710,8 @@ for comp_sku, comp_created, comp_desc in all_comps:
     r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[[comp_sku, comp_image(comp_sku), comp_created,
                             supmap.get(comp_sku,{}).get("supplier",""),
                             supmap.get(comp_sku,{}).get("container",""),
-                            supmap.get(comp_sku,{}).get("recv","")]]
+                            supmap.get(comp_sku,{}).get("recv",""),
+                            sku_sot(comp_sku), sku_category(comp_sku)]]
     r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
     r[B["notes"]] = (r[B["notes"]]+" · " if r[B["notes"]] else "")+"no combo built yet"
     rows.append(r); gap += 1
@@ -613,7 +734,8 @@ for comp_sku, comp_created, comp_desc in all_comps:
         r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[[comp_sku, comp_image(comp_sku), comp_created,
                             supmap.get(comp_sku,{}).get("supplier",""),
                             supmap.get(comp_sku,{}).get("container",""),
-                            supmap.get(comp_sku,{}).get("recv","")]]
+                            supmap.get(comp_sku,{}).get("recv",""),
+                            sku_sot(comp_sku), sku_category(comp_sku)]]
         r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
         r[B["notes"]] = (r[B["notes"]]+" · " if r[B["notes"]] else "")+"no single-SKU listing"
         rows_c.append(r); continue
@@ -622,7 +744,8 @@ for comp_sku, comp_created, comp_desc in all_comps:
         r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""; r[B["comps"]]=[[comp_sku, comp_image(comp_sku), comp_created,
                             supmap.get(comp_sku,{}).get("supplier",""),
                             supmap.get(comp_sku,{}).get("container",""),
-                            supmap.get(comp_sku,{}).get("recv","")]]
+                            supmap.get(comp_sku,{}).get("recv",""),
+                            sku_sot(comp_sku), sku_category(comp_sku)]]
         L = plats.get(plat)
         if L:
             r[B["stat"]]="Listed"; r[B["ldate"]]=L["ld"]; r[B["url"]]=L["url"]
@@ -763,12 +886,18 @@ print("\nTOTALS  (combos):", json.dumps(VAL["totals"], indent=None))
 print("TOTALS  (components):", json.dumps(VAL["totals_components"], indent=None))
 
 P = {"capturedAt": TODAY, "scopeStart": START, "B": B, "rows": rows, "rowsComp": rows_c,
+     "categories": CATEGORY_ORDER,
      "meta": {"components": n_comp, "combos": n_combo, "pairs": n_pair, "gapNoCombo": gap,
               "compRows": NC, "compWithListing": len(listed_c),
               "feedbackNote": "No customer-review/rating source exists in this database. "
                               "Every row renders 'No Reviews'. Populate feedback[(sku,platform)] "
                               "in build_v2.py when a marketplace reviews feed is available.",
               "receivedDateNote": "supplier.final_containers.updated_at where status='completed' (the shipping container's close-out into inventory), falling back to supplier.invoices.ship_by_date. Blank = container not yet closed. The PO order_date is NOT used as a receipt date; it is shown in the row tooltip only.",
+              "sotNote": "SOT = the component SKU exists in configurator.components_sot_skus "
+                         "(the synced SOT list). Matched on the SKU itself, never on its prefix.",
+              "categoryNote": "Category comes from the SKU prefix, longest prefix first. PH -> Pendant "
+                              "Lamp Holder and WS -> Wall Arm (resolved from the SOT source_tab). "
+                              "SKUs matching no rule are kept and shown as 'Other'.",
               "reasonNote": "amazon_returns.reason 100% filled; ebay_returns.reason ~11%; "
                             "shopify_returns has no reason column."}}
 (BASE/"payload_v2.json").write_text(json.dumps(P, separators=(",",":")), encoding="utf-8")

@@ -44,6 +44,7 @@ SOURCE_MAP = [
                                  "amazon_fba_orders+amazon_fba_order_items (FBA) + OLD-DB fallback for "
                                  "sources absent from LEDSone (REPLACEMENT, ETSY, MANUAL OM, MANUALORDER, "
                                  "AVASAM, BOL, MANOMANO, FAIRE, RESEND, ONBUY)"),
+    ("SOT flag",                 "configurator.components_sot_skus (sku, source_tab)"),
     ("public.amazon_returns",    "customer_service.amazon_returns"),
     ("public.ebay_returns",      "customer_service.ebay_returns"),
     ("public.shopify_returns",   "accounting.shopify_transactions WHERE type='refund'"),
@@ -159,6 +160,14 @@ def create_source_views(cur, deleted_ids, fallback_orders):
         SELECT id, name, main_container, status, updated_at + %s AS updated_at
         FROM suppliers.final_containers""" % TZ)
     cur.execute("CREATE TEMP VIEW supplier_containers AS SELECT id, name, main_container FROM suppliers.containers")
+
+    # ---- SOT (single source of truth) component list ------------------------
+    # configurator.components_sot_skus is the synced SOT sheet (1,922 SKUs,
+    # source_tab = the SOT tab it came from: lampshade, pendantholder, ...).
+    # Used for the dashboard's SOT Yes/No flag, and its source_tab is the
+    # evidence that resolves the overlapping PH / WS category prefixes.
+    cur.execute("""CREATE TEMP VIEW sot_skus AS
+        SELECT sku, source_tab FROM configurator.components_sot_skus""")
 
     # ---- product change history (warehouse stock-in log, free text) ---------
     cur.execute("""CREATE TEMP VIEW product_history AS

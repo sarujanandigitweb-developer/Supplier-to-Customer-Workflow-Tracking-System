@@ -10,7 +10,7 @@ P   = json.loads((BASE/"payload_v2.json").read_text(encoding="utf-8"))
 
 COLS = [
  ("Supplier","sup","t"),("Container","cont","t"),("Received Date","recv","d"),
- ("Component SKU","csku","t"),("Component Image","cimg","img"),("Component Created","ccre","d"),
+ ("Component SKU","csku","t"),("SOT","sot","sot"),("Component Image","cimg","img"),("Component Created","ccre","d"),
  ("Combo SKU","bsku","t"),("Combo Image","bimg","img"),("Combo Created","bcre","d"),
  ("Marketplace","plat","t"),("Listing Status","stat","chip"),("Listed Date","ldate","d"),
  ("Impressions","impr","n"),("Clicks","clk","n"),("Orders","ord","n"),
@@ -18,6 +18,102 @@ COLS = [
  ("Return Rate %","rrate","pct"),("Top Reason","reason","t"),
  ("Average Feedback","fb","fb"),
 ]
+
+# ---- Responsive layer (presentation only) ----------------------------------
+# fl(a, b): a size that is `a` px at the small width and grows linearly to `b` px at
+# the large width, then stops. Maxima are reached at 1400px, so 1440px and wider
+# keep the original V1/V2 sizes exactly; only narrower windows scale down.
+def fl(a, b, lo=375, hi=1400):
+    slope = (b - a) / (hi - lo)
+    return f"clamp({a}px, {a - slope * lo:.2f}px + {slope * 100:.3f}vw, {b}px)"
+
+RESP_CSS = f"""
+/* ---- responsive scaling: sizes shrink gradually below 1440px ---- */
+.appbar{{padding-inline:{fl(12,22)}; gap:{fl(8,14)}; min-height:{fl(56,70)}}}
+.appbrand .brand-logo{{width:{fl(28,34)}; height:{fl(28,34)}; font-size:{fl(14,17)}}}
+.appbar h1{{font-size:{fl(14,16.5)}}}
+.appbar .appsub{{font-size:{fl(10,11)}}}
+.btn{{font-size:{fl(12,13)}; padding:{fl(7,9)} {fl(10,15)}}}
+.filterbar{{padding:{fl(10,14)} {fl(12,22)}; gap:{fl(8,14)}}}
+.filterbar label,.filterbar .fld-spacer{{font-size:{fl(9.5,10.5)}}}
+.filterbar select{{font-size:{fl(12,13)}; padding-block:{fl(7,9)}; padding-left:{fl(9,11)};
+  min-width:{fl(120,150,1024,1400)}}}
+.filterbar .inp{{padding-inline:{fl(9,11)}}}
+.filterbar .inp input{{font-size:{fl(12,13)}; padding-block:{fl(7,9)}; min-width:{fl(100,120,1024,1400)}}}
+.filterbar .grow{{min-width:{fl(150,200,1024,1400)}}}
+.tt-clear{{font-size:{fl(11.5,12.5)}; padding:{fl(7,9)} {fl(10,14)}}}
+.content{{padding:{fl(10,22)}}}
+.kpi-grid{{gap:{fl(8,16)}; margin-bottom:{fl(10,16)}}}
+.kpi{{padding:{fl(8,11)} {fl(10,15)} {fl(8,10)}}}
+.kpi-ic{{width:{fl(26,32)}; height:{fl(26,32)}; font-size:{fl(13,15)}}}
+.kpi-label{{font-size:{fl(10.5,11.5)}}}
+.kpi-note{{font-size:{fl(9.5,10)}}}
+.kpi .val{{font-size:{fl(18,23)}}}
+.panel{{padding-top:{fl(12,18)}; padding-inline:{fl(10,20)}}}
+.panel h3{{font-size:{fl(13,14.5)}}}
+.panel h3 .muted,.phead .sub{{font-size:{fl(11,12)}}}
+.phead{{gap:{fl(8,12)}; margin-bottom:{fl(10,14)}}}
+.phead h3{{flex-wrap:wrap; row-gap:2px}}   /* subtitle wraps under the title, not beside it */
+.tab{{font-size:{fl(12,13)}; padding:{fl(6,7)} {fl(10,16)}}}
+.perpage-wrap,.perpage{{font-size:{fl(11.5,12.5)}}}
+.panel table{{font-size:{fl(12,13)}}}
+.panel thead th{{padding:{fl(9,11)} {fl(9,13)}; font-size:{fl(10.5,11)}}}
+th.ridcol,td.ridcol,.panel thead th.ridcol{{font-size:{fl(11,12)}}}
+tbody td{{padding:{fl(9,11)} {fl(9,13)}}}
+td.imgcell{{padding:6px {fl(9,13)}}}
+td.mcol:first-of-type{{padding-left:{fl(12,16)}}}
+.v2img,.v2noimg{{width:{fl(34,42)}; height:{fl(34,42)}}}
+.pstack .pitem{{min-height:{fl(44,52)}}}
+.chip{{font-size:{fl(10.5,11.5)}; padding:3px {fl(8,10)}}}
+.panel .pageinfo{{font-size:{fl(11.5,12)}}}
+.panel .btn.pg{{font-size:{fl(11.5,12)}; padding:4px {fl(8,10)}}}
+
+/* ---- release the fixed full-height shell where it cannot fit ----
+   The shell locks the page to 100vh with overflow hidden. On tablets, phones and
+   short windows the header, filters and KPI cards alone fill that height, pushing
+   the table and pager out of reach. Here the page scrolls normally instead, and the
+   table keeps its own sticky-header scroll area sized to the viewport. */
+@media (max-width:1024px), (max-height:700px){{
+  .main{{height:auto; min-height:100vh; overflow:visible}}
+  .content{{flex:0 0 auto; overflow:visible}}
+  .panel{{flex:0 0 auto}}
+  .panel .tablewrap{{flex:0 0 auto; max-height:calc(100vh - 96px)}}
+}}
+
+/* ---- filters become an even grid instead of ragged wrapped rows ---- */
+@media (max-width:1024px){{
+  .kpi-grid{{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}}
+}}
+@media (max-width:767px){{
+  /* phones: usability first -- more rows allowed, but the controls are compact */
+  .filterbar{{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:end;
+             column-gap:8px; row-gap:6px; padding:8px 10px}}
+  .filterbar label,.filterbar .fld-spacer{{font-size:9px}}
+  .filterbar .fld{{gap:3px}}
+  .filterbar select{{font-size:11px; height:28px; padding:0 18px 0 7px; border-radius:7px;
+                    background-position:right 6px center; background-size:10px 10px}}
+  .filterbar .inp{{padding-inline:7px; border-radius:7px; gap:5px; height:28px}}
+  .filterbar .inp input{{font-size:11px; padding-block:0; height:100%}}
+  .filterbar .inp .inp-ic{{font-size:10px}}
+  .tt-clear{{font-size:11px; padding:5px 9px; border-radius:7px}}
+  .filterbar .fld{{min-width:0}}
+  .filterbar select,.filterbar .inp{{min-width:0; width:100%}}
+  .filterbar .inp input{{min-width:0; width:100%}}
+  .filterbar .grow{{grid-column:1 / -1; min-width:0}}
+  .filterbar .fld:last-child{{grid-column:1 / -1; justify-self:end}}
+  .filterbar .fld:last-child .fld-spacer{{display:none}}
+  .filterbar .tt-clear{{align-self:flex-start}}
+}}
+
+/* ---- app bar: title and buttons wrap instead of running off-screen ---- */
+@media (max-width:600px){{
+  .appbar{{flex-wrap:wrap; row-gap:8px; padding-block:10px}}
+  .appbar > div:nth-child(2){{flex:1 1 calc(100% - 50px); min-width:0}}
+  .appbar h1,.appbar .appsub{{white-space:normal}}
+  .appbar .spacer{{display:none}}
+  #themeBtn{{margin-left:auto}}
+}}
+"""
 
 HTML = f"""<!doctype html>
 <html lang="en" data-theme="light">
@@ -277,6 +373,104 @@ thead th.sorted{{color:var(--accent)}}
 @media(max-width:760px){{
   .tablehint{{display:none}}           /* keep the pager on one line on phones */
 }}
+{RESP_CSS}
+/* ================= COMPACT FILTER BAR (requested 2026-09-16) =================
+   Problem: from 1024px to 1439px the bar was FLEX, so every <select> sized itself
+   to its longest option (Supplier 261px, Container 182px, Category 177px). Nothing
+   could shrink, so the 11 controls wrapped early; below 1024px an auto-fill grid of
+   equal 150px columns produced 3 rows at 1024/900 and 4 rows at 768.
+   Fix: one fixed 6-column grid for 768-1439px. DOM order fills it as
+     row 1  Supplier | Container | Marketplace | Listing Status | Category | Received from
+     row 2  Received to | Listed from | Listed to | Search (2 cols) | Clear
+   = exactly 2 rows at every width in that range. Supplier and Container sit in the
+   two widest tracks; Search spans two; Clear keeps its natural width. Controls are
+   then stepped down in size per breakpoint so the table starts higher. */
+/* >=1440px: ONE row. The flex layout sized every <select> to its longest option, so
+   Search could not fit beside them and wrapped -- taking a whole extra row for
+   Search (and sometimes Clear alone). An 11-track grid gives each control a share
+   of the width, Search the largest, and Clear only what it needs. */
+@media (min-width:1560px){{
+  .filterbar{{
+    display:grid; align-items:end;
+    grid-template-columns:1.3fr 1.15fr 1.05fr .9fr 1.05fr .95fr .95fr .95fr .95fr 1.75fr auto;
+    column-gap:12px; row-gap:8px; padding:11px 18px;
+  }}
+  .filterbar .fld{{min-width:0}}
+  .filterbar select,.filterbar .inp{{min-width:0; width:100%; max-width:100%}}
+  .filterbar .inp input{{min-width:0; width:100%}}
+  .filterbar .grow{{grid-column:auto; min-width:0}}
+  .filterbar .fld:last-child{{justify-self:end}}
+  .filterbar label,.filterbar .fld-spacer{{font-size:10px}}
+  .filterbar select{{font-size:12.5px; height:32px; padding:0 24px 0 10px;
+                    background-position:right 9px center; background-size:11px 11px}}
+  .filterbar .inp{{height:32px; padding-inline:10px; gap:7px}}
+  .filterbar .inp input{{font-size:12.5px; padding-block:0; height:100%}}
+  .tt-clear{{font-size:12px; padding:6px 12px}}
+}}
+@media (min-width:768px) and (max-width:1559.98px){{
+  .filterbar{{
+    display:grid; align-items:end;
+    grid-template-columns:1.3fr 1.15fr 1fr 1fr 1.05fr 1fr;
+    column-gap:10px; row-gap:7px; padding:9px 14px;
+  }}
+  .filterbar .fld{{min-width:0}}
+  .filterbar select,.filterbar .inp{{min-width:0; width:100%; max-width:100%}}
+  .filterbar .inp input{{min-width:0; width:100%}}
+  .filterbar .grow{{grid-column:span 2; min-width:0}}
+  .filterbar .fld:last-child{{justify-self:end}}
+  /* step 1: laptop / narrow desktop */
+  .filterbar label,.filterbar .fld-spacer{{font-size:9.5px; letter-spacing:.04em}}
+  .filterbar .fld{{gap:3px}}
+  .filterbar select{{font-size:11.5px; height:28px; padding:0 22px 0 8px; border-radius:7px;
+                    background-position:right 7px center; background-size:10px 10px}}
+  .filterbar .inp{{padding-inline:8px; border-radius:7px; gap:6px; height:28px}}
+  .filterbar .inp input{{font-size:11.5px; padding-block:0; height:100%}}
+  .filterbar .inp .inp-ic{{font-size:11px}}
+  .filterbar input[type=date]{{padding-right:0}}
+  .filterbar input[type=date]::-webkit-calendar-picker-indicator{{padding:0; margin:0}}
+  .tt-clear{{font-size:11.5px; padding:5px 10px; border-radius:7px}}
+}}
+@media (min-width:768px) and (max-width:1023.98px){{
+  /* step 2: tablet landscape / small window -- still 2 rows, smaller again */
+  .filterbar{{column-gap:7px; row-gap:6px; padding:8px 10px}}
+  .filterbar label,.filterbar .fld-spacer{{font-size:9px}}
+  .filterbar select{{font-size:11px; height:26px; padding:0 18px 0 6px; background-position:right 5px center}}
+  .filterbar .inp{{padding-inline:6px; gap:4px; height:26px}}
+  .filterbar .inp input{{font-size:11px; padding-block:0; height:100%}}
+  .filterbar .inp .inp-ic{{font-size:10px}}
+  .tt-clear{{font-size:11px; padding:4px 8px}}
+}}
+/* ---- top header: compact it below 1440 so the table starts higher ---- */
+@media (max-width:1439.98px){{
+  .appbar{{min-height:56px; gap:10px}}
+  .appbar h1{{font-size:15px}}
+  .appbar .appsub{{font-size:10px}}
+  .hpill{{padding:4px 9px; gap:7px; border-radius:8px}}
+  .hpill-ic{{font-size:13px}}
+  .hpill small{{font-size:8.5px}}
+  .hpill b{{font-size:11.5px}}
+  .hmeta{{gap:7px}}
+  .appbrand .brand-logo{{width:30px; height:30px; font-size:15px}}
+  .btn{{font-size:12px; padding:6px 11px}}
+  .content{{padding-top:12px}}
+}}
+@media (max-width:1023.98px){{
+  .appbar{{min-height:52px; gap:8px; padding-inline:10px}}
+  .appbar h1{{font-size:14.5px}}
+  .btn{{font-size:11.5px; padding:5px 9px}}
+  /* table: a little tighter so more rows fit, still readable */
+  .panel thead th{{padding:8px 10px}}
+  tbody td{{padding:8px 10px}}
+  td.imgcell{{padding:5px 10px}}
+  .v2img,.v2noimg{{width:34px; height:34px}}
+  .pstack .pitem{{min-height:42px}}
+}}
+
+/* ---- requested 2026-09-16: hide the summary cards and the Record ID column ----
+   Both stay in the DOM and in the payload/CSV; only the dashboard view hides them,
+   so the KPI maths, the Record ID numbering and every export are unchanged. */
+.kpi-grid{{display:none !important}}
+th.ridcol,td.ridcol{{display:none !important}}
 </style>
 </head>
 <body>
@@ -304,6 +498,7 @@ thead th.sorted{{color:var(--accent)}}
       <div class="fld"><label for="f-plat">Marketplace</label><select id="f-plat" name="f-plat"></select></div>
       <div class="fld"><label for="f-stat">Listing Status</label><select id="f-stat" name="f-stat">
         <option value="">All</option><option>Listed</option><option>Not Listed</option></select></div>
+      <div class="fld"><label for="f-cat">Category</label><select id="f-cat" name="f-cat"></select></div>
       <div class="fld"><label for="f-rfrom">Received from</label><div class="inp"><input type="date" id="f-rfrom" name="f-rfrom"></div></div>
       <div class="fld"><label for="f-rto">Received to</label><div class="inp"><input type="date" id="f-rto" name="f-rto"></div></div>
       <div class="fld"><label for="f-lfrom">Listed from</label><div class="inp"><input type="date" id="f-lfrom" name="f-lfrom"></div></div>
@@ -381,7 +576,7 @@ const money = v => '£'+Number(v||0).toLocaleString(undefined,{{minimumFractionD
 const fmtDate = d => {{ if(!d) return ''; const p=String(d).split('-'); if(p.length!==3) return d;
   return p[2]+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+p[1]-1]+' '+p[0]; }};
 
-const S = {{sup:'',cont:'',plat:'',stat:'',rfrom:'',rto:'',lfrom:'',lto:'',q:'',page:1,per:100,sort:null,dir:1}};
+const S = {{sup:'',cont:'',plat:'',stat:'',cat:'',rfrom:'',rto:'',lfrom:'',lto:'',q:'',page:1,per:100,sort:null,dir:1}};
 
 function opts(sel, vals, label){{
   sel.innerHTML = '<option value="">All '+label+'</option>' +
@@ -391,6 +586,10 @@ const uniq = k => [...new Set(ROWS.map(r=>r[B[k]]).filter(Boolean))].sort();
 // Filter option lists follow the active dataset, preserving the current choice
 // when that value still exists in the new view.
 function buildFilterOpts(){{
+  const cs=document.getElementById('f-cat'), keepCat=S.cat;
+  cs.innerHTML = '<option value="">All categories</option>' +
+    (PAYLOAD.categories||[]).map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('');
+  cs.value = keepCat || '';
   [['f-sup','sup','suppliers'],['f-cont','cont','containers'],['f-plat','plat','marketplaces']]
     .forEach(([id,k,label])=>{{
       const el=document.getElementById(id), keep=S[k];
@@ -405,6 +604,10 @@ function filtered(list){{
     if(S.cont && r[B.cont] !== S.cont) return false;
     if(S.plat && r[B.plat] !== S.plat) return false;
     if(S.stat && r[B.stat] !== S.stat) return false;
+    if(S.cat){{                       // comps entry: [6]=SOT [7]=category
+      const cs = (r[B.comps]||[]).map(c=>Array.isArray(c)?c[7]:null).filter(Boolean);
+      if(!(cs.length ? cs : [r[B.cat]]).includes(S.cat)) return false;
+    }}
     if(S.rfrom && (!r[B.recv]  || r[B.recv]  < S.rfrom)) return false;
     if(S.rto   && (!r[B.recv]  || r[B.recv]  > S.rto))   return false;
     if(S.lfrom && (!r[B.ldate] || r[B.ldate] < S.lfrom)) return false;
@@ -455,6 +658,8 @@ function cell(r, key, type){{
   if(type==='pct')  return (Number(v||0)).toFixed(2)+'%';
   if(type==='chip') return v==='Listed' ? '<span class="chip green">Listed</span>'
                                         : '<span class="chip gray">Not Listed</span>';
+  if(type==='sot')  return v==='Yes' ? '<span class="chip green">Yes</span>'
+                                     : '<span class="chip red">No</span>';
   if(type==='fb'){{                       // [avg, count] -> "4.6★ (128 Reviews)"
     if(!v || !v.length) return '<span class="cell-mut">No Reviews</span>';
     const [avg,cnt] = v;
@@ -472,13 +677,15 @@ function cell(r, key, type){{
 // A combo built from several components shows EVERY component value stacked
 // vertically inside the one cell -- no "+N", no extra rows, nothing hidden.
 // comps entry: [0]=sku [1]=image [2]=created [3]=supplier [4]=container [5]=received
-const COMP_IDX = {{csku:0, cimg:1, ccre:2, sup:3, cont:4, recv:5}};
+const COMP_IDX = {{csku:0, cimg:1, ccre:2, sup:3, cont:4, recv:5, sot:6}};
 
 function stackItem(val, type){{
   if(type==='img')
     return val ? `<img class="v2img" src="${{esc(val)}}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.outerHTML='&lt;div class=\\'v2noimg\\'&gt;🖼&lt;/div&gt;'">`
                : `<div class="v2noimg">—</div>`;
   if(type==='d') return val ? esc(fmtDate(val)) : '<span class="cell-mut">—</span>';
+  if(type==='sot') return val==='Yes' ? '<span class="chip green">Yes</span>'
+                                      : '<span class="chip red">No</span>';
   if(!val)       return '<span class="cell-mut">—</span>';
   return `<span class="trunc" title="${{esc(val)}}">${{esc(val)}}</span>`;
 }}
@@ -504,7 +711,7 @@ function prodCell(g, key, type){{
 // ---------- grouping: one PRODUCT, many MARKETPLACE rows ----------
 // COLS[0..8]  = product columns  (rendered once, via rowspan)
 // COLS[9..20] = marketplace columns (one row each)
-const ALL_P = COLS.slice(0,9), ALL_M = COLS.slice(9);
+const ALL_P = COLS.slice(0,10), ALL_M = COLS.slice(10);
 // The TABLE shows only the essential columns (21 -> 11) so it stays scannable.
 // Every hidden field is shown in the click-through drawer, nothing is lost.
 // FULL original column set -- all 9 product + 12 marketplace columns are shown.
@@ -646,13 +853,13 @@ document.getElementById('thead').addEventListener('click', e=>{{
 }});
 const bind=(id,key,ev='change')=>document.getElementById(id).addEventListener(ev,e=>{{S[key]=e.target.value;S.page=1;render();}});
 bind('f-sup','sup'); bind('f-cont','cont'); bind('f-plat','plat'); bind('f-stat','stat');
-bind('f-rfrom','rfrom'); bind('f-rto','rto'); bind('f-lfrom','lfrom'); bind('f-lto','lto');
+bind('f-cat','cat'); bind('f-rfrom','rfrom'); bind('f-rto','rto'); bind('f-lfrom','lfrom'); bind('f-lto','lto');
 bind('f-q','q','input');
 document.getElementById('perpage').addEventListener('change',e=>{{S.per=+e.target.value;S.page=1;render();}});
 document.getElementById('prev').addEventListener('click',()=>{{if(S.page>1){{S.page--;render();}}}});
 document.getElementById('next').addEventListener('click',()=>{{S.page++;render();}});
 document.getElementById('clearBtn').addEventListener('click',()=>{{
-  Object.assign(S,{{sup:'',cont:'',plat:'',stat:'',rfrom:'',rto:'',lfrom:'',lto:'',q:'',page:1}});
+  Object.assign(S,{{sup:'',cont:'',plat:'',stat:'',cat:'',rfrom:'',rto:'',lfrom:'',lto:'',q:'',page:1}});
   document.querySelectorAll('.filterbar select,.filterbar input').forEach(el=>el.value='');
   render();
 }});
