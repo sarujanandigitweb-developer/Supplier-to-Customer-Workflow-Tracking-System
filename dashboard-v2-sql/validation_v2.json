@@ -1,5 +1,5 @@
 {
-  "run": "20260917_093714",
+  "run": "20260917_094706",
   "checks": [
     {
       "check": "supplier schema readable by tech_user",
@@ -334,7 +334,7 @@
     "revenue": 8942.84,
     "returns": 28
   },
-  "duration_sec": 134.4,
+  "duration_sec": 185.7,
   "result": "PASS",
   "failed_hard": [],
   "failed_soft": [
