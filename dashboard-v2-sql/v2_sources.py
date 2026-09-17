@@ -45,6 +45,8 @@ SOURCE_MAP = [
                                  "sources absent from LEDSone (REPLACEMENT, ETSY, MANUAL OM, MANUALORDER, "
                                  "AVASAM, BOL, MANOMANO, FAIRE, RESEND, ONBUY)"),
     ("SOT flag",                 "configurator.components_sot_skus (sku, source_tab)"),
+    ("old supply system",        "suppliers.old_supplyorder + old_supplyorderlist "
+                                 "(fallback when a SKU has no arrived PO)"),
     ("public.amazon_returns",    "customer_service.amazon_returns"),
     ("public.ebay_returns",      "customer_service.ebay_returns"),
     ("public.shopify_returns",   "accounting.shopify_transactions WHERE type='refund'"),
@@ -118,7 +120,7 @@ def create_source_views(cur, deleted_ids, fallback_orders):
     cur.execute("""
     CREATE TEMP VIEW inv_products AS
     SELECT p.id, p.sku, p.title, p.description, p.eng_description AS eng_desc,
-           p.created_at,
+           p.created_at, p.inventory_bool,
            CASE WHEN d.id IS NOT NULL THEN 1 ELSE 0 END AS isdeleted
     FROM inventory.products p
     LEFT JOIN ref_deleted_products d ON d.id = p.id""")
@@ -150,7 +152,9 @@ def create_source_views(cur, deleted_ids, fallback_orders):
     # ---- supplier.* ----------------------------------------------------------
     cur.execute("CREATE TEMP VIEW supplier_suppliers AS SELECT id, name FROM suppliers.suppliers")
     cur.execute("""CREATE TEMP VIEW supplier_orders AS
-        SELECT id, order_id, supplier_id, order_date, status_arrived::int AS status_arrived
+        SELECT id, order_id, supplier_id, order_date, status_arrived::int AS status_arrived,
+               status_shipped::int AS status_shipped, status_confirmed::int AS status_confirmed,
+               expected_completion_date
         FROM suppliers.orders""")
     cur.execute("""CREATE TEMP VIEW supplier_order_items AS
         SELECT id, order_id, sku, pcs, image_url, final_container_id, assigned_container_id,
@@ -169,10 +173,16 @@ def create_source_views(cur, deleted_ids, fallback_orders):
     cur.execute("""CREATE TEMP VIEW sot_skus AS
         SELECT sku, source_tab FROM configurator.components_sot_skus""")
 
-    # ---- product change history (warehouse stock-in log, free text) ---------
-    cur.execute("""CREATE TEMP VIEW product_history AS
-        SELECT p.sku, h.history FROM inventory.product_history h
-        JOIN inventory.products p ON p.id = h.inventory_id""")
+    # ---- OLD supply system (replaces the obsolete product_history text parsing) ----
+    # suppliers.old_supplyorder / old_supplyorderlist hold the supplier, container and
+    # dates that the free-text history only hinted at. containerid and supplier are
+    # free-text names, NOT foreign keys, so they are shown as text.
+    cur.execute("""CREATE TEMP VIEW old_supplyorder AS
+        SELECT supplyorderid, date, estimatedate, status, containerid, supplier
+        FROM suppliers.old_supplyorder""")
+    cur.execute("""CREATE TEMP VIEW old_supplyorderlist AS
+        SELECT supplyorderid, sku, quantity, originalquantity
+        FROM suppliers.old_supplyorderlist""")
 
     # ---- product catalogue photos (LEDSone inventory app image) -------------
     cur.execute("""CREATE TEMP VIEW product_catalog_images AS

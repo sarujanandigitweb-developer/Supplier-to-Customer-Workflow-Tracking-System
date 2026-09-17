@@ -1,5 +1,5 @@
 {
-  "run": "20260915_160001",
+  "run": "20260916_160001",
   "checks": [
     {
       "check": "Container -> Component mapping from the Google Sheet",
@@ -9,7 +9,7 @@
     {
       "check": "Every row carries a Container and a Component SKU",
       "status": "PASS",
-      "detail": "818/818"
+      "detail": "820/820"
     },
     {
       "check": "Every sheet SKU is represented in the dashboard",
@@ -19,17 +19,17 @@
     {
       "check": "No duplicate (container, product, marketplace) rows \u2014 no fan-out",
       "status": "PASS",
-      "detail": "818 rows, all unique"
+      "detail": "820 rows, all unique"
     },
     {
       "check": "Component -> Combo mapping",
       "status": "PASS",
-      "detail": "299 combos derived for 113/209 components (inv_product_combo is EMPTY \u2014 derived from SKU naming, an inference)"
+      "detail": "301 combos derived for 113/209 components (inv_product_combo is EMPTY \u2014 derived from SKU naming, an inference)"
     },
     {
       "check": "Combo -> Marketplace mapping",
       "status": "PASS",
-      "detail": "684 listed rows, every one carries a Listed Date"
+      "detail": "686 listed rows, every one carries a Listed Date"
     },
     {
       "check": "Listing Status consistent with Listed Date",
@@ -49,17 +49,17 @@
     {
       "check": "Images",
       "status": "PASS",
-      "detail": "component 816/818, combo 702/818"
+      "detail": "component 818/820, combo 704/820"
     },
     {
       "check": "Traffic fetched",
       "status": "PASS",
-      "detail": "26,366,399 impressions, 86,309 clicks"
+      "detail": "26,487,607 impressions, 86,588 clicks"
     },
     {
       "check": "Orders / Revenue fetched",
       "status": "PASS",
-      "detail": "1618 orders, \u00a336,313.05"
+      "detail": "1628 orders, \u00a336,543.36"
     },
     {
       "check": "Return Rate math",
@@ -74,17 +74,17 @@
     {
       "check": "inv_products sourced from LEDs One inventory.products (NOT public.inv_products)",
       "status": "PASS",
-      "detail": "420 products cached from LEDs One; public.inv_products has 44530 rows and is not used"
+      "detail": "420 products cached from LEDs One; public.inv_products has 44566 rows and is not used"
     },
     {
       "check": "Component Created Dates populated from LEDs One",
       "status": "FAIL",
-      "detail": "817/818 rows"
+      "detail": "819/820 rows"
     },
     {
       "check": "Combo Created Dates populated from LEDs One",
       "status": "FAIL",
-      "detail": "570/705 combo rows"
+      "detail": "570/707 combo rows"
     },
     {
       "check": "Every sheet component found in LEDs One inventory.products",
@@ -107,14 +107,14 @@
     "no customer-review source on this DB -> Average Feedback unavailable"
   ],
   "source_availability": {
-    "public.inv_products": 44530,
-    "public.inv_product_combo": 122105,
-    "public.listing_data": 336913,
-    "public.order_transaction": 1279836,
-    "public.traffic_data": 10510158,
-    "public.ppc_performance": 28278542,
-    "public.amazon_returns": 15433,
-    "public.ebay_returns": 41837,
+    "public.inv_products": 44566,
+    "public.inv_product_combo": 122237,
+    "public.listing_data": 337170,
+    "public.order_transaction": 1280734,
+    "public.traffic_data": 10528704,
+    "public.ppc_performance": 28307708,
+    "public.amazon_returns": 15461,
+    "public.ebay_returns": 41900,
     "public.shopify_returns": 1987
   },
   "sheet_images": {
@@ -133,23 +133,23 @@
     "containers": 6,
     "sheet_rows": 210,
     "components": 209,
-    "combos": 299,
-    "rows": 818,
-    "listed": 684,
-    "impressions": 26366399,
-    "clicks": 86309,
-    "orders": 1618,
-    "units": 2462,
-    "revenue": 36313.05,
+    "combos": 301,
+    "rows": 820,
+    "listed": 686,
+    "impressions": 26487607,
+    "clicks": 86588,
+    "orders": 1628,
+    "units": 2477,
+    "revenue": 36543.36,
     "returns": 124
   },
   "per_container": {
     "Container 11": 102,
     "Container 12": 326,
-    "Container 13": 171,
+    "Container 13": 173,
     "Container 14": 94,
     "Container 15": 2,
     "Container 16": 123
   },
-  "duration_sec": 166.2
+  "duration_sec": 236.7
 }

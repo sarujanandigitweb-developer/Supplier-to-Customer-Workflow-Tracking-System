@@ -488,6 +488,9 @@ th.ridcol,td.ridcol{{display:none !important}}
         <div class="hpill"><span class="hpill-ic">🎁</span><div><small>Combos</small><b>{P['meta']['combos']}</b></div></div>
         <div class="hpill"><span class="hpill-ic">🕒</span><div><small>Captured</small><b>{P['capturedAt']}</b></div></div>
       </div>
+      <!-- ALL DATA TOGGLE (start) -->
+      <button type="button" class="btn ghost" id="allDataBtn" hidden>🗃️ All Data</button>
+      <!-- ALL DATA TOGGLE (end) -->
       <button type="button" class="btn ghost" id="themeBtn">🌙 Theme</button>
       <button type="button" class="btn" id="csvBtn">⬇ CSV</button>
     </header>
@@ -1016,6 +1019,33 @@ document.getElementById('viewtabs').addEventListener('click', e=>{{
 }});
 document.getElementById('tabCompN').textContent  = '('+PAYLOAD.rowsComp.length+')';
 document.getElementById('tabComboN').textContent = '('+DATA.combo.length+')';
+
+/* ---- ALL DATA TOGGLE (start) — delete this block and the button above to remove it.
+   Second data mode. OFF (default) = today's completed-only view, untouched.
+   ON = every non-deleted component created this year (Components tab) and every
+   non-deleted combo that uses one of them (Combos tab). It only swaps ROWS and calls
+   the existing render(); no other function or dataset is modified. ---- */
+let ALLDATA = false;
+(function(){{
+  const ALL = {{ comp: PAYLOAD.rowsAllComp || [], combo: PAYLOAD.rowsAllCombo || [] }};
+  const btn = document.getElementById('allDataBtn');
+  if(!btn || !(ALL.comp.length || ALL.combo.length)) return;
+  btn.hidden = false;
+  const paint = () => {{
+    btn.className = ALLDATA ? 'btn' : 'btn ghost';
+    btn.textContent = ALLDATA ? '🗃️ All Data · ON' : '🗃️ All Data';
+  }};
+  const apply = () => {{ ROWS = ALLDATA ? ALL[VIEW] : DATA[VIEW]; S.page = 1; buildFilterOpts(); render(); }};
+  btn.addEventListener('click', () => {{ ALLDATA = !ALLDATA; paint(); apply(); }});
+  const baseSetView = setView;                     // both tabs stay usable in either mode
+  setView = v => {{
+    if(v === VIEW) return;
+    baseSetView(v);
+    if(ALLDATA) apply();
+  }};
+  paint();
+}})();
+/* ---- ALL DATA TOGGLE (end) ---- */
 
 buildFilterOpts();
 render();

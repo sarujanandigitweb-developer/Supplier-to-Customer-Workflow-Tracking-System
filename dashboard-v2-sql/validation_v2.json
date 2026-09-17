@@ -1,5 +1,5 @@
 {
-  "run": "20260916_093601",
+  "run": "20260916_171937",
   "checks": [
     {
       "check": "supplier schema readable by tech_user",
@@ -9,32 +9,32 @@
     {
       "check": "New components in scope",
       "status": "PASS",
-      "detail": "269 (floor 178)"
+      "detail": "311 (floor 178)"
     },
     {
       "check": "Combos built from them",
       "status": "PASS",
-      "detail": "305 (floor 228)"
+      "detail": "411 (floor 228)"
     },
     {
       "check": "Component x combo pairs",
       "status": "PASS",
-      "detail": "378 (floor 266)"
+      "detail": "464 (floor 266)"
     },
     {
       "check": "Every row has a component SKU",
       "status": "PASS",
-      "detail": "760/760"
+      "detail": "971/971"
     },
     {
       "check": "Every row has a supplier",
       "status": "PASS",
-      "detail": "760/760"
+      "detail": "971/971"
     },
     {
       "check": "Received Date sourced from the container (not the PO date)",
       "status": "PASS",
-      "detail": "674/760 rows \u2014 blank means the container is not yet closed"
+      "detail": "968/971 rows \u2014 blank means the container is not yet closed"
     },
     {
       "check": "No raw container IDs leaked into the Container column",
@@ -59,32 +59,32 @@
     {
       "check": "Container present where assigned",
       "status": "PASS",
-      "detail": "731/760 rows have a container"
+      "detail": "971/971 rows have a container"
     },
     {
       "check": "Component images (supplier photo -> listing fallback)",
       "status": "PASS",
-      "detail": "760/760 rows; 260/269 distinct components"
+      "detail": "971/971 rows; 302/311 distinct components"
     },
     {
       "check": "Combo images",
       "status": "PASS",
-      "detail": "561/760"
+      "detail": "793/971"
     },
     {
       "check": "Top Reason populated",
       "status": "PASS",
-      "detail": "16/760 (amazon 100%, ebay ~11%, shopify has no reason column)"
+      "detail": "17/971 (amazon 100%, ebay ~11%, shopify has no reason column)"
     },
     {
       "check": "Component dataset built independently of the combo queries",
       "status": "PASS",
-      "detail": "284 rows, 30 components with their own listing; combo columns blank"
+      "detail": "434 rows, 177 components with their own listing; combo columns blank"
     },
     {
       "check": "Component rows: every row has a component SKU + supplier",
       "status": "PASS",
-      "detail": "284/284"
+      "detail": "434/434"
     },
     {
       "check": "Component rows: Listed rows carry a Listed Date",
@@ -99,7 +99,7 @@
     {
       "check": "No duplicate (product, marketplace) rows \u2014 KPI totals cannot double-count",
       "status": "PASS",
-      "detail": "combo 760 rows / component 284 rows, all unique"
+      "detail": "combo 971 rows / component 434 rows, all unique"
     },
     {
       "check": "No pre-2026 Listing Date leaked into either dataset",
@@ -119,7 +119,7 @@
     {
       "check": "Every row carries a Record ID, one per product block",
       "status": "PASS",
-      "detail": "497 REC-* + 269 CMP-* ids"
+      "detail": "579 REC-* + 311 CMP-* ids"
     },
     {
       "check": "Both datasets share the identical column layout",
@@ -133,11 +133,9 @@
     }
   ],
   "notes": [
-    "SOT column: 46 of 269 components are in the SOT list (configurator.components_sot_skus, matched on the SKU itself, not on its prefix).",
+    "SOT column: 139 of 677 components are in the SOT list (configurator.components_sot_skus, matched on the SKU itself, not on its prefix).",
     "Category filter: SKU-prefix classification, longest prefix first. PH -> Pendant Lamp Holder and WS -> Wall Arm, resolved from the SOT sheet's source_tab (PH: 398/399 'pendantholder'; WS: 180/180 'wallarm'). Unmatched SKUs -> 'Other'.",
-    "Container/Received: 9 components show their last ARRIVED PO because the latest PO has not arrived yet (newer PO named in the row notes).",
-    "Received Date: 9 components use the warehouse stock-in date from inventory.product_history (only where container close-out and invoice date are blank).",
-    "Received Date: 21 further components use their latest warehouse stock-in (older than the latest PO; that shipment has no PO/container in LEDSone).",
+    "Row set: 677 components created this year (684 including deleted); 311 shown after the completed-only rule (68 arrived PO + 243 completed supply order).",
     "Average Feedback: no customer-review source exists in this database (searched all schemas for rating/review/feedback/star columns). Column renders 'No Reviews' for every row pending a marketplace reviews feed."
   ],
   "source": {
@@ -171,6 +169,7 @@
       "public.ppc_performance": "amazon_campaigns.performance_data(asin) + ebay_campaigns.performance_data(ebay_listing_id, ad_id<>'0') + google_ads.product_performance(parent_id, latest version per id)",
       "public.order_transaction": "order_management.orders+order_item_info+sub_source+source (MFN) + amazon_fba_orders+amazon_fba_order_items (FBA) + OLD-DB fallback for sources absent from LEDSone (REPLACEMENT, ETSY, MANUAL OM, MANUALORDER, AVASAM, BOL, MANOMANO, FAIRE, RESEND, ONBUY)",
       "SOT flag": "configurator.components_sot_skus (sku, source_tab)",
+      "old supply system": "suppliers.old_supplyorder + old_supplyorderlist (fallback when a SKU has no arrived PO)",
       "public.amazon_returns": "customer_service.amazon_returns",
       "public.ebay_returns": "customer_service.ebay_returns",
       "public.shopify_returns": "accounting.shopify_transactions WHERE type='refund'"
@@ -208,42 +207,83 @@
     "missing": []
   },
   "categories": {
-    "Lamp Spares": 80,
-    "Lamp Shade": 44,
-    "Lamp Holders": 31,
-    "Wall Arm": 34,
-    "Lighting": 10,
-    "Pendant Lamp Holder": 8,
-    "Ceiling Rose": 52,
-    "Home Appliances": 1,
-    "Other": 8,
-    "Bulbs": 1
+    "Lamp Spares": 229,
+    "Lamp Shade": 83,
+    "Lighting": 71,
+    "Lamp Holders": 65,
+    "Pendant Lamp Holder": 26,
+    "Wall Arm": 53,
+    "Refurbished": 12,
+    "Ceiling Rose": 72,
+    "Transformers": 2,
+    "Bulbs": 26,
+    "Home Appliances": 21,
+    "Other": 17
+  },
+  "source_split": {
+    "components_this_year": 677,
+    "including_deleted": 684,
+    "shown": 311,
+    "from_PO": 68,
+    "from_SUPPLY": 243,
+    "supply_without_estimate_date": 0
+  },
+  "incoming": {
+    "components": 152,
+    "not_on_main_view": 100,
+    "also_completed": 52
+  },
+  "status": {
+    "COMPLETED": 311,
+    "INCOMING": 100,
+    "NO SUPPLY DATA": 266
+  },
+  "combos_all": {
+    "distinct": 615,
+    "relationships": 786,
+    "with_combo_date_filter": 598,
+    "restored_by_dropping_date_filter": 17
+  },
+  "all_data": {
+    "components": 677,
+    "component_rows": 885,
+    "combos": 615,
+    "combo_rows": 1201,
+    "relationships": 786,
+    "status": {
+      "COMPLETED": 311,
+      "INCOMING": 100,
+      "NO SUPPLY DATA": 266
+    },
+    "combos_completed_linked": 411,
+    "combos_no_completed": 204,
+    "combos_mixed": 69
   },
   "totals": {
-    "rows": 760,
-    "components": 269,
-    "combos": 305,
-    "pairs": 378,
-    "gap_no_combo": 192,
-    "impressions": 14153176,
-    "clicks": 49283,
-    "orders": 1005,
-    "units": 1325,
-    "revenue": 24820.67,
-    "returns": 42
+    "rows": 971,
+    "components": 311,
+    "combos": 411,
+    "pairs": 464,
+    "gap_no_combo": 168,
+    "impressions": 4461200,
+    "clicks": 25954,
+    "orders": 784,
+    "units": 1022,
+    "revenue": 18343.04,
+    "returns": 51
   },
   "totals_components": {
-    "rows": 284,
-    "listed": 39,
-    "components_with_listing": 30,
-    "impressions": 300656,
-    "clicks": 2874,
-    "orders": 369,
-    "units": 554,
-    "revenue": 5445.28,
-    "returns": 17
+    "rows": 434,
+    "listed": 199,
+    "components_with_listing": 177,
+    "impressions": 610664,
+    "clicks": 4856,
+    "orders": 564,
+    "units": 962,
+    "revenue": 8900.9,
+    "returns": 28
   },
-  "duration_sec": 117.6,
+  "duration_sec": 103.2,
   "result": "PASS",
   "failed_hard": [],
   "failed_soft": [

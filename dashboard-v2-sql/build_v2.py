@@ -136,20 +136,31 @@ else:
     check("supplier schema readable by " + DB["user"], True,
           "; ".join(f"{t.split('.')[1]}={v['rows']}" for t, v in sup_access.items()))
 
-# ---------- 1. NEW COMPONENTS (2026, purchased from a supplier) ----------------
+# ---------- 1. NEW COMPONENTS (created this year) ------------------------------
+# APPROVED 2026-09-16. The row set is every component created this calendar year --
+# NO supplier join, no stock condition. The supplier PO join used to run here and
+# silently dropped 412 of 684 products. Which of these rows reach the dashboard is
+# decided later, by the completed-only rule in section 2.
 cur.execute("""
-CREATE TEMP TABLE comp AS
+CREATE TEMP TABLE comp_all AS
 SELECT DISTINCT p.id AS comp_id, p.sku AS comp_sku,
        p.created_at::date::text AS comp_created,
        COALESCE(NULLIF(p.eng_desc,''),NULLIF(p.description,''),NULLIF(p.title,''),'') AS comp_desc
 FROM pg_temp.inv_products p
-JOIN pg_temp.supplier_order_items oi ON oi.sku = p.sku
-WHERE p.created_at >= %(s)s AND COALESCE(p.isdeleted,0)=0
-  AND COALESCE(TRIM(p.sku),'')<>'' AND p.sku NOT LIKE '%%+%%';
-CREATE INDEX ON comp(comp_id); CREATE INDEX ON comp(comp_sku);
-""", {"s": START})
-cur.execute("SELECT count(*) FROM comp"); n_comp = cur.fetchone()[0]
-print(f"new components (2026, on a supplier PO): {n_comp}")
+WHERE p.inventory_bool = true
+  AND p.created_at >= date_trunc('year', CURRENT_DATE)
+  AND COALESCE(p.isdeleted,0)=0                 -- deleted products stay excluded (approved)
+  AND COALESCE(TRIM(p.sku),'')<>'';
+CREATE INDEX ON comp_all(comp_id); CREATE INDEX ON comp_all(comp_sku);
+""")
+cur.execute("SELECT count(*) FROM comp_all"); n_year = cur.fetchone()[0]
+cur.execute("""SELECT count(*) FROM pg_temp.inv_products p
+               WHERE p.inventory_bool = true AND p.created_at >= date_trunc('year', CURRENT_DATE)
+                 AND COALESCE(TRIM(p.sku),'')<>''""")
+n_year_incl_deleted = cur.fetchone()[0]
+print(f"components created this year: {n_year} (excluding deleted) | "
+      f"{n_year_incl_deleted} if deleted products were included "
+      f"(difference {n_year_incl_deleted - n_year})")
 
 # ---------- 1b. SOT FLAG + CATEGORY (per component) ----------------------------
 # SOT: does the component SKU exist in the SOT list? Source of truth is
@@ -198,7 +209,7 @@ def sku_category(sku):
             return cat
     return "Other"
 
-cur.execute("SELECT comp_sku FROM comp")
+cur.execute("SELECT comp_sku FROM comp_all")     # comp (completed-only) is built in section 2
 _cs = [r[0] for r in cur.fetchall()]
 n_sot = sum(1 for s in _cs if sku_sot(s) == "Yes")
 _catn = {}
@@ -212,9 +223,17 @@ VAL["notes"].append("Category filter: SKU-prefix classification, longest prefix 
                     "(PH: 398/399 'pendantholder'; WS: 180/180 'wallarm'). Unmatched SKUs -> 'Other'.")
 VAL["categories"] = _catn
 
-# ---------- 2. SUPPLIER / CONTAINER / RECEIVED-DATE PROXY (latest PO per comp) --
+# ---------- 2. SOURCE OF TRUTH: arrived PO first, else completed supply order ----
+# APPROVED 2026-09-16. The displayed container must be one that ACTUALLY ARRIVED:
+#   PRIMARY  new PO system   -> suppliers.orders.status_arrived = true
+#   FALLBACK old supply list -> lower(trim(old_supplyorder.status)) = 'completed'
+#                               ('Completed' 811 + 'completed' 48 -- lower() is required)
+# A SKU is shown when EITHER source is complete; when both are, the arrived PO wins.
+# A container still on order/shipping is NEVER the displayed container (see section 2b
+# for the separate incoming view). The old free-text product_history parsing that used
+# to sit here is deleted -- nothing reads that column any more.
 cur.execute("""
-CREATE TEMP TABLE sup AS
+CREATE TEMP TABLE sup_po AS
 SELECT DISTINCT ON (oi.sku)
        oi.sku                                  AS comp_sku,
        COALESCE(s.name,'')                     AS supplier,
@@ -223,20 +242,18 @@ SELECT DISTINCT ON (oi.sku)
        -- foreign key and leaked ints like "31" into the UI (bug found 2026-07-28).
        COALESCE(fc.name, ct.name, '')           AS container,
        COALESCE(fc.main_container, ct.main_container, '') AS destination,
-       -- RECEIVED DATE: the container's own close-out date, i.e. when the shipment
-       -- was completed into inventory. Falls back to the invoice ship-by date.
-       -- No silent fall back to the PO date -- blank means genuinely unknown.
+       -- RECEIVED DATE: the container's own close-out date, falling back to the
+       -- invoice ship-by date. Blank means genuinely unknown.
        COALESCE(
          CASE WHEN fc.status = 'completed' THEN fc.updated_at::date::text END,
          inv.ship_by_date::text,
          ''
        )                                        AS received,
-       o.order_date::text                       AS po_date,
-       COALESCE(o.order_id,'')                  AS po,
-       COALESCE(oi.pcs,0)                       AS qty,
-       COALESCE(o.status_arrived,0)             AS arrived
+       o.order_date::text                       AS order_date,
+       COALESCE(o.order_id,'')                  AS ref,
+       COALESCE(oi.pcs,0)                       AS qty
 FROM pg_temp.supplier_order_items oi
-JOIN comp c                    ON c.comp_sku = oi.sku
+JOIN comp_all c                ON c.comp_sku = oi.sku
 JOIN pg_temp.supplier_orders     o     ON o.id  = oi.order_id
 LEFT JOIN pg_temp.supplier_suppliers        s  ON s.id  = o.supplier_id
 LEFT JOIN pg_temp.supplier_final_containers fc ON fc.id = oi.final_container_id::bigint
@@ -244,105 +261,147 @@ LEFT JOIN pg_temp.supplier_containers       ct ON ct.id = oi.assigned_container_
 LEFT JOIN (SELECT final_container_id, MIN(ship_by_date) AS ship_by_date
            FROM pg_temp.supplier_invoices GROUP BY 1) inv
        ON inv.final_container_id = oi.final_container_id::bigint
-ORDER BY oi.sku, o.order_date DESC NULLS LAST, o.id DESC;
-CREATE INDEX ON sup(comp_sku);
+WHERE COALESCE(o.status_arrived,0) = 1                      -- ARRIVED only
+ORDER BY oi.sku, o.order_date DESC NULLS LAST, o.id DESC;   -- most recent arrival wins
+CREATE INDEX ON sup_po(comp_sku);
 """)
-cur.execute("SELECT comp_sku, supplier, container, destination, received, po_date, po, qty, arrived FROM sup")
-supmap = {r[0]: dict(supplier=r[1], container=r[2], dest=r[3], recv=r[4], po_date=r[5],
-                     po=r[6], qty=r[7], arrived=bool(r[8])) for r in cur.fetchall()}
 
-# ---------- 2a. RULE A: latest PO not arrived -> show the last ARRIVED PO ---------
-# APPROVED 2026-09-15. A new re-order that has not shipped must not hide the stock
-# that already arrived on an older PO. Same container/received expressions as above,
-# restricted to POs with status_arrived = 1. The newer PO is kept in the notes.
 cur.execute("""
+CREATE TEMP TABLE sup_old AS
+SELECT DISTINCT ON (l.sku)
+       l.sku                                   AS comp_sku,
+       COALESCE(TRIM(so.supplier),'')          AS supplier,
+       COALESCE(TRIM(so.containerid),'')       AS container,
+       so.date::date::text                     AS order_date,
+       so.estimatedate::date::text             AS estimate_date,
+       so.supplyorderid                        AS ref,
+       COALESCE(l.quantity,0)                  AS qty
+FROM pg_temp.old_supplyorderlist l
+JOIN pg_temp.old_supplyorder so ON so.supplyorderid = l.supplyorderid
+JOIN comp_all c                ON c.comp_sku = l.sku
+WHERE lower(TRIM(so.status)) = 'completed'                  -- COMPLETED only
+ORDER BY l.sku, so.date DESC NULLS LAST, so.supplyorderid DESC;  -- most recent completed wins
+CREATE INDEX ON sup_old(comp_sku);
+""")
+
+cur.execute("SELECT comp_sku, supplier, container, destination, received, order_date, ref, qty FROM sup_po")
+po_rows = {r[0]: dict(supplier=r[1], container=r[2], dest=r[3], recv=r[4], po_date=r[5],
+                      po=r[6], qty=r[7], src="PO", arrived=True) for r in cur.fetchall()}
+cur.execute("SELECT comp_sku, supplier, container, order_date, estimate_date, ref, qty FROM sup_old")
+old_rows = {}
+est_null = 0
+for sku, supplier, container, odate, edate, ref, qty in cur.fetchall():
+    recv = edate or odate or ""            # estimate date is the receipt date; else the order date
+    old_rows[sku] = dict(supplier=supplier, container=container, dest="", recv=recv,
+                         po_date=odate, po=ref, qty=qty, src="SUPPLY", arrived=True,
+                         recv_is_order_date=bool(not edate and odate))
+    if not edate: est_null += 1
+
+# Both sources are "arrived". Per the approved rule -- always show the container that
+# actually arrived, and when several arrived show the MOST RECENT one -- the two are
+# compared on their own arrival date (PO: container close-out, else order date;
+# SUPPLY: estimate date, else order date). A PO wins an exact tie.
+supmap = dict(old_rows)
+for sku, v in po_rows.items():
+    prev = supmap.get(sku)
+    if not prev:
+        supmap[sku] = v; continue
+    d_po  = v.get("recv")    or v.get("po_date")    or ""
+    d_sup = prev.get("recv") or prev.get("po_date") or ""
+    if d_po >= d_sup:
+        supmap[sku] = v
+n_po     = sum(1 for v in supmap.values() if v["src"] == "PO")
+n_supply = sum(1 for v in supmap.values() if v["src"] == "SUPPLY")
+print(f"completed sources: {n_po} from an arrived PO + {n_supply} from a completed supply order "
+      f"= {len(supmap)} components")
+print(f"  completed supply orders with no estimate date (received shown as the order date): {est_null}")
+
+# THE DASHBOARD FILTER: only components whose goods actually arrived
+cur.execute("CREATE TEMP TABLE comp AS SELECT * FROM comp_all WHERE comp_sku = ANY(%s)",
+            (list(supmap),))
+cur.execute("CREATE INDEX ON comp(comp_id); CREATE INDEX ON comp(comp_sku)")
+cur.execute("SELECT count(*) FROM comp"); n_comp = cur.fetchone()[0]
+print(f"completed-only components on the dashboard: {n_comp}")
+VAL["notes"].append(f"Row set: {n_year} components created this year ({n_year_incl_deleted} including "
+                    f"deleted); {n_comp} shown after the completed-only rule "
+                    f"({n_po} arrived PO + {n_supply} completed supply order).")
+VAL["source_split"] = {"components_this_year": n_year, "including_deleted": n_year_incl_deleted,
+                       "shown": n_comp, "from_PO": n_po, "from_SUPPLY": n_supply,
+                       "supply_without_estimate_date": est_null}
+
+# ---------- 2b. INCOMING (start) — containers still on order / shipping ---------
+# Self-contained: a SECOND dataset for the "Incoming" button. It never touches the
+# completed-only data above. Delete this block (and its payload key) to remove it.
+cur.execute("""
+CREATE TEMP TABLE inc_po AS
 SELECT DISTINCT ON (oi.sku)
-       oi.sku, COALESCE(s.name,''), COALESCE(fc.name, ct.name, ''),
-       COALESCE(fc.main_container, ct.main_container, ''),
-       COALESCE(CASE WHEN fc.status = 'completed' THEN fc.updated_at::date::text END,
-                inv.ship_by_date::text, ''),
-       o.order_date::text, COALESCE(o.order_id,''), COALESCE(oi.pcs,0)
+       oi.sku AS comp_sku, COALESCE(s.name,'') AS supplier,
+       COALESCE(fc.name, ct.name, '') AS container,
+       o.order_date::text AS order_date, o.expected_completion_date::text AS expected,
+       COALESCE(o.order_id,'') AS ref, COALESCE(oi.pcs,0) AS qty,
+       CASE WHEN COALESCE(o.status_shipped,0)=1 THEN 'shipping'
+            WHEN COALESCE(o.status_confirmed,0)=1 THEN 'confirmed' ELSE 'order' END AS status
 FROM pg_temp.supplier_order_items oi
-JOIN comp c                    ON c.comp_sku = oi.sku
-JOIN pg_temp.supplier_orders     o     ON o.id  = oi.order_id
-LEFT JOIN pg_temp.supplier_suppliers        s  ON s.id  = o.supplier_id
+JOIN comp_all c            ON c.comp_sku = oi.sku
+JOIN pg_temp.supplier_orders o ON o.id = oi.order_id
+LEFT JOIN pg_temp.supplier_suppliers        s  ON s.id = o.supplier_id
 LEFT JOIN pg_temp.supplier_final_containers fc ON fc.id = oi.final_container_id::bigint
 LEFT JOIN pg_temp.supplier_containers       ct ON ct.id = oi.assigned_container_id::bigint
-LEFT JOIN (SELECT final_container_id, MIN(ship_by_date) AS ship_by_date
-           FROM pg_temp.supplier_invoices GROUP BY 1) inv
-       ON inv.final_container_id = oi.final_container_id::bigint
-WHERE COALESCE(o.status_arrived,0) = 1
-ORDER BY oi.sku, o.order_date DESC NULLS LAST, o.id DESC
+WHERE COALESCE(o.status_arrived,0) = 0
+ORDER BY oi.sku, o.order_date DESC NULLS LAST, o.id DESC;
 """)
-last_arrived_used = 0
-for sku, sup_name, cont, dest, recv, po_date, po, qty in cur.fetchall():
-    s = supmap.get(sku)
-    if not s or s["arrived"]:
-        continue
-    s["latest_po"], s["latest_po_date"] = s["po"], s["po_date"]
-    s.update(supplier=sup_name, container=cont, dest=dest, recv=recv, po_date=po_date,
-             po=po, qty=qty, arrived=True)
-    last_arrived_used += 1
-print(f"latest PO not arrived -> last arrived PO shown: {last_arrived_used}")
-VAL["notes"].append(f"Container/Received: {last_arrived_used} components show their last ARRIVED PO because "
-                    "the latest PO has not arrived yet (newer PO named in the row notes).")
+cur.execute("""
+CREATE TEMP TABLE inc_old AS
+SELECT DISTINCT ON (l.sku)
+       l.sku AS comp_sku, COALESCE(TRIM(so.supplier),'') AS supplier,
+       COALESCE(TRIM(so.containerid),'') AS container,
+       so.date::date::text AS order_date, so.estimatedate::date::text AS expected,
+       so.supplyorderid AS ref, COALESCE(l.quantity,0) AS qty,
+       lower(TRIM(so.status)) AS status
+FROM pg_temp.old_supplyorderlist l
+JOIN pg_temp.old_supplyorder so ON so.supplyorderid = l.supplyorderid
+JOIN comp_all c                ON c.comp_sku = l.sku
+WHERE lower(TRIM(so.status)) IN ('order','shipping')
+ORDER BY l.sku, so.date DESC NULLS LAST, so.supplyorderid DESC;
+""")
+cur.execute("SELECT comp_sku, supplier, container, order_date, expected, ref, qty, status FROM inc_po")
+inc = {r[0]: dict(supplier=r[1], container=r[2], po_date=r[3], recv=r[4] or "", po=r[5],
+                  qty=r[6], status=r[7], src="PO") for r in cur.fetchall()}
+cur.execute("SELECT comp_sku, supplier, container, order_date, expected, ref, qty, status FROM inc_old")
+for sku, supplier, container, odate, edate, ref, qty, status in cur.fetchall():
+    cand = dict(supplier=supplier, container=container, po_date=odate, recv=edate or "",
+                po=ref, qty=qty, status=status, src="SUPPLY")
+    cur_row = inc.get(sku)                      # keep the most recently ordered pending one
+    if not cur_row or (odate or "") > (cur_row.get("po_date") or ""):
+        inc[sku] = cand
+n_inc = len(inc)
+n_inc_only = len([k for k in inc if k not in supmap])
+print(f"incoming (still on order/shipping): {n_inc} components, "
+      f"{n_inc_only} of them not on the completed-only view")
+VAL["incoming"] = {"components": n_inc, "not_on_main_view": n_inc_only,
+                   "also_completed": n_inc - n_inc_only}
+# ---------- 2b. INCOMING (end) -------------------------------------------------
 
-# ---------- 2b. RECEIVED-DATE FALLBACK: warehouse stock-in history -------------
-# APPROVED 2026-09-15. Used ONLY when the container close-out and invoice ship-by
-# date above are both blank. inventory.product_history is a free-text log; a UK
-# stock-in line reads
-#   "Supply - SU1318 loaded by <user> On 2026-08-25 10:23:15 - unit5 changed from 0 to 4000"
-# A line counts only if some stock figure INCREASES and its date is on/after the
-# component's latest PO date (older receipts belong to older POs). The EARLIEST such
-# date is used (first arrival of that PO's stock). German Supply lines are ignored.
-# The history has no container, so Container is never filled from it.
-import re
-_SUPPLY = re.compile(r"^Supply - (SU\d+) loaded by .+? On (\d{4}-\d{2}-\d{2}) \d{2}:\d{2}:\d{2}(.*)$")
-_CHANGE = re.compile(r"\w+ changed from (-?\d*) to (-?\d*)", re.I)
-cur.execute("""SELECT h.sku, h.history FROM pg_temp.product_history h
-               JOIN comp c ON c.comp_sku = h.sku WHERE COALESCE(h.history,'') <> ''""")
-recv_from_history = recv_from_last_receipt = 0
-for sku, hist in cur.fetchall():
-    s = supmap.get(sku)
-    if not s or s["recv"] or not s["po_date"]:
-        continue
-    best = None
-    for line in re.split(r"\r?\n", hist):
-        m = _SUPPLY.match(line.strip())
-        if not m or m.group(2) < s["po_date"]:
-            continue
-        if not any(a.lstrip("-").isdigit() and b.lstrip("-").isdigit() and int(b) > int(a)
-                   for a, b in _CHANGE.findall(m.group(3))):
-            continue
-        if best is None or m.group(2) < best[1]:
-            best = (m.group(1), m.group(2))
-    if best:
-        s["recv"], s["recv_src"] = best[1], best[0]
-        recv_from_history += 1
+# ---------- 2c. ALL DATA (start) — status is an ATTRIBUTE, not a filter ---------
+# Every component of the base set is classified; nothing is dropped. COMPLETED keeps
+# the arrived container resolved above (never overwritten by a newer unarrived order);
+# INCOMING carries the pending order/expected info; NO SUPPLY DATA stays blank -- no
+# stock, history, prefix or fuzzy matching is used as substitute evidence.
+cur.execute("SELECT comp_sku FROM comp_all")
+_base_skus = [r[0] for r in cur.fetchall()]
+status_of, allmap = {}, {}
+for _sku in _base_skus:
+    if _sku in supmap:
+        status_of[_sku] = "COMPLETED"; allmap[_sku] = supmap[_sku]
+    elif _sku in inc:
+        status_of[_sku] = "INCOMING";  allmap[_sku] = dict(inc[_sku], dest="")
     else:
-        # RULE B (APPROVED 2026-09-15): still blank -> the LATEST UK stock-in receipt of
-        # any date. Covers shipments with no PO in LEDSone (e.g. SU1317 for LSMS3202*).
-        for line in re.split(r"\r?\n", hist):
-            m = _SUPPLY.match(line.strip())
-            if not m or not any(a.lstrip("-").isdigit() and b.lstrip("-").isdigit() and int(b) > int(a)
-                                for a, b in _CHANGE.findall(m.group(3))):
-                continue
-            if best is None or m.group(2) > best[1]:
-                best = (m.group(1), m.group(2))
-        if best:
-            s["recv"], s["recv_src"], s["recv_old"] = best[1], best[0], True
-            recv_from_last_receipt += 1
-print(f"received date filled from warehouse stock-in history: {recv_from_history}")
-print(f"received date filled from last stock-in before latest PO: {recv_from_last_receipt}")
-VAL["notes"].append(f"Received Date: {recv_from_history} components use the warehouse stock-in date from "
-                    "inventory.product_history (only where container close-out and invoice date are blank).")
-VAL["notes"].append(f"Received Date: {recv_from_last_receipt} further components use their latest warehouse "
-                    "stock-in (older than the latest PO; that shipment has no PO/container in LEDSone).")
-
-# PO count per component (multiple restocks are the norm)
-cur.execute("""SELECT oi.sku, count(*) FROM pg_temp.supplier_order_items oi
-               JOIN comp c ON c.comp_sku=oi.sku GROUP BY 1""")
-po_count = dict(cur.fetchall())
+        status_of[_sku] = "NO SUPPLY DATA"; allmap[_sku] = {}
+_st = {k: sum(1 for v in status_of.values() if v == k) for k in ("COMPLETED","INCOMING","NO SUPPLY DATA")}
+print(f"status: COMPLETED {_st['COMPLETED']} | INCOMING {_st['INCOMING']} | "
+      f"NO SUPPLY DATA {_st['NO SUPPLY DATA']} | total {sum(_st.values())}")
+VAL["status"] = _st
+# ---------- 2c. ALL DATA (end) ---------------------------------------------------
 
 # ---------- 3. COMBOS built from those components ------------------------------
 cur.execute("""
@@ -359,6 +418,32 @@ JOIN pg_temp.inv_products cp      ON cp.id = pc.product
 WHERE cp.created_at >= %(s)s AND COALESCE(cp.isdeleted,0)=0 AND COALESCE(TRIM(cp.sku),'')<>'';
 CREATE INDEX ON pair(combo_sku); CREATE INDEX ON pair(comp_sku);
 """, {"s": START})
+# ALL DATA combo discovery: from the 677-component BASE set, NOT the completed subset.
+# The combo's own creation date is NOT a condition -- the requirement constrains the
+# COMPONENT's creation date. Deleted combos stay excluded.
+cur.execute("""
+CREATE TEMP TABLE pair_all AS
+SELECT c.comp_sku, c.comp_created, c.comp_desc,
+       cp.id AS combo_id, cp.sku AS combo_sku,
+       cp.created_at::date::text AS combo_created,
+       COALESCE(NULLIF(cp.eng_desc,''),NULLIF(cp.description,''),NULLIF(cp.title,''),'') AS combo_desc
+FROM comp_all c
+JOIN pg_temp.inv_product_combo pc ON pc.inventory = c.comp_id AND pc.inventory <> pc.product
+JOIN pg_temp.inv_products cp      ON cp.id = pc.product
+WHERE COALESCE(cp.isdeleted,0)=0 AND COALESCE(TRIM(cp.sku),'')<>'';
+CREATE INDEX ON pair_all(combo_sku); CREATE INDEX ON pair_all(comp_sku);
+""")
+cur.execute("SELECT count(*), count(DISTINCT combo_sku), count(DISTINCT comp_sku) FROM pair_all")
+n_pair_all, n_combo_all, n_comp_all_w = cur.fetchone()
+cur.execute("""SELECT count(*), count(DISTINCT combo_sku) FROM pair_all
+               WHERE combo_created >= %(s)s""", {"s": START})
+n_pair_dated, n_combo_dated = cur.fetchone()
+print(f"ALL DATA combos: {n_combo_all} distinct ({n_pair_all} relationships) from {n_comp_all_w} components")
+print(f"  combo-created-this-year filter would give {n_combo_dated} combos ({n_pair_dated} relationships) "
+      f"-> removing it restores {n_combo_all - n_combo_dated} combos / {n_pair_all - n_pair_dated} relationships")
+VAL["combos_all"] = {"distinct": n_combo_all, "relationships": n_pair_all,
+                     "with_combo_date_filter": n_combo_dated,
+                     "restored_by_dropping_date_filter": n_combo_all - n_combo_dated}
 cur.execute("SELECT count(*), count(DISTINCT combo_sku), count(DISTINCT comp_sku) FROM pair")
 n_pair, n_combo, n_comp_w = cur.fetchone()
 print(f"combos: {n_combo}  |  component x combo pairs: {n_pair}  |  components with a combo: {n_comp_w}")
@@ -379,7 +464,7 @@ WHERE COALESCE(ld.is_parent,0)=0 AND ld.wrong_sku=0 AND COALESCE(TRIM(ld.sku),''
   -- records (ASIN/eBay item ids get reused), producing 2024 Listing Dates,
   -- a false 'Listed' status, and pre-2026 traffic pulled in by t.date>=listed_on.
   AND ld.created_at >= '2026-01-01'
-  AND COALESCE(a.sku,b.sku) IN (SELECT combo_sku FROM pair);
+  AND COALESCE(a.sku,b.sku) IN (SELECT combo_sku FROM pair_all);
 CREATE INDEX ON lst(sku); CREATE INDEX ON lst(ref_id);
 """)
 cur.execute("""
@@ -412,7 +497,7 @@ SELECT DISTINCT ON (resolved) resolved, main_image_url FROM (
   FROM pg_temp.listing_data
   WHERE COALESCE(main_image_url,'')<>''
     AND COALESCE(NULLIF(TRIM(mapped_sku),''),TRIM(sku)) IN (
-        SELECT comp_sku FROM comp UNION SELECT combo_sku FROM pair)) z
+        SELECT comp_sku FROM comp_all UNION SELECT combo_sku FROM pair_all)) z
 ORDER BY resolved, created_at DESC, ref_id""")
 img = dict(cur.fetchall())          # listing images, keyed by SKU (combo or component)
 
@@ -422,7 +507,7 @@ img = dict(cur.fetchall())          # listing images, keyed by SKU (combo or com
 # 'main-image' (a few combos only have that one).
 cur.execute("""
 SELECT DISTINCT ON (sku) sku, image_url FROM pg_temp.product_catalog_images
-WHERE sku IN (SELECT comp_sku FROM comp UNION SELECT combo_sku FROM pair)
+WHERE sku IN (SELECT comp_sku FROM comp_all UNION SELECT combo_sku FROM pair_all)
 ORDER BY sku, src_rank, image_ordering NULLS LAST, id""")
 img_catalog = dict(cur.fetchall())
 
@@ -455,7 +540,7 @@ FROM (
   FROM pg_temp.order_transaction ot
   WHERE ot.order_status='Completed'
     AND ot.order_date >= '2026-01-01'          -- reporting window
-    AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT combo_sku FROM pair)) o
+    AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT combo_sku FROM pair_all)) o
 GROUP BY 1,2""")
 orders = {(s, p): (o, u, r) for s, p, o, u, r in cur.fetchall()}
 
@@ -472,20 +557,20 @@ SELECT regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') AS sku,
        'amazon'::text AS platform, ar.qty::int AS qty, NULLIF(TRIM(ar.reason),'') AS reason
 FROM pg_temp.amazon_returns ar
 WHERE ar.request_date >= '2026-01-01'
-  AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT combo_sku FROM pair)
+  AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT combo_sku FROM pair_all)
 UNION ALL
 SELECT co.base_sku, 'ebay', e.qty, e.reason FROM (
   SELECT return_id, MIN(order_id) order_id, MAX(return_qty)::int qty,
          NULLIF(TRIM(MAX(reason)),'') reason
   FROM pg_temp.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
 JOIN co ON co.order_id = e.order_id
-WHERE co.base_sku IN (SELECT combo_sku FROM pair)
+WHERE co.base_sku IN (SELECT combo_sku FROM pair_all)
 UNION ALL
 SELECT co.base_sku, 'shopify', co.oqty, NULL FROM (
   SELECT DISTINCT ON (id) id, order_id FROM pg_temp.shopify_returns
   WHERE date >= '2026-01-01' ORDER BY id) sh
 JOIN co ON co.order_id = sh.order_id
-WHERE co.base_sku IN (SELECT combo_sku FROM pair);
+WHERE co.base_sku IN (SELECT combo_sku FROM pair_all);
 """)
 cur.execute("SELECT sku, platform, SUM(COALESCE(qty,0))::int FROM ret GROUP BY 1,2")
 returns_tot = {(s, p): q for s, p, q in cur.fetchall()}
@@ -514,7 +599,7 @@ WHERE COALESCE(ld.is_parent,0)=0 AND ld.wrong_sku=0 AND COALESCE(TRIM(ld.sku),''
   -- records (ASIN/eBay item ids get reused), producing 2024 Listing Dates,
   -- a false 'Listed' status, and pre-2026 traffic pulled in by t.date>=listed_on.
   AND ld.created_at >= '2026-01-01'
-  AND COALESCE(a.sku,b.sku) IN (SELECT comp_sku FROM comp);
+  AND COALESCE(a.sku,b.sku) IN (SELECT comp_sku FROM comp_all);
 CREATE INDEX ON lst_c(sku); CREATE INDEX ON lst_c(ref_id);
 """)
 cur.execute("""
@@ -545,7 +630,7 @@ FROM (
   FROM pg_temp.order_transaction ot
   WHERE ot.order_status='Completed'
     AND ot.order_date >= '2026-01-01'          -- reporting window
-    AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT comp_sku FROM comp)) o
+    AND regexp_replace(TRIM(ot.sku),'[_-][A-Za-z]{{2,4}}$','') IN (SELECT comp_sku FROM comp_all)) o
 GROUP BY 1,2""")
 orders_c = {(s, p): (o, u, r) for s, p, o, u, r in cur.fetchall()}
 
@@ -559,20 +644,20 @@ SELECT regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') AS sku,
        'amazon'::text AS platform, ar.qty::int AS qty, NULLIF(TRIM(ar.reason),'') AS reason
 FROM pg_temp.amazon_returns ar
 WHERE ar.request_date >= '2026-01-01'
-  AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT comp_sku FROM comp)
+  AND regexp_replace(TRIM(ar.sku),'[_-][A-Za-z]{2,4}$','') IN (SELECT comp_sku FROM comp_all)
 UNION ALL
 SELECT co.base_sku, 'ebay', e.qty, e.reason FROM (
   SELECT return_id, MIN(order_id) order_id, MAX(return_qty)::int qty,
          NULLIF(TRIM(MAX(reason)),'') reason
   FROM pg_temp.ebay_returns WHERE request_date >= '2026-01-01' GROUP BY return_id) e
 JOIN co ON co.order_id = e.order_id
-WHERE co.base_sku IN (SELECT comp_sku FROM comp)
+WHERE co.base_sku IN (SELECT comp_sku FROM comp_all)
 UNION ALL
 SELECT co.base_sku, 'shopify', co.oqty, NULL FROM (
   SELECT DISTINCT ON (id) id, order_id FROM pg_temp.shopify_returns
   WHERE date >= '2026-01-01' ORDER BY id) sh
 JOIN co ON co.order_id = sh.order_id
-WHERE co.base_sku IN (SELECT comp_sku FROM comp);
+WHERE co.base_sku IN (SELECT comp_sku FROM comp_all);
 """)
 cur.execute("SELECT sku, platform, SUM(COALESCE(qty,0))::int FROM ret_c GROUP BY 1,2")
 returns_c = {(s, p): q for s, p, q in cur.fetchall()}
@@ -634,15 +719,12 @@ def base(comp_sku, comp_created, comp_desc):
     r[B["cat"]]  = sku_category(comp_sku)
     r[B["cimg"]] = comp_image(comp_sku)
     r[B["ccre"]] = comp_created
-    n = po_count.get(comp_sku,0)
     notes = [comp_desc[:70]] if comp_desc else []
-    if s.get("po_date"): notes.append("PO " + s["po_date"])
-    if s.get("latest_po"):
-        notes.append(f"last arrived PO shown — newer PO {s['latest_po']} ({s['latest_po_date']}) not arrived yet")
-    elif n > 1: notes.append(f"{n} POs — latest shown")
+    if s.get("po"): notes.append(f"{s['po']} · source {s.get('src','PO')}")
+    if s.get("po_date"): notes.append("order date " + s["po_date"])
+    if s.get("recv_is_order_date"):
+        notes.append("no estimate date on the supply order — received shown as the order date")
     if not s.get("recv"): notes.append("container not yet closed — no received date")
-    elif s.get("recv_old"): notes.append(f"received date from last warehouse stock-in ({s['recv_src']}, before latest PO)")
-    elif s.get("recv_src"): notes.append(f"received date from warehouse stock-in ({s['recv_src']})")
     r[B["notes"]] = " · ".join(notes)
     return r
 
@@ -792,6 +874,133 @@ NC = len(rows_c)
 print(f"COMPONENT ROWS {NC}  (listed {sum(1 for r in rows_c if r[B['stat']]=='Listed')} / "
       f"not-listed {sum(1 for r in rows_c if r[B['stat']]=='Not Listed')})")
 
+# ---------- 9d. ALL DATA ROWS (start) — the "All Data" button's dataset ---------
+# Same row shape and columns as the main view, so the table, filters, sort, paging and
+# export are reused verbatim. Two datasets:
+#   comp  = every non-deleted component created this year (status is an attribute)
+#   combo = every non-deleted combo that actually USES one of those components
+# Delete this block and the "rowsAll*" payload keys to remove the feature.
+def base_all(comp_sku, comp_created, comp_desc):
+    r = blank(); a = allmap.get(comp_sku, {})
+    st = status_of.get(comp_sku, "NO SUPPLY DATA")
+    r[B["sup"]]  = a.get("supplier",""); r[B["cont"]] = a.get("container","")
+    r[B["dest"]] = a.get("dest","");     r[B["recv"]] = a.get("recv","")
+    r[B["po"]]   = a.get("po","");       r[B["qty"]]  = a.get("qty",0)
+    r[B["csku"]] = comp_sku;             r[B["ccre"]] = comp_created
+    r[B["sot"]]  = sku_sot(comp_sku);    r[B["cat"]]  = sku_category(comp_sku)
+    r[B["cimg"]] = comp_image(comp_sku)
+    notes = [comp_desc[:70]] if comp_desc else []
+    notes.append("status " + st)
+    if a.get("po"):      notes.append(f"{a['po']} · source {a.get('src','')}")
+    if a.get("po_date"): notes.append("order date " + a["po_date"])
+    if st == "INCOMING":
+        notes.append(f"expected {a['recv']}" if a.get("recv") else "no expected date")
+    elif st == "NO SUPPLY DATA":
+        notes.append("no PO or supply record — supplier/container/received blank")
+    r[B["notes"]] = " · ".join(notes)
+    return r
+
+def comp_cell(cs, ccre):
+    a = allmap.get(cs, {})
+    return [cs, comp_image(cs), ccre, a.get("supplier",""), a.get("container",""),
+            a.get("recv",""), sku_sot(cs), sku_category(cs)]
+
+# --- All Data: COMPONENTS (the full base set) ---
+cur.execute("SELECT comp_sku, comp_created, comp_desc FROM comp_all ORDER BY comp_sku")
+base_comps = cur.fetchall()
+rows_all_comp = []
+for comp_sku, comp_created, comp_desc in base_comps:
+    plats = listed_c.get(comp_sku, {})
+    act = {p for (s,p) in orders_c if s==comp_sku} | {p for (s,p) in traffic_c if s==comp_sku} \
+        | {p for (s,p) in returns_c if s==comp_sku}
+    allp = set(plats) | act
+    if not allp:
+        r = base_all(comp_sku, comp_created, comp_desc)
+        r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""
+        r[B["comps"]]=[comp_cell(comp_sku, comp_created)]
+        r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
+        rows_all_comp.append(r); continue
+    for plat in sorted(allp):
+        r = base_all(comp_sku, comp_created, comp_desc)
+        r[B["bsku"]]=""; r[B["bimg"]]=""; r[B["bcre"]]=""
+        r[B["comps"]]=[comp_cell(comp_sku, comp_created)]
+        L = plats.get(plat)
+        if L: r[B["stat"]]="Listed"; r[B["ldate"]]=L["ld"]; r[B["url"]]=L["url"]
+        else: r[B["stat"]]="Not Listed"; r[B["ldate"]]=""; r[B["url"]]=""
+        r[B["plat"]] = plat
+        t = traffic_c.get((comp_sku,plat),(0,0)); r[B["impr"]],r[B["clk"]] = t[0],t[1]
+        o = orders_c.get((comp_sku,plat),(0,0,0.0))
+        r[B["ord"]],r[B["units"]],r[B["rev"]] = o[0],o[1],o[2]
+        rq = returns_c.get((comp_sku,plat),0); r[B["ret"]] = rq
+        r[B["rrate"]] = round(rq/o[1]*100,2) if o[1] else 0.0
+        r[B["reason"]] = top_reason_c.get((comp_sku,plat),"")
+        r[B["fb"]] = fb_for(comp_sku, plat)
+        rows_all_comp.append(r)
+
+# --- All Data: COMBOS (one product per combo, every qualifying component stacked) ---
+cur.execute("""SELECT comp_sku, comp_created, comp_desc, combo_sku, combo_created, combo_desc
+               FROM pair_all ORDER BY comp_sku, combo_sku""")
+pairs_all = cur.fetchall()
+combo_map_all = {}
+for comp_sku, comp_created, comp_desc, combo_sku, combo_created, combo_desc in pairs_all:
+    g = combo_map_all.setdefault(combo_sku, {"created": combo_created, "desc": combo_desc, "comps": []})
+    g["comps"].append((comp_sku, comp_created, comp_desc))
+rows_all_combo = []
+for combo_sku in sorted(combo_map_all):
+    g = combo_map_all[combo_sku]; g["comps"].sort()
+    # a COMPLETED component provides the row's container data; pending / no-data
+    # components never overwrite it, but they stay in the component list
+    done = [c for c in g["comps"] if status_of.get(c[0]) == "COMPLETED"]
+    comp_sku, comp_created, comp_desc = (done or g["comps"])[0]
+    comp_list = [comp_cell(cs, ccre) for cs, ccre, _d in g["comps"]]
+    plats = listed.get(combo_sku, {})
+    act = {p for (s,p) in orders if s==combo_sku} | {p for (s,p) in traffic if s==combo_sku} \
+        | {p for (s,p) in returns_tot if s==combo_sku}
+    allp = set(plats) | act
+    mixed = len({status_of.get(c[0]) for c in g["comps"]}) > 1
+    def _combo_row():
+        r = base_all(comp_sku, comp_created, comp_desc)
+        r[B["bsku"]]=combo_sku; r[B["bimg"]]=combo_image(combo_sku); r[B["bcre"]]=g["created"]
+        r[B["comps"]]=comp_list
+        if len(g["comps"]) > 1:
+            r[B["notes"]] += f" · {len(g['comps'])} qualifying components" + (" (mixed status)" if mixed else "")
+        return r
+    if not allp:
+        r = _combo_row(); r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
+        rows_all_combo.append(r); continue
+    for plat in sorted(allp):
+        r = _combo_row()
+        L = plats.get(plat)
+        if L: r[B["stat"]]="Listed"; r[B["ldate"]]=L["ld"]; r[B["url"]]=L["url"]
+        else: r[B["stat"]]="Not Listed"; r[B["ldate"]]=""; r[B["url"]]=""
+        r[B["plat"]] = plat
+        t = traffic.get((combo_sku,plat),(0,0)); r[B["impr"]],r[B["clk"]] = t[0],t[1]
+        o = orders.get((combo_sku,plat),(0,0,0.0))
+        r[B["ord"]],r[B["units"]],r[B["rev"]] = o[0],o[1],o[2]
+        rq = returns_tot.get((combo_sku,plat),0); r[B["ret"]] = rq
+        r[B["rrate"]] = round(rq/o[1]*100,2) if o[1] else 0.0
+        r[B["reason"]] = top_reason.get((combo_sku,plat),"")
+        r[B["fb"]] = fb_for(combo_sku, plat)
+        rows_all_combo.append(r)
+n_all_c = stamp_rids(rows_all_comp,  "ALC", lambda r: r[B["csku"]])
+n_all_b = stamp_rids(rows_all_combo, "ALB", lambda r: r[B["bsku"]])
+ALL_META = {"components": n_all_c, "component_rows": len(rows_all_comp),
+            "combos": n_all_b, "combo_rows": len(rows_all_combo),
+            "relationships": len(pairs_all), "status": _st,
+            "combos_completed_linked": len({b for b,g in combo_map_all.items()
+                                            if any(status_of.get(c[0])=="COMPLETED" for c in g["comps"])}),
+            "combos_no_completed": len({b for b,g in combo_map_all.items()
+                                        if not any(status_of.get(c[0])=="COMPLETED" for c in g["comps"])}),
+            "combos_mixed": len({b for b,g in combo_map_all.items()
+                                 if any(status_of.get(c[0])=="COMPLETED" for c in g["comps"])
+                                 and any(status_of.get(c[0])!="COMPLETED" for c in g["comps"])})}
+print(f"ALL DATA rows: components {n_all_c} products / {len(rows_all_comp)} rows | "
+      f"combos {n_all_b} products / {len(rows_all_combo)} rows")
+print(f"  combos with a completed component {ALL_META['combos_completed_linked']} | "
+      f"no completed component {ALL_META['combos_no_completed']} | mixed {ALL_META['combos_mixed']}")
+VAL["all_data"] = ALL_META
+# ---------- 9d. ALL DATA ROWS (end) ---------------------------------------------
+
 # ---------- 10. VALIDATION -----------------------------------------------------
 f = lambda k: sum(1 for r in rows if r[B[k]] not in (None,"",0))
 # ---- SCOPE FLOORS (not exact equality) --------------------------------------
@@ -886,6 +1095,9 @@ print("\nTOTALS  (combos):", json.dumps(VAL["totals"], indent=None))
 print("TOTALS  (components):", json.dumps(VAL["totals_components"], indent=None))
 
 P = {"capturedAt": TODAY, "scopeStart": START, "B": B, "rows": rows, "rowsComp": rows_c,
+     "rowsAllComp": rows_all_comp,                  # ALL DATA (delete with block 9d)
+     "rowsAllCombo": rows_all_combo,                # ALL DATA (delete with block 9d)
+     "allData": ALL_META,                           # ALL DATA (delete with block 9d)
      "categories": CATEGORY_ORDER,
      "meta": {"components": n_comp, "combos": n_combo, "pairs": n_pair, "gapNoCombo": gap,
               "compRows": NC, "compWithListing": len(listed_c),
