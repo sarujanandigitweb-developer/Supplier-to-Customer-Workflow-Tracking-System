@@ -105,6 +105,12 @@ td.mcol:first-of-type{{padding-left:{fl(12,16)}}}
   .filterbar .tt-clear{{align-self:flex-start}}
 }}
 
+/* ---- three tabs must still fit a phone row (Packs added 2026-09-17) ---- */
+@media (max-width:600px){{
+  .phead #viewtabs{{gap:2px; padding:2px}}
+  .phead #viewtabs .tab{{font-size:10.5px; padding:5px 6px; min-width:0}}
+}}
+
 /* ---- app bar: title and buttons wrap instead of running off-screen ---- */
 @media (max-width:600px){{
   .appbar{{flex-wrap:wrap; row-gap:8px; padding-block:10px}}
@@ -522,6 +528,7 @@ th.ridcol,td.ridcol{{display:none !important}}
           <div class="tablist" id="viewtabs">
             <button type="button" class="tab" data-view="comp">🧩 Components <b id="tabCompN"></b></button>
             <button type="button" class="tab active" data-view="combo">🎁 Combos <b id="tabComboN"></b></button>
+            <button type="button" class="tab" data-view="pack">📦 Packs <b id="tabPackN"></b></button>
           </div>
           <div class="perpage-wrap"><label for="perpage">Products</label>
             <select class="perpage" id="perpage" name="perpage" aria-label="Products per page"><option value="50">50</option><option value="100" selected>100</option><option value="250">250</option><option value="1000">1000</option><option value="0">All</option></select>
@@ -563,7 +570,11 @@ const B = PAYLOAD.B;
 // the Components tab; showing them here too duplicated them. They carry no marketplace
 // or metrics, so no total changes. They are kept (NO_COMBO) only for the
 // "No Combo Yet" KPI count.
-const DATA = {{ combo: PAYLOAD.rows.filter(r=>r[B.bsku]), comp: PAYLOAD.rowsComp }};
+// Category comes from the build (B.cls = COMPONENT | COMBO | PACK). The UI never
+// re-derives it, so there is exactly one classification truth.
+const DATA = {{ combo: PAYLOAD.rows.filter(r=>r[B.bsku] && r[B.cls]==='COMBO'),
+                pack:  PAYLOAD.rows.filter(r=>r[B.bsku] && r[B.cls]==='PACK'),
+                comp:  PAYLOAD.rowsComp }};
 const NO_COMBO = PAYLOAD.rows.filter(r=>!r[B.bsku]);
 let VIEW = 'combo';
 let ROWS = DATA[VIEW];
@@ -731,7 +742,7 @@ const MCOLS = ALL_M;
 // view the metrics are keyed on the combo, so several component rows of the same
 // combo carry identical numbers -- grouping removes that real duplication.
 const RENDERED = [];   // render-order index -> {{row, group}} for the drawer
-const groupKey = r => (VIEW==='combo' ? (r[B.bsku] || r[B.csku]) : r[B.csku]) || '—';
+const groupKey = r => (VIEW==='comp' ? r[B.csku] : (r[B.bsku] || r[B.csku])) || '—';
 
 function groupRows(rs){{
   const m = new Map();
@@ -841,8 +852,15 @@ function render(){{
     '<tr><td colspan="'+(1+PCOLS.length+MCOLS.length)+'" style="text-align:center;padding:40px;color:var(--muted)">No rows match these filters.</td></tr>';
 
   const totalGroups = groupRows(ROWS).length;
+  // Combo Components = distinct components in NORMAL combo relationships (packs excluded)
+  // Pack Count        = distinct pack products. Both from the ACTIVE scope, never rows.
+  const scope = (typeof ACTIVE_SETS === 'function') ? ACTIVE_SETS() : DATA;
+  const comboComponents = new Set();
+  scope.combo.forEach(r => (r[B.comps]||[]).forEach(c => comboComponents.add(c[0])));
+  const packCount = new Set(scope.pack.map(r=>r[B.bsku]).filter(Boolean)).size;
   document.getElementById('rowcount').textContent =
-    `— ${{groups.length}} of ${{totalGroups}} products · ${{rs.length}} marketplace rows`;
+    `— ${{groups.length}} of ${{totalGroups}} products · ${{rs.length}} marketplace rows`
+    + ` · Combo Components ${{comboComponents.size}} · Pack Count ${{packCount}}`;
   document.getElementById('pginfo').textContent =
     groups.length ? `Showing products ${{(S.page-1)*per+1}}–${{Math.min(S.page*per,groups.length)}} of ${{groups.length}}` : 'No products';
   document.getElementById('pgnum').textContent = ` ${{S.page}} / ${{pages}} `;
@@ -1017,8 +1035,14 @@ function setView(v){{
 document.getElementById('viewtabs').addEventListener('click', e=>{{
   const t = e.target.closest('.tab[data-view]'); if(t) setView(t.dataset.view);
 }});
-document.getElementById('tabCompN').textContent  = '('+PAYLOAD.rowsComp.length+')';
-document.getElementById('tabComboN').textContent = '('+DATA.combo.length+')';
+// Badges show DISTINCT PRODUCTS (not marketplace rows) for whichever scope is active.
+const prodCount = (list, key) => new Set(list.map(r=>r[key] || r[B.csku]).filter(Boolean)).size;
+function paintTabCounts(sets){{
+  document.getElementById('tabCompN').textContent  = '('+prodCount(sets.comp,  B.csku)+')';
+  document.getElementById('tabComboN').textContent = '('+prodCount(sets.combo, B.bsku)+')';
+  document.getElementById('tabPackN').textContent  = '('+prodCount(sets.pack,  B.bsku)+')';
+}}
+paintTabCounts(DATA);
 
 /* ---- ALL DATA TOGGLE (start) — delete this block and the button above to remove it.
    Second data mode. OFF (default) = today's completed-only view, untouched.
@@ -1026,16 +1050,22 @@ document.getElementById('tabComboN').textContent = '('+DATA.combo.length+')';
    non-deleted combo that uses one of them (Combos tab). It only swaps ROWS and calls
    the existing render(); no other function or dataset is modified. ---- */
 let ALLDATA = false;
+let ACTIVE_SETS = () => DATA;
 (function(){{
-  const ALL = {{ comp: PAYLOAD.rowsAllComp || [], combo: PAYLOAD.rowsAllCombo || [] }};
+  const allCombo = PAYLOAD.rowsAllCombo || [];
+  const ALL = {{ comp: PAYLOAD.rowsAllComp || [],
+                 combo: allCombo.filter(r=>r[B.cls]==='COMBO'),
+                 pack:  allCombo.filter(r=>r[B.cls]==='PACK') }};
+  ACTIVE_SETS = () => ALLDATA ? ALL : DATA;
   const btn = document.getElementById('allDataBtn');
-  if(!btn || !(ALL.comp.length || ALL.combo.length)) return;
+  if(!btn || !(ALL.comp.length || ALL.combo.length || ALL.pack.length)) return;
   btn.hidden = false;
   const paint = () => {{
     btn.className = ALLDATA ? 'btn' : 'btn ghost';
     btn.textContent = ALLDATA ? '🗃️ All Data · ON' : '🗃️ All Data';
   }};
-  const apply = () => {{ ROWS = ALLDATA ? ALL[VIEW] : DATA[VIEW]; S.page = 1; buildFilterOpts(); render(); }};
+  const apply = () => {{ ROWS = (ALLDATA ? ALL : DATA)[VIEW] || []; paintTabCounts(ALLDATA ? ALL : DATA);
+                         S.page = 1; buildFilterOpts(); render(); }};
   btn.addEventListener('click', () => {{ ALLDATA = !ALLDATA; paint(); apply(); }});
   const baseSetView = setView;                     // both tabs stay usable in either mode
   setView = v => {{

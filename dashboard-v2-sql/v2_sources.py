@@ -45,6 +45,7 @@ SOURCE_MAP = [
                                  "sources absent from LEDSone (REPLACEMENT, ETSY, MANUAL OM, MANUALORDER, "
                                  "AVASAM, BOL, MANOMANO, FAIRE, RESEND, ONBUY)"),
     ("SOT flag",                 "configurator.components_sot_skus (sku, source_tab)"),
+    ("PACK codes",               "inventory.product_pk (pack_char -> pack_qty)"),
     ("old supply system",        "suppliers.old_supplyorder + old_supplyorderlist "
                                  "(fallback when a SKU has no arrived PO)"),
     ("public.amazon_returns",    "customer_service.amazon_returns"),
@@ -172,6 +173,12 @@ def create_source_views(cur, deleted_ids, fallback_orders):
     # evidence that resolves the overlapping PH / WS category prefixes.
     cur.execute("""CREATE TEMP VIEW sot_skus AS
         SELECT sku, source_tab FROM configurator.components_sot_skus""")
+
+    # ---- authoritative PACK codes -------------------------------------------
+    # inventory.product_pk maps a pack character to its quantity (A=10, B=15 ...,
+    # 1..9 = 1..9). It is the ONLY source for what counts as a pack suffix; the
+    # build reads it every run, so a new code added there needs no code change.
+    cur.execute("CREATE TEMP VIEW product_pk AS SELECT pack_char, pack_qty FROM inventory.product_pk")
 
     # ---- OLD supply system (replaces the obsolete product_history text parsing) ----
     # suppliers.old_supplyorder / old_supplyorderlist hold the supplier, container and

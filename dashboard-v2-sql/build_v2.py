@@ -24,7 +24,7 @@ CONTAINER = COALESCE(final_containers.name, containers.name). It must NEVER fall
   back to orders.container_id -- that is a raw foreign key and leaked bare ints
   such as "31" into the UI (bug found 2026-07-28).
 """
-import json, os, sys, time
+import json, os, re, sys, time
 from datetime import date, datetime
 from pathlib import Path
 import psycopg2
@@ -222,6 +222,32 @@ VAL["notes"].append("Category filter: SKU-prefix classification, longest prefix 
                     "Lamp Holder and WS -> Wall Arm, resolved from the SOT sheet's source_tab "
                     "(PH: 398/399 'pendantholder'; WS: 180/180 'wallarm'). Unmatched SKUs -> 'Other'.")
 VAL["categories"] = _catn
+
+# ---------- 1c. PRODUCT CLASSIFICATION: COMPONENT / COMBO / PACK ---------------
+# APPROVED 2026-09-17. ONE canonical rule, produced here and consumed everywhere
+# (payload -> UI). The pack codes are READ FROM THE DATABASE every build
+# (inventory.product_pk), so adding a code there needs no code change.
+#   PACK      = SKU has no '+' AND ends with <pack_code>PK   (boundary-aware)
+#   COMBO     = anything else that is not a component product
+#   COMPONENT = an eligible component product that is not a pack
+# Precedence: authoritative pack table -> PACK -> combo relationship -> COMBO ->
+# COMPONENT. A '+' SKU is NEVER a pack, even when it contains pack tokens
+# (5,901 such multi-part combos exist and must stay COMBO).
+cur.execute("SELECT pack_char FROM pg_temp.product_pk WHERE COALESCE(TRIM(pack_char),'') <> ''")
+PACK_CODES = sorted({r[0].strip().upper() for r in cur.fetchall()})
+_PACK_RE = re.compile(r"(?:%s)PK$" % "|".join(re.escape(c) for c in PACK_CODES))
+
+def is_pack(sku):
+    """True only for a single-product pack SKU: no '+', ends with <pack_code>PK."""
+    s = (sku or "").strip().upper()
+    return "+" not in s and bool(_PACK_RE.search(s))
+
+def classify(sku, is_component):
+    if is_pack(sku):      return "PACK"
+    return "COMPONENT" if is_component else "COMBO"
+
+print(f"pack codes read from inventory.product_pk: {len(PACK_CODES)} -> {''.join(PACK_CODES)}")
+VAL["pack_codes"] = PACK_CODES
 
 # ---------- 2. SOURCE OF TRUTH: arrived PO first, else completed supply order ----
 # APPROVED 2026-09-16. The displayed container must be one that ACTUALLY ARRIVED:
@@ -687,7 +713,7 @@ VAL["notes"].append("Average Feedback: no customer-review source exists in this 
 B = {"sup":0,"cont":1,"recv":2,"csku":3,"cimg":4,"ccre":5,"bsku":6,"bimg":7,"bcre":8,
      "stat":9,"plat":10,"ldate":11,"impr":12,"clk":13,"ord":14,"units":15,"rev":16,
      "ret":17,"rrate":18,"reason":19,"url":20,"dest":21,"po":22,"qty":23,"notes":24,
-     "fb":25,"comps":26,"rid":27,"sot":28,"cat":29}
+     "fb":25,"comps":26,"rid":27,"sot":28,"cat":29,"cls":30}
 
 cur.execute("SELECT comp_sku, comp_created, comp_desc, combo_sku, combo_created, combo_desc, pack_count FROM pair ORDER BY comp_sku, combo_sku")
 pairs = cur.fetchall()
@@ -697,7 +723,7 @@ comps_with_combo = {p[0] for p in pairs}
 
 rows = []
 def blank():
-    r = [None]*30
+    r = [None]*31
     for k in ("impr","clk","ord","units","ret"): r[B[k]] = 0
     r[B["rev"]] = 0.0; r[B["rrate"]] = 0.0
     r[B["fb"]] = None                       # None -> UI renders "No Reviews"
@@ -715,6 +741,7 @@ def base(comp_sku, comp_created, comp_desc):
     r[B["dest"]] = s.get("dest","");     r[B["recv"]] = s.get("recv","")
     r[B["po"]]   = s.get("po","");       r[B["qty"]]  = s.get("qty",0)
     r[B["csku"]] = comp_sku
+    r[B["cls"]]  = classify(comp_sku, True)
     r[B["sot"]]  = sku_sot(comp_sku)
     r[B["cat"]]  = sku_category(comp_sku)
     r[B["cimg"]] = comp_image(comp_sku)
@@ -759,16 +786,17 @@ for combo_sku in sorted(combo_map):
     act = {p for (s,p) in orders  if s==combo_sku} | {p for (s,p) in traffic if s==combo_sku} \
         | {p for (s,p) in returns_tot if s==combo_sku}
     allp = set(plats) | act
+    combo_cls = classify(combo_sku, False)
     if not allp:                                   # combo exists but nowhere live
         r = base(comp_sku, comp_created, comp_desc)
         r[B["bsku"]]=combo_sku; r[B["bimg"]]=combo_image(combo_sku); r[B["bcre"]]=combo_created
-        r[B["comps"]]=comp_list
+        r[B["cls"]]=combo_cls; r[B["comps"]]=comp_list
         r[B["stat"]]="Not Listed"; r[B["plat"]]=""; r[B["ldate"]]=""
         rows.append(r); continue
     for plat in sorted(allp):
         r = base(comp_sku, comp_created, comp_desc)
         r[B["bsku"]]=combo_sku; r[B["bimg"]]=combo_image(combo_sku); r[B["bcre"]]=combo_created
-        r[B["comps"]]=comp_list
+        r[B["cls"]]=combo_cls; r[B["comps"]]=comp_list
         L = plats.get(plat)
         if L:
             r[B["stat"]]="Listed"; r[B["ldate"]]=L["ld"]; r[B["url"]]=L["url"]
@@ -887,6 +915,7 @@ def base_all(comp_sku, comp_created, comp_desc):
     r[B["dest"]] = a.get("dest","");     r[B["recv"]] = a.get("recv","")
     r[B["po"]]   = a.get("po","");       r[B["qty"]]  = a.get("qty",0)
     r[B["csku"]] = comp_sku;             r[B["ccre"]] = comp_created
+    r[B["cls"]]  = classify(comp_sku, True)
     r[B["sot"]]  = sku_sot(comp_sku);    r[B["cat"]]  = sku_category(comp_sku)
     r[B["cimg"]] = comp_image(comp_sku)
     notes = [comp_desc[:70]] if comp_desc else []
@@ -958,10 +987,11 @@ for combo_sku in sorted(combo_map_all):
         | {p for (s,p) in returns_tot if s==combo_sku}
     allp = set(plats) | act
     mixed = len({status_of.get(c[0]) for c in g["comps"]}) > 1
+    combo_cls = classify(combo_sku, False)
     def _combo_row():
         r = base_all(comp_sku, comp_created, comp_desc)
         r[B["bsku"]]=combo_sku; r[B["bimg"]]=combo_image(combo_sku); r[B["bcre"]]=g["created"]
-        r[B["comps"]]=comp_list
+        r[B["cls"]]=combo_cls; r[B["comps"]]=comp_list
         if len(g["comps"]) > 1:
             r[B["notes"]] += f" · {len(g['comps'])} qualifying components" + (" (mixed status)" if mixed else "")
         return r
@@ -982,6 +1012,37 @@ for combo_sku in sorted(combo_map_all):
         r[B["reason"]] = top_reason.get((combo_sku,plat),"")
         r[B["fb"]] = fb_for(combo_sku, plat)
         rows_all_combo.append(r)
+# ---- classification reconciliation (single source of truth: classify()) ----
+def _cls_counts(comp_rows, combo_rows):
+    comps = {r[B["csku"]] for r in comp_rows}
+    prods = {}
+    for r in combo_rows:
+        prods[r[B["bsku"]]] = r[B["cls"]]
+    combo_p = {k for k, v in prods.items() if v == "COMBO"}
+    pack_p  = {k for k, v in prods.items() if v == "PACK"}
+    comp_p  = {c for c in comps if classify(c, True) == "COMPONENT"}
+    pack_comp = {c for c in comps if classify(c, True) == "PACK"}   # eligible component that is a pack
+    # distinct components participating in NORMAL combos only (packs excluded)
+    combo_components = set()
+    for r in combo_rows:
+        if r[B["cls"]] != "COMBO": continue
+        for c in (r[B["comps"]] or []): combo_components.add(c[0])
+    return dict(components=len(comp_p), combos=len(combo_p), packs=len(pack_p) + len(pack_comp),
+                component_products_classified_pack=len(pack_comp),
+                combo_components=len(combo_components), pack_count=len(pack_p),
+                all_products=len(comp_p) + len(pack_comp) + len(combo_p) + len(pack_p),
+                _sets=(comp_p, combo_p, pack_p))
+
+_main = _cls_counts(rows_c, [r for r in rows if r[B["bsku"]]])
+_all  = _cls_counts(rows_all_comp, rows_all_combo)
+for tag, m in (("MAIN", _main), ("ALL DATA", _all)):
+    print(f"classification {tag}: components {m['components']} | combos {m['combos']} | packs {m['packs']} "
+          f"| all products {m['all_products']} | combo-components {m['combo_components']} | pack count {m['pack_count']}")
+    assert not (m["_sets"][0] & m["_sets"][1] or m["_sets"][0] & m["_sets"][2] or m["_sets"][1] & m["_sets"][2]), \
+        f"{tag}: a product is in more than one category"
+CLS_META = {k: {kk: vv for kk, vv in v.items() if kk != "_sets"} for k, v in (("main", _main), ("all", _all))}
+VAL["classification"] = CLS_META
+
 n_all_c = stamp_rids(rows_all_comp,  "ALC", lambda r: r[B["csku"]])
 n_all_b = stamp_rids(rows_all_combo, "ALB", lambda r: r[B["bsku"]])
 ALL_META = {"components": n_all_c, "component_rows": len(rows_all_comp),
@@ -1098,6 +1159,8 @@ P = {"capturedAt": TODAY, "scopeStart": START, "B": B, "rows": rows, "rowsComp":
      "rowsAllComp": rows_all_comp,                  # ALL DATA (delete with block 9d)
      "rowsAllCombo": rows_all_combo,                # ALL DATA (delete with block 9d)
      "allData": ALL_META,                           # ALL DATA (delete with block 9d)
+     "classification": CLS_META,                    # PACK (component / combo / pack counts)
+     "packCodes": PACK_CODES,                       # PACK (documentation only; UI consumes B.cls)
      "categories": CATEGORY_ORDER,
      "meta": {"components": n_comp, "combos": n_combo, "pairs": n_pair, "gapNoCombo": gap,
               "compRows": NC, "compWithListing": len(listed_c),

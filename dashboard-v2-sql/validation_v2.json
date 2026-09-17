@@ -1,5 +1,5 @@
 {
-  "run": "20260916_171937",
+  "run": "20260917_093714",
   "checks": [
     {
       "check": "supplier schema readable by tech_user",
@@ -14,27 +14,27 @@
     {
       "check": "Combos built from them",
       "status": "PASS",
-      "detail": "411 (floor 228)"
+      "detail": "413 (floor 228)"
     },
     {
       "check": "Component x combo pairs",
       "status": "PASS",
-      "detail": "464 (floor 266)"
+      "detail": "468 (floor 266)"
     },
     {
       "check": "Every row has a component SKU",
       "status": "PASS",
-      "detail": "971/971"
+      "detail": "976/976"
     },
     {
       "check": "Every row has a supplier",
       "status": "PASS",
-      "detail": "971/971"
+      "detail": "976/976"
     },
     {
       "check": "Received Date sourced from the container (not the PO date)",
       "status": "PASS",
-      "detail": "968/971 rows \u2014 blank means the container is not yet closed"
+      "detail": "973/976 rows \u2014 blank means the container is not yet closed"
     },
     {
       "check": "No raw container IDs leaked into the Container column",
@@ -59,22 +59,22 @@
     {
       "check": "Container present where assigned",
       "status": "PASS",
-      "detail": "971/971 rows have a container"
+      "detail": "976/976 rows have a container"
     },
     {
       "check": "Component images (supplier photo -> listing fallback)",
       "status": "PASS",
-      "detail": "971/971 rows; 302/311 distinct components"
+      "detail": "976/976 rows; 302/311 distinct components"
     },
     {
       "check": "Combo images",
       "status": "PASS",
-      "detail": "793/971"
+      "detail": "799/976"
     },
     {
       "check": "Top Reason populated",
       "status": "PASS",
-      "detail": "17/971 (amazon 100%, ebay ~11%, shopify has no reason column)"
+      "detail": "17/976 (amazon 100%, ebay ~11%, shopify has no reason column)"
     },
     {
       "check": "Component dataset built independently of the combo queries",
@@ -99,7 +99,7 @@
     {
       "check": "No duplicate (product, marketplace) rows \u2014 KPI totals cannot double-count",
       "status": "PASS",
-      "detail": "combo 971 rows / component 434 rows, all unique"
+      "detail": "combo 976 rows / component 434 rows, all unique"
     },
     {
       "check": "No pre-2026 Listing Date leaked into either dataset",
@@ -119,12 +119,12 @@
     {
       "check": "Every row carries a Record ID, one per product block",
       "status": "PASS",
-      "detail": "579 REC-* + 311 CMP-* ids"
+      "detail": "581 REC-* + 311 CMP-* ids"
     },
     {
       "check": "Both datasets share the identical column layout",
       "status": "PASS",
-      "detail": "30 columns"
+      "detail": "31 columns"
     },
     {
       "check": "Average Feedback source",
@@ -169,6 +169,7 @@
       "public.ppc_performance": "amazon_campaigns.performance_data(asin) + ebay_campaigns.performance_data(ebay_listing_id, ad_id<>'0') + google_ads.product_performance(parent_id, latest version per id)",
       "public.order_transaction": "order_management.orders+order_item_info+sub_source+source (MFN) + amazon_fba_orders+amazon_fba_order_items (FBA) + OLD-DB fallback for sources absent from LEDSone (REPLACEMENT, ETSY, MANUAL OM, MANUALORDER, AVASAM, BOL, MANOMANO, FAIRE, RESEND, ONBUY)",
       "SOT flag": "configurator.components_sot_skus (sku, source_tab)",
+      "PACK codes": "inventory.product_pk (pack_char -> pack_qty)",
       "old supply system": "suppliers.old_supplyorder + old_supplyorderlist (fallback when a SKU has no arrived PO)",
       "public.amazon_returns": "customer_service.amazon_returns",
       "public.ebay_returns": "customer_service.ebay_returns",
@@ -220,6 +221,36 @@
     "Home Appliances": 21,
     "Other": 17
   },
+  "pack_codes": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
   "source_split": {
     "components_this_year": 677,
     "including_deleted": 684,
@@ -239,51 +270,71 @@
     "NO SUPPLY DATA": 266
   },
   "combos_all": {
-    "distinct": 615,
-    "relationships": 786,
-    "with_combo_date_filter": 598,
+    "distinct": 618,
+    "relationships": 795,
+    "with_combo_date_filter": 601,
     "restored_by_dropping_date_filter": 17
+  },
+  "classification": {
+    "main": {
+      "components": 311,
+      "combos": 257,
+      "packs": 156,
+      "component_products_classified_pack": 0,
+      "combo_components": 70,
+      "pack_count": 156,
+      "all_products": 724
+    },
+    "all": {
+      "components": 677,
+      "combos": 407,
+      "packs": 211,
+      "component_products_classified_pack": 0,
+      "combo_components": 128,
+      "pack_count": 211,
+      "all_products": 1295
+    }
   },
   "all_data": {
     "components": 677,
     "component_rows": 885,
-    "combos": 615,
-    "combo_rows": 1201,
-    "relationships": 786,
+    "combos": 618,
+    "combo_rows": 1207,
+    "relationships": 795,
     "status": {
       "COMPLETED": 311,
       "INCOMING": 100,
       "NO SUPPLY DATA": 266
     },
-    "combos_completed_linked": 411,
-    "combos_no_completed": 204,
-    "combos_mixed": 69
+    "combos_completed_linked": 413,
+    "combos_no_completed": 205,
+    "combos_mixed": 72
   },
   "totals": {
-    "rows": 971,
+    "rows": 976,
     "components": 311,
-    "combos": 411,
-    "pairs": 464,
+    "combos": 413,
+    "pairs": 468,
     "gap_no_combo": 168,
-    "impressions": 4461200,
-    "clicks": 25954,
-    "orders": 784,
-    "units": 1022,
-    "revenue": 18343.04,
-    "returns": 51
+    "impressions": 4505398,
+    "clicks": 26155,
+    "orders": 786,
+    "units": 1025,
+    "revenue": 18370.04,
+    "returns": 53
   },
   "totals_components": {
     "rows": 434,
     "listed": 199,
     "components_with_listing": 177,
-    "impressions": 610664,
-    "clicks": 4856,
-    "orders": 564,
-    "units": 962,
-    "revenue": 8900.9,
+    "impressions": 613554,
+    "clicks": 4863,
+    "orders": 567,
+    "units": 975,
+    "revenue": 8942.84,
     "returns": 28
   },
-  "duration_sec": 103.2,
+  "duration_sec": 134.4,
   "result": "PASS",
   "failed_hard": [],
   "failed_soft": [

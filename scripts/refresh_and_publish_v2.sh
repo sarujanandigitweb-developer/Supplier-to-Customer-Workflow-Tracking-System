@@ -30,12 +30,26 @@ PROJECT="/home/led-247/Supplier-to-Customer-Workflow-Tracking-System"
 MEMBER_NAME="sarujanan"
 PAGE_SLUG="supplier-to-customer-workflow-tracking-v2"
 PAGE_TITLE="Supplier to Customer Tracking System V2"
-HTML="$PROJECT/dashboard-v2/index.html"
-BUILDER="$PROJECT/dashboard-v2-sql/build_v2.py"
-COMPOSER="$PROJECT/dashboard-v2-sql/make_html.py"
-PUSHER_DIR="$PROJECT/dashboard-v2-update"
-LOG="$PROJECT/logs/automation_v2.log"
-LOCK="$PROJECT/logs/.v2.lock"
+# Paths default to production; the V2_* overrides exist only so the retry logic can
+# be exercised against fakes without touching the real build, HTML, log or uploader.
+HTML="${V2_HTML:-$PROJECT/dashboard-v2/index.html}"
+BUILDER="${V2_BUILDER:-$PROJECT/dashboard-v2-sql/build_v2.py}"
+COMPOSER="${V2_COMPOSER:-$PROJECT/dashboard-v2-sql/make_html.py}"
+PUSHER_DIR="${V2_PUSHER_DIR:-$PROJECT/dashboard-v2-update}"
+LOG="${V2_LOG:-$PROJECT/logs/automation_v2.log}"
+LOCK="${V2_LOCK:-$PROJECT/logs/.v2.lock}"
+
+# --- stage-1 retry policy ----------------------------------------------------
+# The ONLY retried condition is a temporary PostgreSQL connection-capacity
+# refusal, evidenced twice in this log (2026-09-15 11:15, 2026-09-16 11:00):
+#   psycopg2.OperationalError: ... FATAL:  too many connections for role "tech_user"
+# Everything else -- Python exceptions, SQL/schema errors, hard validation
+# failures, classification failures, missing files -- fails immediately and is
+# never masked. Bounded: 3 attempts, waits of 30s then 60s, then give up.
+BUILD_MAX_ATTEMPTS=3
+BUILD_RETRY_WAITS=(30 60)
+BUILD_RETRYABLE_RE='too many connections for role'
+
 MIN_BYTES=300000          # a healthy V2 dashboard is ~475 KB; never publish a stub
 
 # cron gets a bare environment — set an explicit PATH.
@@ -70,10 +84,42 @@ export PGPASSWORD="${PGPASSWORD:-12we34rt}"
 # Data comes from LEDSone (LEDSONE_PG* in .env); the PG* database above is used
 # only for the deleted-product reference and the Varman AIOS hub publish.
 log "stage 1 build: starting (fresh fetch from LEDSone ${LEDSONE_PGHOST:-<unset>}:${LEDSONE_PGPORT:-5432}/${LEDSONE_PGDATABASE:-<unset>} as ${LEDSONE_PGUSER:-<unset>}; deleted-flag reference ${PGHOST}:${PGPORT}/${PGDATABASE})"
-if /usr/bin/python3 "$BUILDER" 2>&1 | redact; then
-  log "stage 1 build: OK — supplier access verified, datasets validated, payload regenerated"
-else
-  log "stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish"
+BUILD_OK=0
+BUILD_ATTEMPT=1
+while [ "$BUILD_ATTEMPT" -le "$BUILD_MAX_ATTEMPTS" ]; do
+  log "[BUILD] attempt ${BUILD_ATTEMPT}/${BUILD_MAX_ATTEMPTS}"
+  BUILD_OUT="$(mktemp "${TMPDIR:-/tmp}/v2build.XXXXXX")"
+  if /usr/bin/python3 "$BUILDER" > "$BUILD_OUT" 2>&1; then
+    redact < "$BUILD_OUT"; rm -f "$BUILD_OUT"
+    log "[BUILD] success on attempt ${BUILD_ATTEMPT}/${BUILD_MAX_ATTEMPTS}"
+    log "stage 1 build: OK — supplier access verified, datasets validated, payload regenerated"
+    BUILD_OK=1
+    break
+  fi
+  redact < "$BUILD_OUT"
+  if grep -qE "$BUILD_RETRYABLE_RE" "$BUILD_OUT"; then
+    log "[BUILD] transient PostgreSQL connection failure on attempt ${BUILD_ATTEMPT}/${BUILD_MAX_ATTEMPTS}"
+    if [ "$BUILD_ATTEMPT" -lt "$BUILD_MAX_ATTEMPTS" ]; then
+      WAIT=${BUILD_RETRY_WAITS[$((BUILD_ATTEMPT-1))]}
+      log "[BUILD] retrying in ${WAIT} seconds"
+      rm -f "$BUILD_OUT"
+      sleep "$WAIT"
+      BUILD_ATTEMPT=$((BUILD_ATTEMPT+1))
+      continue
+    fi
+    log "[BUILD] attempt ${BUILD_ATTEMPT}/${BUILD_MAX_ATTEMPTS} failed"
+    log "[FATAL] database build failed after ${BUILD_MAX_ATTEMPTS} attempts — PostgreSQL connection capacity"
+  else
+    log "[BUILD] non-transient failure on attempt ${BUILD_ATTEMPT}/${BUILD_MAX_ATTEMPTS} — not retried"
+    log "[FATAL] database build failed — hard validation / Python / SQL error, not a connection-capacity problem"
+  fi
+  rm -f "$BUILD_OUT"
+  break
+done
+
+if [ "$BUILD_OK" -ne 1 ]; then
+  log "stage 1 build: FAILED — dashboard left unchanged, payload NOT regenerated"
+  log "[PUBLISH] skipped because fresh build did not complete"
   log "================ finished (exit 1) ================"
   exit 1
 fi
@@ -82,7 +128,8 @@ fi
 if /usr/bin/python3 "$COMPOSER" 2>&1 | redact; then
   log "stage 2 compose: OK — payload embedded into dashboard-v2/index.html"
 else
-  log "stage 2 compose: FAILED — HTML not regenerated, skipping publish"
+  log "stage 2 compose: FAILED — HTML not regenerated"
+  log "[PUBLISH] skipped because the HTML was not regenerated from the fresh payload"
   log "================ finished (exit 1) ================"
   exit 1
 fi
