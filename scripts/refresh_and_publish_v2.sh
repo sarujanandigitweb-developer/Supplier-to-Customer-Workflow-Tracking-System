@@ -43,12 +43,18 @@ LOCK="${V2_LOCK:-$PROJECT/logs/.v2.lock}"
 # The ONLY retried condition is a temporary PostgreSQL connection-capacity
 # refusal, evidenced twice in this log (2026-09-15 11:15, 2026-09-16 11:00):
 #   psycopg2.OperationalError: ... FATAL:  too many connections for role "tech_user"
+# The SAME class of failure reaches the build from the OLD reference DB with a
+# different PostgreSQL wording, evidenced 2026-09-17 11:00 (the build was wrongly
+# classified non-transient, never retried, and the dashboard went a day stale):
+#   ... 149.28.134.54:5435 failed: FATAL:  remaining connection slots are
+#   reserved for roles with the SUPERUSER attribute
+# 'sorry, too many clients already' is the third wording of the same condition.
 # Everything else -- Python exceptions, SQL/schema errors, hard validation
 # failures, classification failures, missing files -- fails immediately and is
 # never masked. Bounded: 3 attempts, waits of 30s then 60s, then give up.
 BUILD_MAX_ATTEMPTS=3
 BUILD_RETRY_WAITS=(30 60)
-BUILD_RETRYABLE_RE='too many connections for role'
+BUILD_RETRYABLE_RE='too many connections for role|remaining connection slots are reserved|sorry, too many clients already'
 
 MIN_BYTES=300000          # a healthy V2 dashboard is ~475 KB; never publish a stub
 
