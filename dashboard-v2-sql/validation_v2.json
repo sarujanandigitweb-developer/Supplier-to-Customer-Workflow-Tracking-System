@@ -1,5 +1,5 @@
 {
-  "run": "20260918_100139",
+  "run": "20260918_110002",
   "checks": [
     {
       "check": "supplier schema readable by tech_user",
@@ -14,27 +14,27 @@
     {
       "check": "Combos built from them",
       "status": "PASS",
-      "detail": "426 (floor 228)"
+      "detail": "431 (floor 228)"
     },
     {
       "check": "Component x combo pairs",
       "status": "PASS",
-      "detail": "491 (floor 266)"
+      "detail": "496 (floor 266)"
     },
     {
       "check": "Every row has a component SKU",
       "status": "PASS",
-      "detail": "983/983"
+      "detail": "988/988"
     },
     {
       "check": "Every row has a supplier",
       "status": "PASS",
-      "detail": "983/983"
+      "detail": "988/988"
     },
     {
       "check": "Received Date sourced from the container (not the PO date)",
       "status": "PASS",
-      "detail": "980/983 rows \u2014 blank means the container is not yet closed"
+      "detail": "985/988 rows \u2014 blank means the container is not yet closed"
     },
     {
       "check": "No raw container IDs leaked into the Container column",
@@ -59,22 +59,22 @@
     {
       "check": "Container present where assigned",
       "status": "PASS",
-      "detail": "983/983 rows have a container"
+      "detail": "988/988 rows have a container"
     },
     {
       "check": "Component images (supplier photo -> listing fallback)",
       "status": "PASS",
-      "detail": "983/983 rows; 301/311 distinct components"
+      "detail": "988/988 rows; 301/311 distinct components"
     },
     {
       "check": "Combo images",
       "status": "PASS",
-      "detail": "809/983"
+      "detail": "814/988"
     },
     {
       "check": "Top Reason populated",
       "status": "PASS",
-      "detail": "17/983 (amazon 100%, ebay ~11%, shopify has no reason column)"
+      "detail": "17/988 (amazon 100%, ebay ~11%, shopify has no reason column)"
     },
     {
       "check": "Component dataset built independently of the combo queries",
@@ -99,7 +99,7 @@
     {
       "check": "No duplicate (product, marketplace) rows \u2014 KPI totals cannot double-count",
       "status": "PASS",
-      "detail": "combo 983 rows / component 435 rows, all unique"
+      "detail": "combo 988 rows / component 435 rows, all unique"
     },
     {
       "check": "No pre-2026 Listing Date leaked into either dataset",
@@ -119,7 +119,7 @@
     {
       "check": "Every row carries a Record ID, one per product block",
       "status": "PASS",
-      "detail": "591 REC-* + 311 CMP-* ids"
+      "detail": "596 REC-* + 311 CMP-* ids"
     },
     {
       "check": "Both datasets share the identical column layout",
@@ -270,53 +270,53 @@
     "NO SUPPLY DATA": 271
   },
   "combos_all": {
-    "distinct": 632,
-    "relationships": 833,
-    "with_combo_date_filter": 615,
+    "distinct": 638,
+    "relationships": 841,
+    "with_combo_date_filter": 621,
     "restored_by_dropping_date_filter": 17
   },
   "classification": {
     "main": {
       "components": 311,
       "combos": 270,
-      "packs": 156,
+      "packs": 161,
       "component_products_classified_pack": 0,
       "combo_components": 73,
-      "pack_count": 156,
-      "all_products": 737
+      "pack_count": 161,
+      "all_products": 742
     },
     "all": {
       "components": 684,
-      "combos": 421,
-      "packs": 211,
+      "combos": 422,
+      "packs": 216,
       "component_products_classified_pack": 0,
-      "combo_components": 132,
-      "pack_count": 211,
-      "all_products": 1316
+      "combo_components": 133,
+      "pack_count": 216,
+      "all_products": 1322
     }
   },
   "all_data": {
     "components": 684,
     "component_rows": 894,
-    "combos": 632,
-    "combo_rows": 1220,
-    "relationships": 833,
+    "combos": 638,
+    "combo_rows": 1226,
+    "relationships": 841,
     "status": {
       "COMPLETED": 311,
       "INCOMING": 102,
       "NO SUPPLY DATA": 271
     },
-    "combos_completed_linked": 426,
-    "combos_no_completed": 206,
+    "combos_completed_linked": 431,
+    "combos_no_completed": 207,
     "combos_mixed": 85
   },
   "totals": {
-    "rows": 983,
+    "rows": 988,
     "components": 311,
-    "combos": 426,
-    "pairs": 491,
+    "combos": 431,
+    "pairs": 496,
     "gap_no_combo": 165,
-    "impressions": 4538529,
+    "impressions": 4538661,
     "clicks": 26346,
     "orders": 794,
     "units": 1035,
@@ -327,14 +327,14 @@
     "rows": 435,
     "listed": 200,
     "components_with_listing": 177,
-    "impressions": 616931,
+    "impressions": 616936,
     "clicks": 4888,
     "orders": 572,
     "units": 981,
     "revenue": 9002.91,
     "returns": 28
   },
-  "duration_sec": 144.9,
+  "duration_sec": 140.6,
   "result": "PASS",
   "failed_hard": [],
   "failed_soft": [

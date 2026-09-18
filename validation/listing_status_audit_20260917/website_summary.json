@@ -1,0 +1,35 @@
+{
+  "total_skus": 1295,
+  "unique_public_page_requests": 1639,
+  "website_verdicts": {
+    "NO_SOURCE_LISTING_URL": 670,
+    "WEBSITE_EXACT_SKU_UNVERIFIED": 239,
+    "EXACT_SKU_AVAILABLE": 293,
+    "EXACT_SKU_PRESENT_AVAILABILITY_FALSE": 93
+  },
+  "not_listed_website_verdicts": {
+    "NO_SOURCE_LISTING_URL": 670,
+    "EXACT_SKU_AVAILABLE": 9,
+    "EXACT_SKU_PRESENT_AVAILABILITY_FALSE": 8,
+    "WEBSITE_EXACT_SKU_UNVERIFIED": 27
+  },
+  "listed_website_verdicts": {
+    "WEBSITE_EXACT_SKU_UNVERIFIED": 212,
+    "EXACT_SKU_AVAILABLE": 284,
+    "EXACT_SKU_PRESENT_AVAILABILITY_FALSE": 85
+  },
+  "fetch_results": {
+    "http_error": 602,
+    "shopify_product_json": 272,
+    "html_exact_variant_unverified": 764,
+    "request_failed": 1
+  },
+  "http_statuses": {
+    "403": 325,
+    "404": 68,
+    "200": 1036,
+    "503": 208,
+    "401": 1,
+    "None": 1
+  }
+}

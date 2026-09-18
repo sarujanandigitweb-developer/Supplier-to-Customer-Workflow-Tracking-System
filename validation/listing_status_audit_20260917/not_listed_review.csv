@@ -1,0 +1,45 @@
+sku,type,main_view,dashboard_statuses,eligible_source_platforms,older_otherwise_eligible_platforms,source_records,exclusion_counts,review_reason
+CRFF140SBC+PHLSFH1PBRBC,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",10,"{""listing created before 2026 or date missing"": 10}",Older listing excluded only by date cutoff
+CRFF140SBC+PHLSFH1PBRBC+LDSG125E274,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",9,"{""listing created before 2026 or date missing"": 9}",Older listing excluded only by date cutoff
+CRFF140SBM+PHLSFH1PBRBM,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",8,"{""listing created before 2026 or date missing"": 8}",Older listing excluded only by date cutoff
+CRFF140SBM+PHLSFH1PBRBM+LDSG125E274,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",11,"{""listing created before 2026 or date missing"": 11}",Older listing excluded only by date cutoff
+CRFF4002BM+CO122PCL2PK+LHTTAGU10EBM2PK+LDGU10WD52PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",6,"{""listing created before 2026 or date missing"": 6}",Older listing excluded only by date cutoff
+CRFF4503BM+LHTTAGU10EBM3PK+LDGU10WD53PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",6,"{""listing created before 2026 or date missing"": 6}",Older listing excluded only by date cutoff
+CRFF5004BM+LHTTAGU10EBM4PK+LDGU10WD54PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",6,"{""listing created before 2026 or date missing"": 6}",Older listing excluded only by date cutoff
+CRFF5005BM+CO122PCL2PK+LHTTAGU10EBM5PK+LDGU10WD55PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",4,"{""listing created before 2026 or date missing"": 4}",Older listing excluded only by date cutoff
+CRFF500WH+PHLSLG190WI3PK,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+CRSF100WH+PHRB1PWRPW+CGWDWO+PHLSGP350WI,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",3,"{""listing created before 2026 or date missing"": 3}",Older listing excluded only by date cutoff
+CRSF100WH+PHRB1PWRPW+PHLSGP350WI,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+CRSF2003WH+PHLSLG190WI3PK,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",7,"{""listing created before 2026 or date missing"": 7}",Older listing excluded only by date cutoff
+CRSF2003WH+PHLSLG190WI3PK+ICST64E273PK,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",4,"{""listing created before 2026 or date missing"": 4}",Older listing excluded only by date cutoff
+ENC1000,combo/pack,False,"{""ebay"": ""Not Listed""}",,"ebay,shopify",10,"{""ended eBay listing"": 6, ""listing created before 2026 or date missing"": 10}",Older listing excluded only by date cutoff
+ENC322,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",17,"{""ended eBay listing"": 12, ""listing created before 2026 or date missing"": 17}",Older listing excluded only by date cutoff
+ENC3408,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+ENC4045,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+ENC669,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",3,"{""listing created before 2026 or date missing"": 3}",Older listing excluded only by date cutoff
+ENC75,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",46,"{""ended eBay listing"": 29, ""listing created before 2026 or date missing"": 46}",Older listing excluded only by date cutoff
+ENC9760,combo/pack,True,"{""shopify"": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+ENC989,combo/pack,False,"{"""": ""Not Listed""}",,amazon,3,"{""listing created before 2026 or date missing"": 3}",Older listing excluded only by date cutoff
+ENC994,combo/pack,False,"{""ebay"": ""Not Listed""}",,ebay,16,"{""SKU resolves to another product or is unmatched"": 1, ""ended eBay listing"": 12, ""listing created before 2026 or date missing"": 16}",Older listing excluded only by date cutoff
+ENC995,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+ENC996,combo/pack,False,"{""ebay"": ""Not Listed""}",,"amazon,ebay",22,"{""ended eBay listing"": 18, ""listing created before 2026 or date missing"": 22}",Older listing excluded only by date cutoff
+ENC997,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay",8,"{""ended eBay listing"": 6, ""listing created before 2026 or date missing"": 8}",Older listing excluded only by date cutoff
+ENC998,combo/pack,False,"{"""": ""Not Listed""}",,ebay,14,"{""ended eBay listing"": 12, ""listing created before 2026 or date missing"": 14}",Older listing excluded only by date cutoff
+LDMT1852E2742PK,combo/pack,False,"{"""": ""Not Listed""}",,amazon,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+LDMT1852E2743PK,combo/pack,False,"{"""": ""Not Listed""}",,amazon,3,"{""listing created before 2026 or date missing"": 3}",Older listing excluded only by date cutoff
+LSGL3L150AR,component,True,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}",Parent listing or SKU mapping requires review
+LSSC315BI3PK+SPCC320BM3PK,combo/pack,False,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}",Parent listing or SKU mapping requires review
+PCBM20MX+PCDO20CO+PCBSM2FCO+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}",Parent listing or SKU mapping requires review
+PHHRE2HETX2HE,component,True,"{"""": ""Not Listed""}",,amazon,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+PHLSDG220BG+CGWDWO,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",7,"{""listing created before 2026 or date missing"": 7}",Older listing excluded only by date cutoff
+PHLSDG220BG+CGWDWO+ICST64E27,combo/pack,False,"{"""": ""Not Listed""}",,ebay,2,"{""listing created before 2026 or date missing"": 2}",Older listing excluded only by date cutoff
+PHLSGP350WI,component,False,"{"""": ""Not Listed""}",,shopify,1,"{""listing created before 2026 or date missing"": 1}",Older listing excluded only by date cutoff
+RBPLTFBC,component,False,"{""ebay"": ""Not Listed"", ""other"": ""Not Listed""}",,,2,"{""parent listing"": 2}",Parent listing or SKU mapping requires review
+SPPGUK3PGD2PK,combo/pack,True,"{""amazon"": ""Not Listed""}",,,1,"{""SKU resolves to another product or is unmatched"": 1}",Parent listing or SKU mapping requires review
+SPPGUK3PGD4PK,combo/pack,True,"{""amazon"": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}",Parent listing or SKU mapping requires review
+SPPGUK3PGD6PK,combo/pack,True,"{"""": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}",Parent listing or SKU mapping requires review
+WLWOFTWO+LDSST64E274,combo/pack,True,"{""shopify"": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}",Parent listing or SKU mapping requires review
+WLWOHTBM+LSGL10012AR,combo/pack,True,"{""shopify"": ""Not Listed""}",,,1,"{""SKU resolves to another product or is unmatched"": 1}",Parent listing or SKU mapping requires review
+WLWOHTBM+LSGL12010AR,combo/pack,True,"{""ebay"": ""Not Listed""}",,,1,"{""SKU resolves to another product or is unmatched"": 1}",Parent listing or SKU mapping requires review
+WLWOHTBM+LSGL7512CL,combo/pack,True,"{"""": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}",Parent listing or SKU mapping requires review
+WLWOHTBM3PK+LSGL14010CL3PK,combo/pack,True,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}",Parent listing or SKU mapping requires review

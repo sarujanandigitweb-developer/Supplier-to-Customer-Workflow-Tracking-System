@@ -2109,3 +2109,95 @@ psycopg2.OperationalError: connection to server at "169.58.91.229", port 5432 fa
 
 2026-09-16 11:00:04 | stage 1 build: FAILED — a HARD validation check did not pass; dashboard left unchanged, skipping publish
 2026-09-16 11:00:04 | ================ finished (exit 1) ================
+2026-09-17 11:00:01 | ================ SCWTS V2 refresh + publish started ================
+2026-09-17 11:00:01 | stage 1 build: starting (fresh fetch from LEDSone 169.58.91.229:5432/ledsone as tech_user; deleted-flag reference 149.28.134.54:5435/order_management_copy)
+2026-09-17 11:00:01 | [BUILD] attempt 1/3
+connected tech_user@169.58.91.229:5432/ledsone
+old-DB reference (inv_products.isdeleted / fallback order sources) unavailable: connection to server at "149.28.134.54", port 5435 failed: FATAL:  remaining connection slots are reserved for roles with the SUPERUSER attribute
+2026-09-17 11:00:04 | [BUILD] non-transient failure on attempt 1/3 — not retried
+2026-09-17 11:00:04 | [FATAL] database build failed — hard validation / Python / SQL error, not a connection-capacity problem
+2026-09-17 11:00:04 | stage 1 build: FAILED — dashboard left unchanged, payload NOT regenerated
+2026-09-17 11:00:04 | [PUBLISH] skipped because fresh build did not complete
+2026-09-17 11:00:04 | ================ finished (exit 1) ================
+2026-09-18 11:00:02 | ================ SCWTS V2 refresh + publish started ================
+2026-09-18 11:00:02 | stage 1 build: starting (fresh fetch from LEDSone 169.58.91.229:5432/ledsone as tech_user; deleted-flag reference 149.28.134.54:5435/order_management_copy)
+2026-09-18 11:00:02 | [BUILD] attempt 1/3
+connected tech_user@169.58.91.229:5432/ledsone
+source layer ready: LEDSone views + 51 deleted-product ids + 34803 fallback order lines (5413 in 2026, 0 dropped as already in LEDSone) from the old DB
+supplier schema USAGE for tech_user: True
+  pg_temp.supplier_suppliers       OK  rows=51
+  pg_temp.supplier_orders          OK  rows=292
+  pg_temp.supplier_containers      OK  rows=28
+  pg_temp.supplier_order_items     OK  rows=4533
+  pg_temp.supplier_final_containers OK  rows=20
+  pg_temp.supplier_invoices        OK  rows=37
+  [PASS] supplier schema readable by tech_user — supplier_suppliers=51; supplier_orders=292; supplier_containers=28; supplier_order_items=4533; supplier_final_containers=20; supplier_invoices=37
+components created this year: 684 (excluding deleted) | 691 if deleted products were included (difference 7)
+SOT: 139/684 components exist in configurator.components_sot_skus
+categories: Lamp Spares=229, Lamp Shade=84, Lighting=75, Ceiling Rose=72, Lamp Holders=65, Wall Arm=55, Pendant Lamp Holder=26, Bulbs=26, Home Appliances=21, Other=17, Refurbished=12, Transformers=2
+pack codes read from inventory.product_pk: 28 -> 123456789ABCDEFGHIJKLMNOPQRS
+completed sources: 68 from an arrived PO + 243 from a completed supply order = 311 components
+  completed supply orders with no estimate date (received shown as the order date): 0
+completed-only components on the dashboard: 311
+incoming (still on order/shipping): 154 components, 102 of them not on the completed-only view
+status: COMPLETED 311 | INCOMING 102 | NO SUPPLY DATA 271 | total 684
+ALL DATA combos: 638 distinct (841 relationships) from 222 components
+  combo-created-this-year filter would give 621 combos (812 relationships) -> removing it restores 17 combos / 29 relationships
+combos: 431  |  component x combo pairs: 496  |  components with a combo: 146
+component-listing dataset: 177 components have their own listing
+
+ROWS 988  (listed 642 / not-listed 346)  |  gap rows 165
+record ids: 596 combo products (REC-*), 311 component products (CMP-*)
+COMPONENT ROWS 435  (listed 200 / not-listed 235)
+classification MAIN: components 311 | combos 270 | packs 161 | all products 742 | combo-components 73 | pack count 161
+classification ALL DATA: components 684 | combos 422 | packs 216 | all products 1322 | combo-components 133 | pack count 216
+ALL DATA rows: components 684 products / 894 rows | combos 638 products / 1226 rows
+  combos with a completed component 431 | no completed component 207 | mixed 85
+  [PASS] New components in scope — 311 (floor 178)
+  [PASS] Combos built from them — 431 (floor 228)
+  [PASS] Component x combo pairs — 496 (floor 266)
+  [PASS] Every row has a component SKU — 988/988
+  [PASS] Every row has a supplier — 988/988
+  [PASS] Received Date sourced from the container (not the PO date) — 985/988 rows — blank means the container is not yet closed
+  [PASS] No raw container IDs leaked into the Container column — Container shows a name or blank, never a foreign key
+  [PASS] Listed rows carry a Listed Date — no blanks
+  [PASS] All dates >= 2026-01-01 (component/combo creation) — >= 2026-01-01
+  [PASS] Return Rate math correct — (returns/units)*100
+  [PASS] Container present where assigned — 988/988 rows have a container
+  [PASS] Component images (supplier photo -> listing fallback) — 988/988 rows; 301/311 distinct components
+  [PASS] Combo images — 814/988
+  [PASS] Top Reason populated — 17/988 (amazon 100%, ebay ~11%, shopify has no reason column)
+  [PASS] Component dataset built independently of the combo queries — 435 rows, 177 components with their own listing; combo columns blank
+  [PASS] Component rows: every row has a component SKU + supplier — 435/435
+  [PASS] Component rows: Listed rows carry a Listed Date — no blanks
+  [PASS] Component rows: Return Rate math correct — (returns/units)*100
+  [PASS] No duplicate (product, marketplace) rows — KPI totals cannot double-count — combo 988 rows / component 435 rows, all unique
+  [PASS] No pre-2026 Listing Date leaked into either dataset — earliest listed date = 2026-02-04
+  [PASS] Listed status implies a valid in-window Listing Date — every 'Listed' row carries a >= 2026-01-01 date
+  [PASS] Not-Listed rows carry no Listing Date / URL — blank date + blank url when not listed
+  [PASS] Every row carries a Record ID, one per product block — 596 REC-* + 311 CMP-* ids
+  [PASS] Both datasets share the identical column layout — 31 columns
+  [FAIL] Average Feedback source — NO customer-review table exists in this database — every row renders 'No Reviews'. Searched all schemas for rating/review/feedback/star/score columns.
+
+TOTALS  (combos): {"rows": 988, "components": 311, "combos": 431, "pairs": 496, "gap_no_combo": 165, "impressions": 4538661, "clicks": 26346, "orders": 794, "units": 1035, "revenue": 18556.72, "returns": 53}
+TOTALS  (components): {"rows": 435, "listed": 200, "components_with_listing": 177, "impressions": 616936, "clicks": 4888, "orders": 572, "units": 981, "revenue": 9002.91, "returns": 28}
+
+wrote payload_v2.json  (2,689,982 bytes)  in 140.6s
+
+RESULT: PASS  (140.6s)
+  soft (recorded, does not block publish): Average Feedback source
+2026-09-18 11:02:22 | [BUILD] success on attempt 1/3
+2026-09-18 11:02:22 | stage 1 build: OK — supplier access verified, datasets validated, payload regenerated
+wrote /home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v2/index.html  (2,777,749 bytes)
+2026-09-18 11:02:22 | stage 2 compose: OK — payload embedded into dashboard-v2/index.html
+2026-09-18 11:02:22 | sanity: OK — 2777749 bytes, PAYLOAD + table + tabs + closing tag present
+Pushed successfully: {
+  id: 65,
+  member_name: 'sarujanan',
+  page_slug: 'supplier-to-customer-workflow-tracking-v2',
+  updated_at: 2026-09-18T05:32:23.381Z
+}
+2026-09-18 11:02:25 | stage 3 publish: OK — sarujanan/supplier-to-customer-workflow-tracking-v2 (2777749 bytes)
+2026-09-18 11:02:25 | validation: Result: PASS | combo rows 988 / component rows 435 | revenue 18556.72 | impressions 4538661
+2026-09-18 11:02:25 | execution time: 144s
+2026-09-18 11:02:25 | ================ finished (exit 0) ================

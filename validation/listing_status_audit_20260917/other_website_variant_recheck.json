@@ -1,0 +1,42 @@
+[
+  {
+    "sku": "ENC2859",
+    "url": "https://ledsone.de/products/ledsone-vintage-industrial-wandleuchte-mit-um-180-grad-verstellbarem-arm-uk-e27-fassung?variant=42528574472422",
+    "http_status": 200,
+    "current_variant_sku": "ENC2859-IDE",
+    "current_available": false,
+    "result": "SKU_DIFFERS"
+  },
+  {
+    "sku": "LDCWA60HE2776PK",
+    "url": "https://ledsone.co.uk/products/modern-led-light-bulb?variant=56818907218306",
+    "http_status": 200,
+    "current_variant_sku": null,
+    "current_available": null,
+    "result": "VARIANT_MISSING"
+  },
+  {
+    "sku": "LSGL3L150AR+RPM40WH",
+    "url": "https://ledsone.co.uk/products/tiered-beehive-ribbed-glass-shade?variant=56879743304066",
+    "http_status": 200,
+    "current_variant_sku": "LSGL3L150AR+RPM40WH_HIT",
+    "current_available": true,
+    "result": "SKU_DIFFERS"
+  },
+  {
+    "sku": "PCCO20WH5PK",
+    "url": "https://ledsone.co.uk/products/led-conduit-adaptor-pack?variant=56841381216642",
+    "http_status": 200,
+    "current_variant_sku": null,
+    "current_available": null,
+    "result": "VARIANT_MISSING"
+  },
+  {
+    "sku": "WLGA400E27BM",
+    "url": "https://ledsone.de/products/moderne-pollerleuchte-fur-den-aussenbereich-ip55-e27-schwarz?variant=57143332602121",
+    "http_status": 200,
+    "current_variant_sku": null,
+    "current_available": null,
+    "result": "VARIANT_MISSING"
+  }
+]

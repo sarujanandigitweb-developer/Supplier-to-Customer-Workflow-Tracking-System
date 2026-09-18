@@ -1587,3 +1587,13 @@ Pushed successfully: {
 /usr/bin/python3: can't open file '/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v1-sql/build_new_scope.py': [Errno 2] No such file or directory
 2026-09-16 11:15:01 | stage 1 build: FAILED — validation did not pass; dashboard left unchanged, skipping publish
 2026-09-16 11:15:01 | ================ finished (exit 1) ================
+2026-09-17 11:15:01 | ================ SCWTS refresh + publish started ================
+2026-09-17 11:15:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy)
+/usr/bin/python3: can't open file '/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v1-sql/build_new_scope.py': [Errno 2] No such file or directory
+2026-09-17 11:15:01 | stage 1 build: FAILED — validation did not pass; dashboard left unchanged, skipping publish
+2026-09-17 11:15:01 | ================ finished (exit 1) ================
+2026-09-18 11:15:01 | ================ SCWTS refresh + publish started ================
+2026-09-18 11:15:01 | stage 1 build: starting (fresh fetch from 149.28.134.54:5435/order_management_copy)
+/usr/bin/python3: can't open file '/home/led-247/Supplier-to-Customer-Workflow-Tracking-System/dashboard-v1-sql/build_new_scope.py': [Errno 2] No such file or directory
+2026-09-18 11:15:02 | stage 1 build: FAILED — validation did not pass; dashboard left unchanged, skipping publish
+2026-09-18 11:15:02 | ================ finished (exit 1) ================

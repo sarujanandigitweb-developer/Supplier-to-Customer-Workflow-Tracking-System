@@ -1,0 +1,225 @@
+sku,product_created,type,in_default_view,dashboard_statuses,no_listed_platform,listing_predates_inventory,pre2026_listing,pre2026_listing_predates_inventory,hidden_platforms,earliest_qualifying_listing,source_statuses
+12RPIP454002,2026-04-08 08:01:21,COMPONENT,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed""}",False,True,True,True,,2019-04-18 16:46:32,amazon:Active; ebay:None
+CRFF140SBC+PHLSFH1PBRBC,2026-06-24 07:52:22,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2024-09-17 13:39:18,amazon:Active; ebay:None; shopify:active
+CRFF140SBC+PHLSFH1PBRBC+LDSG125E274,2026-06-24 07:52:20,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2024-09-18 10:59:05,amazon:Active; ebay:None; shopify:active
+CRFF140SBM+PHLSFH1PBRBM,2026-06-23 09:26:10,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2024-09-18 10:59:05,amazon:Active; ebay:None; shopify:active
+CRFF140SBM+PHLSFH1PBRBM+LDSG125E274,2026-06-23 09:26:07,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2024-06-20 16:01:52,amazon:Active; ebay:None; shopify:active
+CRFF4002BM+CO122PCL2PK+LHTTAGU10EBM2PK+LDGU10WD52PK,2026-09-15 12:02:01,COMBO,True,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2025-06-04 10:59:17,amazon:Active; ebay:None; shopify:active
+CRFF4503BM+LHTTAGU10EBM3PK+LDGU10WD53PK,2026-09-15 12:02:07,COMBO,True,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2025-06-04 10:59:17,amazon:Active; ebay:None; shopify:active
+CRFF5004BM+LHTTAGU10EBM4PK+LDGU10WD54PK,2026-09-15 11:52:04,COMBO,True,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2025-06-04 10:59:17,amazon:Active; ebay:None; shopify:active
+CRFF5005BM+CO122PCL2PK+LHTTAGU10EBM5PK+LDGU10WD55PK,2026-09-15 12:26:07,COMBO,True,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2025-06-26 14:09:46,amazon:Active; ebay:None; shopify:active
+CRFF500WH+PHLSLG190WI3PK,2026-06-24 06:39:15,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,ebay,2024-10-09 15:26:36,ebay:None
+CRSF100BM+PHHRE2HETX2HE+SPHEBM,2026-08-28 11:02:47,COMBO,True,"{""shopify"": ""Listed""}",False,True,False,False,,2026-07-09 14:01:54,
+CRSF100BM+PHSW1PBRBM+LSFT255BI,2026-03-12 06:01:00,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-02 15:43:58,
+CRSF100WH+PHRB1PWRPW+CGWDWO+PHLSGP350WI,2026-06-24 09:26:14,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"ebay,shopify",2024-06-04 16:12:46,ebay:None; shopify:active
+CRSF100WH+PHRB1PWRPW+PHLSGP350WI,2026-06-24 09:13:10,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,ebay,2024-06-20 22:09:54,ebay:None
+CRSF100YB+WSUSHE27YB+SPAL68YB+LSGLWD150AR,2026-09-15 09:26:17,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-09-03 23:11:47,
+CRSF120CH+WSUSHE27CH+SPAL68CH+LSGLSC1508CL,2026-09-16 12:39:26,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-07-28 17:13:56,
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGL14013AR,2026-09-15 09:52:12,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-27 16:18:35,
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGLLN150AR,2026-09-15 09:52:08,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-27 16:18:35,
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGLSC1508CL,2026-09-15 09:52:07,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-27 16:18:35,
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGLWD150AR,2026-09-15 09:52:10,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-27 16:18:35,
+CRSF2003WH+PHLSDG220WI3PK+CO123PCL,2026-07-13 07:00:48,COMBO,False,"{""amazon"": ""Listed""}",False,True,True,True,,2023-11-20 12:25:14,amazon:Active
+CRSF2003WH+PHLSLG190WI3PK,2026-06-24 06:39:05,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2023-02-20 20:19:28,amazon:Active; amazon:Inactive; ebay:None; shopify:active
+CRSF2003WH+PHLSLG190WI3PK+ICST64E273PK,2026-06-24 06:39:10,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2023-02-20 20:19:44,amazon:Active; ebay:None; shopify:active
+CRSFM110080BM+WSCH135BM+LSCY290BG+CBSF95,2026-08-28 06:01:21,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-22 18:15:44,
+CRSFM110080BM+WSCH135BM+LSDO210BG+CBSF95,2026-08-28 06:13:05,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-22 18:15:44,
+CRSFM110080BM+WSLS155BM+LSGLWB125TN+SCRN70BM+CBSF95,2026-08-26 05:26:09,COMBO,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-06-02 16:50:17,
+CRSFM210080BM+CBSF95,2026-07-07 06:52:09,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-06-09 13:39:44,
+CRSFM210080BM2PK+CBSF952PK,2026-07-07 06:39:04,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-06-11 11:31:35,
+CRSFM210080CH+CBSF95,2026-07-07 06:52:20,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-06-09 13:39:44,
+CRSFM210080CH2PK+CBSF952PK,2026-07-07 07:13:23,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-06-11 11:31:35,
+CRSFM210080CO+CBSF95,2026-07-07 06:52:17,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-06-09 13:39:44,
+CRSFM210080CO+LHTOE27CO+LSGLWA140AR+PCGZ20NL,2026-08-19 04:52:07,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-22 18:17:17,
+CRSFM210080CO2PK+CBSF952PK,2026-07-07 07:13:26,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-06-11 11:31:35,
+CRSFM210080SN+CBSF95,2026-07-07 06:52:22,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-06-09 13:39:44,
+CRSFM210080SN2PK+CBSF952PK,2026-07-07 07:13:28,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-06-11 11:31:35,
+CRSFM210080WH+CBSF95,2026-07-07 06:52:12,COMBO,True,"{""amazon"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-06-09 13:39:44,
+CRSFM210080WH2PK+CBSF952PK,2026-07-07 07:13:31,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-06-11 11:31:35,
+CRSFM210080YB+CBSF95,2026-07-07 06:52:15,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-06-09 13:39:44,
+CRSFM210080YB+LHTOE27YB+LSGLST1618AR+PCGZ20NL,2026-08-19 04:52:09,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-07-22 18:17:17,
+CRSFM210080YB2PK+CBSF952PK,2026-07-07 07:13:34,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-06-11 11:31:35,
+ENC1000,2024-10-25 11:29:30,COMBO,False,"{""ebay"": ""Not Listed""}",True,True,True,True,"ebay,shopify",2023-08-08 05:05:21,ebay:None; shopify:active
+ENC10152,2026-06-08 08:13:21,COMBO,False,"{""shopify"": ""Listed""}",False,True,False,False,,2026-04-04 13:45:35,
+ENC10153,2026-06-08 08:26:25,COMBO,False,"{""shopify"": ""Listed""}",False,True,False,False,,2026-04-04 13:45:35,
+ENC10345,2026-08-28 11:02:50,COMBO,True,"{""shopify"": ""Listed""}",False,True,False,False,,2026-07-09 14:01:54,
+ENC10346,2026-08-31 05:39:05,COMBO,True,"{""amazon"": ""Listed""}",False,True,False,False,,2026-08-28 15:38:39,
+ENC2859,2024-10-25 11:33:19,COMBO,False,"{""ebay"": ""Listed"", ""shopify"": ""Not Listed""}",False,True,True,True,"amazon,shopify",2022-02-18 18:54:33,amazon:Active; shopify:active
+ENC322,2024-10-25 11:27:21,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"ebay,shopify",2021-11-03 14:11:32,ebay:None; shopify:active
+ENC3408,2024-10-25 11:34:12,COMBO,False,"{"""": ""Not Listed""}",True,False,True,False,,2025-02-11 11:34:54,
+ENC4045,2024-10-25 11:35:28,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,ebay,2024-06-20 22:09:50,ebay:None
+ENC669,2024-10-25 11:28:24,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"ebay,shopify",2021-11-03 14:11:32,ebay:None; shopify:active
+ENC75,2024-10-25 11:26:49,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"ebay,shopify",2021-11-03 14:11:32,ebay:None; shopify:active
+ENC9760,2026-04-06 08:01:04,COMBO,True,"{""shopify"": ""Not Listed""}",True,True,True,True,ebay,2024-10-09 15:35:26,ebay:None
+ENC989,2024-10-25 11:29:27,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,amazon,2023-11-20 12:24:08,amazon:Inactive
+ENC994,2024-10-25 11:29:28,COMBO,False,"{""ebay"": ""Not Listed""}",True,True,True,True,ebay,2024-06-04 15:51:40,ebay:None
+ENC995,2024-10-25 11:29:28,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,ebay,2024-09-02 17:44:26,ebay:None
+ENC996,2024-10-25 11:29:28,COMBO,False,"{""ebay"": ""Not Listed""}",True,True,True,True,"amazon,ebay",2023-08-04 14:03:47,amazon:Inactive; ebay:None
+ENC997,2024-10-25 11:29:28,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay",2023-08-04 14:03:25,amazon:Inactive; ebay:None
+ENC998,2024-10-25 11:29:28,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,ebay,2024-06-04 15:51:40,ebay:None
+FWS445BM,2026-04-21 12:26:04,COMPONENT,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,True,True,,2024-08-29 08:59:50,amazon:Active
+IMAC7714GRNPK,2026-06-18 07:01:33,PACK,False,"{""shopify"": ""Listed""}",False,True,False,False,,2026-05-18 17:06:30,
+IMAC7714YENPK,2026-06-18 07:01:36,PACK,False,"{""shopify"": ""Listed""}",False,True,False,False,,2026-05-18 17:06:30,
+IMAC9820CWNPK,2026-05-07 06:01:03,PACK,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-05 15:38:51,
+IMAC9820WWNPK,2026-05-07 07:52:39,PACK,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-05 15:38:51,
+IMDC7714BCWNPK,2026-06-18 07:13:20,PACK,False,"{""shopify"": ""Listed""}",False,True,False,False,,2026-05-18 12:07:53,
+LDCWA60HE2772PK,2026-06-29 05:13:13,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,True,True,,2024-02-14 14:44:15,amazon:Active
+LDCWA60HE2773PK,2026-07-02 05:00:45,PACK,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,True,True,,2020-10-14 11:48:50,amazon:Active
+LDCWA60HE2776PK,2026-05-13 11:13:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,True,True,,2024-05-10 16:01:51,amazon:Active
+LDMT1852E2742PK,2026-07-28 05:26:08,PACK,False,"{"""": ""Not Listed""}",True,True,True,True,amazon,2022-08-04 18:02:03,amazon:Active
+LDMT1852E2743PK,2026-07-28 05:52:05,PACK,False,"{"""": ""Not Listed""}",True,True,True,True,amazon,2022-08-04 18:02:09,amazon:Active; amazon:DISCOVERABLE
+LDST185B224,2026-02-20 08:26:09,COMPONENT,False,"{""amazon"": ""Not Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,True,True,ebay,2024-06-04 15:38:09,ebay:None
+LHSWPBB22SN2PK,2026-08-18 09:39:07,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-06 12:05:25,
+LHTRE27BY2PK,2026-09-15 05:52:07,PACK,False,"{""amazon"": ""Listed""}",False,True,True,True,,2024-08-07 15:58:32,amazon:Active; amazon:Inactive
+LHXCCE27BM2PK,2026-07-09 11:26:09,PACK,True,"{""shopify"": ""Listed""}",False,True,False,False,,2026-02-26 15:18:00,
+LHXCCE27RR2PK,2026-07-09 11:26:11,PACK,True,"{""shopify"": ""Listed""}",False,True,False,False,,2026-02-26 15:18:00,
+LHXCCE27WH2PK,2026-07-09 11:26:06,PACK,True,"{""shopify"": ""Listed""}",False,True,False,False,,2026-02-26 15:18:00,
+LLBHO85CW9W2PK,2026-09-10 10:13:11,PACK,True,"{""amazon"": ""Listed""}",False,True,False,False,,2026-05-20 14:41:17,
+LLBHO95CW12W2PK,2026-09-10 10:13:10,PACK,True,"{""amazon"": ""Listed""}",False,True,False,False,,2026-05-20 14:41:17,
+LLRO165CW8W5PK,2026-06-29 05:13:10,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-05-18 15:04:20,
+LLRO220CW18W5PK,2026-06-18 11:26:13,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-18 15:04:20,
+LLRO220CW18WAPK,2026-06-12 04:39:05,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-18 15:04:20,
+LLRO295CW24W5PK,2026-06-18 11:13:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}",False,True,False,False,,2026-05-18 15:04:20,
+LLRO295CW24WAPK,2026-06-18 11:13:09,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}",False,True,False,False,,2026-05-18 15:04:20,
+LLRO90CW3W5PK,2026-06-18 11:26:06,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-05-18 15:04:20,
+LLRO90CW3WAPK,2026-06-18 11:26:09,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}",False,True,False,False,,2026-05-18 15:04:20,
+LPMC50CW7W5PK,2026-06-09 06:39:09,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LPMC50CW7WAPK,2026-06-09 06:39:11,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LPMC50CW9W5PK,2026-06-09 06:52:08,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LPMC50CW9WAPK,2026-06-09 06:52:10,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LPMP50CW7W5PK,2026-06-09 06:39:14,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LPMP50CW7WAPK,2026-06-09 06:39:16,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LPMP50CW9W5PK,2026-06-09 06:52:13,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LPMP50CW9WAPK,2026-06-09 06:52:15,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-05-27 14:43:10,
+LSFT220BW3PK+RPR44WH3PK,2026-07-24 10:13:20,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-02-10 11:06:34,
+LSGL12010AR+RPM40WH,2026-08-10 07:26:12,COMBO,False,"{""b&q"": ""Not Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-04-24 15:31:38,
+LSGL12010AR2PK+RPM40WH2PK,2026-04-30 11:13:09,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,True,True,,2024-07-19 09:42:19,amazon:Inactive
+LSGL12010AR3PK+RPM40WH3PK,2026-04-30 11:13:07,COMBO,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-03-24 14:41:31,
+LSGL12010AR5PK+RPM40WH5PK,2026-04-30 12:01:36,COMBO,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-24 14:41:24,
+LSGL12010FC+RPM40WH,2026-07-17 11:13:05,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-02-08 19:47:51,
+LSGL1275CL+RPM40WH,2026-05-12 09:13:12,COMBO,False,"{""shopify"": ""Listed""}",False,True,True,True,amazon,2024-07-19 09:42:18,amazon:Active
+LSGL1275CL2PK+RPM40WH2PK,2026-05-12 09:13:14,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Not Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-22 10:06:46,
+LSGL1275CL3PK+RPM40WH3PK,2026-05-12 09:13:17,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Not Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-22 10:06:46,
+LSGL1275CL5PK+RPM40WH5PK,2026-05-12 09:13:19,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-22 10:06:46,
+LSGL14010CL+RPM40WH,2026-04-21 07:13:07,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-22 18:29:06,
+LSGL14010CL2PK+RPM40WH2PK,2026-04-21 07:26:07,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-22 18:29:06,
+LSGL14010CL3PK+RPM40WH3PK,2026-04-21 07:13:10,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-22 18:29:06,
+LSGL14010CL5PK+RPM40WH5PK,2026-04-21 07:13:12,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-22 18:29:06,
+LSGL14023SG+RPM40WH,2026-03-24 16:13:07,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-02-18 10:31:41,
+LSGL14023SG2PK+RPM40WH2PK,2026-03-24 16:39:08,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-02-18 10:31:41,
+LSGL14023SG3PK+RPM40WH3PK,2026-03-24 11:02:28,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-03-23 22:23:48,
+LSGL14023SG5PK+RPM40WH5PK,2026-03-24 16:02:40,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-03-23 22:23:48,
+LSGL3L150AR+RPM40WH,2026-07-17 05:26:14,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,True,True,,2024-07-19 11:36:03,amazon:Active
+LSGL3L150AR2PK+RPM40WH2PK,2026-09-02 08:26:26,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-08-20 14:30:28,
+LSGL3L150AR3PK+RPM40WH3PK,2026-09-03 10:39:08,COMBO,True,"{""ebay"": ""Listed""}",False,True,False,False,,2026-09-01 17:30:42,
+LSGLFL140AR+RPM40WH,2026-07-17 05:26:06,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-26 11:24:10,
+LSGLFL140AR2PK+RPM40WH2PK,2026-09-04 06:00:58,COMBO,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-08-20 14:30:28,
+LSGLLN14020AR+RPM40WH,2026-07-29 05:52:07,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,True,True,,2024-07-19 09:42:19,amazon:Active; amazon:DISCOVERABLE
+LSGLSC1508CL+RPM40WH,2026-07-16 12:39:12,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,True,True,ebay,2024-08-02 19:37:54,ebay:None
+LSGLSC1508CL2PK+RPR44WH2PK,2026-07-16 12:39:09,COMBO,True,"{""amazon"": ""Listed""}",False,True,True,True,ebay,2024-08-02 19:37:59,ebay:None
+LSGLST148AR+RPM40WH,2026-07-15 13:13:11,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-13 21:41:24,
+LSGLST148AR2PK+RPM40WH2PK,2026-07-15 13:13:13,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-13 21:41:24,
+LSGLST148AR3PK+RPM40WH3PK,2026-07-15 13:13:15,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-07-13 22:28:30,
+LSGLST148AR4PK+RPM40WH4PK,2026-07-15 13:13:17,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-13 22:28:30,
+LSGLST148AR5PK+RPM40WH5PK,2026-07-15 13:13:20,COMBO,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-07-13 22:28:30,
+LSGLULAR2PK+RPM40WH2PK,2026-05-04 06:26:05,COMBO,False,"{""amazon"": ""Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-03-16 15:55:45,
+LSGLWA140AR+RPM40WH,2026-07-17 05:26:09,COMBO,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}",False,True,False,False,,2026-02-04 16:12:12,
+LSHM240BG+RPR44WH,2026-02-06 04:39:14,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-02-05 17:42:14,
+LSHM240BG2PK+RPR44WH2PK,2026-02-06 04:39:16,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-02-05 17:42:14,
+LSHM240BG3PK+RPR44WH3PK,2026-02-06 04:39:18,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-02-05 17:42:14,
+LSSC315BI+RPR44WH,2026-04-18 17:26:05,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-17 17:10:35,
+LSSC315GY+RPR44WH,2026-04-18 13:26:05,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-17 17:10:35,
+LSSC315RE+RPR44WH,2026-04-18 13:13:04,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-17 17:10:35,
+LSSC315RE+SPCC320BM+RPR44WH,2026-06-10 12:26:09,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}",False,True,False,False,,2026-04-22 15:07:32,
+LSTF290BB+RPR44WH,2026-03-25 04:26:11,COMBO,False,"{""shopify"": ""Listed""}",False,True,False,False,,2026-03-18 16:35:41,
+PCD20WH5PK,2026-08-10 10:02:59,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-04 15:37:12,
+PCD20WHAPK,2026-08-10 10:03:05,PACK,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-04 15:37:12,
+PCDC1510WHAPK,2026-08-13 09:52:10,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 15:38:00,
+PCDC2516WHAPK,2026-08-13 10:13:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 15:38:00,
+PCDC4025WHAPK,2026-08-13 10:02:10,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 15:38:00,
+PCEL9020WH3PK,2026-08-10 12:01:34,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-06 16:37:10,
+PCEL9020WH5PK,2026-08-10 12:01:37,PACK,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-06 16:37:10,
+PCEL9025WH3PK,2026-08-10 12:13:10,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-06 16:37:10,
+PCEL9025WH5PK,2026-08-10 12:13:07,PACK,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-06 16:37:10,
+PCELC9020WH5PK,2026-08-10 12:13:16,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-07 12:08:53,
+PCELC9025WH5PK,2026-08-10 12:13:13,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-07 12:08:53,
+PCFC1510WHAPK,2026-08-13 11:13:09,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 09:22:43,
+PCFC2516WHAPK,2026-08-13 11:13:12,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 09:22:43,
+PCFC4025WHAPK,2026-08-13 11:13:15,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 09:22:43,
+PCIC1510WH5PK,2026-09-03 05:39:11,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 14:03:17,
+PCIC2516WH5PK,2026-09-03 05:39:09,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 14:03:17,
+PCIC4025WH5PK,2026-09-03 05:39:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 14:03:17,
+PCM412WH5PK,2026-08-10 11:26:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-04 16:55:10,
+PCM412WHAPK,2026-08-14 08:13:19,PACK,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-04 16:55:10,
+PCSN220BM,2026-04-15 12:26:04,COMPONENT,False,"{""amazon"": ""Not Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,True,True,"amazon,ebay",2024-12-24 14:11:19,amazon:Active; amazon:Inactive; ebay:None; shopify:active
+PCSN220CH,2026-04-15 12:26:04,COMPONENT,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2024-12-24 14:11:19,ebay:None; shopify:active
+PCSN220CO,2026-04-15 12:26:04,COMPONENT,False,"{""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,True,True,ebay,2024-12-24 14:11:19,ebay:None; shopify:active
+PCSN220FG,2026-04-15 12:26:04,COMPONENT,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2024-12-24 14:11:19,ebay:None; shopify:active
+PCSN220RO,2026-04-15 12:26:04,COMPONENT,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2024-12-24 14:11:19,ebay:None; shopify:active
+PCSN220SN,2026-04-15 12:26:04,COMPONENT,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2024-12-24 14:11:19,ebay:None; shopify:active
+PCSN220WH,2026-04-15 12:26:04,COMPONENT,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2024-12-24 14:11:19,ebay:None; shopify:active
+PCSN220YB,2026-04-15 12:13:07,COMPONENT,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2024-12-24 14:11:19,ebay:None; shopify:active
+PCTE1510WH5PK,2026-09-16 10:26:26,PACK,True,"{""amazon"": ""Listed""}",False,True,False,False,,2026-09-11 12:17:53,
+PCTE2516WH5PK,2026-09-16 10:26:34,PACK,True,"{""amazon"": ""Listed""}",False,True,False,False,,2026-09-11 12:17:53,
+PCTE4025WH5PK,2026-09-16 10:26:38,PACK,True,"{""amazon"": ""Listed""}",False,True,False,False,,2026-09-11 12:17:53,
+PCTEL20WH5PK,2026-08-10 12:13:19,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-07 14:36:48,
+PCTEL20WHAPK,2026-08-20 09:13:14,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-11 10:10:21,
+PCTEL25WH5PK,2026-08-10 12:13:22,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-07 14:36:48,
+PCTEL25WHAPK,2026-08-20 09:13:12,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-11 10:10:21,
+PCTELC20WH5PK,2026-08-10 12:26:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-07 15:56:30,
+PCTELC25WH5PK,2026-08-10 12:13:25,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-07 15:56:30,
+PCTJ1510WHAPK,2026-08-13 10:02:13,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 15:38:00,
+PCTJ2516WHAPK,2026-08-13 09:52:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 15:38:00,
+PCTJ4025WHAPK,2026-08-13 10:26:07,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 15:38:00,
+PCTL1201WH3PK,2026-08-10 11:39:10,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 14:18:40,
+PCTL1201WH5PK,2026-08-10 11:39:07,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 14:18:40,
+PCTL2202WH3PK,2026-08-13 04:39:18,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 14:18:40,
+PCTL2202WH5PK,2026-08-17 10:39:07,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 15:35:17,
+PCTL2A20VWH3PK,2026-08-10 11:52:08,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-06 14:41:42,
+PCTL2A20VWH5PK,2026-08-10 12:01:32,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-06 14:41:42,
+PCTL3203WH3PK,2026-08-13 04:39:14,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 14:18:40,
+PCTL3203WH5PK,2026-08-17 10:39:10,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 15:35:17,
+PCTL4204WH3PK,2026-08-13 04:39:16,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 14:18:40,
+PCTL4204WH5PK,2026-08-17 10:39:13,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-05 15:35:17,
+PCUPVC1015WH5PK,2026-09-16 10:26:07,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-09-14 12:50:29,
+PCUPVC1625WH5PK,2026-09-16 10:26:15,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-09-14 12:50:29,
+PCUPVC2540WH5PK,2026-09-16 10:26:18,PACK,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-09-14 12:50:29,
+PCUPVCD202WH2PK,2026-09-16 08:01:34,PACK,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 11:30:35,
+PHHRE2HETX2HE,2026-05-07 09:52:04,COMPONENT,True,"{"""": ""Not Listed""}",True,True,True,True,amazon,2024-07-01 12:18:32,amazon:Active
+PHLSDG220BG,2026-06-23 07:01:15,COMPONENT,False,"{""shopify"": ""Listed""}",False,True,True,True,"amazon,ebay",2020-01-30 10:46:37,amazon:Active; amazon:DISCOVERABLE; amazon:Inactive; ebay:None; shopify:active
+PHLSDG220BG+CGWDWO,2026-06-23 07:13:14,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,"amazon,ebay,shopify",2021-03-08 20:33:33,amazon:Active; amazon:Inactive; ebay:None; shopify:active
+PHLSDG220BG+CGWDWO+ICST64E27,2026-06-23 07:13:20,COMBO,False,"{"""": ""Not Listed""}",True,True,True,True,ebay,2024-06-20 22:41:20,ebay:None
+PHLSDG220WI,2026-06-23 06:52:04,COMPONENT,False,"{""ebay"": ""Listed""}",False,True,True,True,shopify,2023-11-25 13:50:34,ebay:None; shopify:active
+PHLSDG220WI+ICST64E27,2026-06-23 10:39:07,COMBO,False,"{""ebay"": ""Listed""}",False,True,True,True,shopify,2023-11-25 13:50:34,ebay:None; shopify:active
+PHLSGP350WI,2026-06-23 07:01:15,COMPONENT,False,"{"""": ""Not Listed""}",True,True,True,True,shopify,2023-12-15 17:23:22,shopify:active
+PHLSLG190WI,2026-06-23 06:52:04,COMPONENT,False,"{""ebay"": ""Listed""}",False,True,True,True,"amazon,shopify",2021-01-04 19:40:41,amazon:Active; amazon:DISCOVERABLE; amazon:Inactive; ebay:None; shopify:active
+PHLSLG190WI+ICST64E27,2026-06-24 06:52:07,COMBO,False,"{""ebay"": ""Listed""}",False,True,True,True,shopify,2023-02-11 15:40:04,ebay:None; shopify:active
+PHSF1PWR20WH+PHLSGP350WI,2026-06-24 09:26:05,COMBO,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2023-07-27 11:47:34,ebay:None; shopify:active
+PHSF1PWR20WH+PHLSGP350WI+ICST64E27,2026-06-24 09:26:09,COMBO,False,"{""shopify"": ""Listed""}",False,True,True,True,ebay,2023-07-27 11:47:34,ebay:None; shopify:active
+RWHX08BXGY,2026-07-28 10:52:04,COMPONENT,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,True,True,,2025-03-07 11:43:17,amazon:Active
+SPPGUK3PBR2PK,2026-03-12 12:13:29,PACK,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-05 11:25:07,
+SPPGUK3PBR4PK,2026-03-12 12:13:31,PACK,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-05 11:25:07,
+SPPGUK3PBR6PK,2026-03-12 12:13:34,PACK,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-05 11:25:07,
+TPBP1CHRWO,2026-04-17 05:26:04,COMPONENT,False,"{""amazon"": ""Listed""}",False,True,False,False,,2026-03-16 12:08:35,
+TPBP1SHLWN,2026-04-17 05:26:04,COMPONENT,False,"{""amazon"": ""Listed""}",False,True,False,False,,2026-03-18 12:23:56,
+TPBP1SHRWO,2026-04-17 05:26:04,COMPONENT,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-03-16 12:08:35,
+TPBP2SHLWN,2026-04-17 05:26:04,COMPONENT,False,"{""amazon"": ""Listed""}",False,True,False,False,,2026-03-18 12:23:56,
+TPHTTN2PBRBM+LSGL12010AR,2026-04-30 11:26:09,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-03-05 09:39:20,
+TPHTTN2PBRBM+LSGL12010AR+LDMA60E274WW,2026-04-30 11:26:07,COMBO,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}",False,True,False,False,,2026-03-05 09:39:20,
+WJ018PC3PBM3PK,2026-08-13 04:52:09,PACK,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 14:08:37,
+WJ018RB3PBM3PK,2026-08-13 04:52:11,PACK,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-08-12 14:08:37,
+WJ018RB3PBM5PK,2026-02-27 09:02:39,PACK,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-02-18 19:48:50,
+WJB603BM5PK,2026-03-05 10:26:08,PACK,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-02-20 10:24:56,
+WLGG105E27BM,2026-05-26 12:13:05,COMPONENT,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-22 17:39:19,
+WLGG975E27BM,2026-05-26 12:02:08,COMPONENT,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-22 17:39:19,
+WLGM110E27BM,2026-05-26 12:02:08,COMPONENT,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-22 17:39:19,
+WLGM115E27BM,2026-05-26 12:02:08,COMPONENT,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-05-22 17:39:19,
+WLWOFTWO+CBSF70+CBSFBM+LDSST64E274,2026-04-30 06:52:05,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-17 12:28:15,
+WLWOHTBM+LSGL12010AR+CBSF75,2026-06-12 10:26:07,COMBO,True,"{""amazon"": ""Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-17 15:53:33,
+WLWOHTBM+LSGL1275CL,2026-05-12 09:13:10,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-20 14:15:21,
+WLWOHTBM+LSGL14010CL,2026-04-21 07:52:07,COMBO,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}",False,True,False,False,,2026-04-20 14:02:29,
+WSIWCRWH+LDMA60E274WW,2026-07-08 04:52:16,COMBO,True,"{""shopify"": ""Listed""}",False,True,False,False,,2026-02-19 12:12:11,
+WSNWBC+WJ018RB3PBM+LSCY290BC+LDMST64E274,2026-04-24 06:39:10,COMBO,False,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",False,True,True,True,,2025-08-19 12:59:15,shopify:active
+WSNWBM+WJ018RB3PBM+LSCY290BM+LDMST64E274,2026-04-24 06:39:08,COMBO,False,"{""shopify"": ""Listed""}",False,True,True,True,,2025-08-19 12:59:15,shopify:active
+WSNWBS+WJ018RB3PBM+LSCY290BS+LDMST64E274,2026-04-24 06:39:12,COMBO,False,"{""shopify"": ""Listed""}",False,True,True,True,,2025-08-19 12:59:15,shopify:active
+WSWTWH+LDMT45E274,2026-08-27 07:13:09,COMBO,True,"{""amazon"": ""Listed""}",False,True,False,False,,2026-03-01 20:34:24,

@@ -1,0 +1,1296 @@
+sku,type,main_view,dashboard_statuses,eligible_source_platforms,older_otherwise_eligible_platforms,source_records,exclusion_counts
+ FWS444BL,component,False,"{"""": ""Not Listed""}",,,0,{}
+12RPIP245400,component,False,"{""amazon"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,1,{}
+12RPIP454002,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed""}","amazon,ebay","amazon,ebay",15,"{""listing created before 2026 or date missing"": 6, ""parent listing"": 1}"
+BSTS815WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CBFMC,component,False,"{"""": ""Not Listed""}",,,0,{}
+CBSF95CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+CBSF95NA,component,True,"{"""": ""Not Listed""}",,,0,{}
+CBSF95WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CENU4010WH,component,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+CENU4020WH,component,False,"{""amazon"": ""Listed""}",amazon,,1,{}
+CF3B46BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CF3B52BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CF3BL46BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CF3BL52WO,component,True,"{"""": ""Not Listed""}",,,0,{}
+CFRGB420WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CFRGB460WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CFRGB480WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CFZY117346BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+CFZY129652WO,component,False,"{"""": ""Not Listed""}",,,0,{}
+CFZY130152BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+CL3TAG+SWHBSP1OSWH+SPPGUK3PWH,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,2,{}
+CL3TBR+SWHBSP1OSWH+SPPGUK3PWH,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,2,{}
+CL3THE+SWHBSP1OSWH+SPPGUK3PWH,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,2,{}
+CL3TOR+SWHBSP1OSWH+SPPGUK3PWH,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,2,{}
+CL3TWH+SWHBSP1OSWH+SPPGUK3PWH,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,2,{}
+CO123PA10CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+CO123PA9CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+CO432AGY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,5,{}
+CO432AGY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+CO432AGYCPK,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,1,{}
+CO432AOR,component,True,"{""b&q"": ""Listed"", ""shopify"": ""Listed""}","b&q,shopify",,4,"{""parent listing"": 1}"
+CO432AOR5PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CO432AORCPK,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,1,{}
+CO832AGY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,5,{}
+CO832AGY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+CO832AGYCPK,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,1,{}
+CODH232AGY,component,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+CODH232AGY5PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+CODH232AGYCPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CODH2422GY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+CODH2422GY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+CODH3223GY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+CODH3223GY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+CODH3223GYCPK,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,1,{}
+CODH4223GY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+CODH4223GY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+CODH4223GYCPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CODH933AGY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+CODH933AGY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+CODH933AGYCPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+COPA10TWH,component,True,"{"""": ""Not Listed""}",,,0,{}
+COPA9TWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+COTL6622GY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+COTL6622GY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+COTL6622GYCPK,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,1,{}
+COTL6623GY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+COTL6623GY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+COTL6623GYCPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+COTL6624GY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+COTL6624GY5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+COTL6624GYCPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRFF110HSN+LSCASN3BCL,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRFF110HSN+LSCASN5BCL,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRFF140SBC+PHLSFH1PBRBC,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",10,"{""listing created before 2026 or date missing"": 10}"
+CRFF140SBC+PHLSFH1PBRBC+LDSG125E274,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",9,"{""listing created before 2026 or date missing"": 9}"
+CRFF140SBM+PHLSFH1PBRBM,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",8,"{""listing created before 2026 or date missing"": 8}"
+CRFF140SBM+PHLSFH1PBRBM+LDSG125E274,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",11,"{""listing created before 2026 or date missing"": 11}"
+CRFF3006BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRFF4002BM+CO122PCL2PK+LHTTAGU10EBM2PK+LDGU10WD52PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",6,"{""listing created before 2026 or date missing"": 6}"
+CRFF4503BM+LHTTAGU10EBM3PK+LDGU10WD53PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",6,"{""listing created before 2026 or date missing"": 6}"
+CRFF5004BM+LHTTAGU10EBM4PK+LDGU10WD54PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",6,"{""listing created before 2026 or date missing"": 6}"
+CRFF5005BM+CO122PCL2PK+LHTTAGU10EBM5PK+LDGU10WD55PK,combo/pack,True,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",4,"{""listing created before 2026 or date missing"": 4}"
+CRFF500BM+PHHRE2HETX2HE3PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+CRFF500BM+PHHRE2HETX2HE3PK+CO123PCL,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRFF500BM+PHHRE2HETX2HE3PK+ICST64E273PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRFF500BM+PHHRE2HETX2HE3PK+LDMST64E2743PK,combo/pack,True,"{""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,1,{}
+CRFF500WH+PHLSLG190WI3PK,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}"
+CRSF10025BM+PHAH1TSNBM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSHTB3P16GD+LSGG200AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSHTB3P16GD+LSGLLN150AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSHTB3P16GD+LSGLWA140AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSSH68CFYB+LSMS320BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSSH68YBBM+LSMS320BG,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSSH68YBBM+LSMS320BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSSH68YBGD+LSMS320BG,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSSH68YBGD+LSMS320BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025BM+WSUSHE27BM+LSGL9015GY,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025WH+WSUSHE27WH+LSGL12010FW,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025WH+WSUSHE27WH+LSGL9015WH,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025WH+WSUSHE27WH+LSGLBH150WS,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF10025WH+WSUSHE27WH+SPAL68WH+LSGL12010FW,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100BM+CL3TBM+LHCCE27GR+LSTM320GR+LDMST64E274,combo/pack,False,"{""shopify"": ""Not Listed""}",,,0,{}
+CRSF100BM+CL3TBM+LHCCE27WH+LSTM320BW+LDMST64E274,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,3,"{""parent listing"": 1}"
+CRSF100BM+LHHTE27BM+LSYG120BBM,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSF100BM+PHCH1BMRBM+LSCY290DBI,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+CRSF100BM+PHHRE2HETX2HE+SPHEBM,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSF100BM+PHHT1PBRBM+LSYG120BBM,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,{}
+CRSF100BM+PHSH2BMTBM+SPUPBM+LSCY290DBI,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF100BM+PHSH2BMTYB+SPUPBM+LSCY290DBI,combo/pack,False,"{""ebay"": ""Listed""}",ebay,,3,"{""listing created before 2026 or date missing"": 1, ""parent listing"": 1}"
+CRSF100BM+PHSW1PBRBM+LSFT255BI,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,11,{}
+CRSF100BM+PHTC1PBRBM+LSGL9015CL,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+CRSF100BM+WSAFT200BG,combo/pack,True,"{""ebay"": ""Not Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,4,"{""parent listing"": 2}"
+CRSF100CF,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF100CH+LHNSE27CH+LSGL12010FC,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,10,{}
+CRSF100CH+WSUSHE27CH+LSGLBP120BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100CH+WSUSHE27CH+WCBNCH+LDMT45E274,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100FG+PHIFT1PBRYB+WCBSF90FG,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100GG+WSLS10CFGD+LSGLFL140AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100GG+WSLS10CFGD+LSGLLN150AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100GG+WSLSH68YBGD+LSGLST148AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100LBR,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF100WH+LHNSE27WH+LSGL12010FC,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,10,{}
+CRSF100WH+LHNSE27WH+LSGL12010FW,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100WH+PHRB1PWRPW+CGWDWO+PHLSGP350WI,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",3,"{""listing created before 2026 or date missing"": 3}"
+CRSF100WH+PHRB1PWRPW+PHLSGP350WI,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}"
+CRSF100WH+PHTC1PCRCH+LSGL9015CL,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSF100YB+PHTC1PGRGD+LSGL9015CL,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSF100YB+WSLS10CFGD+LSGLFL140AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100YB+WSLS10CFGD+LSGLLN150AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100YB+WSLS155YB+LSGL12010AR,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF100YB+WSLSH68YBGD+LSGLST148AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100YB+WSUSHE27YB+LSGLWD150AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF100YB+WSUSHE27YB+SPAL68YB+LSGLWD150AR,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+CRSF108FG+LHLFE27AYB+LAGLWD150AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF108FG+LHLFE27AYB+LSGLWD150AR,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF108FG+LHTHT15GD+LSGG200AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF1202H30BM+SWCRETOGD,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSF1203BM+WSCYMUBG3PK+LSGLWB125TN3PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF1204BM+PHFMHT2BRBM+LSGL12010FC+CBSF115,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF120CH+LHNSE27CH+LSGL12010FC,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF120CH+WSUSHE27CH+LSGL9015GY,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,10,{}
+CRSF120CH+WSUSHE27CH+LSGLDC160AS,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,12,{}
+CRSF120CH+WSUSHE27CH+LSGLSC1508CL,combo/pack,True,"{""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","b&q,ebay,shopify",,8,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSF120CH+WSUSHE27CH+SPAL68CH+LSGLSC1508CL,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+CRSF120HBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF120HBM+LSCY290BM+PHFMHT2BRBM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF120HBM+PHFMHT2BRBM+LSCY290BI,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF120WH+LHNSE27WH+LSGL12010FC,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF120YB+WSUSHE27YB+LAGLWD150AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF120YB+WSUSHE27YB+LSGL14013AR,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,3,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSF120YB+WSUSHE27YB+LSGLLN150AR,combo/pack,True,"{""b&q"": ""Listed"", ""shopify"": ""Not Listed""}",b&q,,3,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSF120YB+WSUSHE27YB+LSGLSC1508CL,combo/pack,True,"{""b&q"": ""Listed"", ""ebay"": ""Listed""}","b&q,ebay",,4,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSF120YB+WSUSHE27YB+LSGLWD150AR,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,3,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGL14013AR,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGLLN150AR,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,8,{}
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGLSC1508CL,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+CRSF120YB+WSUSHE27YB+SPAL68YB+LSGLWD150AR,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+CRSF120YB+WSUSHE27YB+WSUSHE27YB+LSGLLN150AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF2003BM+PHHRE2HETX2HE3PK+LDMT45E2743PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSF2003BM+WSCYMUBG3PK+LSGLWB125TN3PK,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+CRSF2003WH+PHLSDG220WI3PK,combo/pack,False,"{""amazon"": ""Not Listed""}",,,0,{}
+CRSF2003WH+PHLSDG220WI3PK+CO123PCL,combo/pack,False,"{""amazon"": ""Listed""}",amazon,amazon,4,"{""listing created before 2026 or date missing"": 3}"
+CRSF2003WH+PHLSLG190WI3PK,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",7,"{""listing created before 2026 or date missing"": 7}"
+CRSF2003WH+PHLSLG190WI3PK+ICST64E273PK,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",4,"{""listing created before 2026 or date missing"": 4}"
+CRSF2003WH+PHRB1PWRPW3PK+PHLSGP350WI3PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF20BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF20CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF20CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF20SN,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF20WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSF20YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSFM100BR,component,True,"{""other"": ""Not Listed""}",,,0,{}
+CRSFM110080BM,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+CRSFM110080BM+LHSHE27YB+LSGLST150AR,combo/pack,True,"{""b&q"": ""Listed"", ""shopify"": ""Listed""}","b&q,shopify",,8,"{""parent listing"": 5}"
+CRSFM110080BM+PHAH1TSNBM+CGFLBM,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,10,"{""parent listing"": 4}"
+CRSFM110080BM+WSCH135BM+LSCY290BG,combo/pack,True,"{""amazon"": ""Not Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","b&q,ebay",,6,"{""SKU resolves to another product or is unmatched"": 2, ""parent listing"": 1}"
+CRSFM110080BM+WSCH135BM+LSCY290BG+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+CRSFM110080BM+WSCH135BM+LSDO210BG,combo/pack,True,"{""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","b&q,ebay,shopify",,6,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSFM110080BM+WSCH135BM+LSDO210BG+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+CRSFM110080BM+WSCH135BM+LSDO400BG,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM110080BM+WSLS155BM+LSGLWB125TN,combo/pack,True,"{""ebay"": ""Not Listed""}",,,0,{}
+CRSFM110080BM+WSLS155BM+LSGLWB125TN+SCRN70BM+CBSF95,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,4,{}
+CRSFM110080BM+WSLS155CH+LSGLWB125TN,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,4,{}
+CRSFM110080BM+WSLS155CO+LSGLWB125TN,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,4,{}
+CRSFM110080BM+WSLS155SN+LSGLWB125TN,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,4,{}
+CRSFM110080BM+WSLS155YB+LSGLWB125TN,combo/pack,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,4,{}
+CRSFM110080BM+WSSS70BM+LSGL15014CL,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFM110080BM+WSSS70CH+LSGL15014CL,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFM110080BM+WSSS70CO+LSGL15014CL,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFM110080BM+WSSS70SN+LSGL15014CL,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFM110080BM+WSSS70YB+LSGL15014CL,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFM110080CH,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+CRSFM110080CO,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+CRSFM110080SN,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+CRSFM110080WH,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+CRSFM110080YB,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+CRSFM210080BM,component,True,"{""amazon"": ""Not Listed"", ""b&q"": ""Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080BM+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+CRSFM210080BM+PHAH1TSNBM+CGFLBM,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080BM2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080BM2PK+CBSF952PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+CRSFM210080CH,component,True,"{""b&q"": ""Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080CH+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+CRSFM210080CH2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080CH2PK+CBSF952PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+CRSFM210080CO,component,True,"{""b&q"": ""Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080CO+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+CRSFM210080CO+LHTOE27CO+LSGLWA140AR,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080CO+LHTOE27CO+LSGLWA140AR+PCGZ20NL,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,8,{}
+CRSFM210080CO+LHTOE27CO+LSGLWA170AR,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080CO2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080CO2PK+CBSF952PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+CRSFM210080SN,component,True,"{""b&q"": ""Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080SN+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+CRSFM210080SN+LSCASN3BCL,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080SN2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080SN2PK+CBSF952PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+CRSFM210080WH,component,True,"{""b&q"": ""Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080WH+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+CRSFM210080WH2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080WH2PK+CBSF952PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+CRSFM210080YB,component,True,"{""b&q"": ""Listed"", ""shopify"": ""Not Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080YB+CBSF95,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+CRSFM210080YB+LHTOE27YB+LSGLST1618AR,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,2,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFM210080YB+LHTOE27YB+LSGLST1618AR+PCGZ20NL,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,ebay,shopify",,8,{}
+CRSFM210080YB+LHTOE27YB+LSGLST1618AR+RWFC30SL2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080YB+LHTOE27YB+LSGLST1618ARRWFC30SL2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080YB2PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFM210080YB2PK+CBSF952PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+CRSFML100BM,component,True,"{""shopify"": ""Listed""}",shopify,,4,{}
+CRSFML100BM+CGFLBM+LSACY195BG,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFML100BM+LSACY195BG+CGFLBM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFML100BM+LSACY195BG+ICST64E2740,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+CRSFML100YB,component,True,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,4,{}
+CRSFWL1HWN,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFWL2HWN,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,"{""SKU resolves to another product or is unmatched"": 1}"
+CRSFWR1CHWN,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFWR1CHWO,component,False,"{""shopify"": ""Listed""}",shopify,,4,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSFWR1LPWO,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFWR1THWO,component,False,"{""shopify"": ""Listed""}",shopify,,3,"{""SKU resolves to another product or is unmatched"": 2}"
+CRSFX120BM,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSFX120YB,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+CRSP112R48CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP112R48CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP112R48WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP117R66WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP117R66YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP1PRC48BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP1PRC66BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP212R48CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP212R48CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP212R48WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP217R66CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP217R66CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP217R66WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP217R66YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP2PRC48BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP2PRC66BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP60601BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP60603BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP60603WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP60605BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP60605WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80303BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80303CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80303CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP80303SN,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80303WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80303YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80304BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80305BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80305CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80305CO,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80305SN,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80305WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP80305YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+CRSP8030BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP8030CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP8030CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP8030SN,component,False,"{"""": ""Not Listed""}",,,0,{}
+CRSP8030YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+D46 Fanora Fan IRCCT ICRGB,component,False,"{"""": ""Not Listed""}",,,0,{}
+ENC1000,combo/pack,False,"{""ebay"": ""Not Listed""}",,"ebay,shopify",10,"{""ended eBay listing"": 6, ""listing created before 2026 or date missing"": 10}"
+ENC10042,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10043,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10044,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10065,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10066,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10067,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10068,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10069,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10095,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10096,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10097,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10098,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10099,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+ENC10122,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+ENC10123,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+ENC10124,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+ENC10125,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+ENC10126,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+ENC10152,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+ENC10153,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+ENC10154,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+ENC10155,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+ENC10156,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+ENC10157,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+ENC10158,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+ENC10159,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+ENC10171,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC10173,combo/pack,True,"{""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","b&q,ebay,shopify",,7,"{""SKU resolves to another product or is unmatched"": 2, ""wrong_sku flag is not 0"": 2}"
+ENC10174,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10175,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10176,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+ENC10181,combo/pack,True,"{""b&q"": ""Listed"", ""shopify"": ""Listed""}","b&q,shopify",,9,"{""SKU resolves to another product or is unmatched"": 2, ""parent listing"": 5, ""wrong_sku flag is not 0"": 2}"
+ENC10182,combo/pack,True,"{""b&q"": ""Listed""}",b&q,,7,"{""listing created before 2026 or date missing"": 1, ""parent listing"": 6}"
+ENC10232,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay,shopify",,10,"{""SKU resolves to another product or is unmatched"": 1, ""parent listing"": 1}"
+ENC10233,combo/pack,True,"{""amazon"": ""Not Listed"", ""b&q"": ""Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","b&q,shopify",,10,"{""parent listing"": 6}"
+ENC10236,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10237,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay,shopify",,9,{}
+ENC10238,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10239,combo/pack,True,"{""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","b&q,ebay,shopify",,7,"{""SKU resolves to another product or is unmatched"": 2, ""wrong_sku flag is not 0"": 2}"
+ENC10240,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+ENC10262,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+ENC10263,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,7,"{""parent listing"": 5}"
+ENC10264,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+ENC10265,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,2,{}
+ENC10266,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,2,{}
+ENC10278,combo/pack,False,"{""amazon"": ""Not Listed"", ""b&q"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","b&q,shopify",,10,"{""parent listing"": 5}"
+ENC10307,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+ENC10324,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10343,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10344,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10345,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC10346,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,4,{}
+ENC10350,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10351,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10353,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10362,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10363,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10364,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10365,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10394,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10395,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10396,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10397,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10399,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10400,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10401,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10402,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC10413,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC1091,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC1092,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC2859,combo/pack,False,"{""ebay"": ""Listed"", ""shopify"": ""Not Listed""}",ebay,"amazon,shopify",7,"{""ended eBay listing"": 1, ""listing created before 2026 or date missing"": 6}"
+ENC322,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",17,"{""ended eBay listing"": 12, ""listing created before 2026 or date missing"": 17}"
+ENC3408,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}"
+ENC4045,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}"
+ENC5870,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC669,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",3,"{""listing created before 2026 or date missing"": 3}"
+ENC7375,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC75,combo/pack,False,"{"""": ""Not Listed""}",,"ebay,shopify",46,"{""ended eBay listing"": 29, ""listing created before 2026 or date missing"": 46}"
+ENC9428,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,11,{}
+ENC9437,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+ENC9456,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+ENC9457,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+ENC9491,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+ENC9492,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+ENC9494,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC9522,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+ENC9550,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,10,{}
+ENC9573,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+ENC9576,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9625,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9626,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9627,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9628,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC9630,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9635,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9637,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9638,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9639,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9640,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC9641,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9666,combo/pack,False,"{""amazon"": ""Listed""}",amazon,,1,{}
+ENC9724,combo/pack,False,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,2,{}
+ENC9725,combo/pack,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,5,{}
+ENC9734,combo/pack,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,6,"{""listing created before 2026 or date missing"": 1, ""parent listing"": 1}"
+ENC9760,combo/pack,True,"{""shopify"": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}"
+ENC9852,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9854,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC9857,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC9860,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC9863,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+ENC9864,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9867,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9871,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9874,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9877,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC989,combo/pack,False,"{"""": ""Not Listed""}",,amazon,3,"{""listing created before 2026 or date missing"": 3}"
+ENC9902,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9906,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+ENC9937,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC9938,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC9939,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC994,combo/pack,False,"{""ebay"": ""Not Listed""}",,ebay,16,"{""SKU resolves to another product or is unmatched"": 1, ""ended eBay listing"": 12, ""listing created before 2026 or date missing"": 16}"
+ENC9941,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC9942,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+ENC995,combo/pack,False,"{"""": ""Not Listed""}",,ebay,1,"{""listing created before 2026 or date missing"": 1}"
+ENC996,combo/pack,False,"{""ebay"": ""Not Listed""}",,"amazon,ebay",22,"{""ended eBay listing"": 18, ""listing created before 2026 or date missing"": 22}"
+ENC997,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay",8,"{""ended eBay listing"": 6, ""listing created before 2026 or date missing"": 8}"
+ENC998,combo/pack,False,"{"""": ""Not Listed""}",,ebay,14,"{""ended eBay listing"": 12, ""listing created before 2026 or date missing"": 14}"
+FWS440BL,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+FWS441BL,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+FWS442BL,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+FWS443BL,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+FWS445BL,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+FWS445BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",amazon,6,"{""listing created before 2026 or date missing"": 1}"
+FWS445BR,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+FWS540LG,component,False,"{"""": ""Not Listed""}",,,0,{}
+FWS541LG,component,False,"{"""": ""Not Listed""}",,,0,{}
+FWS542LG,component,False,"{"""": ""Not Listed""}",,,0,{}
+FWS543LG,component,False,"{"""": ""Not Listed""}",,,0,{}
+FWS544LG,component,False,"{"""": ""Not Listed""}",,,0,{}
+FWS545LG,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC7714CW,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC7714CWCPK,combo/pack,False,"{""ebay"": ""Not Listed""}",,,0,{}
+IMAC7714CWFPK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+IMAC7714CWNPK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+IMAC7714GR,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC7714GRNPK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+IMAC7714YE,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC7714YENPK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+IMAC9820CW,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC9820CWCPK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+IMAC9820CWFPK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC9820CWNPK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+IMAC9820WCW,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC9820WW,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC9820WWCPK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+IMAC9820WWFPK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+IMAC9820WWNPK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+IMACCW,component,True,"{"""": ""Not Listed""}",,,0,{}
+IMACGR,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+IMACGRCPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+IMACGRFPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+IMACGRNPK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+IMACRG,component,True,"{"""": ""Not Listed""}",,,0,{}
+IMACRGCPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+IMACRGFPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+IMACRGNPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+IMACWW,component,True,"{"""": ""Not Listed""}",,,0,{}
+IMACYE,component,True,"{"""": ""Not Listed""}",,,0,{}
+IMACYECPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+IMACYEFPK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+IMACYENPK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+IMDC6915RG,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMDC6915RGNPK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+IMDC7714BCW,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMDC7714BCWNPK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+IMDC7714BGR,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMDC7714BGRNPK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,{}
+IMDC7714BYE,component,False,"{"""": ""Not Listed""}",,,0,{}
+IMDC7714BYENPK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,{}
+LAGLFL130AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LAGLWD150AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LCEC11SL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LCEC127SL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LCEC135SL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LDCWA60HE277,component,True,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,2,{}
+LDCWA60HE2772PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",amazon,5,"{""listing created before 2026 or date missing"": 1}"
+LDCWA60HE2773PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",amazon,4,"{""listing created before 2026 or date missing"": 1}"
+LDCWA60HE2776PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",amazon,8,"{""listing created before 2026 or date missing"": 2, ""parent listing"": 1}"
+LDCWA60HE277APK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LDMT1852E274,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+LDMT1852E2742PK,combo/pack,False,"{"""": ""Not Listed""}",,amazon,1,"{""listing created before 2026 or date missing"": 1}"
+LDMT1852E2743PK,combo/pack,False,"{"""": ""Not Listed""}",,amazon,3,"{""listing created before 2026 or date missing"": 3}"
+LDST185B224,component,False,"{""amazon"": ""Not Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,ebay,4,"{""listing created before 2026 or date missing"": 3}"
+LH2HTE27YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHC6E27SWH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHCTOBM,component,False,"{""amazon"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,2,{}
+LHCTOWH,component,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHETBM,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHETCH,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHETCO,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHETSN,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHETWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHETYB,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHF3HT40BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHF3HT40WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHIFTE27BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHIFTE27CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHIFTE27YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHLHTE27YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHMHTE27YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHPLFTE14BM,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+LHPLFTE14WH,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+LHPLFTE27BM,component,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHPLFTE27WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHPLHTE14BM,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+LHPLHTE14WH,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+LHPLHTE27BM,component,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHPLHTE27WH,component,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHPLPLE14BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHPLPLE14WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHPLPLE27BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHPLPLE27WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHSSB22GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHSWPBB22CH,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,"{""parent listing"": 1}"
+LHSWPBB22CH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,4,{}
+LHSWPBB22GD,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LHSWPBB22GD2PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,{}
+LHSWPBB22SN,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,5,{}
+LHSWPBB22SN2PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,4,{}
+LHTHT15CF,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHTHT15GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTHT30CF,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTHT30GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTHT50CF,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTHT50GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTRE27BY,component,False,"{""amazon"": ""Not Listed""}",,,0,{}
+LHTRE27BY2PK,combo/pack,False,"{""amazon"": ""Listed""}",amazon,amazon,4,"{""listing created before 2026 or date missing"": 2}"
+LHTT10150BG,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT10200BG,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT10250BG,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT15E27CF,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT15E27GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT20E27YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+LHTT30E27CF,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT30E27GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT50E27CF,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTT50E27GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTTAGU10EBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHTTAGU10EYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHXBTF40E27BM,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+LHXBTF40E27BM3PK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+LHXBTF40E27BM5PK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+LHXBTF40E27WH,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+LHXBTF40E27WH3PK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+LHXBTF40E27WH5PK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+LHXBTH50E27BM,component,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHXBTH50E27WH,component,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHXCCE27BM,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+LHXCCE27BM2PK,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHXCCE27BM3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,5,{}
+LHXCCE27BM5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,"{""parent listing"": 1}"
+LHXCCE27RR,component,True,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,3,{}
+LHXCCE27RR2PK,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHXCCE27RR3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,5,{}
+LHXCCE27RR5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+LHXCCE27WH,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+LHXCCE27WH2PK,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+LHXCCE27WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,5,{}
+LHXCCE27WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+LHXDE27BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHXDE27WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LHXIM30B22WH,component,True,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,1,{}
+LHXIM30B22WH2PK,combo/pack,True,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,1,{}
+LHXSHE27BM,component,True,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,3,{}
+LHXSHE27BM2PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,"{""parent listing"": 1}"
+LHXSHE27BM3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LHXSHE27BM5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LHXSHE27BMAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+LHXSHE27WH,component,True,"{""amazon"": ""Not Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","ebay,shopify",,5,"{""parent listing"": 1}"
+LHXSHE27WH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,5,"{""parent listing"": 1}"
+LHXSHE27WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+LHXSHE27WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+LHXSHE27WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+LHXWPE27PPWH,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Not Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,8,"{""parent listing"": 3}"
+LHXWPE27PPWH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+LHXWPE27PPWH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,5,{}
+LHXWPE27PPWH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+LHXWPE27PPWHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+LLBHO85CW9W,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+LLBHO85CW9W2PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LLBHO85CW9WAPK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LLBHO95CW12W,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+LLBHO95CW12W2PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LLBHO95CW12WAPK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LLBHR115CW15W,component,False,"{"""": ""Not Listed""}",,,0,{}
+LLBHR115CW9W,component,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+LLBHR150CW15W,component,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LLBHR195CW24W,component,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LLRO165CW8W,component,True,"{""other"": ""Not Listed""}",,,0,{}
+LLRO165CW8W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+LLRO168CW8W,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,3,{}
+LLRO220CW18W,component,True,"{""other"": ""Not Listed""}",,,0,{}
+LLRO220CW18W3PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LLRO220CW18W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+LLRO220CW18WAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+LLRO220CW8W,component,False,"{"""": ""Not Listed""}",,,0,{}
+LLRO223CW18W,component,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+LLRO295CW24W,component,True,"{"""": ""Not Listed""}",,,0,{}
+LLRO295CW24W3PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LLRO295CW24W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+LLRO295CW24WAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+LLRO300CW24W,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed""}","amazon,ebay",,2,{}
+LLRO90CW3W,component,True,"{""other"": ""Not Listed""}",,,0,{}
+LLRO90CW3W3PK,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LLRO90CW3W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay",,3,{}
+LLRO90CW3WAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+LOEC11SL,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+LOEC127SL,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+LOEC135SL,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+LPM50CW9W,component,False,"{"""": ""Not Listed""}",,,0,{}
+LPMC50CW7W,component,True,"{"""": ""Not Listed""}",,,0,{}
+LPMC50CW7W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+LPMC50CW7WAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+LPMC50CW9W,component,True,"{"""": ""Not Listed""}",,,0,{}
+LPMC50CW9W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+LPMC50CW9WAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+LPMP50CW7W,component,True,"{""ebay"": ""Listed""}",ebay,,1,{}
+LPMP50CW7W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,3,{}
+LPMP50CW7WAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,3,{}
+LPMP50CW9W,component,True,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,3,"{""parent listing"": 1}"
+LPMP50CW9W5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,3,{}
+LPMP50CW9WAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,3,{}
+LPRO223CW18W,component,False,"{""ebay"": ""Listed""}",ebay,,1,{}
+LPRO90CW7WWH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LPRO92CW7WWH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LQK1,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCAS2CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCAS4CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCASN2BCL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCASN2CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCASN3BCL,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSCASN4BCL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCASN4CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCASN5BCL,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSCY2902BG,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCY2902BI,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCY2902GR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCY2902GY,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCY2902RE,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCY2902WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCY290DBI,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSCY290DBI+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,19,"{""parent listing"": 1}"
+LSCY290DBI2PK+RPR44WH2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+LSFRE3FTPYBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSFRE3ROPCCH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSFRO3ROPWFG,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSFT220BW,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSFT220BW+RPR44WH,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,shopify",,8,{}
+LSFT220BW2PK+RPR44WH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,7,{}
+LSFT220BW3PK+RPR44WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,shopify",,6,{}
+LSFT255BI,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSFT255BI+RPR44WH,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,"{""SKU resolves to another product or is unmatched"": 2}"
+LSGL100145BL,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGL100145BL+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LSGL100145BL+RPR44WH,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LSGL10014AR,component,True,"{""other"": ""Not Listed""}",,,0,{}
+LSGL10014AR+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,10,{}
+LSGL10014AR+RPR44WH,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LSGL12010AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL12010AR+RPM40WH,combo/pack,False,"{""b&q"": ""Not Listed"", ""ebay"": ""Listed""}",ebay,,1,{}
+LSGL12010AR2PK+RPM40WH2PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay,shopify",amazon,12,"{""listing created before 2026 or date missing"": 1}"
+LSGL12010AR3PK+RPM40WH3PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,ebay,shopify",,11,{}
+LSGL12010AR5PK+RPM40WH5PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+LSGL12010FC,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGL12010FC+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+LSGL12010FW,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGL12010FW+RPM40WH,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,2,{}
+LSGL1275CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL1275CL+RPM40WH,combo/pack,False,"{""shopify"": ""Listed""}",shopify,amazon,4,"{""listing created before 2026 or date missing"": 2, ""parent listing"": 1}"
+LSGL1275CL2PK+RPM40WH2PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Not Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,4,{}
+LSGL1275CL3PK+RPM40WH3PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Not Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,3,{}
+LSGL1275CL5PK+RPM40WH5PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+LSGL14010CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL14010CL+RPM40WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,10,{}
+LSGL14010CL2PK+RPM40WH2PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,11,{}
+LSGL14010CL3PK+RPM40WH3PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,11,{}
+LSGL14010CL5PK+RPM40WH5PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LSGL14013AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL14023SG,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL14023SG+RPM40WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,11,{}
+LSGL14023SG2PK+RPM40WH2PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay",,10,{}
+LSGL14023SG3PK+RPM40WH3PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,9,{}
+LSGL14023SG5PK+RPM40WH5PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,9,{}
+LSGL145AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL145BL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL145CL,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL16015AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGL20040AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL3L150AR,component,True,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}"
+LSGL3L150AR+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay,shopify",amazon,8,"{""listing created before 2026 or date missing"": 1}"
+LSGL3L150AR+RPR44WH,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,4,{}
+LSGL3L150AR2PK+RPM40WH2PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,4,{}
+LSGL3L150AR3PK+RPM40WH3PK,combo/pack,True,"{""ebay"": ""Listed""}",ebay,,2,"{""parent listing"": 1}"
+LSGL3LPAR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGL9015BM,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+LSGLCA16015AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLFE150WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLFL140AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGLFL140AR+RPM40WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,5,{}
+LSGLFL140AR+RPR44WH,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+LSGLFL140AR2PK+RPM40WH2PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,3,{}
+LSGLGL200AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGLLN14020AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLLN14020AR+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",amazon,13,"{""listing created before 2026 or date missing"": 7}"
+LSGLLN14020AR+RPR44WH,combo/pack,True,"{""shopify"": ""Not Listed""}",,,0,{}
+LSGLLN150AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLSC1508CL,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLSC1508CL+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",ebay,7,"{""listing created before 2026 or date missing"": 1}"
+LSGLSC1508CL2PK+RPM40WH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+LSGLSC1508CL2PK+RPR44WH2PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,ebay,3,"{""listing created before 2026 or date missing"": 1}"
+LSGLSC1508CL3PK+RPM40WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+LSGLSC1508CL3PK+RPR44WH3PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,2,{}
+LSGLST148AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLST148AR+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,11,{}
+LSGLST148AR2PK+RPM40WH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LSGLST148AR3PK+RPM40WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,shopify",,6,{}
+LSGLST148AR4PK+RPM40WH4PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+LSGLST148AR5PK+RPM40WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,6,{}
+LSGLST150AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLST150AR+RPM40WH,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,"{""listing created before 2026 or date missing"": 1, ""parent listing"": 1}"
+LSGLST150AR+RPR44WH,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+LSGLST1618AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGLST1618AR+RPM40WH,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,"{""listing created before 2026 or date missing"": 1, ""parent listing"": 1}"
+LSGLST200AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLULAR,component,False,"{""other"": ""Not Listed""}",,,0,{}
+LSGLULAR+RPM40WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay,shopify",,14,"{""parent listing"": 1}"
+LSGLULAR2PK+RPM40WH2PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,shopify",,6,"{""parent listing"": 1}"
+LSGLWA140AR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSGLWA140AR+RPM40WH,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,ebay,shopify",,5,{}
+LSGLWA140AR+RPR44WH,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+LSGLWA170AR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSGLWD150AR,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+LSHM240BG,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSHM240BG+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LSHM240BG2PK+RPR44WH2PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+LSHM240BG3PK+RPR44WH3PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,9,{}
+LSMS3202BI,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSMS3202GR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSMS3202GY,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSMS3202OR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSMS3202RE,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSMS3202WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSMS3202YE,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310BI,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310BI+SPCC320BM,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+LSSC310BI+SPCC360BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310GR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310GR+SPCC320BM,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+LSSC310GR+SPCC360BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310GY,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310GY+SPCC320BM,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+LSSC310GY+SPCC360BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310OR,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310OR+SPCC320BM,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+LSSC310OR+SPCC360BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310RE,component,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC310RE+SPCC320BM,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+LSSC310RE+SPCC360BM,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+LSSC315BI,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315BI+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,5,{}
+LSSC315BI+SPCC320BM,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315BI3PK+SPCC320BM3PK,combo/pack,False,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}"
+LSSC315GR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315GR+SPCC320BM,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315GY,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315GY+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,5,{}
+LSSC315GY+SPCC320BM,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315OR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315OR+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,{}
+LSSC315OR+SPCC320BM,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315RE,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSSC315RE+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,5,{}
+LSSC315RE+SPCC320BM,combo/pack,False,"{""b&q"": ""Not Listed""}",,,0,{}
+LSSC315RE+SPCC320BM+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed""}","amazon,b&q",,2,{}
+LSTF290BB,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSTF290BB+RPR44WH,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+LSTF290BC,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSTM320BW,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSTM320BW+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,13,{}
+LSTM320BW2PK+RPR44WH2PK,combo/pack,False,"{""amazon"": ""Listed""}",amazon,,2,{}
+LSTM320BW3PK+RPR44WH3PK,combo/pack,False,"{""amazon"": ""Listed""}",amazon,,2,{}
+LSTM320GR,component,False,"{"""": ""Not Listed""}",,,0,{}
+LSTM320GR+RPR44WH,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,b&q,ebay,shopify",,13,{}
+LSTM320GR2PK+RPR44WH2PK,combo/pack,False,"{""amazon"": ""Listed""}",amazon,,2,{}
+LSTM320GR3PK+RPR44WH3PK,combo/pack,False,"{""amazon"": ""Listed""}",amazon,,2,{}
+LSYG120BBM,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+LSYGS330BM,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+MBEX2535WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+MBEX2535WHBPK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+MBEX2535WHFPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,7,{}
+MBEX2535WHNPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,7,{}
+MBEX2535WHPPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,7,{}
+MBEX2535WHQPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,7,{}
+MBEX4560WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+MBEX4560WHBPK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+MBEX4560WHFPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+MBEX4560WHNPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+MBEX4560WHPPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+MBEX4560WHQPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,7,{}
+MBEX6080WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+MBEX6080WHFPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,5,{}
+MBEX6080WHNPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,5,{}
+MBEX6080WHPPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,5,{}
+MBEX6080WHQPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+MBWHBSL,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC16FT250BA,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+PC16FT250CH,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+PC16FT250WH,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+PC16FT250YB,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+PC16FTNLCH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PC16FTNLWH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PC16FTNLYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+PC22500BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC5020BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC5020CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC5020CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC5020RO,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC5020SN,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC5020WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+PC5020YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+PCBM20MX+PCDO20BM+PCBSM2FBM+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCBM20MX+PCDO20CH+PCBSM2FCH+RW12CH2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCBM20MX+PCDO20CO+PCBSM2FCO+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}"
+PCBM20MX+PCDO20FG+PCBSM2FFG+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCBM20MX+PCDO20RO+PCBSM2FRO+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCBM20MX+PCDO20SN+PCBSM2FSN+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCBM20MX+PCDO20WH+PCBSM2FWH+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCBM20MX+PCDO20YB+PCBSM2FYB+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCBS16T10CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCBS16T10WH,component,True,"{""other"": ""Not Listed""}",,,0,{}
+PCBS16T10YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCO20WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCO20WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCCO25WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCO25WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+PCCPL20WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCPL20WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+PCCPL25WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCPL25WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+PCCR6030CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCR6030CO,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCR6030SN,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCCR6030YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCD20WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCD20WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCD20WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+PCDC1510WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCDC1510WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCDC2516WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCDC2516WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCDC4025WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCDC4025WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCEL9020WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCEL9020WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+PCEL9020WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+PCEL9020WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+PCEL9025WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCEL9025WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+PCEL9025WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+PCEL9025WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+PCELC9020WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCELC9020WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+PCELC9020WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+PCELC9025WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCELC9025WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,4,{}
+PCELC9025WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+PCFC1510WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCFC1510WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCFC2516WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCFC2516WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCFC4025WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCFC4025WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCFL20BM+SWCRD16BM+RW12CH2PK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+PCFL20BM+SWFF1GCH+RW12CH2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCFL20CO+SWCRD16BM+RW12CO2PK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,3,{}
+PCFL20CO+SWFF1GCH+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCFL20SN+SWCRD16BM+RW12CH2PK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,3,{}
+PCFL20SN+SWFF1GCH+RW12CH2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCFL20YB+SWCRD16BM+RW12CO2PK,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,3,{}
+PCFL20YB+SWFF1GCH+RW12CO2PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PCFT100BA,component,False,"{"""": ""Not Listed""}",,,0,{}
+PCFT1E27BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCFT1E27BS,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCFT45E27BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCFT45E27BS,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCFT50BA,component,False,"{"""": ""Not Listed""}",,,0,{}
+PCFTLBM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PCFTLCF,component,False,"{"""": ""Not Listed""}",,,0,{}
+PCFTLYB,component,False,"{"""": ""Not Listed""}",,,0,{}
+PCIC1510WH,component,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+PCIC1510WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+PCIC2516WH,component,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+PCIC2516WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+PCIC4025WH,component,True,"{""ebay"": ""Listed""}",ebay,,3,{}
+PCIC4025WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+PCM412WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCM412WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+PCM412WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+PCSN220BM,component,False,"{""amazon"": ""Not Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,"amazon,ebay,shopify",8,"{""listing created before 2026 or date missing"": 7}"
+PCSN220CH,component,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",5,"{""listing created before 2026 or date missing"": 4}"
+PCSN220CO,component,False,"{""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,"ebay,shopify",5,"{""listing created before 2026 or date missing"": 4}"
+PCSN220FG,component,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",5,"{""listing created before 2026 or date missing"": 4}"
+PCSN220RO,component,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",5,"{""listing created before 2026 or date missing"": 4}"
+PCSN220SN,component,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",5,"{""listing created before 2026 or date missing"": 4}"
+PCSN220WH,component,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",5,"{""listing created before 2026 or date missing"": 4}"
+PCSN220YB,component,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",5,"{""listing created before 2026 or date missing"": 4}"
+PCSWRG10RO,component,False,"{"""": ""Not Listed""}",,,0,{}
+PCTE1510WH,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+PCTE1510WH5PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+PCTE2516WH,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+PCTE2516WH5PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+PCTE4025WH,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,6,{}
+PCTE4025WH5PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+PCTEL20WH,component,True,"{""ebay"": ""Not Listed""}",,,0,{}
+PCTEL20WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+PCTEL20WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,3,{}
+PCTEL25WH,component,True,"{""ebay"": ""Not Listed""}",,,0,{}
+PCTEL25WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+PCTEL25WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,3,{}
+PCTELC20WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTELC20WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCTELC20WHAPK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+PCTELC25WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTELC25WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCTELC25WHAPK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+PCTJ1510WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTJ1510WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCTJ2516WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTJ2516WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCTJ4025WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTJ4025WHAPK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCTL1201WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTL1201WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+PCTL1201WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+PCTL2202WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTL2202WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+PCTL2202WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+PCTL2A20VWH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTL2A20VWH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+PCTL2A20VWH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+PCTL3203WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTL3203WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+PCTL3203WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+PCTL4204WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCTL4204WH3PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,4,{}
+PCTL4204WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+PCUPVC1015WH,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,4,{}
+PCUPVC1015WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+PCUPVC1625WH,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,4,{}
+PCUPVC1625WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+PCUPVC2540WH,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,4,{}
+PCUPVC2540WH5PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+PCUPVCD202WH,component,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+PCUPVCD202WH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,3,{}
+PCWH20BX,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCWPLH1BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+PCWPLH35BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+PH3C16030BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHAH1TSNBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+PHHRE2HETX1HE,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHHRE2HETX2HE,component,True,"{"""": ""Not Listed""}",,amazon,1,"{""listing created before 2026 or date missing"": 1}"
+PHIFT1PBRBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+PHIFT1PBRYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+PHIFT1PCRCH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PHLSDG220BG,component,False,"{""shopify"": ""Listed""}",shopify,"amazon,ebay,shopify",32,"{""listing created before 2026 or date missing"": 31, ""parent listing"": 2}"
+PHLSDG220BG+CGWDWO,combo/pack,False,"{"""": ""Not Listed""}",,"amazon,ebay,shopify",7,"{""listing created before 2026 or date missing"": 7}"
+PHLSDG220BG+CGWDWO+ICST64E27,combo/pack,False,"{"""": ""Not Listed""}",,ebay,2,"{""listing created before 2026 or date missing"": 2}"
+PHLSDG220WI,component,False,"{""ebay"": ""Listed""}",ebay,"ebay,shopify",10,"{""listing created before 2026 or date missing"": 9}"
+PHLSDG220WI+CGWDWO,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PHLSDG220WI+CGWDWO+ICST64E27,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+PHLSDG220WI+ICST64E27,combo/pack,False,"{""ebay"": ""Listed""}",ebay,"ebay,shopify",10,"{""listing created before 2026 or date missing"": 9}"
+PHLSFH1PBRBC,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHLSFH1PBRBM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHLSGP350WI,component,False,"{"""": ""Not Listed""}",,shopify,1,"{""listing created before 2026 or date missing"": 1}"
+PHLSLG190WI,component,False,"{""ebay"": ""Listed""}",ebay,"amazon,ebay,shopify",32,"{""listing created before 2026 or date missing"": 31}"
+PHLSLG190WI+ICST64E27,combo/pack,False,"{""ebay"": ""Listed""}",ebay,"ebay,shopify",15,"{""listing created before 2026 or date missing"": 14}"
+PHRN1002BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHSF1PWR20WH+PHLSGP350WI,combo/pack,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",8,"{""listing created before 2026 or date missing"": 7}"
+PHSF1PWR20WH+PHLSGP350WI+ICST64E27,combo/pack,False,"{""shopify"": ""Listed""}",shopify,"ebay,shopify",7,"{""listing created before 2026 or date missing"": 6}"
+PHSH15E27BYB,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHSH1E27BMYB,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHTC1PBRBM,component,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+PHTC1PCRCH,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+PHTC1PGRGD,component,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+PHTC1PGTGD,component,True,"{"""": ""Not Listed""}",,,0,{}
+PHWPHL1BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHWPHL35BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHWPLH1BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHWPLH35BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+PHXSH1PBRBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+PHXSH1PBRWH,component,True,"{"""": ""Not Listed""}",,,0,{}
+PLF220BC,component,False,"{"""": ""Not Listed""}",,,0,{}
+PSHNDEOS2PBBM,component,False,"{""ebay"": ""Not Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,2,"{""parent listing"": 1}"
+PSHNDEOS2PBBM+LHSHE27BA,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+PSHNDEOS2PBBM+LHSHE27BA+ICST64E27,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+RBCRSF2003GB,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBLSCO335DG,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBLSDO300NB,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBLSHQ180BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBLSSS300BG,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBPHLSDG220BG,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBPHLSDG220BG+ICST64E27,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+RBPHLSDG22WI,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBPHLSGP350WI,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBPLTFBC,component,False,"{""ebay"": ""Not Listed"", ""other"": ""Not Listed""}",,,2,"{""parent listing"": 2}"
+RBSPWRBM,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBWCB4WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+RBWCDSBM,component,False,"{"""": ""Not Listed""}",,,0,{}
+RD42,component,True,"{"""": ""Not Listed""}",,,0,{}
+RPR3PC10WH,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+RPR3PC29WH,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+RW12CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+RW12CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+RWFC30SL,component,False,"{"""": ""Not Listed""}",,,0,{}
+RWHX08BGGY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+RWHX08BTOR,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+RWHX08BTOR2PK,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+RWHX08BXGY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",amazon,8,"{""listing created before 2026 or date missing"": 1}"
+RWHX10BGGY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+RWHX10BTBL,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+RWHX10BXGY,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+SCRNF70BG,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPAL68BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPAL68CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPAL68CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPAL68WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPAL68YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCA70BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCC320BM,component,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,"{""parent listing"": 1}"
+SPCC320BM2PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+SPCD10080BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCD10080WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60601BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60603BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60603CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR60603CO,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR60603SN,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR60603WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60603YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR60605BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60605CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR60605CO,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR60605SN,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR60605WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60605YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPCR6060BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR6060WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60803BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60803CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60803YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60805BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60805CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR60805YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80303BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80303CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80303CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80303SN,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80303WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80303YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80304BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80305BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80305CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80305CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80305SN,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80305WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR80305YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR8030BC,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR8030BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR8030CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR8030CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR8030SN,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR8030WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPCR8030YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PBM,component,True,"{""shopify"": ""Listed""}",shopify,,3,{}
+SPPGUK3PBM+LHCCE27BL+CL3TTB+LDMG95E274,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PBM+LHCCE27BM+CL3RWM+LDMG95E274,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PBM+LHCCE27RE+CL3RRW+LDMG95E274,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PBM+LHCCE27WH+CL3RYT+LDMG95E274,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PBM+LHCCE27YE+CL3RYE+LDMG95E274,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PBM2PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+SPPGUK3PBM4PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SPPGUK3PBM6PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SPPGUK3PBR,component,False,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,3,{}
+SPPGUK3PBR2PK,combo/pack,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+SPPGUK3PBR4PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SPPGUK3PBR6PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SPPGUK3PGD,component,True,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PGD2PK,combo/pack,True,"{""amazon"": ""Not Listed""}",,,1,"{""SKU resolves to another product or is unmatched"": 1}"
+SPPGUK3PGD4PK,combo/pack,True,"{""amazon"": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}"
+SPPGUK3PGD6PK,combo/pack,True,"{"""": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}"
+SPPGUK3PTR,component,True,"{""shopify"": ""Listed""}",shopify,,4,{}
+SPPGUK3PTR2PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+SPPGUK3PTR4PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SPPGUK3PTR6PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SPPGUK3PWH,component,True,"{""shopify"": ""Listed""}",shopify,,4,{}
+SPPGUK3PWH+LHCCE27WH+CL3RBW+LDMG95E274,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+SPPGUK3PWH2PK,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+SPPGUK3PWH4PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SPPGUK3PWH6PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+SSGLLG,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,4,{}
+SSGLLG+SSGLRD,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,3,{}
+SSGLLG2PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,5,{}
+SSGLLG5PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+SSGLLGGPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,5,{}
+SSGLLGIPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,5,{}
+SSGLRD,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,5,{}
+SSGLRD2PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,7,{}
+SSGLRD5PK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,7,{}
+SSGLRDGPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+SSGLRDIPK,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+STAL7545AM,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,{}
+STAL7545AM6PK,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,{}
+STBP45M50YE,component,True,"{"""": ""Not Listed""}",,,0,{}
+SW10AX1G2WWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW10AX2G2WWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW10AX3G2WWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW131GDPSWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW13A1GSPSWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW13A2GDPSWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW13A2GUSBWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW13ASFCUWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW13ASFNEWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW13AUFCUWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW16MSPBWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW1GBPWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW1GLD5100WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW20ADPNEWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW25MSPBWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW2GBPWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW35MDPBWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW45A1GDPWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW45ADP13AWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SW45ADPVTWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SWCRD16WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SWCRD20WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SWCRETOGD,component,False,"{"""": ""Not Listed""}",,,0,{}
+SWCRPTOCH,component,False,"{"""": ""Not Listed""}",,,0,{}
+SWFI10A3PWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBCH180BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBCH180WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBCH280BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBCH280WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBP1CHRWN,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBP1CHRWO,component,False,"{""amazon"": ""Listed""}",amazon,,2,{}
+TPBP1SHLWN,component,False,"{""amazon"": ""Listed""}",amazon,,1,{}
+TPBP1SHRWO,component,False,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+TPBP2SHLWN,component,False,"{""amazon"": ""Listed""}",amazon,,1,{}
+TPBSH180BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBSH180WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBSH280BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPBSH280WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPFHTWB12BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+TPFHTWB12CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPFHTWB12CO,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPFHTWB12SN,component,True,"{"""": ""Not Listed""}",,,0,{}
+TPFHTWB12WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+TPFHTWB12YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+TPHTTN2PBRBM+LSGL12010AR,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,5,{}
+TPHTTN2PBRBM+LSGL12010AR+LDMA60E274WW,combo/pack,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,6,{}
+TSKCBL,component,False,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed""}","amazon,b&q,ebay",,5,{}
+WCFRE3LNPYBM,component,True,"{""wayfair"": ""Not Listed""}",,,0,{}
+WCFRO3DCPBBM,component,True,"{""b&q"": ""Not Listed"", ""wayfair"": ""Not Listed""}",,,0,{}
+WCFRO3LNPYBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WCFRO3SCPBBM,component,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+WCFRO3WDPBBM,component,True,"{""wayfair"": ""Not Listed""}",,,0,{}
+WCFRO3WDPYBM,component,True,"{""wayfair"": ""Not Listed""}",,,0,{}
+WCYG120BBM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WJ018PC3PBM,component,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,6,{}
+WJ018PC3PBM3PK,combo/pack,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,3,{}
+WJ018RB3PBM,component,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,3,{}
+WJ018RB3PBM3PK,combo/pack,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,3,{}
+WJ018RB3PBM4PK,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+WJ018RB3PBM5PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,5,{}
+WJ1GMP1BM,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+WJ2GMP2BM,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,8,{}
+WJB603BM,component,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,4,{}
+WJB603BM5PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,"{""parent listing"": 1}"
+WJHY6443PWH,component,False,"{"""": ""Not Listed""}",,,0,{}
+WJIR35338GZ,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,shopify",,6,{}
+WJIR35368GZ,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+WJIR47338GZ,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+WJLGLBR,component,True,"{""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","b&q,ebay,shopify",,8,"{""parent listing"": 2}"
+WJM6332BM,component,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,5,{}
+WJM6332BM3PK,combo/pack,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,3,{}
+WJM6332BM5PK,combo/pack,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed""}","amazon,ebay",,2,{}
+WJUPVC146WH,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+WJUPVC860WH,component,True,"{""amazon"": ""Listed"", ""b&q"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,b&q,ebay,shopify",,7,{}
+WLFCH730E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLFCH73E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLFCH850E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLFCH85E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLFS2202YBG,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLFS220BC,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,10,{}
+WLFS220BS,component,True,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,10,{}
+WLFS220YBG,component,True,"{"""": ""Not Listed""}",,,0,{}
+WLG400A60E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGA110E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,12,"{""parent listing"": 1}"
+WLGA400E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,8,{}
+WLGA800E27BM,component,False,"{""ebay"": ""Listed"", ""shopify"": ""Listed""}","ebay,shopify",,4,{}
+WLGB500E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,8,{}
+WLGBI500E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGC480A60E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGC480E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGC800A60E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGC800E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGCH73E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+WLGCH85E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+WLGG105E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,12,"{""parent listing"": 1}"
+WLGG375E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+WLGG975E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,12,"{""parent listing"": 1}"
+WLGGI375E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGGID975E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGGIS1050E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGI350E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""other"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+WLGIE350E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGM108E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,12,"{""parent listing"": 1}"
+WLGM110E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,12,"{""parent listing"": 1}"
+WLGM115E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,12,"{""parent listing"": 1}"
+WLGM47E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+WLGM53E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,{}
+WLGMI1150E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGMI530E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGMIG470E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGMIS530E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGMIZ1080E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGMIZ1100E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGN275E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,8,{}
+WLGNA275E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGR53E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,9,"{""parent listing"": 1}"
+WLGS110E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,12,"{""parent listing"": 1}"
+WLGS400A60E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGS400E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLGV480E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,6,{}
+WLGV800E27BM,component,False,"{""amazon"": ""Listed"", ""ebay"": ""Listed"", ""shopify"": ""Listed""}","amazon,ebay,shopify",,7,{}
+WLWLFTWO,component,False,"{"""": ""Not Listed""}",,,0,{}
+WLWOFTWO,component,True,"{"""": ""Not Listed""}",,,0,{}
+WLWOFTWO+CBSF70+CBSFBM+LDSST64E274,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,5,{}
+WLWOFTWO+LDSST64E274,combo/pack,True,"{""shopify"": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}"
+WLWOHTBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WLWOHTBM+LSGL10012AR,combo/pack,True,"{""shopify"": ""Not Listed""}",,,1,"{""SKU resolves to another product or is unmatched"": 1}"
+WLWOHTBM+LSGL10014CL,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+WLWOHTBM+LSGL12010AR,combo/pack,True,"{""ebay"": ""Not Listed""}",,,1,"{""SKU resolves to another product or is unmatched"": 1}"
+WLWOHTBM+LSGL12010AR+CBSF75,combo/pack,True,"{""amazon"": ""Listed"", ""ebay"": ""Not Listed"", ""shopify"": ""Listed""}","amazon,shopify",,8,"{""parent listing"": 3}"
+WLWOHTBM+LSGL1275CL,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,3,{}
+WLWOHTBM+LSGL14010CL,combo/pack,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,4,"{""parent listing"": 2}"
+WLWOHTBM+LSGL7512CL,combo/pack,True,"{"""": ""Not Listed""}",,,2,"{""SKU resolves to another product or is unmatched"": 2}"
+WLWOHTBM+LSGL9015GY,combo/pack,True,"{"""": ""Not Listed""}",,,0,{}
+WLWOHTBM3PK+LSGL14010CL3PK,combo/pack,True,"{"""": ""Not Listed""}",,,1,"{""parent listing"": 1}"
+WS1SHWHBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WS2HTBMYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WS2HTE27BMYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WS2HTE27CH,component,False,"{"""": ""Not Listed""}",,,0,{}
+WS2HTE27WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+WS2HTE27YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSACY195BG,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSAFT200BG,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSAHQS150BG,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSBP16600BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSBP16600YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSCYMUBG,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSCYMUBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSF3HT40BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSF3HT40WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSFAHQS150BG,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSFHTYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSFT45E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSFT45E27BS,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSHTB3P16GD,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSIWCRWH,component,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed""}","amazon,shopify",,2,{}
+WSIWCRWH+LDMA60E274WW,combo/pack,True,"{""shopify"": ""Listed""}",shopify,,1,{}
+WSIWH70BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSIWH70YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSLF220E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLF220E27WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLF270E27BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLF270E27WH,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLFS1002BM  ,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLFS100BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLHTE27BMYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSLHTFE27BMYB,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLS100CFGD,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLS10CFGD,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSLSH68BM,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSLSH68YBBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSLSH68YBCF,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSLSH68YBGD,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSMHTE27BMYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSNWBC+WJ018RB3PBM+LSCY290BC+LDMST64E274,combo/pack,False,"{""other"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,shopify,2,"{""listing created before 2026 or date missing"": 1}"
+WSNWBC+WJ018RB3PBM+LSGLBC160AR+LDMST64E274,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,2,{}
+WSNWBM+WJ018RB3PBM+LSCY290BM+LDMST64E274,combo/pack,False,"{""shopify"": ""Listed""}",shopify,shopify,2,"{""listing created before 2026 or date missing"": 1}"
+WSNWBM+WJ018RB3PBM+LSGL15014CL+LDMST64E274,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+WSNWBS+LSGL14023SG+LDMST64E274,combo/pack,False,"{"""": ""Not Listed""}",,,0,{}
+WSNWBS+WJ018RB3PBM+LSCY290BS+LDMST64E274,combo/pack,False,"{""shopify"": ""Listed""}",shopify,shopify,2,"{""listing created before 2026 or date missing"": 1}"
+WSNWBS+WJ018RB3PBM+LSGL14023SG+LDMST64E274,combo/pack,False,"{""shopify"": ""Listed""}",shopify,,1,{}
+WSSH68CFYB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSSH68YBBM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSSH68YBCF,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSSH68YBGD,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSTJ15CF,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSTJ15GD,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSTW103075YB,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSUSHE27BM,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSUSHE27CH,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSUSHE27CO,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSUSHE27SN,component,False,"{"""": ""Not Listed""}",,,0,{}
+WSUSHE27WH,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSUSHE27YB,component,True,"{"""": ""Not Listed""}",,,0,{}
+WSWTCBM,component,True,"{""ebay"": ""Not Listed"", ""shopify"": ""Listed""}",shopify,,2,"{""parent listing"": 1}"
+WSWTWH,component,True,"{""amazon"": ""Listed"", ""shopify"": ""Listed"", ""wayfair"": ""Not Listed""}","amazon,shopify",,4,{}
+WSWTWH+LDMT45E274,combo/pack,True,"{""amazon"": ""Listed""}",amazon,,1,{}
+WTZL100150WH,component,False,"{"""": ""Not Listed""}",,,0,{}

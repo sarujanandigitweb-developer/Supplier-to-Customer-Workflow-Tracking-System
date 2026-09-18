@@ -1,0 +1,70 @@
+{
+  "checked_at": "2026-09-17T14:41:03.082208",
+  "payload_captured": "2026-09-17",
+  "scope_skus": 1295,
+  "datasets": {
+    "rows": 413,
+    "rowsComp": 311,
+    "rowsAllComp": 677,
+    "rowsAllCombo": 618
+  },
+  "source_records": 2876,
+  "rule_mismatches": 0,
+  "rule_mismatch_unique_skus": 0,
+  "rows": {
+    "total": 413,
+    "listed_any_platform": 272,
+    "not_listed_any_platform": 141,
+    "not_listed_with_older_otherwise_eligible_listing": 5,
+    "not_listed_with_any_source_evidence": 13,
+    "older_examples": [
+      "CRFF4002BM+CO122PCL2PK+LHTTAGU10EBM2PK+LDGU10WD52PK",
+      "CRFF4503BM+LHTTAGU10EBM3PK+LDGU10WD53PK",
+      "CRFF5004BM+LHTTAGU10EBM4PK+LDGU10WD54PK",
+      "CRFF5005BM+CO122PCL2PK+LHTTAGU10EBM5PK+LDGU10WD55PK",
+      "ENC9760"
+    ]
+  },
+  "rowsComp": {
+    "total": 311,
+    "listed_any_platform": 95,
+    "not_listed_any_platform": 216,
+    "not_listed_with_older_otherwise_eligible_listing": 1,
+    "not_listed_with_any_source_evidence": 2,
+    "older_examples": [
+      "PHHRE2HETX2HE"
+    ]
+  },
+  "rowsAllComp": {
+    "total": 677,
+    "listed_any_platform": 177,
+    "not_listed_any_platform": 500,
+    "not_listed_with_older_otherwise_eligible_listing": 2,
+    "not_listed_with_any_source_evidence": 4,
+    "older_examples": [
+      "PHHRE2HETX2HE",
+      "PHLSGP350WI"
+    ]
+  },
+  "rowsAllCombo": {
+    "total": 618,
+    "listed_any_platform": 404,
+    "not_listed_any_platform": 214,
+    "not_listed_with_older_otherwise_eligible_listing": 30,
+    "not_listed_with_any_source_evidence": 40,
+    "older_examples": [
+      "CRFF140SBC+PHLSFH1PBRBC",
+      "CRFF140SBC+PHLSFH1PBRBC+LDSG125E274",
+      "CRFF140SBM+PHLSFH1PBRBM",
+      "CRFF140SBM+PHLSFH1PBRBM+LDSG125E274",
+      "CRFF4002BM+CO122PCL2PK+LHTTAGU10EBM2PK+LDGU10WD52PK",
+      "CRFF4503BM+LHTTAGU10EBM3PK+LDGU10WD53PK",
+      "CRFF5004BM+LHTTAGU10EBM4PK+LDGU10WD54PK",
+      "CRFF5005BM+CO122PCL2PK+LHTTAGU10EBM5PK+LDGU10WD55PK",
+      "CRFF500WH+PHLSLG190WI3PK",
+      "CRSF100WH+PHRB1PWRPW+CGWDWO+PHLSGP350WI",
+      "CRSF100WH+PHRB1PWRPW+PHLSGP350WI",
+      "CRSF2003WH+PHLSLG190WI3PK"
+    ]
+  }
+}

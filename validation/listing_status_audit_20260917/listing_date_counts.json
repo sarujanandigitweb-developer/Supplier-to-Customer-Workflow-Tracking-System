@@ -1,0 +1,10 @@
+{
+  "all_skus": 1295,
+  "any_listing_predates_inventory": 223,
+  "pre2026_listing_and_inventory_created_2026": 53,
+  "not_listed_with_pre2026_record": 32,
+  "not_listed_with_pre2026_record_predating_inventory": 31,
+  "not_listed_with_pre2026_record_and_2026_inventory": 20,
+  "default_not_listed_with_pre2026_record_and_2026_inventory": 6,
+  "skus_with_hidden_older_platform_predating_inventory": 51
+}
