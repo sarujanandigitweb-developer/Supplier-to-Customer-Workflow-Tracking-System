@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SCWTS Handover</title><style>*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,Segoe UI,Arial,sans-serif;color:#1c2433;background:#f5f7fa}
+nav{position:sticky;top:0;background:#15243D;padding:8px 12px;display:flex;flex-wrap:wrap;gap:4px 10px;z-index:5}
+nav a{color:#fff;text-decoration:none;font-size:12.5px;padding:3px 6px;border-radius:4px}nav a:hover{background:#2b4168}
+main{max-width:1050px;margin:0 auto;padding:18px 16px 60px;background:#fff}
+h1{color:#15243D;font-size:26px;margin:.3em 0}h2{color:#15243D;border-bottom:2px solid #15243D;padding-bottom:4px;margin-top:2em}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13.5px}
+th{background:#15243D;color:#fff;text-align:left;padding:7px 9px}td{border:1px solid #d7dde7;padding:6px 9px;vertical-align:top}tr:nth-child(even) td{background:#f5f7fa}
+pre{background:#eef1f6;border-left:4px solid #15243D;padding:10px;overflow-x:auto;font-size:12.5px}code{font-family:Consolas,monospace;background:#eef1f6;padding:1px 4px;border-radius:3px;font-size:.92em;word-break:break-word}pre code{background:none;padding:0}
+.badges{margin:8px 0}.b{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;margin-right:6px;color:#fff}.ok{background:#1f7a46}.bad{background:#b3261e}.warn{background:#b26a00}
+@media print{nav{display:none}body{background:#fff}main{max-width:none}h2{page-break-after:avoid}}</style></head><body><nav><a href="#s1">1. Project Overview</a><a href="#s2">2. Final Status</a><a href="#s3">3. Latest Updates</a><a href="#s4">4. Project Structure / Important Files</a><a href="#s5">5. Data Sources / Database Tables</a><a href="#s6">6. Current Workflow / Architecture</a><a href="#s7">7. How to Run</a><a href="#s8">8. Refresh / Deployment Process</a><a href="#s9">9. Validation Completed</a><a href="#s10">10. Known Issues / Dependencies</a><a href="#s11">11. Backup Person / Owner</a><a href="#s12">12. Troubleshooting</a><a href="#s13">13. Final Handover Notes</a></nav><main>
+<h1>Supplier to Customer Workflow Tracking System (SCWTS) - Handover</h1>
+<div class="badges"><span class="b ok">V2 LIVE</span><span class="b ok">V3 LIVE</span><span class="b bad">V1 cron broken</span><span class="b warn">Known limitation</span></div>
+<p>Project name: <code>supplier_to_customer_workflow_tracking_system</code> | Project code: <code>scwts</code> | Folder: <code>/home/led-247/Supplier-to-Customer-Workflow-Tracking-System</code></p>
+<p>Developer: Sarujanan (git author <code>sarujanandigitweb-developer</code>) | Handover written: 2026-10-05 | Latest commit: <code>5e5bd8f</code> (2026-10-05) | Git status: clean, <code>main</code> = <code>origin/main</code></p>
+<p>Source of truth: the current code and this folder. Old docs (<code>AUTOMATION.md</code>, <code>documentation/</code>, <code>workflows/</code>, <code>capability/</code>) describe the July V1 and are outdated.</p>
+<h2 id="s1">1. Project Overview</h2>
+<p>SCWTS is a set of self-contained HTML dashboards, titled "Supplier's Basket to Customer's Home", that follow every new 2026 product from supplier/container to marketplace listing and then to customer outcomes (impressions, clicks, orders, units, revenue, returns, feedback). Requested by Varmen; data owners are listed in section 11. There are three generations in one repo:</p>
+<div class="tw"><table><thead><tr><th>Version</th><th>Folder</th><th>Scope</th><th>Hub page slug (member <code>sarujanan</code>)</th><th>Status</th></tr></thead><tbody>
+<tr><td>V1</td><td><code>dashboard-v1/</code></td><td>Every new 2026 SKU (3,383 in July): one row per SKU x marketplace, listed/not listed, orders, traffic, returns. Source: old DB <code>order_management_copy</code></td><td><code>supplier-to-customer-workflow-tracking</code></td><td>FROZEN. Daily cron is broken (build code deleted from repo). Hub copy is the 2026-09-11 build</td></tr>
+<tr><td>V2</td><td><code>dashboard-v2/</code></td><td>New 2026 components (inventory) and combos/packs derived from them, with supplier/PO/supply status. Source: LEDSone DB</td><td><code>supplier-to-customer-workflow-tracking-v2</code></td><td>LIVE, main dashboard. Last successful cron publish 2026-09-21 11:02</td></tr>
+<tr><td>V3</td><td><code>dashboard-v3/</code></td><td>Container-to-customer: scope is a manager Google-Sheet of containers 11-17 (209 component SKUs)</td><td><code>container-to-customer-workflow-tracking</code></td><td>LIVE. Last successful cron publish 2026-10-01 16:03</td></tr>
+</tbody></table></div>
+<p>All dashboards are single static HTML files with the data embedded as <code>const PAYLOAD = {...}</code>. Publishing = upsert of the HTML into <code>varman_aios.hub_pages</code> (Varman AIOS hub, a Vercel site that reads that table).</p>
+<h2 id="s2">2. Final Status</h2>
+<ul>
+<li>Overall: Known Limitation / External Dependency. V2 and V3 build, validate and publish automatically; V1 is retired in practice but its cron still fires and fails every day.</li>
+<li>V2 (LIVE): last validation <code>RESULT: PASS</code>, run 20260921_110001: combos rows 999 (311 components, 440 combos), component rows 435, revenue 19,208.57 (combo view), impressions 4,788,755. Only standing soft failure: "Average Feedback source" (no review table in the V2 source).</li>
+<li>V3 (LIVE): last build 2026-10-01: 6 containers (17 is empty), 209 components, 314 combos, 868 rows, 734 listed, revenue 37,919.80. Exit 0 but 5 soft FAILs (see section 10).</li>
+<li>V1: last successful publish 2026-09-11 (hub id of that page not documented here). Cron entry runs <code>scripts/refresh_and_publish.sh</code> at 11:15 and has failed every day since 2026-09-15 (<code>dashboard-v1-sql/build_new_scope.py: No such file</code>).</li>
+<li>Cron runs only while the PC is powered on. <code>logs/automation_v2.log</code> has no runs between 2026-09-22 and 2026-10-05 and V3 only has 2026-10-01 after 09-21, so expect gaps.</li>
+<li>Nothing is pending in git. Commits are on <code>origin/main</code>. A zip backup of the whole folder exists one level up (<code>Supplier-to-Customer-Workflow-Tracking-System.zip</code>, 2026-10-05). The sibling folder <code>Supplier-to-Customer-Workflow-Tracking-System (Copy)</code> is a stale duplicate from 2026-09-14; do not use or edit it.</li>
+</ul>
+<h2 id="s3">3. Latest Updates</h2>
+<p>Chronology (git + <code>daily_works_logs/</code> + <code>validation/</code>):</p>
+<div class="tw"><table><thead><tr><th>Date</th><th>Change</th></tr></thead><tbody>
+<tr><td>2026-07-21 to 07-27</td><td>V1 built (see <code>daily_works_logs/</code> D01-D05): inventory-table driven scope, 13 validation checks (8 HARD / 5 soft), daily cron + hub publish</td></tr>
+<tr><td>2026-07-28 to 08-03</td><td>V2 created (<code>build_v2.py</code>, <code>make_html.py</code>, <code>refresh_and_publish_v2.sh</code>); V3 data spec and builder (<code>dashboard-v3-sql/V3_DATA_SOURCE_SPEC.md</code>)</td></tr>
+<tr><td>2026-08-03/08-18</td><td>V3 builder fix (sheet image beats marketplace image), V3 cron script added 08-18</td></tr>
+<tr><td>2026-09-14</td><td>Commit <code>2061344</code>: V2 data source migrated from the old DB to LEDSone via <code>v2_sources.py</code> temp views. V1 build code (<code>dashboard-v1-sql/</code>, <code>dashboard-v1-update/</code>) deleted from the repo</td></tr>
+<tr><td>2026-09-15/16</td><td>User-approved V2 rules in <code>build_v2.py</code>: stock-in received-date fallback, Rule A (latest PO not arrived -&gt; show last arrived PO), Rule B (still blank -&gt; latest UK stock-in receipt). Gap report <code>validation/DB_Designer_Gap_Report_Container_Received_20260915.md</code></td></tr>
+<tr><td>2026-09-17</td><td>Pack classification (Component / Combo / Pack, Packs tab, All Data counts) using <code>inventory.product_pk</code>; retry logic for DB connection failures in <code>refresh_and_publish_v2.sh</code> (<code>741af8e</code>); closure doc <code>validation/V2_commit_history_closure_20260917.md</code> (control exception: pushed before staged-scope review; history not rewritten)</td></tr>
+<tr><td>2026-09-18</td><td>Commit <code>34af9a6</code> "fix: prevent stale V2 dashboard after database connection limits": retry regex widened to the 3 wordings of a connection-capacity refusal (<code>too many connections for role</code>, <code>remaining connection slots are reserved</code>, <code>sorry, too many clients already</code>). Reconciliation proved the listing SQL correct (0 missing / 0 unexplained / 0 duplicates, 2,380 Listed) - see <code>validation/V2_missing_listing_reconciliation_20260918.md</code>. Commit <code>d56a944</code>: refreshed artifacts + <code>validation/listing_status_audit_20260917/</code></td></tr>
+<tr><td>2026-10-05</td><td>Final commit <code>5e5bd8f</code> "Enhance SCWTS with comprehensive logging and validation improvements": despite the title it only adds daily logs D03/D04 (<code>daily_works_logs/2026-09-17...REQ-03-D03.md</code>, <code>2026-09-18...REQ-03-D04.md</code>), refreshed V2/V3 payloads, HTML and validation JSON, and appends to <code>logs/automation*.log</code>. The only code-like change is a CSS block in <code>dashboard-v3/index.html</code> (3 view tabs fit a phone row) plus the V3 payload dated 2026-10-01</td></tr>
+</tbody></table></div>
+<p>Latest working implementation to continue from: V2 (<code>dashboard-v2-sql/build_v2.py</code> -&gt; <code>make_html.py</code> -&gt; <code>push_to_hub.js</code> driven by <code>scripts/refresh_and_publish_v2.sh</code>) and V3 (same pattern with <code>build_v3.py</code> / <code>make_html_v3.py</code> / <code>refresh_and_publish_v3.sh</code>).</p>
+<h2 id="s4">4. Project Structure / Important Files</h2>
+<pre><code>Supplier-to-Customer-Workflow-Tracking-System/
+  .env                      git-ignored; only LEDSONE_PGHOST/PORT/DATABASE/USER/PASSWORD/SSLMODE
+  scripts/
+    refresh_and_publish.sh      V1 orchestrator (BROKEN - target scripts deleted)
+    refresh_and_publish_v2.sh   V2 orchestrator (flock lock, retry x3, sanity gate, publish)
+    refresh_and_publish_v3.sh   V3 orchestrator (flock lock, sheet-mapping guard, publish)
+  dashboard-v1/index.html       V1 page (frozen; ALSO REQUIRED by V2: make_html.py copies its CSS)
+  dashboard-v2/index.html       V2 composed page
+  dashboard-v2-sql/
+    build_v2.py        V2 builder: queries, classification, 26 validation checks -&gt; payload_v2.json + validation_v2.json
+    v2_sources.py      LEDSone -&gt; old-table-shape pg_temp views (fix source mappings HERE, not in build_v2 SQL)
+    make_html.py       payload -&gt; dashboard-v2/index.html (all CSS/JS)
+    v2_queries.sql     reference queries (July)
+  dashboard-v2-update/push_to_hub.js (+package.json, node_modules)  hub uploader
+  dashboard-v3/index.html
+  dashboard-v3-sql/
+    build_v3.py, make_html_v3.py, validate_v3.py, read_sheet.py
+    sheet_containers.json   container -&gt; SKU mapping (static, generated from the xlsx)
+    ledsone_products.json   static cache of LEDSone inventory.products (31 Jul)
+    V3_DATA_SOURCE_SPEC.md, payload_v3.json, validation_v3.json
+  dashboard-v3-data/        manager sheet &quot;New Containers to UK - 2026 .xlsx&quot; (+ Container 11 csv)
+  dashboard-v3-update/push_to_hub.js
+  .claude/skills/dashboard-v2-daily/SKILL.md   project skill: V2 daily procedure and approved rules
+  daily_works_logs/   per-day SKILL md, daily-activities CSV, ingest SQL (memory table daily_task.tbl_scwts_sarujanan)
+  validation/         per-run V1 validation (to 2026-09-11), V2 evidence reports, listing_status_audit_20260917/
+  logs/               automation.log (V1), automation_v2.log, automation_v3.log, cron*.out
+  sql/, dashboard_refresh.py, dashboard/   legacy original dashboard (July, pre-V1) - not scheduled
+  documentation/, workflows/, capability/, skills/, AUTOMATION.md   July-era docs (outdated; AUTOMATION.md describes V1 at 11:00, now 11:15 and broken)</code></pre>
+<p>Missing from the repo: <code>dashboard-v1-sql/</code> and <code>dashboard-v1-update/</code> (deleted 2026-09-14/15; recoverable with <code>git show 54e63d5:dashboard-v1-sql/build_new_scope.py</code> or from the "(Copy)" folder). The <code>.claude/skills/dashboard-v2-daily</code> skill is project-local; the home <code>~/.claude/skills/synced</code> folder does not contain it.</p>
+<h2 id="s5">5. Data Sources / Database Tables</h2>
+<p>V2 (LEDSone, read-only <code>tech_user</code>, host/db/port in project <code>.env</code>):</p>
+<ul>
+<li><code>inventory.products</code> (component scope: <code>inventory_bool = true</code>, <code>created_at &gt;= start of current year</code>, non-blank SKU, not deleted), <code>inventory.product_pk</code> (pack codes, read each run), <code>inventory.product_history</code> (frozen partial copy, NOT used)</li>
+<li><code>suppliers.orders</code>, <code>suppliers.old_supplyorder</code>, <code>suppliers.old_supplyorderlist</code> (PO / SUPPLY resolution, container, received date)</li>
+<li><code>configurator.components_sot_skus</code> (SOT column)</li>
+<li>Listings: <code>listings.amazon_listings</code>, <code>ebay_listings</code>, <code>shopify_listings</code>, <code>bandq_listings</code></li>
+<li>Orders: <code>order_management.orders</code> / <code>order_item_info</code>; traffic: <code>business_reports.*</code>, <code>amazon_campaigns</code> / <code>ebay_campaigns</code> / <code>google_ads.product_performance</code>; returns: <code>customer_service.*_returns</code></li>
+<li>All remapped to the old table shapes as pg_temp views by <code>dashboard-v2-sql/v2_sources.py</code>. LEDSone lacks <code>inv_product_combo</code> (derived from <code>sku_original</code> tokens plus pack suffix) and <code>isdeleted</code>.</li>
+<li>Old DB (<code>order_management_copy</code>, env <code>PGHOST/PGPORT/PGDATABASE/PGUSER/PGPASSWORD</code>, NOT in <code>.env</code>): V2 uses it only for <code>public.inv_products.isdeleted</code> and for 10 order sources LEDSone does not carry (REPLACEMENT, ETSY, MANUAL OM, MANUALORDER, AVASAM, BOL, MANOMANO, FAIRE, RESEND, ONBUY; guarded - build stops if LEDSone starts carrying one). All V1/V2/V3 hub publishes write to <code>varman_aios.hub_pages</code> on this DB.</li>
+<li>Timestamps: listings/suppliers in LEDSone are UTC (+5h30 applied). <code>google_ads.product_performance</code> has superseded duplicate ids (latest <code>updated_at</code> per id).</li>
+</ul>
+<p>V3: Google Sheet export <code>dashboard-v3-data/New Containers to UK - 2026 .xlsx</code> (container -&gt; SKU authority, parsed by <code>read_sheet.py</code>); old DB <code>public.listing_data</code>, <code>order_transaction</code>, <code>traffic_data</code>, <code>ppc_performance</code> for listings/orders/traffic; <code>ledsone_products.json</code> cache for created dates; V3 returns come from the old DB (reported as 129 in the last run). Old DB <code>inv_products</code>, <code>inv_product_combo</code>, <code>supplier.*</code> are empty/dropped there, so they are not used.</p>
+<p>V1 (frozen): old DB <code>inv_products</code>, <code>inv_product_combo</code> (product = combo id, inventory = component id), <code>inv_final_stock</code>, <code>listing_data</code>, <code>order_transaction</code>, <code>traffic_data</code>, <code>ppc_performance</code>, <code>amazon/ebay/shopify_returns</code>, <code>supplier.*</code>.</p>
+<h2 id="s6">6. Current Workflow / Architecture</h2>
+<p>V2 and V3 share one pipeline: orchestrator shell script (cron) -&gt; stage 1 builder (fetch, validate, write payload JSON; non-zero exit on any HARD failure) -&gt; stage 2 composer (embed payload into HTML) -&gt; sanity gate (file size floor 300 KB, markers <code>const PAYLOAD =</code>, <code>id="tbl"</code>, <code>id="tbody"</code>, <code>id="viewtabs"</code> (V2) / <code>id="conttabs"</code> (V3), <code>&lt;/html&gt;</code>; V3 also rejects external <code>&lt;script src&gt;</code> / <code>&lt;link href=http&gt;</code>) -&gt; stage 3 <code>push_to_hub.js</code> upsert. A failed build never overwrites the previous hub page.</p>
+<p>V2 business rules (approved; full text in <code>.claude/skills/dashboard-v2-daily/SKILL.md</code> section 3):</p>
+<ul>
+<li>Components: new this year, not deleted. Status is an attribute not a filter: COMPLETED / INCOMING / NO SUPPLY DATA. Arrived PO (<code>status_arrived = true</code>) and completed supply (<code>lower(trim(status)) = 'completed'</code>) both count as arrived; the most recent wins. Never parse <code>product_history</code> "Supply - SU..." text.</li>
+<li>Combos qualify only if they use a base component (pack suffix <code>[A-Z]?[0-9]*PK</code>); deleted combos excluded; the combo's own created date is not a condition.</li>
+<li>Classification Component / Combo / Pack (tabs). Default view = completed-only; "All Data" button shows the full base set (must default OFF).</li>
+<li>Listing: resolved via mapped_sku/sku, window <code>created_at &gt;= 2026-01-01</code>, not parent, not wrong_sku, eBay ended excluded. Revenue = completed orders. Category from SKU prefix (longest first: PH = Pendant Lamp Holder, WS = Wall Arm, else Other).</li>
+<li>Rules A/B for received date (see section 3, 2026-09-15). Open and unapproved: <code>fc.status='completed'</code> is not proof of receipt (~42 false dates).</li>
+<li>Last numbers (2026-09-21): main view 311 components / 272 combos / 168 packs; All Data 686 / 427 / 226 (SKILL.md section 4 lists older targets 311/411 and 677/615 - treat as outdated; the checks it describes still apply).</li>
+</ul>
+<p>V3 rules: row grain = one row per (container, product, marketplace) where product is the combo if one exists else the component (never component x combo x marketplace - the V2 fan-out bug, regression-gated). Combos derived from SKU naming (pack: <code>&lt;COMP&gt;[0-9A-Z]*PK</code>; combo: <code>+</code>-joined token list containing the component). Component image = sheet "Image Link" first, marketplace image as fallback. Supplier and Received Date columns intentionally removed.</p>
+<h2 id="s7">7. How to Run</h2>
+<p>Always from the project folder with the environment loaded:</p>
+<pre><code>cd /home/led-247/Supplier-to-Customer-Workflow-Tracking-System
+set -a &amp;&amp; . ./.env &amp;&amp; set +a            # LEDSONE_PG* (never print or commit)
+# V2 (needs old-DB PG* variables too; otherwise the code falls back to a hard-coded default - see section 10)
+python3 dashboard-v2-sql/build_v2.py     # prints RESULT: PASS/FAIL, writes payload_v2.json + validation_v2.json
+python3 dashboard-v2-sql/make_html.py    # writes dashboard-v2/index.html (needs dashboard-v1/index.html)
+# V3
+python3 dashboard-v3-sql/read_sheet.py   # only when the xlsx changes: regenerates sheet_containers.json
+python3 dashboard-v3-sql/build_v3.py &amp;&amp; python3 dashboard-v3-sql/make_html_v3.py</code></pre>
+<p>Full automated run (same as cron): <code>scripts/refresh_and_publish_v2.sh</code> / <code>scripts/refresh_and_publish_v3.sh</code> (both write the real hub - run only when you intend to publish). LEDSone <code>tech_user</code> often hits "too many connections for role": retry (the V2 script already retries 3 times: waits 30 s then 60 s).</p>
+<p>Manual publish (only when approved): <code>cd dashboard-v2-update &amp;&amp; HUB_DB_URL=&lt;set inline, never in a file&gt; node push_to_hub.js sarujanan &lt;slug&gt; "&lt;title&gt;" ../dashboard-v2/index.html</code>.</p>
+<h2 id="s8">8. Refresh / Deployment Process</h2>
+<p>Crontab of user <code>led-247</code> (read-only inspection 2026-10-05):</p>
+<div class="tw"><table><thead><tr><th>Version</th><th>Schedule</th><th>Command</th><th>Log</th></tr></thead><tbody>
+<tr><td>V2</td><td><code>0 11 * * *</code></td><td><code>scripts/refresh_and_publish_v2.sh</code></td><td><code>logs/automation_v2.log</code>, <code>logs/cron_v2.out</code></td></tr>
+<tr><td>V1</td><td><code>15 11 * * *</code></td><td><code>scripts/refresh_and_publish.sh</code></td><td><code>logs/automation.log</code>, <code>logs/cron.out</code> (fails daily)</td></tr>
+<tr><td>V3</td><td><code>0 16 * * *</code></td><td><code>scripts/refresh_and_publish_v3.sh</code></td><td><code>logs/automation_v3.log</code>, <code>logs/cron_v3.out</code></td></tr>
+</tbody></table></div>
+<p>The crontab also contains jobs of other projects (WLSP, PSLD, RRHD, ANPIA, SOT listing, postage); do not touch them. System timezone Asia/Colombo.</p>
+<p>Deployment = hub publish: <code>push_to_hub.js</code> runs <code>INSERT INTO varman_aios.hub_pages (member_name, page_slug, page_title, html_content) ... ON CONFLICT (member_name, page_slug) DO UPDATE</code> with member <code>sarujanan</code>. It reads <code>HUB_DB_URL</code> from the environment; the shell scripts build it from the <code>PG*</code> variables and redact connection strings in logs. The shared credential reaches beyond this table, so only ever upsert your own rows (member <code>sarujanan</code>). Check a publish with <code>Pushed successfully</code> in the log; no site redeploy is needed.</p>
+<p>To retire V1 cleanly: remove the V1 cron line (decision for the owner, not done).</p>
+<h2 id="s9">9. Validation Completed</h2>
+<ul>
+<li>V2 builder: 26 checks per run (<code>dashboard-v2-sql/validation_v2.json</code>, last PASS 2026-09-21). Evidence: <code>validation/V2_pack_classification_all_products_cron_validation_20260917.md</code>, <code>V2_daily_refresh_retry_validation_20260917.md</code> (retry behaviour proven on fakes: transient -&gt; 3 attempts then stop; hard failure -&gt; no retry; failed build -&gt; no compose, no publish), <code>V2_missing_listing_reconciliation_20260918.md</code> (0 missing / 0 unexplained / 0 duplicates), <code>V2_commit_history_closure_20260917.md</code>, <code>V2_container_received_date_gap_evidence_20260914.md</code>, <code>DB_Designer_Gap_Report_Container_Received_20260915.md</code>, <code>listing_status_audit_20260917/</code> (website cross-check of listed/not-listed SKUs).</li>
+<li>V3: <code>validation_v3.json</code> / <code>validate_v3.py</code>: container-&gt;component, component-&gt;combo, combo-&gt;marketplace, duplicate-row gate, images, listing, traffic, orders, revenue.</li>
+<li>V1 (historic): <code>validation/validation_&lt;ts&gt;.md</code> and <code>fetch_summary_&lt;ts&gt;.json</code> per run until 2026-09-11, plus <code>FINAL_HANDOVER_VALIDATION_20260727.md</code>.</li>
+<li>Previously reported V1 defects (memory note <code>scwts-final-validation-defects-20260727</code>, 3 bugs + 2 weak checks in <code>build_new_scope.py</code>) were never fixed, and the file no longer exists in the repo, so they are moot unless V1 is restored.</li>
+<li>Not re-run by this handover: no builds, publishes or DB queries were executed while writing it.</li>
+</ul>
+<h2 id="s10">10. Known Issues / Dependencies</h2>
+<ol>
+<li>V1 cron broken since 2026-09-15 (missing <code>dashboard-v1-sql/build_new_scope.py</code>); hub V1 page frozen at 2026-09-11. Decide: remove the cron line, or restore the deleted folders from git and port V1 to LEDSone.</li>
+<li>Hard-coded fallback database password (old reference DB, user <code>temp_user</code>) in tracked files: <code>dashboard-v2-sql/build_v2.py</code>, <code>dashboard-v3-sql/build_v3.py</code>, <code>dashboard-v3-sql/validate_v3.py</code>, <code>dashboard_refresh.py</code>, <code>scripts/refresh_and_publish*.sh</code> (3 files); also in git history. <code>PG*</code> variables are not in <code>.env</code>, so the fallback is what cron actually uses; removing it before adding <code>PG*</code> to <code>.env</code> would break the cron. Follow-up: add <code>PG*</code> to <code>.env</code>, verify, remove fallbacks, rotate the password with the DB owner.</li>
+<li>Old reference DB runs out of connection slots around 11:00 (failures 2026-09-15, 16, 17). The retry is a mitigation. The old DB is also being dismantled (V3 spec: <code>inv_products</code>, <code>inv_product_combo</code>, returns, <code>supplier.*</code> emptied or dropped on 2026-07-31); V3 still reads its listing/order/traffic tables, so V3 will break if those are removed. Migration to LEDSone for V3 is not done.</li>
+<li>V3 data is partly static: <code>sheet_containers.json</code> (Container 11-16 only; tab 17 empty) and <code>ledsone_products.json</code> (31 Jul) are not refreshed by cron, so new containers or SKUs need <code>read_sheet.py</code> plus a re-extraction of LEDSone products. Soft FAILs in the last V3 run: component created dates 867/868, combo created dates 584/754, PCRMFF missing from LEDSone, sheet images missing for PCRMFF and SPPGUK3PGD, no customer-review table. Note Average Feedback IS available in LEDSone (<code>customer_service.ebay_orders_customer_feedbacks</code>, eBay only) but is not wired in.</li>
+<li>V2 soft FAIL: "Average Feedback" renders "No Reviews" for the same reason. Component supply gaps (about 270 components have no PO or supply record), SKU re-codes without a <code>product_mapping</code> row, warehouse id 33 missing (SKILL.md section 8).</li>
+<li>Image viewer feature (about 63 lines, not committed anywhere) preserved outside the repo at <code>/home/led-247/scwts_preserved_work/image_viewer_20260918/</code> (patch + copies); decision pending with Varman.</li>
+<li>The V2 page build requires <code>dashboard-v1/index.html</code> (CSS source) - do not delete V1's HTML.</li>
+<li>Cron needs the PC on; no catch-up mechanism. Node 'pg' module is installed under <code>dashboard-v2-update/node_modules</code> and <code>dashboard-v3-update/node_modules</code> (git-ignored; <code>npm install pg</code> if missing).</li>
+<li>Unapproved open item: <code>fc.status='completed'</code> treated as received (~42 false received dates).</li>
+</ol>
+<p>External dependencies: LEDSone DB (owner/DB team), old order_management_copy DB (Varman AIOS hub table + deleted flag), Varman AIOS hub (Vercel), manager's container Google Sheet, Google Chrome/playwright for UI checks (optional).</p>
+<h2 id="s11">11. Backup Person / Owner</h2>
+<ul>
+<li>Backup developer: Not documented.</li>
+<li>Requester / reviewer: Varmen (named in daily logs and the skill's "Task Assigned By").</li>
+<li>Data owners documented in the project memory/logs: Tamilchelvan (purchasing backend, supplier/PO/CBM data), Mani (validator for that gap); database team for the old DB connection limits and for LEDSone access; "DB Designer" gap report for container received dates.</li>
+<li>Owner of the <code>sarujanan</code> hub rows and the project <code>.env</code>: the departing developer; transfer or re-key before leaving (the hub rows are keyed by <code>member_name = 'sarujanan'</code>; a different member name would create new pages and leave the old ones stale).</li>
+</ul>
+<h2 id="s12">12. Troubleshooting</h2>
+<div class="tw"><table><thead><tr><th>Symptom</th><th>Check / fix</th></tr></thead><tbody>
+<tr><td><code>too many connections for role</code> / <code>remaining connection slots are reserved</code></td><td>Temporary capacity refusal: retry; the V2 script does it automatically (3 attempts)</td></tr>
+<tr><td>V2 build "LEDSone credentials missing"</td><td><code>.env</code> not loaded: <code>set -a &amp;&amp; . ./.env &amp;&amp; set +a</code></td></tr>
+<tr><td><code>make_html.py</code> fails</td><td><code>dashboard-v1/index.html</code> missing: <code>git checkout -- dashboard-v1/index.html</code></td></tr>
+<tr><td>V1 log: <code>can't open file .../dashboard-v1-sql/build_new_scope.py</code></td><td>Expected (see issue 1)</td></tr>
+<tr><td><code>Cannot find module 'pg'</code> at publish</td><td><code>cd dashboard-v2-update &amp;&amp; npm install pg</code> (same for v3)</td></tr>
+<tr><td>Hub page stale</td><td>Read last lines of <code>logs/automation_v2.log</code> / <code>automation_v3.log</code>: look for <code>[FATAL]</code>, <code>stage 3 publish: OK</code>; check the PC was on at 11:00/16:00 and the <code>flock</code> lock (<code>logs/.v2.lock</code>, <code>.v3.lock</code>) is not held</td></tr>
+<tr><td>V3 <code>container mapping ... missing or empty</code></td><td><code>python3 dashboard-v3-sql/read_sheet.py</code></td></tr>
+<tr><td>A count differs from expected targets</td><td>Stop and report, never adjust the target (SKILL.md rule); see <code>validation_v2.json</code></td></tr>
+<tr><td>V3 shows blank created dates / PCRMFF missing</td><td>Refresh <code>ledsone_products.json</code> from LEDSone <code>inventory.products</code> and rebuild</td></tr>
+</tbody></table></div>
+<h2 id="s13">13. Final Handover Notes</h2>
+<ul>
+<li>Treat V2 as the main product and V3 as the container view; V1 is legacy. Start with <code>.claude/skills/dashboard-v2-daily/SKILL.md</code> (safety rules: DB read-only, publish only when told, no credentials in files, no business-rule changes without approval).</li>
+<li>Do not rely on <code>AUTOMATION.md</code>, <code>documentation/</code>, <code>workflows/</code> for V2/V3; they pre-date them.</li>
+<li>First actions for the backup: (a) remove or fix the V1 cron entry, (b) move the old-DB credentials into <code>.env</code> and remove the hard-coded fallback, (c) confirm the PC is on for 11:00 / 16:00 runs or move the jobs to an always-on host, (d) decide on the image viewer and the V3 LEDSone migration.</li>
+<li>Existing handover status: the <code>handover/</code> folder was empty, so this file is newly created. The daily logs under <code>daily_works_logs/</code> (D01 to REQ-03-D04) are the detailed change history; the last (2026-09-18, REQ-03-D04) describes the retry-fix work.</li>
+<li>Secrets: none recorded here; env var names only.</li>
+</ul>
+</main></body></html>
