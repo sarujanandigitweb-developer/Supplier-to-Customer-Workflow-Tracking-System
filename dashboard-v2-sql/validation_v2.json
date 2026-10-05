@@ -1,10 +1,10 @@
 {
-  "run": "20260918_110002",
+  "run": "20260921_110001",
   "checks": [
     {
       "check": "supplier schema readable by tech_user",
       "status": "PASS",
-      "detail": "supplier_suppliers=51; supplier_orders=292; supplier_containers=28; supplier_order_items=4533; supplier_final_containers=20; supplier_invoices=37"
+      "detail": "supplier_suppliers=51; supplier_orders=298; supplier_containers=29; supplier_order_items=4712; supplier_final_containers=20; supplier_invoices=37"
     },
     {
       "check": "New components in scope",
@@ -14,27 +14,27 @@
     {
       "check": "Combos built from them",
       "status": "PASS",
-      "detail": "431 (floor 228)"
+      "detail": "440 (floor 228)"
     },
     {
       "check": "Component x combo pairs",
       "status": "PASS",
-      "detail": "496 (floor 266)"
+      "detail": "506 (floor 266)"
     },
     {
       "check": "Every row has a component SKU",
       "status": "PASS",
-      "detail": "988/988"
+      "detail": "999/999"
     },
     {
       "check": "Every row has a supplier",
       "status": "PASS",
-      "detail": "988/988"
+      "detail": "999/999"
     },
     {
       "check": "Received Date sourced from the container (not the PO date)",
       "status": "PASS",
-      "detail": "985/988 rows \u2014 blank means the container is not yet closed"
+      "detail": "996/999 rows \u2014 blank means the container is not yet closed"
     },
     {
       "check": "No raw container IDs leaked into the Container column",
@@ -59,22 +59,22 @@
     {
       "check": "Container present where assigned",
       "status": "PASS",
-      "detail": "988/988 rows have a container"
+      "detail": "999/999 rows have a container"
     },
     {
       "check": "Component images (supplier photo -> listing fallback)",
       "status": "PASS",
-      "detail": "988/988 rows; 301/311 distinct components"
+      "detail": "999/999 rows; 301/311 distinct components"
     },
     {
       "check": "Combo images",
       "status": "PASS",
-      "detail": "814/988"
+      "detail": "825/999"
     },
     {
       "check": "Top Reason populated",
       "status": "PASS",
-      "detail": "17/988 (amazon 100%, ebay ~11%, shopify has no reason column)"
+      "detail": "17/999 (amazon 100%, ebay ~11%, shopify has no reason column)"
     },
     {
       "check": "Component dataset built independently of the combo queries",
@@ -99,7 +99,7 @@
     {
       "check": "No duplicate (product, marketplace) rows \u2014 KPI totals cannot double-count",
       "status": "PASS",
-      "detail": "combo 988 rows / component 435 rows, all unique"
+      "detail": "combo 999 rows / component 435 rows, all unique"
     },
     {
       "check": "No pre-2026 Listing Date leaked into either dataset",
@@ -119,7 +119,7 @@
     {
       "check": "Every row carries a Record ID, one per product block",
       "status": "PASS",
-      "detail": "596 REC-* + 311 CMP-* ids"
+      "detail": "605 REC-* + 311 CMP-* ids"
     },
     {
       "check": "Both datasets share the identical column layout",
@@ -133,9 +133,9 @@
     }
   ],
   "notes": [
-    "SOT column: 139 of 684 components are in the SOT list (configurator.components_sot_skus, matched on the SKU itself, not on its prefix).",
+    "SOT column: 151 of 686 components are in the SOT list (configurator.components_sot_skus, matched on the SKU itself, not on its prefix).",
     "Category filter: SKU-prefix classification, longest prefix first. PH -> Pendant Lamp Holder and WS -> Wall Arm, resolved from the SOT sheet's source_tab (PH: 398/399 'pendantholder'; WS: 180/180 'wallarm'). Unmatched SKUs -> 'Other'.",
-    "Row set: 684 components created this year (691 including deleted); 311 shown after the completed-only rule (68 arrived PO + 243 completed supply order).",
+    "Row set: 686 components created this year (693 including deleted); 311 shown after the completed-only rule (68 arrived PO + 243 completed supply order).",
     "Average Feedback: no customer-review source exists in this database (searched all schemas for rating/review/feedback/star columns). Column renders 'No Reviews' for every row pending a marketplace reviews feed."
   ],
   "source": {
@@ -186,15 +186,15 @@
       },
       "pg_temp.supplier_orders": {
         "readable": true,
-        "rows": 292
+        "rows": 298
       },
       "pg_temp.supplier_containers": {
         "readable": true,
-        "rows": 28
+        "rows": 29
       },
       "pg_temp.supplier_order_items": {
         "readable": true,
-        "rows": 4533
+        "rows": 4712
       },
       "pg_temp.supplier_final_containers": {
         "readable": true,
@@ -208,7 +208,7 @@
     "missing": []
   },
   "categories": {
-    "Lamp Spares": 229,
+    "Lamp Spares": 231,
     "Lamp Shade": 84,
     "Lighting": 75,
     "Lamp Holders": 65,
@@ -252,8 +252,8 @@
     "S"
   ],
   "source_split": {
-    "components_this_year": 684,
-    "including_deleted": 691,
+    "components_this_year": 686,
+    "including_deleted": 693,
     "shown": 311,
     "from_PO": 68,
     "from_SUPPLY": 243,
@@ -267,74 +267,74 @@
   "status": {
     "COMPLETED": 311,
     "INCOMING": 102,
-    "NO SUPPLY DATA": 271
+    "NO SUPPLY DATA": 273
   },
   "combos_all": {
-    "distinct": 638,
-    "relationships": 841,
-    "with_combo_date_filter": 621,
-    "restored_by_dropping_date_filter": 17
+    "distinct": 653,
+    "relationships": 862,
+    "with_combo_date_filter": 634,
+    "restored_by_dropping_date_filter": 19
   },
   "classification": {
     "main": {
       "components": 311,
-      "combos": 270,
-      "packs": 161,
+      "combos": 272,
+      "packs": 168,
       "component_products_classified_pack": 0,
       "combo_components": 73,
-      "pack_count": 161,
-      "all_products": 742
+      "pack_count": 168,
+      "all_products": 751
     },
     "all": {
-      "components": 684,
-      "combos": 422,
-      "packs": 216,
+      "components": 686,
+      "combos": 427,
+      "packs": 226,
       "component_products_classified_pack": 0,
-      "combo_components": 133,
-      "pack_count": 216,
-      "all_products": 1322
+      "combo_components": 135,
+      "pack_count": 226,
+      "all_products": 1339
     }
   },
   "all_data": {
-    "components": 684,
-    "component_rows": 894,
-    "combos": 638,
-    "combo_rows": 1226,
-    "relationships": 841,
+    "components": 686,
+    "component_rows": 896,
+    "combos": 653,
+    "combo_rows": 1244,
+    "relationships": 862,
     "status": {
       "COMPLETED": 311,
       "INCOMING": 102,
-      "NO SUPPLY DATA": 271
+      "NO SUPPLY DATA": 273
     },
-    "combos_completed_linked": 431,
-    "combos_no_completed": 207,
-    "combos_mixed": 85
+    "combos_completed_linked": 440,
+    "combos_no_completed": 213,
+    "combos_mixed": 87
   },
   "totals": {
-    "rows": 988,
+    "rows": 999,
     "components": 311,
-    "combos": 431,
-    "pairs": 496,
+    "combos": 440,
+    "pairs": 506,
     "gap_no_combo": 165,
-    "impressions": 4538661,
-    "clicks": 26346,
-    "orders": 794,
-    "units": 1035,
-    "revenue": 18556.72,
+    "impressions": 4788755,
+    "clicks": 27563,
+    "orders": 821,
+    "units": 1074,
+    "revenue": 19208.57,
     "returns": 53
   },
   "totals_components": {
     "rows": 435,
     "listed": 200,
     "components_with_listing": 177,
-    "impressions": 616936,
-    "clicks": 4888,
-    "orders": 572,
-    "units": 981,
-    "revenue": 9002.91,
+    "impressions": 640935,
+    "clicks": 5145,
+    "orders": 586,
+    "units": 1000,
+    "revenue": 9127.74,
     "returns": 28
   },
-  "duration_sec": 140.6,
+  "duration_sec": 135.0,
   "result": "PASS",
   "failed_hard": [],
   "failed_soft": [
